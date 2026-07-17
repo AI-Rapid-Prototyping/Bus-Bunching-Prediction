@@ -1,0 +1,1445 @@
+Loading GTFS structural metadata...
+
+============================================================
+         DATA PORTFOLIO CAPTURE TIME HORIZONS               
+============================================================
+• File: KCM_Data_7_14_26.db    | Ingestion Active From 2026-07-13 15:32:45 To 2026-07-14 13:31:10
+• File: KCM_data_7_13_26.db    | Ingestion Active From 2026-07-13 15:32:45 To 2026-07-14 10:06:16
+• File: KCM_data_7_15_26.db    | Ingestion Active From 2026-07-15 13:13:15 To 2026-07-15 16:41:32
+• File: KCM_data_7_16_26.db    | Ingestion Active From 2026-07-16 10:27:55 To 2026-07-16 12:00:53
+
+============================================================
+             REAL-TIME BUS BUNCHING SAMPLE LOG              
+============================================================
+• Time: 2026-07-13 15:53:57 | 24       towards [West Magnolia]
+  Location : Stop 20950 (Viewmont Way W & Edgemont Pl W)
+  Headway  : Drivers bunched down to 0 seconds space.
+
+• Time: 2026-07-14 10:05:54 | 271      towards [University District Bellevue]
+  Location : Stop 80570 (116th Ave SE & SE 1st St)
+  Headway  : Drivers bunched down to 0 seconds space.
+
+• Time: 2026-07-14 10:05:54 | 14       towards [Mount Baker Mount Baker Transit Center]
+  Location : Stop 12080 (31st Ave S & S Norman St)
+  Headway  : Drivers bunched down to 0 seconds space.
+
+• Time: 2026-07-14 10:05:54 | 239      towards [Kirkland Transit Center]
+  Location : Stop 74327 (124th Ave NE & NE 100th St)
+  Headway  : Drivers bunched down to 0 seconds space.
+
+============================================================
+      ROUTE DIAGNOSTIC MATRIX: WHEN & WHERE HOTSPOTS       
+============================================================
+
+Route E Line (Total Bunching Events Flagged: 7883)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 420    (3rd Ave & Virginia St) : 208 times
+    » Stop 400    (3rd Ave & Bell St) : 207 times
+    » Stop 431    (3rd Ave & Pike St) : 207 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 11:00 : 1471 times
+    » Moving towards [Downtown Seattle] at 10:00 : 1009 times
+    » Moving towards [Downtown Seattle] at 15:00 : 981 times
+
+Route 40 (Total Bunching Events Flagged: 3667)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 450    (3rd Ave & Union St) : 69 times
+    » Stop 480    (3rd Ave & Marion St) : 69 times
+    » Stop 500    (3rd Ave & James St) : 69 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Ballard] at 10:00 : 867 times
+    » Moving towards [Downtown Seattle Ballard] at 15:00 : 516 times
+    » Moving towards [Northgate Station Fremont] at 10:00 : 415 times
+
+Route 7 (Total Bunching Events Flagged: 3346)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 8090   (Rainier Ave S & S Henderson St) : 85 times
+    » Stop 8080   (Rainier Ave S & S Fisher Pl) : 82 times
+    » Stop 8070   (Rainier Ave S & 52nd Ave S) : 81 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Via Rainier Ave S] at 15:00 : 505 times
+    » Moving towards [Downtown Seattle Via Rainier Ave S] at 10:00 : 401 times
+    » Moving towards [Downtown Seattle Via Rainier Ave S] at 16:00 : 366 times
+
+Route 128 (Total Bunching Events Flagged: 3229)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 36170  (16th Ave SW & SW Holly St) : 98 times
+    » Stop 36180  (16th Ave SW & SW Myrtle St) : 98 times
+    » Stop 36190  (16th Ave SW & SW Webster St) : 98 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Admiral District White Center] at 10:00 : 560 times
+    » Moving towards [Admiral District White Center] at 15:00 : 541 times
+    » Moving towards [Admiral District White Center] at 16:00 : 442 times
+
+Route 62 (Total Bunching Events Flagged: 3176)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 420    (3rd Ave & Virginia St) : 40 times
+    » Stop 430    (3rd Ave & Pine St) : 40 times
+    » Stop 450    (3rd Ave & Union St) : 40 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Fremont] at 10:00 : 713 times
+    » Moving towards [Sand Point East Green Lake] at 15:00 : 521 times
+    » Moving towards [Downtown Seattle Fremont] at 15:00 : 461 times
+
+Route 60 (Total Bunching Events Flagged: 3086)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 21141  (Olson-Myers Way Park And Ride) : 167 times
+    » Stop 41740  (13th Ave S & S Bailey St) : 162 times
+    » Stop 11180  (Broadway  E & E John St - Bay 3) : 37 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Westwood Village N Beacon Hill] at 15:00 : 539 times
+    » Moving towards [Broadway First Hill] at 15:00 : 512 times
+    » Moving towards [Broadway First Hill] at 10:00 : 463 times
+
+Route 107 (Total Bunching Events Flagged: 2861)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 41740  (13th Ave S & S Bailey St) : 95 times
+    » Stop 41750  (S Albro Pl & Stanley Ave S) : 82 times
+    » Stop 41870  (15th Ave S & S Hanford St) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Renton Transit Center Rainier Beach Station] at 15:00 : 592 times
+    » Moving towards [Beacon Hill Station Rainier Beach Station] at 15:00 : 496 times
+    » Moving towards [Renton Transit Center Rainier Beach Station] at 10:00 : 438 times
+
+Route 150 (Total Bunching Events Flagged: 2699)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 50779  (W James St & 64th Ave S) : 45 times
+    » Stop 57446  (64th Ave S & S 236th St) : 45 times
+    » Stop 57478  (64th Ave S & S 228th St) : 45 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent Southcenter] at 15:00 : 556 times
+    » Moving towards [Downtown Seattle Southcenter] at 15:00 : 383 times
+    » Moving towards [Downtown Seattle Southcenter] at 10:00 : 305 times
+
+Route 106 (Total Bunching Events Flagged: 2655)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1500   (S Jackson St & 8th Ave S) : 28 times
+    » Stop 1510   (S Jackson St & Maynard Ave S) : 28 times
+    » Stop 56360  (Renton Ave S & S Hazel St) : 28 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [International District Chinatown Station Rainier Beach Station] at 10:00 : 466 times
+    » Moving towards [International District Chinatown Station Rainier Beach Station] at 15:00 : 449 times
+    » Moving towards [Renton Rainier Beach Station] at 15:00 : 443 times
+
+Route 160 (Total Bunching Events Flagged: 2641)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46440  (S 3rd St & Rainier Ave S) : 28 times
+    » Stop 46450  (S 3rd St & Shattuck Ave S) : 28 times
+    » Stop 59870  (Rainier Ave S & S 4th Pl) : 28 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Auburn Station Kent] at 15:00 : 521 times
+    » Moving towards [Renton Kent] at 15:00 : 495 times
+    » Moving towards [Renton Kent] at 10:00 : 425 times
+
+Route 372 (Total Bunching Events Flagged: 2557)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 75402  (Stevens Way & Rainier Vista NE) : 66 times
+    » Stop 75404  (W Stevens Way & Okanogan Ln NE) : 66 times
+    » Stop 75403  (East Stevens Way NE & Benton Ln) : 65 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [U-District Station Lake City] at 10:00 : 432 times
+    » Moving towards [U-District Station Lake City] at 11:00 : 376 times
+    » Moving towards [U-District Station Lake City] at 15:00 : 345 times
+
+Route 240 (Total Bunching Events Flagged: 2430)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 79878  (142nd Pl SE & SE 32nd St) : 79 times
+    » Stop 46541  (Southport Dr N & Garden Ave N) : 26 times
+    » Stop 68048  (106th Ave NE & NE 6th St) : 25 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Bellevue Transit Center South Bellevue Station] at 15:00 : 458 times
+    » Moving towards [Renton Newcastle] at 15:00 : 430 times
+    » Moving towards [Bellevue Transit Center South Bellevue Station] at 10:00 : 397 times
+
+Route 75 (Total Bunching Events Flagged: 2384)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 23230  (5th Ave NE & NE Northgate Way) : 38 times
+    » Stop 23250  (5th Ave NE & NE 106th St) : 38 times
+    » Stop 23260  (5th Ave NE & NE 103rd St) : 38 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Northgate Station Sand Point] at 10:00 : 595 times
+    » Moving towards [Northgate Station Sand Point] at 15:00 : 376 times
+    » Moving towards [University District Lake City] at 15:00 : 244 times
+
+Route D Line (Total Bunching Events Flagged: 2231)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 420    (3rd Ave & Virginia St) : 54 times
+    » Stop 431    (3rd Ave & Pike St) : 54 times
+    » Stop 468    (3rd Ave & Seneca St) : 54 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Ballard Uptown] at 15:00 : 363 times
+    » Moving towards [Ballard Uptown] at 10:00 : 316 times
+    » Moving towards [Downtown Seattle Uptown] at 15:00 : 308 times
+
+Route 250 (Total Bunching Events Flagged: 2200)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 81755  (Bear Creek Park And Ride) : 102 times
+    » Stop 72307  (NE Union Hill Rd & 178th Pl NE) : 101 times
+    » Stop 74450  (South Kirkland Park & Ride) : 79 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Bellevue Transit Center Bear Creek P&R] at 15:00 : 438 times
+    » Moving towards [Avondale Bear Creek P&R] at 15:00 : 390 times
+    » Moving towards [Bellevue Transit Center Bear Creek P&R] at 10:00 : 308 times
+
+Route C Line (Total Bunching Events Flagged: 2158)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 26730  (Westlake Ave N & Mercer St) : 70 times
+    » Stop 26715  (Westlake Ave N & Harrison St) : 68 times
+    » Stop 26690  (Westlake & 9th-Denny) : 67 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [West Seattle Alaska Junction] at 10:00 : 370 times
+    » Moving towards [West Seattle Alaska Junction] at 15:00 : 343 times
+    » Moving towards [South Lake Union Downtown Seattle] at 10:00 : 329 times
+
+Route G Line (Total Bunching Events Flagged: 2092)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 108    (E Madison St & 22nd Ave E) : 136 times
+    » Stop 109    (E Madison St & 24th Ave E) : 135 times
+    » Stop 107    (E Madison St & 17th Ave) : 133 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Via E Madison St] at 11:00 : 511 times
+    » Moving towards [Downtown Seattle Via E Madison St] at 15:00 : 499 times
+    » Moving towards [Downtown Seattle Via E Madison St] at 10:00 : 485 times
+
+Route 36 (Total Bunching Events Flagged: 2067)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 538    (3rd Ave & Columbia St) : 40 times
+    » Stop 558    (3rd Ave & Seneca St) : 40 times
+    » Stop 1610   (Prefontaine Pl S & Yesler Way) : 39 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle N Beacon Hill] at 15:00 : 398 times
+    » Moving towards [Othello Station N Beacon Hill] at 15:00 : 351 times
+    » Moving towards [Downtown Seattle N Beacon Hill] at 10:00 : 320 times
+
+Route H Line (Total Bunching Events Flagged: 2064)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 570    (3rd Ave & Union St) : 64 times
+    » Stop 590    (3rd Ave & Pine St) : 64 times
+    » Stop 548    (3rd Ave & Madison St) : 59 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center Westwood Village] at 15:00 : 377 times
+    » Moving towards [Downtown Seattle Westwood Village] at 15:00 : 361 times
+    » Moving towards [Downtown Seattle Westwood Village] at 10:00 : 354 times
+
+Route 5 (Total Bunching Events Flagged: 2058)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 6060   (Aurora Ave N & Halladay St) : 26 times
+    » Stop 6070   (Aurora Ave N & Lynn St) : 26 times
+    » Stop 6080   (Aurora Ave N & Crockett St) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Shoreline Greenwood] at 15:00 : 425 times
+    » Moving towards [Shoreline Greenwood] at 10:00 : 340 times
+    » Moving towards [Downtown Seattle Greenwood] at 15:00 : 333 times
+
+Route 50 (Total Bunching Events Flagged: 1917)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 30453  (Veterans Administration Hospital) : 90 times
+    » Stop 15540  (SW Admiral Way & California Ave SW) : 18 times
+    » Stop 15570  (SW Admiral Way & SW Waite St) : 18 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [West Seattle South Downtown Seattle] at 15:00 : 387 times
+    » Moving towards [Othello Station South Downtown Seattle] at 15:00 : 354 times
+    » Moving towards [Othello Station South Downtown Seattle] at 10:00 : 310 times
+
+Route 165 (Total Bunching Events Flagged: 1912)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 21945  (Kent Des Moines Park And Ride) : 41 times
+    » Stop 57516  (SE 277th Pl & 124th Ave SE) : 14 times
+    » Stop 57521  (124th Ave SE & SE 304th St) : 14 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center Kent] at 10:00 : 353 times
+    » Moving towards [Green River Coll Kent] at 15:00 : 347 times
+    » Moving towards [Burien Transit Center Kent] at 15:00 : 342 times
+
+Route 245 (Total Bunching Events Flagged: 1911)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 65325  (SE Eastgate Way & 146th Pl SE) : 21 times
+    » Stop 70665  (Central Way & 5th St) : 21 times
+    » Stop 72164  (6th St S & 1st Ave S) : 21 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kirkland Transit Center Crossroads] at 15:00 : 388 times
+    » Moving towards [Eastgate P&R Crossroads] at 15:00 : 364 times
+    » Moving towards [Eastgate P&R Crossroads] at 10:00 : 280 times
+
+Route 271 (Total Bunching Events Flagged: 1839)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 65305  (SE Eastgate Way & 146th Pl SE) : 64 times
+    » Stop 65325  (SE Eastgate Way & 146th Pl SE) : 61 times
+    » Stop 68591  (145th Pl SE & SE 13th Pl) : 28 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [University District Bellevue] at 15:00 : 302 times
+    » Moving towards [University District Bellevue] at 16:00 : 232 times
+    » Moving towards [University District Bellevue] at 10:00 : 228 times
+
+Route 255 (Total Bunching Events Flagged: 1812)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 74450  (South Kirkland Park & Ride) : 108 times
+    » Stop 70151  (NE 124th St & 100th Ave NE) : 28 times
+    » Stop 74077  (NE 124th St & 103rd Ave NE) : 28 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Totem Lake Transit Center Kirkland] at 15:00 : 369 times
+    » Moving towards [University District Kirkland] at 10:00 : 307 times
+    » Moving towards [University District Kirkland] at 15:00 : 293 times
+
+Route 44 (Total Bunching Events Flagged: 1739)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 29720  (NW Market St & 20th Ave NW) : 42 times
+    » Stop 18740  (NW Market St & Ballard Ave NW) : 41 times
+    » Stop 29680  (NW Market St & 11th Ave NW) : 41 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Ballard Wallingford] at 15:00 : 244 times
+    » Moving towards [University Of Washington Medical Center Wallingford] at 15:00 : 232 times
+    » Moving towards [Ballard Wallingford] at 10:00 : 197 times
+
+Route 65 (Total Bunching Events Flagged: 1726)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 82130  (NE 145th St & 27th Ave NE) : 30 times
+    » Stop 38810  (NE 145th St & 19th Ave NE) : 29 times
+    » Stop 82140  (NE 145th St & 25th Ave NE) : 29 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Shoreline South 148th St Station Lake City] at 15:00 : 329 times
+    » Moving towards [Shoreline South 148th St Station Lake City] at 10:00 : 248 times
+    » Moving towards [University District Wedgwood] at 15:00 : 232 times
+
+Route 45 (Total Bunching Events Flagged: 1682)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 37359  (NE 65th St & 14th Ave NE) : 29 times
+    » Stop 38022  (University Way NE & NE Ravenna Blvd) : 29 times
+    » Stop 38024  (University Way NE & NE 55th St) : 29 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Loyal Heights Greenwood] at 15:00 : 396 times
+    » Moving towards [University District Roosevelt Station] at 15:00 : 238 times
+    » Moving towards [Loyal Heights Greenwood] at 10:00 : 229 times
+
+Route 4 (Total Bunching Events Flagged: 1626)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 538    (3rd Ave & Columbia St) : 45 times
+    » Stop 558    (3rd Ave & Seneca St) : 45 times
+    » Stop 575    (3rd Ave & Pike St) : 45 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Seattle Pacific University Downtown Seattle] at 15:00 : 290 times
+    » Moving towards [Central District Downtown Seattle] at 15:00 : 228 times
+    » Moving towards [Seattle Pacific University Downtown Seattle] at 10:00 : 221 times
+
+Route 124 (Total Bunching Events Flagged: 1477)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 61012  (Tukwila Intl Blvd & S 141st St) : 22 times
+    » Stop 61020  (Tukwila Intl Blvd & S 144th St) : 22 times
+    » Stop 61040  (Tukwila Intl Blvd & S 148th St) : 22 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Georgetown] at 15:00 : 311 times
+    » Moving towards [Tukwila Link Station Georgetown] at 15:00 : 288 times
+    » Moving towards [Tukwila Link Station Georgetown] at 10:00 : 236 times
+
+Route A Line (Total Bunching Events Flagged: 1461)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 60880  (International Blvd & S 188th St) : 36 times
+    » Stop 61310  (Pacific Hwy S & S 312th St) : 36 times
+    » Stop 61313  (S 316th St & Pacific Hwy S) : 36 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Tukwila Link Station International Boulevard] at 15:00 : 274 times
+    » Moving towards [Downtown Federal Way Station] at 15:00 : 258 times
+    » Moving towards [Downtown Federal Way Station] at 10:00 : 199 times
+
+Route 8 (Total Bunching Events Flagged: 1378)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 12484  (Martin L King Jr Way S & S Hill St) : 26 times
+    » Stop 12486  (Martin L King Jr Way S & S Bayview St) : 26 times
+    » Stop 12487  (Martin L King Jr Way S & S Massachusetts St) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Mount Baker Transit Center] at 15:00 : 258 times
+    » Moving towards [Seattle Center] at 15:00 : 222 times
+    » Moving towards [Mount Baker Transit Center] at 10:00 : 191 times
+
+Route 21 (Total Bunching Events Flagged: 1374)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 22912  (35th Ave SW & SW Raymond St) : 25 times
+    » Stop 22940  (35th Ave SW & SW Morgan St) : 25 times
+    » Stop 22950  (35th Ave SW & SW Holly St) : 25 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Westwood Village Via 35th Ave SW] at 15:00 : 253 times
+    » Moving towards [Downtown Seattle Via 35th Ave SW] at 15:00 : 243 times
+    » Moving towards [Westwood Village Via 35th Ave SW] at 10:00 : 236 times
+
+Route 225 (Total Bunching Events Flagged: 1365)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 74721  (Kingsgate Park & Ride) : 42 times
+    » Stop 74226  (NE 128th St & Totem Lake Blvd) : 23 times
+    » Stop 55566  (152nd Ave NE & Da Vinci Ave NE - Bay 1) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Overlake P&R Totem Lake Transit Center] at 15:00 : 300 times
+    » Moving towards [Kenmore P&R Totem Lake] at 15:00 : 276 times
+    » Moving towards [Overlake P&R Totem Lake Transit Center] at 10:00 : 211 times
+
+Route 348 (Total Bunching Events Flagged: 1364)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 81243  (Shoreline North/185th Station - Bay 3) : 127 times
+    » Stop 75565  (NW Richmond Beach Rd & 8th Ave NW) : 20 times
+    » Stop 23230  (5th Ave NE & NE Northgate Way) : 19 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Northgate Station North City] at 15:00 : 265 times
+    » Moving towards [Northgate Station North City] at 16:00 : 196 times
+    » Moving towards [Northgate Station North City] at 10:00 : 175 times
+
+Route F Line (Total Bunching Events Flagged: 1343)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46541  (Southport Dr N & Garden Ave N) : 29 times
+    » Stop 46590  (Logan Ave N & N 10th St) : 29 times
+    » Stop 46440  (S 3rd St & Rainier Ave S) : 28 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Renton The Landing Southcenter] at 10:00 : 290 times
+    » Moving towards [Burien Southcenter] at 10:00 : 262 times
+    » Moving towards [Burien Southcenter] at 15:00 : 249 times
+
+Route 2 (Total Bunching Events Flagged: 1337)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 3271   (34th Ave & E Olive St) : 22 times
+    » Stop 3280   (34th Ave & E Howell St) : 22 times
+    » Stop 3300   (Madrona Dr & 38th Ave) : 22 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 15:00 : 423 times
+    » Moving towards [Downtown Seattle] at 10:00 : 320 times
+    » Moving towards [Downtown Seattle] at 16:00 : 230 times
+
+Route 101 (Total Bunching Events Flagged: 1243)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 45285  (Main Ave S & S 4th St) : 36 times
+    » Stop 45288  (S Grady Way & Williams Ave S) : 36 times
+    » Stop 59841  (Sr 515 & South Grady Way) : 36 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [S Renton P&R] at 15:00 : 254 times
+    » Moving towards [Downtown Seattle] at 15:00 : 211 times
+    » Moving towards [S Renton P&R] at 10:00 : 174 times
+
+Route 132 (Total Bunching Events Flagged: 1178)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 30600  (4th Ave S & S Holgate St) : 12 times
+    » Stop 30538  (4th Ave S & S Spokane St) : 11 times
+    » Stop 30550  (4th Ave S & S Hanford St) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center South Park] at 15:00 : 274 times
+    » Moving towards [Downtown Seattle South Park] at 15:00 : 250 times
+    » Moving towards [Burien Transit Center South Park] at 10:00 : 205 times
+
+Route 48 (Total Bunching Events Flagged: 1127)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 8660   (Rainier Ave S & S Bayview St) : 25 times
+    » Stop 12640  (23rd Ave S & S Jackson St) : 24 times
+    » Stop 35890  (23rd Ave S & S Dearborn St) : 24 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Mount Baker Transit Center Central District] at 15:00 : 243 times
+    » Moving towards [University District Central District] at 15:00 : 184 times
+    » Moving towards [Mount Baker Transit Center Central District] at 16:00 : 160 times
+
+Route 222 (Total Bunching Events Flagged: 1117)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 66875  (152nd Ave NE & NE 31st St) : 11 times
+    » Stop 68411  (156th Ave NE & NE 33rd St) : 11 times
+    » Stop 71140  (West Lake Sammamish Pkwy NE & NE 40th St) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Cottage Lake Education Hill] at 15:00 : 223 times
+    » Moving towards [Redmond Technology Station Downtown Redmond Station] at 15:00 : 202 times
+    » Moving towards [Redmond Technology Station Downtown Redmond Station] at 10:00 : 190 times
+
+Route 181 (Total Bunching Events Flagged: 1114)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 59250  (112th Ave SE & Lea Hill Rd SE) : 15 times
+    » Stop 59252  (112th Ave SE & SE 316th Pl) : 15 times
+    » Stop 59254  (112th Ave SE & SE 316th Pl) : 15 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Twin Lakes P&R Auburn Station] at 10:00 : 237 times
+    » Moving towards [Green River Coll Auburn Station] at 10:00 : 236 times
+    » Moving towards [Twin Lakes P&R Auburn Station] at 15:00 : 198 times
+
+Route 67 (Total Bunching Events Flagged: 1113)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 23273  (NE 100th St & 4th Ave NE) : 27 times
+    » Stop 23260  (5th Ave NE & NE 103rd St) : 26 times
+    » Stop 82155  (Roosevelt Way NE & NE 85th St) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Northgate Station Roosevelt Station] at 15:00 : 249 times
+    » Moving towards [Northgate Station Roosevelt Station] at 10:00 : 154 times
+    » Moving towards [Northgate Station Roosevelt Station] at 12:00 : 148 times
+
+Route 226 (Total Bunching Events Flagged: 1028)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 68353  (116th Ave NE & NE 12th St) : 13 times
+    » Stop 69015  (110th Ave NE & NE 10th St) : 13 times
+    » Stop 69028  (NE 10th St & 116th Ave NE) : 13 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Bellevue Transit Center Bellevue Redmond Road] at 10:00 : 234 times
+    » Moving towards [South Bellevue Station Eastgate] at 10:00 : 173 times
+    » Moving towards [Bellevue Transit Center Bellevue Redmond Road] at 15:00 : 171 times
+
+Route B Line (Total Bunching Events Flagged: 987)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 68083  (NE 8th St & 118th Ave NE - Bay 1) : 26 times
+    » Stop 67580  (NE 8th St & 120th Ave NE) : 25 times
+    » Stop 67500  (NE 8th St & 148th Ave NE) : 24 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Redmond Station Crossroads] at 15:00 : 184 times
+    » Moving towards [Bellevue Transit Center Crossroads] at 10:00 : 174 times
+    » Moving towards [Bellevue Transit Center Crossroads] at 15:00 : 172 times
+
+Route 24 (Total Bunching Events Flagged: 940)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 21030  (West Viewmont Way W & W Dravus St) : 11 times
+    » Stop 21040  (West Viewmont Way W & W Bertona St) : 11 times
+    » Stop 21050  (West Viewmont Way W & W Ruffner St) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [West Magnolia] at 15:00 : 236 times
+    » Moving towards [Downtown Seattle] at 15:00 : 170 times
+    » Moving towards [West Magnolia] at 10:00 : 168 times
+
+Route 131 (Total Bunching Events Flagged: 891)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 30538  (4th Ave S & S Spokane St) : 11 times
+    » Stop 30550  (4th Ave S & S Hanford St) : 11 times
+    » Stop 30570  (4th Ave S & S Lander St) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center Highland Park] at 15:00 : 194 times
+    » Moving towards [Downtown Seattle Highland Park] at 10:00 : 163 times
+    » Moving towards [Downtown Seattle Highland Park] at 15:00 : 140 times
+
+Route 70 (Total Bunching Events Flagged: 891)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 500    (3rd Ave & James St) : 48 times
+    » Stop 480    (3rd Ave & Marion St) : 46 times
+    » Stop 430    (3rd Ave & Pine St) : 44 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Fairview] at 10:00 : 231 times
+    » Moving towards [Downtown Seattle Fairview] at 15:00 : 123 times
+    » Moving towards [Downtown Seattle Fairview] at 11:00 : 96 times
+
+Route 223 (Total Bunching Events Flagged: 885)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 65325  (SE Eastgate Way & 146th Pl SE) : 14 times
+    » Stop 68502  (156th Ave SE & Lake Hills Blvd) : 14 times
+    » Stop 68550  (148th Ave SE & SE 16th St) : 14 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Redmond Station Overlake Village Station] at 15:00 : 183 times
+    » Moving towards [Eastgate P&R Lake Hills] at 15:00 : 179 times
+    » Moving towards [Eastgate P&R Lake Hills] at 10:00 : 152 times
+
+Route 14 (Total Bunching Events Flagged: 875)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 8403   (Mount Baker Transit Center - Bay 3) : 94 times
+    » Stop 12200  (Mount Rainier Dr S & 37th Pl S) : 21 times
+    » Stop 12170  (S Mcclellan St & 31st Ave S) : 20 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Mount Baker Mount Baker Transit Center] at 15:00 : 227 times
+    » Moving towards [Mount Baker Mount Baker Transit Center] at 10:00 : 158 times
+    » Moving towards [Downtown Seattle] at 15:00 : 124 times
+
+Route 156 (Total Bunching Events Flagged: 872)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 47263  (Highline College) : 12 times
+    » Stop 47419  (S 216th St & 24th Ave S) : 12 times
+    » Stop 48930  (S 240th St & 21st Ave S) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent Des Moines Station Highline College] at 10:00 : 189 times
+    » Moving towards [Southcenter Sea Tac] at 10:00 : 170 times
+    » Moving towards [Kent Des Moines Station Highline College] at 15:00 : 167 times
+
+Route 545 (Total Bunching Events Flagged: 870)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 810    (5th Ave & Marion St) : 37 times
+    » Stop 820    (5th Ave & Jefferson St) : 37 times
+    » Stop 844    (5th Ave S & S Weller St) : 37 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Redmond] at 10:00 : 157 times
+    » Moving towards [Downtown Seattle] at 10:00 : 143 times
+    » Moving towards [Downtown Seattle] at 15:00 : 140 times
+
+Route 183 (Total Bunching Events Flagged: 831)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 80454  (28th Ave S & S 312th St) : 11 times
+    » Stop 80458  (S 317th St & 26th Ave S) : 11 times
+    » Stop 80580  (W James St & Lincoln Ave N) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent] at 15:00 : 184 times
+    » Moving towards [Downtown Federal Way Station] at 15:00 : 166 times
+    » Moving towards [Downtown Federal Way Station] at 10:00 : 138 times
+
+Route 31 (Total Bunching Events Flagged: 810)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 20890  (28th Ave W & W Blaine St) : 11 times
+    » Stop 20910  (Condon Way W & W Crockett St) : 11 times
+    » Stop 31310  (Thorndyke Ave W & Thorndyke Pl W) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Central Magnolia Fremont] at 15:00 : 175 times
+    » Moving towards [Seattle Childrens Hospital U-District Station] at 15:00 : 159 times
+    » Moving towards [Central Magnolia Fremont] at 10:00 : 140 times
+
+Route 61 (Total Bunching Events Flagged: 809)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 23770  (5th Ave NE & NE 106th St) : 21 times
+    » Stop 35332  (NE Northgate Way & 15th Ave NE) : 21 times
+    » Stop 35333  (NE Northgate Way & 23rd Ave NE) : 21 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Lake City Northgate] at 15:00 : 181 times
+    » Moving towards [Greenwood Northgate] at 15:00 : 145 times
+    » Moving towards [Lake City Northgate] at 10:00 : 127 times
+
+Route 1 (Total Bunching Events Flagged: 804)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 2370   (Mercer St & Queen Anne Ave N) : 20 times
+    » Stop 2390   (2nd Ave W & W Roy St) : 20 times
+    » Stop 2400   (W Olympic Pl & 3rd Ave W) : 20 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kinnear Seattle Center W] at 15:00 : 206 times
+    » Moving towards [Kinnear Seattle Center W] at 10:00 : 155 times
+    » Moving towards [Downtown Seattle] at 15:00 : 119 times
+
+Route 239 (Total Bunching Events Flagged: 754)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 70664  (NE 85th St & 114th Ave NE) : 11 times
+    » Stop 70665  (Central Way & 5th St) : 11 times
+    » Stop 73953  (NE 85th St & 124th Ave NE) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kirkland Transit Center] at 15:00 : 179 times
+    » Moving towards [UW Bothell/Cascadia College] at 15:00 : 156 times
+    » Moving towards [Kirkland Transit Center] at 10:00 : 132 times
+
+Route 32 (Total Bunching Events Flagged: 741)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 13800  (15th Ave W & W Dravus St) : 13 times
+    » Stop 13810  (15th Ave W & W Armour St) : 13 times
+    » Stop 13830  (15th Ave W & W Wheeler St) : 13 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Seattle Center Fremont] at 15:00 : 119 times
+    » Moving towards [Seattle Childrens Hospital U-District Station] at 15:00 : 115 times
+    » Moving towards [Seattle Childrens Hospital U-District Station] at 10:00 : 110 times
+
+Route 269 (Total Bunching Events Flagged: 726)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 81684  (South Sammamish P&R - Bay 1) : 48 times
+    » Stop 64545  (Issaquah Highlands Park & Ride - Bay 1) : 19 times
+    » Stop 81755  (Bear Creek Park And Ride) : 19 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Issaquah Transit Center Sammamish] at 15:00 : 165 times
+    » Moving towards [Marymoor Village Station Sammamish] at 15:00 : 140 times
+    » Moving towards [Marymoor Village Station Sammamish] at 10:00 : 107 times
+
+Route 168 (Total Bunching Events Flagged: 721)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 99294  (Maple Vally - Black Diamond Rd SE & SE Kent-Kangley Rd) : 11 times
+    » Stop 57201  (Kent Kangley Rd & 114th Ave SE) : 10 times
+    » Stop 57202  (Kent Kangley Rd & 114th Ave SE) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent Via SE 256th St] at 15:00 : 151 times
+    » Moving towards [Maple Valley Via SE 256th St] at 15:00 : 126 times
+    » Moving towards [Maple Valley Via SE 256th St] at 10:00 : 108 times
+
+Route 161 (Total Bunching Events Flagged: 692)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 47646  (SW 156th St & 2nd Ave SW) : 14 times
+    » Stop 49290  (S 156th St & Des Moines Memorial Dr S) : 14 times
+    » Stop 49301  (S 156th St & 2nd Ave S) : 14 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center Seattle Tacoma International Airport] at 10:00 : 190 times
+    » Moving towards [Burien Transit Center Seattle Tacoma International Airport] at 15:00 : 131 times
+    » Moving towards [Kent Station Seattle Tacoma International Airport] at 16:00 : 99 times
+
+Route 522 (Total Bunching Events Flagged: 670)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 76305  (U Of Washington -- Bothell & Cascadia College) : 42 times
+    » Stop 38235  (Lake City Way NE & 20th Ave NE) : 23 times
+    » Stop 76680  (Lake City Way NE & NE 137th St) : 23 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Roosevelt Station] at 15:00 : 120 times
+    » Moving towards [Roosevelt Station] at 10:00 : 101 times
+    » Moving towards [Woodinville] at 15:00 : 76 times
+
+Route 365 (Total Bunching Events Flagged: 664)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 16914  (Northwest Hospital) : 27 times
+    » Stop 81302  (5th Ave NE & NE 152nd St) : 20 times
+    » Stop 81252  (5th Ave NE & NE 155th St) : 18 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Shoreline North 185th St Station NW Hospital] at 10:00 : 155 times
+    » Moving towards [Shoreline North 185th St Station NW Hospital] at 15:00 : 130 times
+    » Moving towards [Northgate Station NW Hospital] at 15:00 : 121 times
+
+Route 345 (Total Bunching Events Flagged: 659)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 43095  (N 135th St & Linden Ave N) : 51 times
+    » Stop 16914  (Northwest Hospital) : 29 times
+    » Stop 17010  (College Way N & N 97th St) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Northgate Station NW Hospital] at 15:00 : 129 times
+    » Moving towards [Shoreline South 148th St Station NW Hospital] at 15:00 : 126 times
+    » Moving towards [Shoreline South 148th St Station NW Hospital] at 10:00 : 122 times
+
+Route 33 (Total Bunching Events Flagged: 634)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 24680  (W Government Way & 33rd Ave W) : 10 times
+    » Stop 31380  (Thorndyke Ave W & W Lynn St) : 10 times
+    » Stop 31390  (Thorndyke Ave W & 23rd Ave W) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [E Magnolia] at 15:00 : 135 times
+    » Moving towards [Downtown Seattle] at 10:00 : 99 times
+    » Moving towards [Downtown Seattle] at 15:00 : 99 times
+
+Route 11 (Total Bunching Events Flagged: 629)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 12460  (43rd Ave E & E Blaine St) : 16 times
+    » Stop 12470  (43rd Ave E & E Madison St) : 16 times
+    » Stop 12480  (43rd Ave E & E Lynn St) : 16 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Madison Park Capitol Hill Station] at 15:00 : 153 times
+    » Moving towards [Madison Park Capitol Hill Station] at 10:00 : 119 times
+    » Moving towards [Downtown Seattle Capitol Hill Station] at 15:00 : 103 times
+
+Route 914 (Total Bunching Events Flagged: 604)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 57197  (109th Ave SE & SE 256th St) : 11 times
+    » Stop 57198  (109th Ave SE & SE 256th St) : 11 times
+    » Stop 57199  (109th Ave SE & SE 248th St) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent East Hill] at 15:00 : 312 times
+    » Moving towards [Kent East Hill] at 16:00 : 201 times
+    » Moving towards [Kent East Hill] at 17:00 : 74 times
+
+Route 148 (Total Bunching Events Flagged: 593)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 59841  (Sr 515 & South Grady Way) : 31 times
+    » Stop 59730  (SE Royal Hills Dr & Lake Youngs Way SE) : 17 times
+    » Stop 59740  (SE Royal Hills Dr & Gem Dr SE) : 17 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Fairwood S Renton P&R] at 15:00 : 125 times
+    » Moving towards [Renton S Renton P&R] at 15:00 : 118 times
+    » Moving towards [Fairwood S Renton P&R] at 10:00 : 92 times
+
+Route 550 (Total Bunching Events Flagged: 577)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1190   (Pike St & 6th Ave) : 26 times
+    » Stop 628    (4th Ave S & S Washington St) : 26 times
+    » Stop 648    (4th Ave & Cherry St) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Seattle] at 15:00 : 117 times
+    » Moving towards [Seattle] at 10:00 : 96 times
+    » Moving towards [Bellevue] at 15:00 : 86 times
+
+Route 153 (Total Bunching Events Flagged: 558)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46466  (S Grady Way & Wells Ave S) : 10 times
+    » Stop 46468  (Main Ave S & S 4th St) : 10 times
+    » Stop 46472  (Mill Ave S & Houser Way S) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kent] at 15:00 : 115 times
+    » Moving towards [Renton] at 15:00 : 105 times
+    » Moving towards [Kent] at 10:00 : 83 times
+
+Route 79 (Total Bunching Events Flagged: 521)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 10010  (NE 55th St & 39th Ave NE) : 7 times
+    » Stop 10020  (NE 55th St & 37th Ave NE) : 7 times
+    » Stop 10030  (NE 55th St & 35th Ave NE) : 7 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [University District Sand Point] at 11:00 : 131 times
+    » Moving towards [University District Sand Point] at 15:00 : 87 times
+    » Moving towards [Roosevelt Station Sand Point] at 15:00 : 86 times
+
+Route 3 (Total Bunching Events Flagged: 503)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 11133  (Pike St & Minor Ave) : 11 times
+    » Stop 1180   (Pike St & 4th Ave) : 11 times
+    » Stop 1190   (Pike St & 6th Ave) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Summit Downtown Seattle] at 15:00 : 90 times
+    » Moving towards [Summit Downtown Seattle] at 10:00 : 89 times
+    » Moving towards [Madrona and 34th Ave Downtown Seattle] at 15:00 : 89 times
+
+Route 125 (Total Bunching Events Flagged: 498)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 21361  (16th Ave SW & SW Trenton St) : 12 times
+    » Stop 22184  (Delridge Way SW & SW Henderson St) : 12 times
+    » Stop 22190  (16th Ave SW & SW Holden St) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle South Seattle College] at 10:00 : 197 times
+    » Moving towards [Downtown Seattle South Seattle College] at 15:00 : 184 times
+    » Moving towards [Downtown Seattle South Seattle College] at 16:00 : 98 times
+
+Route South Lake Union Streetcar (Total Bunching Events Flagged: 498)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 26690  (Westlake & 9th-Denny) : 52 times
+    » Stop 26693  (Terry & Thomas) : 52 times
+    » Stop 26698  (Terry & Mercer) : 52 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Lake Union] at 15:00 : 70 times
+    » Moving towards [Downtown Seattle] at 11:00 : 55 times
+    » Moving towards [Downtown Seattle] at 15:00 : 55 times
+
+Route 49 (Total Bunching Events Flagged: 491)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 10915  (Harvard Ave E & Eastlake Ave E) : 14 times
+    » Stop 1110   (Pine St & 5th Ave) : 14 times
+    » Stop 11270  (10th Ave E & E Howe St) : 14 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Broadway] at 15:00 : 105 times
+    » Moving towards [U-District Station Capitol Hill] at 15:00 : 92 times
+    » Moving towards [Downtown Seattle Broadway] at 10:00 : 82 times
+
+Route 28 (Total Bunching Events Flagged: 483)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 6050   (Aurora Ave N & N 38th St) : 12 times
+    » Stop 6070   (Aurora Ave N & Lynn St) : 12 times
+    » Stop 6100   (Aurora Ave N & Galer St) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Carkeek Park] at 15:00 : 111 times
+    » Moving towards [Downtown Seattle] at 10:00 : 98 times
+    » Moving towards [Carkeek Park] at 10:00 : 76 times
+
+Route 203 (Total Bunching Events Flagged: 468)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 64768  (SE Newport Way & SE 42nd Pl) : 11 times
+    » Stop 64780  (SE Newport Way & 129th Pl SE) : 11 times
+    » Stop 80380  (Factoria Blvd SE & SE Newport Way) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Issaquah Highlands Park & Ride Newport Way] at 16:00 : 104 times
+    » Moving towards [South Bellevue Station Newport Way] at 15:00 : 93 times
+    » Moving towards [South Bellevue Station Newport Way] at 10:00 : 85 times
+
+Route 12 (Total Bunching Events Flagged: 444)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 107    (E Madison St & 17th Ave) : 13 times
+    » Stop 11133  (Pike St & Minor Ave) : 13 times
+    » Stop 11140  (E Pine St & Summit Ave) : 13 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Interlaken Park Via 19th Ave] at 15:00 : 107 times
+    » Moving towards [Interlaken Park Via 19th Ave] at 10:00 : 86 times
+    » Moving towards [Interlaken Park Via 19th Ave] at 16:00 : 66 times
+
+Route First Hill Streetcar (Total Bunching Events Flagged: 443)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 41904  (Broadway & Terrace St) : 31 times
+    » Stop 41908  (Broadway & Marion) : 31 times
+    » Stop 41970  (Broadway & Pike-Pine) : 31 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Capitol Hill] at 10:00 : 105 times
+    » Moving towards [Pioneer Square] at 10:00 : 77 times
+    » Moving towards [Capitol Hill] at 15:00 : 59 times
+
+Route 27 (Total Bunching Events Flagged: 439)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1360   (Yesler Way & 5th Ave) : 10 times
+    » Stop 1370   (Yesler Way & 3rd Ave) : 10 times
+    » Stop 27430  (Yesler Way & 8th Ave) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Yesler] at 15:00 : 84 times
+    » Moving towards [Colman Park Yesler] at 15:00 : 75 times
+    » Moving towards [Colman Park Yesler] at 10:00 : 74 times
+
+Route 105 (Total Bunching Events Flagged: 434)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 45070  (Union Ave NE & NE 8th St) : 12 times
+    » Stop 45080  (Union Ave NE & NE 10th St) : 12 times
+    » Stop 45090  (Union Ave NE & NE 11th St) : 12 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Renton Highlands] at 10:00 : 97 times
+    » Moving towards [Renton Renton Tech Coll] at 10:00 : 78 times
+    » Moving towards [Renton Renton Tech Coll] at 15:00 : 62 times
+
+Route 331 (Total Bunching Events Flagged: 423)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 5488   (Carlyle Hall Rd N & Dayton Ave N) : 11 times
+    » Stop 5489   (Greenwood Ave N & N Greenwood Dr) : 11 times
+    » Stop 6940   (N Innis Arden Way & Greenwood Ave N) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Shoreline CC Mountlake Terrace Station] at 15:00 : 151 times
+    » Moving towards [Shoreline CC Mountlake Terrace Station] at 10:00 : 143 times
+    » Moving towards [Shoreline CC Mountlake Terrace Station] at 16:00 : 86 times
+
+Route 231 (Total Bunching Events Flagged: 407)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 53550  (Kirkland Way & 6th St) : 7 times
+    » Stop 70040  (Juanita Woodinville Way NE & 115th Ave NE) : 7 times
+    » Stop 70060  (Juanita Woodinville Way NE & NE 149th St) : 7 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Kirkland Transit Center] at 11:00 : 78 times
+    » Moving towards [Woodinville Park & Ride] at 16:00 : 76 times
+    » Moving towards [Kirkland Transit Center] at 15:00 : 68 times
+
+Route 930 (Total Bunching Events Flagged: 392)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 72319  (154th Ave NE & NE 90th St) : 16 times
+    » Stop 73848  (NE 85th St & 154th Ave NE) : 16 times
+    » Stop 73868  (NE 90th St & 151st Ave NE) : 16 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Redmond] at 15:00 : 90 times
+    » Moving towards [Redmond] at 17:00 : 52 times
+    » Moving towards [Redmond] at 10:00 : 51 times
+
+Route 13 (Total Bunching Events Flagged: 383)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 18220  (W Nickerson St & 3rd Ave W) : 10 times
+    » Stop 2180   (Queen Anne Ave N & W Harrison St) : 10 times
+    » Stop 2200   (Queen Anne Ave N & W John St) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Seattle Pacific University Seattle Center W] at 15:00 : 90 times
+    » Moving towards [Seattle Pacific University Seattle Center W] at 10:00 : 84 times
+    » Moving towards [Downtown Seattle] at 15:00 : 52 times
+
+Route 10 (Total Bunching Events Flagged: 379)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 11565  (15th Ave E & E Thomas St) : 14 times
+    » Stop 11567  (15th Ave E & E Denny Way) : 14 times
+    » Stop 11569  (15th Ave & E Pine St) : 14 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Capitol Hill Via 15th Ave E] at 15:00 : 105 times
+    » Moving towards [Capitol Hill Via 15th Ave E] at 10:00 : 68 times
+    » Moving towards [Capitol Hill Via 15th Ave E] at 16:00 : 57 times
+
+Route 906 (Total Bunching Events Flagged: 352)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 59359  (SW 43rd St & E Valley Hwy) : 12 times
+    » Stop 59357  (SW 43rd St & Oakesdale Ave SW) : 10 times
+    » Stop 59358  (SW 43rd St & Lind Ave SW) : 10 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Fairwood] at 16:00 : 78 times
+    » Moving towards [Tukwila Station Southcenter] at 10:00 : 72 times
+    » Moving towards [Southcenter] at 15:00 : 53 times
+
+Route 182 (Total Bunching Events Flagged: 350)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 58391  (9th Ave S & Saint Francis Hospital) : 7 times
+    » Stop 60534  (S 336th St & 9th Ave S) : 7 times
+    » Stop 60537  (S 336th St & 13th Pl S) : 7 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Federal Way Station] at 10:00 : 69 times
+    » Moving towards [NE Tacoma Via SW 356th St] at 10:00 : 61 times
+    » Moving towards [Downtown Federal Way Station] at 15:00 : 56 times
+
+Route 230 (Total Bunching Events Flagged: 341)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 76305  (U Of Washington -- Bothell & Cascadia College) : 9 times
+    » Stop 53550  (Kirkland Way & 6th St) : 5 times
+    » Stop 70130  (100th Ave NE & NE 132nd St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Bothell] at 15:00 : 74 times
+    » Moving towards [Kirkland Transit Center] at 15:00 : 72 times
+    » Moving towards [Bothell] at 10:00 : 61 times
+
+Route 554 (Total Bunching Events Flagged: 335)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 65150  (Highlands Dr NE & NE Ellis Dr) : 17 times
+    » Stop 64590  (Issaquah Transit Center - Bay 6) : 16 times
+    » Stop 80485  (E Sunset Way & Rainier Blvd S) : 16 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 15:00 : 71 times
+    » Moving towards [Issaquah] at 15:00 : 65 times
+    » Moving towards [Downtown Seattle] at 10:00 : 50 times
+
+Route 346 (Total Bunching Events Flagged: 331)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 16640  (Meridian Ave N & N 163rd St) : 9 times
+    » Stop 16650  (Meridian Ave N & N 165th St) : 9 times
+    » Stop 16660  (Meridian Ave N & N 167th St) : 9 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Aurora Village Transit Center] at 15:00 : 77 times
+    » Moving towards [Shoreline South 148th St Station] at 15:00 : 60 times
+    » Moving towards [Aurora Village Transit Center] at 10:00 : 54 times
+
+Route 184 (Total Bunching Events Flagged: 298)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 57618  (M St SE & 33rd St SE) : 9 times
+    » Stop 57619  (37th St SE & M St SE) : 9 times
+    » Stop 57620  (37th St SE & I St SE) : 9 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Auburn Station] at 15:00 : 60 times
+    » Moving towards [Auburn Station] at 10:00 : 52 times
+    » Moving towards [SE Auburn] at 15:00 : 51 times
+
+Route 917 (Total Bunching Events Flagged: 289)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 58343  (Outlet Collection Way SW) : 28 times
+    » Stop 58345  (Supermall Dr & Supermall Acs) : 28 times
+    » Stop 58341  (Super Mall) : 26 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Auburn Station] at 15:00 : 62 times
+    » Moving towards [Pacific] at 16:00 : 51 times
+    » Moving towards [Auburn Station] at 17:00 : 38 times
+
+Route 22 (Total Bunching Events Flagged: 275)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 22261  (SW Roxbury St & 30th Ave SW) : 5 times
+    » Stop 20050  (California Ave SW & Erskine Way SW) : 4 times
+    » Stop 20070  (California Ave SW & SW Dawson St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Arbor Heights Gatewood] at 15:00 : 56 times
+    » Moving towards [Alaska Junction Gatewood] at 10:00 : 54 times
+    » Moving towards [Alaska Junction Gatewood] at 15:00 : 54 times
+
+Route 915 (Total Bunching Events Flagged: 241)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 58865  (Auburn-Enumclaw Rd & SE 388th St) : 4 times
+    » Stop 58872  (Auburn-Enumclaw Rd & SE 392nd St) : 4 times
+    » Stop 58882  (Auburn-Enumclaw Rd & SE 400th St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Auburn] at 16:00 : 78 times
+    » Moving towards [Enumclaw High School] at 17:00 : 39 times
+    » Moving towards [Enumclaw High School] at 16:00 : 39 times
+
+Route Waterfront Shuttle (Total Bunching Events Flagged: 233)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 4207   (Elliott Ave & Bell St) : 24 times
+    » Stop 4212   (Broad St & 2nd Ave) : 23 times
+    » Stop 4206   (Elliott Ave & Cedar St) : 20 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Pioneer Square Chinatown International District Waterfront] at 15:00 : 46 times
+    » Moving towards [Pioneer Square Chinatown International District Waterfront] at 14:00 : 41 times
+    » Moving towards [Pioneer Square Chinatown International District Waterfront] at 16:00 : 41 times
+
+Route 187 (Total Bunching Events Flagged: 230)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 61330  (S 320th St & Pacific Hwy S) : 5 times
+    » Stop 61332  (S 320th St & 20th Ave S) : 5 times
+    » Stop 61500  (35th Ave SW & SW 328th Pl) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Federal Way Station Via S 320th St] at 15:00 : 78 times
+    » Moving towards [Downtown Federal Way Station Via S 320th St] at 10:00 : 61 times
+    » Moving towards [Downtown Federal Way Station Via S 320th St] at 16:00 : 39 times
+
+Route 542 (Total Bunching Events Flagged: 223)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 71353  (Sr 520 & NE 51st St) : 11 times
+    » Stop 72458  (West Lake Sammamish Pkwy NE & Leary Way) : 11 times
+    » Stop 73757  (NE 85th St & 161st Ave NE) : 11 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Redmond] at 15:00 : 41 times
+    » Moving towards [Redmond] at 10:00 : 40 times
+    » Moving towards [U-District Station] at 10:00 : 40 times
+
+Route 111 (Total Bunching Events Flagged: 187)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1040   (Olive Way & 6th Ave) : 5 times
+    » Stop 670    (4th Ave & Seneca St) : 5 times
+    » Stop 700    (4th Ave & Pike St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 10:00 : 187 times
+
+Route 208 (Total Bunching Events Flagged: 165)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 64358  (Douglas Ave SE & Baker Ave SE) : 5 times
+    » Stop 64409  (Fairway Ave SE & Aspen Ln) : 5 times
+    » Stop 64411  (Fairway Ave SE & SE Ridge St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [North Bend Snoqualmie Ridge] at 16:00 : 35 times
+    » Moving towards [North Bend Snoqualmie Ridge] at 10:00 : 35 times
+    » Moving towards [Issaquah Snoqualmie Ridge] at 16:00 : 33 times
+
+Route 249 (Total Bunching Events Flagged: 160)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 74450  (South Kirkland Park & Ride) : 30 times
+    » Stop 69402  (Bellevue Way NE & 103rd Ave NE) : 4 times
+    » Stop 74447  (Northup Way & NE 30th St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Spring District Station Downtown Bellevue] at 10:00 : 29 times
+    » Moving towards [South Bellevue Station Downtown Bellevue] at 16:00 : 25 times
+    » Moving towards [South Bellevue Station Downtown Bellevue] at 15:00 : 24 times
+
+Route 204 (Total Bunching Events Flagged: 156)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 63280  (Island Crest Way & SE 63rd St) : 4 times
+    » Stop 63290  (Island Crest Way & SE 61st St) : 4 times
+    » Stop 63300  (Island Crest Way & SE 58th St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [S Mercer Island] at 15:00 : 37 times
+    » Moving towards [N Mercer Island] at 10:00 : 24 times
+    » Moving towards [N Mercer Island] at 15:00 : 21 times
+
+Route 907 (Total Bunching Events Flagged: 134)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46472  (Mill Ave S & Houser Way S) : 3 times
+    » Stop 46474  (Mill Ave S & S 2nd St) : 3 times
+    » Stop 56510  (Bronson Way N & Park Ave N) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Black Diamond] at 16:00 : 53 times
+    » Moving towards [Black Diamond] at 15:00 : 27 times
+    » Moving towards [Renton] at 15:00 : 27 times
+
+Route 775 (Total Bunching Events Flagged: 130)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 15650  (SW Admiral Way & 61st Ave SW) : 6 times
+    » Stop 15540  (SW Admiral Way & California Ave SW) : 5 times
+    » Stop 15570  (SW Admiral Way & SW Waite St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Alki] at 16:00 : 29 times
+    » Moving towards [Seacrest Marina] at 17:00 : 24 times
+    » Moving towards [Seacrest Marina] at 16:00 : 23 times
+
+Route 773 (Total Bunching Events Flagged: 120)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 19921  (SW Avalon Way & SW Genesee St) : 4 times
+    » Stop 19930  (SW Avalon Way & SW Yancy St) : 4 times
+    » Stop 19940  (SW Avalon Way & SW Charlestown St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Seacrest Marina] at 15:00 : 30 times
+    » Moving towards [Alaska Junction] at 15:00 : 29 times
+    » Moving towards [Alaska Junction] at 16:00 : 20 times
+
+Route 224 (Total Bunching Events Flagged: 118)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 68803  (Brown Ave NE & NE Richardson St) : 5 times
+    » Stop 72271  (NE Union Hill Rd & 178th Pl NE) : 4 times
+    » Stop 72274  (NE Union Hill Rd & 185th Ave NE) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Duvall] at 15:00 : 45 times
+    » Moving towards [Redmond] at 15:00 : 33 times
+    » Moving towards [Redmond] at 16:00 : 23 times
+
+Route 635 (Total Bunching Events Flagged: 113)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 47202  (24th Ave S & S 208th St) : 6 times
+    » Stop 47204  (24th Ave S & S 210th St) : 6 times
+    » Stop 47403  (S 216th St & 24th Ave S) : 6 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Marina District] at 15:00 : 30 times
+    » Moving towards [Angle Lake Station] at 16:00 : 28 times
+    » Moving towards [Angle Lake Station] at 15:00 : 21 times
+
+Route 102 (Total Bunching Events Flagged: 105)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1040   (Olive Way & 6th Ave) : 4 times
+    » Stop 691    (4th Ave & Union St) : 4 times
+    » Stop 700    (4th Ave & Pike St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle S Renton P&R] at 10:00 : 102 times
+    » Moving towards [Downtown Seattle] at 10:00 : 3 times
+
+Route 162 (Total Bunching Events Flagged: 103)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1120   (Pine St & 4th Ave) : 5 times
+    » Stop 300    (2nd Ave & Pike St) : 5 times
+    » Stop 340    (2nd Ave & Marion St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 10:00 : 103 times
+
+Route 630 (Total Bunching Events Flagged: 89)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 11025  (Boren Ave & Jefferson St) : 5 times
+    » Stop 11033  (Boren Ave & Marion St) : 5 times
+    » Stop 11035  (Boren Ave & Madison St) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle First Hill] at 10:00 : 89 times
+
+Route 931 (Total Bunching Events Flagged: 88)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 75983  (Sr 203 & Stewart St) : 2 times
+    » Stop 75995  (Woodinville Park And Ride) : 2 times
+    » Stop 76120  (130th Pl NE & NE 192nd Pl) : 2 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Duvall] at 10:00 : 64 times
+    » Moving towards [UW Bothell/Cascadia College] at 10:00 : 23 times
+    » Moving towards [Duvall] at 11:00 : 1 times
+
+Route 901 (Total Bunching Events Flagged: 87)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 61300  (Pacific Hwy S & S 308th St) : 3 times
+    » Stop 80448  (S 312th St & Pacific Hwy S) : 3 times
+    » Stop 80450  (S 312th St & 20th Ave S) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Federal Way Station] at 16:00 : 56 times
+    » Moving towards [Mirror Lake] at 16:00 : 24 times
+    » Moving towards [Mirror Lake] at 17:00 : 4 times
+
+Route 556 (Total Bunching Events Flagged: 78)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 29420  (NE Pacific St & 15th Ave NE) : 5 times
+    » Stop 29440  (15th Ave NE & NE Campus Pkwy) : 5 times
+    » Stop 25753  (Sr 520 & Montlake Blvd E) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [U-District Station] at 10:00 : 60 times
+    » Moving towards [Issaquah] at 17:00 : 18 times
+
+Route 118 (Total Bunching Events Flagged: 72)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46773  (Vashon Hwy SW & SW 158th St) : 4 times
+    » Stop 46791  (Vashon Hwy SW & SW 204th St) : 4 times
+    » Stop 46792  (Vashon Hwy SW & SW 204th St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Ferry Terminal Via Shuttle] at 16:00 : 20 times
+    » Moving towards [Ferry Terminal Via Shuttle] at 10:00 : 10 times
+    » Moving towards [Burton] at 16:00 : 9 times
+
+Route 903 (Total Bunching Events Flagged: 69)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 60581  (SW Campus Dr & 6th Ave SW) : 3 times
+    » Stop 60582  (SW Campus Dr & 7th Way SW) : 3 times
+    » Stop 60583  (SW Campus Dr & 10th Ave SW) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Twin Lakes] at 15:00 : 26 times
+    » Moving towards [Downtown Federal Way Station] at 16:00 : 20 times
+    » Moving towards [Twin Lakes] at 12:00 : 19 times
+
+Route 631 (Total Bunching Events Flagged: 68)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 51310  (21st Ave SW & SW 156th St) : 4 times
+    » Stop 51350  (SW 152nd St & 18th Ave SW) : 4 times
+    » Stop 51360  (SW 152nd St & 16th Ave SW) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Burien Transit Center Via Gregory Heights] at 16:00 : 17 times
+    » Moving towards [Gregory Heights Via Highline Medical Center] at 15:00 : 12 times
+    » Moving towards [Burien Transit Center Via Gregory Heights] at 15:00 : 11 times
+
+Route 9 (Total Bunching Events Flagged: 62)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 31134  (S Henderson St & 48th Ave S) : 3 times
+    » Stop 8100   (Rainier Ave S & Cloverdale Pl S) : 3 times
+    » Stop 8110   (Rainier Ave S & S Rose St) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Broadway Express] at 10:00 : 62 times
+
+Route 322 (Total Bunching Events Flagged: 61)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 10225  (Fairview Ave N & Thomas St) : 3 times
+    » Stop 10240  (Boren Ave & Virginia St) : 3 times
+    » Stop 11075  (Boren Ave & Seneca St) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [First Hill I-5/Northgate Station] at 10:00 : 61 times
+
+Route 256 (Total Bunching Events Flagged: 57)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 280    (2nd Ave & Stewart St) : 4 times
+    » Stop 320    (2nd Ave & Seneca St) : 4 times
+    » Stop 360    (2nd Ave & Cherry St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle South Lake Union] at 10:00 : 57 times
+
+Route 566 (Total Bunching Events Flagged: 56)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46476  (Renton Transit Center - Bay 1) : 4 times
+    » Stop 46520  (Park Ave N & N 6th St) : 4 times
+    » Stop 46530  (Park Ave N & N 8th St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Redmond Technology Station] at 10:00 : 35 times
+    » Moving towards [Kent Station] at 16:00 : 14 times
+    » Moving towards [Kent Station] at 17:00 : 7 times
+
+Route 212 (Total Bunching Events Flagged: 51)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1040   (Olive Way & 6th Ave) : 4 times
+    » Stop 620    (4th Ave S & S Jackson St) : 4 times
+    » Stop 628    (4th Ave S & S Washington St) : 4 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 10:00 : 24 times
+    » Moving towards [Eastgate Factoria] at 10:00 : 19 times
+    » Moving towards [Downtown Seattle] at 11:00 : 8 times
+
+Route 17 (Total Bunching Events Flagged: 47)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 13760  (15th Ave NW & NW Leary Way) : 2 times
+    » Stop 13890  (Elliott Ave W & W Prospect St) : 2 times
+    » Stop 18030  (32nd Ave NW & NW 70th St) : 2 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 10:00 : 47 times
+
+Route 43 (Total Bunching Events Flagged: 46)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 25751  (Montlake Blvd E & Sr 520) : 1 times
+    » Stop 29270  (E John St & Broadway  E - Bay 1) : 1 times
+    » Stop 29273  (E John St & 15th Ave E) : 1 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Capitol Hill University Of Washington Medical Center] at 10:00 : 26 times
+    » Moving towards [University District Montlake] at 17:00 : 20 times
+
+Route 193 (Total Bunching Events Flagged: 43)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 12910  (9th Ave & Jefferson St) : 5 times
+    » Stop 12930  (E Jefferson St & Broadway) : 5 times
+    » Stop 12950  (E Jefferson St & 12th Ave) : 5 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [First Hill Express] at 10:00 : 43 times
+
+Route 303 (Total Bunching Events Flagged: 38)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 10210  (Fairview Ave N & Mercer St) : 3 times
+    » Stop 10225  (Fairview Ave N & Thomas St) : 3 times
+    » Stop 10240  (Boren Ave & Virginia St) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [First Hill I-5/Northgate Station] at 10:00 : 38 times
+
+Route 177 (Total Bunching Events Flagged: 36)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1040   (Olive Way & 6th Ave) : 3 times
+    » Stop 30635  (4th Ave S & S Royal Brougham Way) : 3 times
+    » Stop 620    (4th Ave S & S Jackson St) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Via I-5] at 10:00 : 36 times
+
+Route 57 (Total Bunching Events Flagged: 32)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1559   (Alaskan Way & Columbia St) : 2 times
+    » Stop 548    (3rd Ave & Madison St) : 2 times
+    » Stop 570    (3rd Ave & Union St) : 2 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Via SR-99] at 10:00 : 32 times
+
+Route 119 (Total Bunching Events Flagged: 29)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 46776  (Dockton Rd SW & SW Ellisport Rd) : 2 times
+    » Stop 46785  (SW 204th St & Vashon Hwy SW) : 2 times
+    » Stop 46791  (Vashon Hwy SW & SW 204th St) : 2 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Ferry Terminal Via Shuttle] at 10:00 : 12 times
+    » Moving towards [Ferry Terminal Via Shuttle] at 15:00 : 11 times
+    » Moving towards [Dockton] at 15:00 : 3 times
+
+Route 113 (Total Bunching Events Flagged: 23)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1559   (Alaskan Way & Columbia St) : 1 times
+    » Stop 1561   (Alaskan Way S & S Jackson St) : 1 times
+    » Stop 21080  (SW Roxbury St & 15th Ave SW - Bay 3) : 1 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle White Center] at 10:00 : 23 times
+
+Route 218 (Total Bunching Events Flagged: 21)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 1040   (Olive Way & 6th Ave) : 3 times
+    » Stop 628    (4th Ave S & S Washington St) : 3 times
+    » Stop 648    (4th Ave & Cherry St) : 3 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle] at 10:00 : 21 times
+
+Route 56 (Total Bunching Events Flagged: 20)
+  ---------------------------------------------
+  CRITICAL GEOGRAPHIC HOTSPOTS:
+    » Stop 14961  (61st Ave SW & SW Stevens St) : 1 times
+    » Stop 14962  (61st Ave SW & SW Admiral Way) : 1 times
+    » Stop 14963  (SW Admiral Way & 60th Ave SW) : 1 times
+  PEAK TIMING & CORRIDOR DIRECTIONS:
+    » Moving towards [Downtown Seattle Via SR-99] at 10:00 : 20 times
+
+============================================================
+
