@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--gtfs-dir",
-        default="google_transit",
+        default="/Workspace/Shared/IP3/fta/google_transit",
         help="Static GTFS folder. Default: %(default)s",
     )
     parser.add_argument(
@@ -105,7 +105,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Include first/last GTFS stops for each trip. Default is to exclude terminals.",
     )
-    return parser.parse_args()
+    return parser.parse_args([])
 
 
 def require_columns(df: pd.DataFrame, file_name: str, columns: Iterable[str]) -> None:
@@ -873,8 +873,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    try:
-        raise SystemExit(main())
-    except Exception as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        raise SystemExit(1)
+    main()
