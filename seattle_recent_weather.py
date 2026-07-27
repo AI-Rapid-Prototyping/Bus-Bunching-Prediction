@@ -31,17 +31,41 @@ def fetch_weather_history(api_key, lat, lon):
         if not hourly_data:
             print("No hourly data found in the response.")
             return pd.DataFrame()
+
+        # Tomorrow.io Weather Code Dictionary
+        WEATHER_CODES = {
+            1000: "Clear, Sunny",
+            1100: "Mostly Clear",
+            1101: "Partly Cloudy",
+            1102: "Mostly Cloudy",
+            1001: "Cloudy",
+            2000: "Fog",
+            2100: "Light Fog",
+            4000: "Drizzle",
+            4001: "Rain",
+            4200: "Light Rain",
+            4201: "Heavy Rain",
+            5000: "Snow",
+            5001: "Flurries",
+            5100: "Light Snow",
+            5101: "Heavy Snow",
+            6000: "Freezing Drizzle",
+            6001: "Freezing Rain",
+            7000: "Ice Pellets"
+        }
             
         # Parse the data into a list of dictionaries for Pandas
         parsed_records = []
         for hour in hourly_data:
             values = hour.get('values', {})
+            code = values.get('weatherCode')
             parsed_records.append({
                 "timestamp": hour.get('time'),
                 "temperature": values.get('temperature'),
                 "precipitation_intensity": values.get('precipitationIntensity'),
                 "wind_speed": values.get('windSpeed'),
-                "weather_code": values.get('weatherCode') # Numeric code for rain, snow, clear, etc.
+                "weather_code": code,
+                "weather_description": WEATHER_CODES.get(code, "Unknown")
             })
             
         # Convert to a Pandas DataFrame
@@ -49,6 +73,9 @@ def fetch_weather_history(api_key, lat, lon):
         
         # Convert timestamp strings to actual datetime objects
         df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+        # Convert from UTC to Seattle local time (Pacific Time)
+        df['timestamp'] = df['timestamp'].dt.tz_convert('America/Los_Angeles')
         
         return df
         
@@ -76,5 +103,5 @@ if __name__ == "__main__":
         print("-" * 40)
         
         # Optional: Save to CSV to use in your model later
-        # weather_df.to_csv("seattle_recent_weather.csv", index=False)
-        # print("Data saved to seattle_recent_weather.csv")
+        weather_df.to_csv("seattle_recent_weather.csv", index=False)
+        print("Data saved to seattle_recent_weather.csv")
