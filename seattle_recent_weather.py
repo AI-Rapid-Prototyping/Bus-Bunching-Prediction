@@ -85,7 +85,7 @@ def fetch_weather_history(api_key, lat, lon):
 
 # --- Execution ---
 if __name__ == "__main__":
-    # TODO: Replace with your actual Tomorrow.io API key
+    # Replace with your Tomorrow.io API key
     YOUR_API_KEY = "AvJNmHVH92HCdH4bfrMsQmuzUhAmFjLr"
     
     # Coordinates for Downtown Seattle / King County Metro core
