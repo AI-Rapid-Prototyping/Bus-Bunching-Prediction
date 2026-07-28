@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import io
+import os
 
 def fetch_sfd_mvi_incidents():
     """
@@ -78,6 +79,41 @@ if __name__ == "__main__":
         cols_to_print = [col for col in [date_col, 'Location', 'Type'] if col in mvi_incidents_df.columns]
         print(mvi_incidents_df[cols_to_print].head(10))
         
-        # Save to CSV
-        mvi_incidents_df.to_csv("seattle_fire_mvi_today.csv", index=False)
-        print("\nData successfully saved to seattle_today_mvi_incidents.csv")
+        # --- SMART MERGE TO CSV (NO DUPLICATES, NEWEST AT TOP) ---
+        csv_filename = os.path.join("KCM Input Data", "MVI", "seattle_fire_mvi_today.csv")
+        file_exists = os.path.isfile(csv_filename)
+        
+        if file_exists:
+            try:
+                # Read the existing CSV
+                existing_df = pd.read_csv(csv_filename)
+                
+                # Combine the old and new data
+                combined_df = pd.concat([mvi_incidents_df, existing_df], ignore_index=True)
+                
+                # Drop duplicates based on the unique 'Incident Number'
+                # keeping the first occurrence (which will be from our freshly fetched mvi_incidents_df)
+                combined_df = combined_df.drop_duplicates(subset=['Incident Number'], keep='first')
+                
+                # Ensure the Date column is a proper datetime object for accurate sorting
+                if date_col in combined_df.columns:
+                    combined_df[date_col] = pd.to_datetime(combined_df[date_col], errors='coerce')
+                    # Sort descending (newest at the top)
+                    combined_df = combined_df.sort_values(by=date_col, ascending=False).reset_index(drop=True)
+                
+                # Overwrite the file with the perfectly deduplicated and sorted data
+                combined_df.to_csv(csv_filename, index=False)
+                
+                # Calculate how many NEW incidents were actually added
+                new_count = len(combined_df) - len(existing_df)
+                if new_count > 0:
+                    print(f"\nSuccessfully added {new_count} NEW incidents to {csv_filename}!")
+                else:
+                    print(f"\nNo new incidents to add. {csv_filename} is already up to date.")
+                    
+            except pd.errors.EmptyDataError:
+                mvi_incidents_df.to_csv(csv_filename, index=False)
+                print(f"\nPopulated empty file {csv_filename} with {len(mvi_incidents_df)} incidents!")
+        else:
+            mvi_incidents_df.to_csv(csv_filename, index=False)
+            print(f"\nCreated {csv_filename} with {len(mvi_incidents_df)} incidents!")
