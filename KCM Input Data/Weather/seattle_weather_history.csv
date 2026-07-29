@@ -1,4 +1,7 @@
 timestamp,temperature,precipitation_intensity,wind_speed,weather_code,weather_description
+2026-07-29 09:00:00-07:00,61.9,,3.8,1000,"Clear, Sunny"
+2026-07-29 08:00:00-07:00,60.62,,6.0,1000,"Clear, Sunny"
+2026-07-29 07:00:00-07:00,58.86,,3.6,1100,Mostly Clear
 2026-07-29 06:00:00-07:00,54.23,,2.8,1000,"Clear, Sunny"
 2026-07-29 05:00:00-07:00,58.51,,2.5,1000,"Clear, Sunny"
 2026-07-29 04:00:00-07:00,59.92,,3.8,1001,Cloudy
