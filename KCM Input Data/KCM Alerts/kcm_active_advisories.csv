@@ -1,29 +1,29 @@
 Alert_ID,Affected_Routes,Cause,Summary
-78178,"F Line, Route 150",CONSTRUCTION,Stop #58104 Southcenter Blvd & 65th Ave S (EB) closed through Fri Aug 28 due to construction.
+78178,"Route 150, F Line",CONSTRUCTION,Stop #58104 Southcenter Blvd & 65th Ave S (EB) closed through Fri Aug 28 due to construction.
 78978,Route 239,CONSTRUCTION,Route 239 to UW Bothell / Cascadia College is rerouted off Main St between 102nd Ave NE & 104th Ave NE through Fri Sep 25 due to construction.
-80245,"Route 12, Route 10",CONSTRUCTION,Stop #11480 E Pine St & 15th Ave (WB) relocated through Thu Dec 31 due to construction.
+80245,"Route 10, Route 12",CONSTRUCTION,Stop #11480 E Pine St & 15th Ave (WB) relocated through Thu Dec 31 due to construction.
 80976,Route 65,CONSTRUCTION,Route 65 to Shoreline South 148th Station is rerouted off NE 145th St between 15th Ave NE and 5th Ave NE through Fri Aug 28 due to construction.
 82885,Route 156,OTHER_CAUSE,"Route 156 will be rerouted off portions of Kent Des Moines Rd, S 240th St and 16th Ave S from Mon Feb 9 to Thu Dec 31 due to a road closure."
 82886,Route 165,OTHER_CAUSE,Route 165 will be rerouted off S 240th St between 16th Ave S and 20th Ave S from Mon Feb 9 to Thu Dec 31 due to a road closure.
 84453,Route 70,CONSTRUCTION,Stop #9550 Eastlake Ave E & E Allison St (NB) relocated until Fri Aug 28 at 7:00 PM due to construction.
 85376,Route 160,CONSTRUCTION,Stop #59951 Talbot Rd S & S 32nd St (SB) and Stop #60359 Talbot Rd S & S 32nd St (NB) relocated through Sat Aug 1 due to construction.
-86095,"Route 165, Route 914",OTHER_CAUSE,Stop #57188 W Meeker St & Washington Ave S (EB) relocated from Mon Apr 6 through Mon Apr 26 due to permanent bus stop closure.
+86095,"Route 914, Route 165",OTHER_CAUSE,Stop #57188 W Meeker St & Washington Ave S (EB) relocated from Mon Apr 6 through Mon Apr 26 due to permanent bus stop closure.
 86627,Route 168,CONSTRUCTION,Stop #62319 SE Kent-Kangley Rd & 235th Ave SE (EB) relocated from Wed Apr 15 to Fri Sep 25 8:00 AM to 3:00 PM daily due to construction.
 86736,Route 70,CONSTRUCTION,Route 70 to Downtown Seattle is rerouted off Fairview Ave N between Aloha St and Valley St until Mon Aug 31 due to construction.
-86755,"Route 982, Route 545, Route 556, Route 255, Route 542, Route 256, Route 986",UNKNOWN_CAUSE,The elevator at SR 520 & Evergreen Point Rd (WB) is out of service until further notice.
+86755,"Route 986, Route 982, Route 542, Route 255, Route 556, Route 256, Route 545",UNKNOWN_CAUSE,The elevator at SR 520 & Evergreen Point Rd (WB) is out of service until further notice.
 86769,Route 160,CONSTRUCTION,Stop #57140 104th Ave SE & SE 235th St (NB) relocated from Mon Apr 20 through Fri Aug 7 due to construction.
 86770,Route 160,CONSTRUCTION,Stop #57370 108th Ave SE & SE 217th St (SB) and Stop #57190 108th Ave SE & SE 217th St (NB) relocated from Mon Apr 20 through Tue Aug 11 due to construction.
 87304,Route 165,CONSTRUCTION,"Route 165 will be rerouted off portions of W Smith St and W Meeker St between 4th Ave N & Washington Ave N Thu Apr 30, 2026 through Fri Dec 24, 2027 due to construction."
 87346,Route 331,CONSTRUCTION,Route 331 to Aurora Village/Kenmore is rerouted off NE Bothell Way between 68th Ave NE and 73rd Ave NE through Fri Aug 28 due to construction.
 87734,Route 75,CONSTRUCTION,Stop #35440 NE 125th St & 30th Ave NE (EB) relocated until further notice due to construction.
-87888,"Route 906, Route 160",CONSTRUCTION,Stop #59390 SE Carr Rd & 103rd Ave SE (EB) closed from Wed May 13 at 12:00 AM to Fri Jul 31 at 12:00 AM due to construction.
+87888,"Route 160, Route 906",CONSTRUCTION,Stop #59390 SE Carr Rd & 103rd Ave SE (EB) closed from Wed May 13 at 12:00 AM to Fri Jul 31 at 12:00 AM due to construction.
 87933,"Route 250, Route 239",CONSTRUCTION,"Stop #70666 NE 85th St & Kirkland Way (EB) closed through Tue Aug 31, 2027 due to construction."
 88002,Route 250,CONSTRUCTION,Stop #72180 State St S & 10th Ave S (NB) relocated Wed May 13 to Fri Jul 31 from 8:00 AM to 4:00 PM daily due to construction.
 88423,Route 240,CONSTRUCTION,"Stop #82810 Main St & 112th Ave NE (WB) closed from Wed May 27 to Thu Dec 31 from 8:00 AM to 3:00 PM daily, Mon-Fri only due to construction."
 88508,"Route 183, Route 150",CONSTRUCTION,"Routes 150 and 183 will be rerouted and will not serve stop #80600 W James St & 4th Ave N (EB) Mon Jun 1 to Fri Jul 31 from 11:00 PM to 4:00 AM nightly, due to construction."
 88856,Route 165,CONSTRUCTION,Route 165 is rerouted off E James St between Jason Ave N and Railroad Ave N from Mon Jun 1 to Fri Jul 31 from 11:00 PM to 4:00 AM daily due to construction.
 88860,Route 75,CONSTRUCTION,Stop #35420 NE 125th St & 25th Ave NE (EB) relocated through Sun Aug 2 due to construction.
-88962,"Route 45, Route 67, Route 31, Route 32",CONSTRUCTION,Stop #25202 NE 45th St & University Village (WB) relocated from Thu Jun 4 through Fri Aug 28 due to construction.
+88962,"Route 67, Route 32, Route 31, Route 45",CONSTRUCTION,Stop #25202 NE 45th St & University Village (WB) relocated from Thu Jun 4 through Fri Aug 28 due to construction.
 88978,Route 160,CONSTRUCTION,Stop #58180 Central Ave S & S 259th St (SB) relocated through Wed Jul 1 due to construction.
 88979,Route 160,MAINTENANCE,Stop #58270 Auburn Way N & 22nd St NE (SB) and Stop #57900 Auburn Way N & 22nd St NE (NB) relocated through Sat Aug 1 due to bus stop maintenance work.
 88980,Route 160,MAINTENANCE,Stop #57407 104th Ave SE & SE 248th St (SB) and Stop #57162 104th Ave SE & SE 248th St (NB) relocated through Sat Aug 1 due to bus stop maintenance work.
@@ -31,7 +31,7 @@ Alert_ID,Affected_Routes,Cause,Summary
 89116,"Route 250, Route 239",CONSTRUCTION,Stop #70664 NE 85th St & 114th Ave NE (WB) relocated Thu Jun 4 to Thu Aug 20 from 7:00 AM to 6:00 PM daily due to construction.
 89529,Route 160,CONSTRUCTION,Stop #58235 Auburn Way N & 42nd St NE (SB) and Stop #57920 Auburn Way N & 42nd St NE (NB) closed from Mon Jun 15 through Sat Aug 15 due to construction.
 89650,Route 160,CONSTRUCTION,Stop #57990 Central Ave S & S 259th St (NB) relocated from Mon Mar 23 through Mon Jun 1 due to construction.
-89748,"Route 989, Route 333, Route 365",CONSTRUCTION,Stop #16330 Meridian Ave N & N 150th St (SB) closed through Sat Aug 29 due to construction.
+89748,"Route 333, Route 989, Route 365",CONSTRUCTION,Stop #16330 Meridian Ave N & N 150th St (SB) closed through Sat Aug 29 due to construction.
 89925,"Route 102, Route 148",CONSTRUCTION,Stop #60022 116th Ave SE & SE 160th St (SB) relocated from Mon Jun 22 to Wed Sep 30 from 7:00 AM to 5:00 PM daily due to construction.
 90381,Route 223,CONSTRUCTION,Stop #71371 NE 24th St & 151st Pl NE (EB) closed until further notice due to construction.
 90473,Route 65,CONSTRUCTION,Stop #82120 NE 145th St & 30th Ave NE (WB) closed from Mon Jul 6 until further notice due to construction.
@@ -42,14 +42,13 @@ Alert_ID,Affected_Routes,Cause,Summary
 91110,Route 70,CONSTRUCTION,Stop #9150 Eastlake Ave E & E Allison St (SB) relocated from Mon Jul 13 through Fri Aug 7 due to construction.
 91276,Route 160,CONSTRUCTION,Stop #57250 108th Ave SE & SE 192nd St (NB) relocated from Mon Jun 15 through Fri Aug 21 weekdays only due to construction.
 91279,Route 160,CONSTRUCTION,Stop #57400 104th Ave SE & SE 228th St (SB) and Stop #57160 104th Ave SE & SE 228th St (NB) relocated through Fri Aug 28 due to construction.
-91390,"Route 65, Route 31, Route 32",CONSTRUCTION,Stop #9610 Roosevelt Way NE & NE 42nd St (SB) closed from Wed Jul 15 through Mon Aug 10 due to construction.
+91390,"Route 32, Route 31, Route 65",CONSTRUCTION,Stop #9610 Roosevelt Way NE & NE 42nd St (SB) closed from Wed Jul 15 through Mon Aug 10 due to construction.
 91428,Route 348,MAINTENANCE,Stop #39270 15th Ave NE & NE 130th St (NB) closed from Mon Jul 20 to Fri Jul 31 from 7:00 AM to 5:00 PM Weekdays only due to sidewalk repair.
-91547,"Route 271, Route 203",CONSTRUCTION,Stop #64970 SE Newport Way & 152nd Ave SE (EB) relocated until Sat Aug 15 at 9:00 AM due to construction.
+91547,"Route 203, Route 271",CONSTRUCTION,Stop #64970 SE Newport Way & 152nd Ave SE (EB) relocated until Sat Aug 15 at 9:00 AM due to construction.
 91550,Route 7,CONSTRUCTION,Route 7 will be rerouted in the Rainier Beach Area from Sat Jul 18 to Sun Aug 9 every Saturday and Sunday from 7:00 AM to 7:00 PM due to construction.
 91563,Route 160,CONSTRUCTION,Stop #59934 SR 515 & S 15th St (SB) relocated from Mon Jul 20 through Sat Aug 15 due to construction.
-91564,"Route 303, Route 322, Route 256, Route 70",CONSTRUCTION,Stop #10305 Fairview Ave N & Harrison St (NB) relocated from Mon Jul 20 to Mon Aug 10 at 12:00 AM due to construction.
-91574,"Route 556, Route 566, Route 271, Route 550",CONSTRUCTION,"Route 271, ST 550, ST 556 and ST 566 will be rerouted around Bellevue Transit Center from Mon Jul 27 through Fri Aug 28 due to construction."
-91582,"Route 556, Route 566, Route 271, Route 550",CONSTRUCTION,"Route 271, ST 550, ST 556 and ST 566 will be rerouted around Bellevue Transit Center from Mon Jul 20 through Tue Oct 20 due to construction."
+91564,"Route 256, Route 322, Route 70, Route 303",CONSTRUCTION,Stop #10305 Fairview Ave N & Harrison St (NB) relocated from Mon Jul 20 to Mon Aug 10 at 12:00 AM due to construction.
+91574,"Route 550, Route 271, Route 556, Route 566",CONSTRUCTION,"Route 271, ST 550, ST 556 and ST 566 will be rerouted around Bellevue Transit Center from Mon Jul 27 through Fri Aug 28 due to construction."
 91583,C Line,CONSTRUCTION,Stop #19862 SW Alaska St & California Ave SW - Bay 1 (EB) closed from Mon Jul 27 to Fri Jul 31 from 7:00 AM to 5:00 PM daily due to construction.
 91625,Route 160,CONSTRUCTION,Stop #58210 Central Ave S & S 266th St (SB) and Stop #57960 Central Ave S & S 266th St (NB) closed through Fri Oct 2 due to construction.
 91660,Route 160,UNKNOWN_CAUSE,Stop #59949 Talbot Rd S & S Carr Rd (SB) and Stop #60361 Talbot Rd S & S Carr Rd (NB) closed from Mon Jul 20 through Sat Aug 29.
@@ -59,22 +58,22 @@ Alert_ID,Affected_Routes,Cause,Summary
 91688,Route 107,CONSTRUCTION,Stop #55375 S 124th St & 67th Ave S (WB) and Stop #55374 S 124th St & 67th Ave S (EB) relocated from Mon Jul 20 through Mon Oct 26 due to construction.
 91721,Route 271,CONSTRUCTION,Stop #65328 SE Eastgate Way & 158th Ave SE (EB) closed from Mon Jul 20 to Mon Aug 3 from 7:00 AM to 5:00 PM daily due to construction.
 91722,Route 271,CONSTRUCTION,Stop #65329 SE Eastgate Way & 158th Ave SE (WB) closed from Mon Jul 20 to Mon Aug 3 from 7:00 AM to 5:00 PM daily due to construction.
-91830,"Route 75, Route 65",CONSTRUCTION,Stop #9670 NE 125th St & Lake City Way NE (EB) closed beginning Thu Jul 23 until further notice due to construction.
-91912,Route 331,CONSTRUCTION,Route 331 will be rerouted off 35th Ave NE between Ballinger Way NE and NE 190th St from Tue Jul 28 at 8:00 PM to Wed Jul 29 at 6:00 AM due to construction.
+91830,"Route 65, Route 75",CONSTRUCTION,Stop #9670 NE 125th St & Lake City Way NE (EB) closed beginning Thu Jul 23 until further notice due to construction.
 92010,"Route 542, Route 545",CONSTRUCTION,Stop #73848 NE 85th St & 154th Ave NE (EB) closed from Mon Jul 27 to Thu Aug 13 from 7:30 AM to 3:00 PM daily due to construction.
-92036,"Route 183, Route 187",CONSTRUCTION,Routes 183 and 187 will be rerouted around the Federal Way Downtown Station from Mon Jul 27 to Thu Jul 30 8:00 PM to 5:00 AM nightly due to construction.
-92048,"Route 545, Route 556, Route 255, Route 542, Route 256",CONSTRUCTION,Stop #71348 SR 520 & Evergreen Point Rd (EB) closed from Tue Jul 28 at 9:00 PM to Wed Jul 29 at 4:00 AM due to construction.
+92036,"Route 187, Route 183",CONSTRUCTION,Routes 183 and 187 will be rerouted around the Federal Way Downtown Station from Mon Jul 27 to Thu Jul 30 8:00 PM to 5:00 AM nightly due to construction.
 92086,Route 348,CONSTRUCTION,Stop #38890 15th Ave NE & NE 130th St (SB) closed from Mon Jul 27 through Thu Aug 6 due to construction.
 92090,Route 901,CONSTRUCTION,DART 901 will be rerouted around the Federal Way Downtown Station due to construction.
 92095,Route 11,CONSTRUCTION,Stop #12470 43rd Ave E & E Madison St (NB) closed from 5:00 AM to 3:00 PM on Thu Jul 30 due to construction.
 92121,"Route 345, Route 5",UNKNOWN_CAUSE,Stop #6840 Greenwood Ave N & N 134th St (NB) closed from Mon Jul 27 through Fri Aug 28.
 92122,Route 21,UNKNOWN_CAUSE,Route 21 to Westwood Village is serving Stop #30636 4th Ave S & I-90 Ramp (SB).
-92167,"Route 43, Route 48, Route 988",CONSTRUCTION,Stop #29251 24th Ave E & E Galer St (SB) closed from Mon Jul 27 to Fri Jul 31 9:00 AM to 3:00 PM daily due to construction.
-92168,Route 239,CONSTRUCTION,Stop #81428 NE 160th St & 124th Ave NE (WB) closed from Mon Jul 27 at 9:00 AM to Tue Jul 28 at 3:00 PM due to construction.
-92216,"Route 255, Route 245",CONSTRUCTION,Stop #72163 6th St S & 5th Ave S (NB) closed from 7:00 AM to 5:00 PM on Thu Jul 30 due to construction.
+92148,"C Line, Route 125, H Line",MAINTENANCE,Stop #1559 Alaskan Way & Columbia St (NB) closed from 6:00 PM to 10:00 PM on Thu Jul 30 due to utility work.
+92167,"Route 48, Route 43, Route 988",CONSTRUCTION,Stop #29251 24th Ave E & E Galer St (SB) closed from Mon Jul 27 to Fri Jul 31 9:00 AM to 3:00 PM daily due to construction.
+92208,"Route 56, Route 124, Route 27, Route 570, Route 40, Route 132, Route 17, Route 28, H Line, Route 57, Route 24, Route 33, Route 5, Route 21, Route 62, Route 131",CONSTRUCTION,Stop #590 3rd Ave & Pine St (NB) relocated from Thu Jul 30 to Wed Aug 5 7:00 AM to 5:00 PM weekdays only due to construction.
+92213,"Route 56, E Line, D Line, Route 57, C Line, Route 21",CONSTRUCTION,"Stop #431 3rd Ave & Pike St (SB) closed Thu Jul 30 to Wed Aug 5 from 7:00 AM to 5:00 PM, weekdays only, due to construction."
+92215,"E Line, D Line, Route 1, Route 4, Route 2, Route 3, Route 13, Route 36, C Line, Route 125, Route 7, Route 14, Route 70",CONSTRUCTION,Stop #558 3rd Ave & Seneca St (NB) closed from Thu Jul 30 to Wed Aug 5 7:00 AM to 5:00 PM weekdays only due to construction.
+92216,"Route 245, Route 255",CONSTRUCTION,Stop #72163 6th St S & 5th Ave S (NB) closed from 7:00 AM to 5:00 PM on Thu Jul 30 due to construction.
+92220,Route 226,CONSTRUCTION,Stop #71661 SE 24th St & 161st Ave SE (EB) and Stop #71675 SE 24th St & 161st Ave SE (WB) relocated from Thu Jul 30 to Fri Jul 31 9:00 AM to 3:00 PM daily due to construction.
 92223,Route 914,MAINTENANCE,Stop #57218 Scenic Vista Rd & SE 264th St (SB) closed due to street repair work.
 92297,Route 222,CONSTRUCTION,Stop #71250 NE 24th St & 175th Ave NE (WB) closed from Wed Jul 29 to Thu Jul 30 7:00 AM to 4:30 PM daily due to construction.
-92309,Route 7,POLICE_ACTIVITY,Route 7 is rerouted off Rainier Ave S between Martin Luther King Jr Way S & S Alaska St due to an emergency response.
-92310,Route 906,UNKNOWN_CAUSE,Expect significant delays on DART 906 trip to Southcenter scheduled at 1:59 PM from SE 177th St & 140th Ave SE (WB) today.
-92311,Route 914,UNKNOWN_CAUSE,Expect significant delays on DART 914 trip to Kent/East Hill scheduled at 2:00 PM from W Gowe St & 2nd Ave S (WB) today.
-92312,"Route 106, Route 7",POLICE_ACTIVITY,Routes 7 and 106 are rerouted off Rainier Ave S between 23rd Ave S & S Jackson St due to an emergency response.
+92333,South Lake Union Streetcar,UNKNOWN_CAUSE,Service on the South Lake Union Streetcar is reduced with trips operating approximately every 18 minutes.
+92335,Route 24,POLICE_ACTIVITY,Expect significant delays on Route 24 today due to an emergency response near 35th Ave W and W McGraw St.
