@@ -12,6 +12,8 @@ Then generate visuals:
 from __future__ import annotations
 
 import argparse
+import html
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -258,6 +260,175 @@ def save_stop_location_scatter(df: pd.DataFrame, output_dir: Path, top_stops: in
     plt.close(fig)
 
 
+def get_top_geo_stops(df: pd.DataFrame, top_stops: int) -> pd.DataFrame:
+    geo = df.dropna(subset=["stop_lat_num", "stop_lon_num"])
+    return (
+        geo.groupby(["stop_id", "stop_name", "stop_lat_num", "stop_lon_num"], as_index=False)
+        .agg(events=("stop_id", "size"), routes=("route_label", "nunique"))
+        .sort_values("events", ascending=False)
+        .head(top_stops)
+    )
+
+
+def save_stop_location_map(df: pd.DataFrame, output_dir: Path, top_stops: int) -> None:
+    stops = get_top_geo_stops(df, top_stops)
+    if stops.empty:
+        return
+
+    max_events = float(stops["events"].max())
+    features = []
+    marker_rows = []
+    for _, row in stops.iterrows():
+        radius = 7 + 18 * (float(row["events"]) / max_events)
+        popup_html = (
+            f"<strong>{html.escape(str(row['stop_name']))}</strong><br>"
+            f"Stop ID: {html.escape(str(row['stop_id']))}<br>"
+            f"Bunching events: {int(row['events'])}<br>"
+            f"Routes affected: {int(row['routes'])}"
+        )
+        feature = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [float(row["stop_lon_num"]), float(row["stop_lat_num"])],
+            },
+            "properties": {
+                "stop_id": str(row["stop_id"]),
+                "stop_name": str(row["stop_name"]),
+                "events": int(row["events"]),
+                "routes": int(row["routes"]),
+                "radius": radius,
+                "popup_html": popup_html,
+            },
+        }
+        features.append(feature)
+        marker_rows.append(
+            {
+                "lat": float(row["stop_lat_num"]),
+                "lon": float(row["stop_lon_num"]),
+                "stop_id": str(row["stop_id"]),
+                "events": int(row["events"]),
+                "radius": radius,
+                "popup_html": popup_html,
+            }
+        )
+
+    geojson = {"type": "FeatureCollection", "features": features}
+    (output_dir / "top_stop_locations.geojson").write_text(
+        json.dumps(geojson, indent=2),
+        encoding="utf-8",
+    )
+
+    center_lat = float(stops["stop_lat_num"].mean())
+    center_lon = float(stops["stop_lon_num"].mean())
+    markers_json = json.dumps(marker_rows)
+    bounds_json = json.dumps(
+        [
+            [float(stops["stop_lat_num"].min()), float(stops["stop_lon_num"].min())],
+            [float(stops["stop_lat_num"].max()), float(stops["stop_lon_num"].max())],
+        ]
+    )
+    html_doc = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top Bus Bunching Locations</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {{
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }}
+    .title {{
+      position: absolute;
+      top: 16px;
+      left: 56px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+    }}
+    .title h1 {{
+      margin: 0 0 4px;
+      font-size: 18px;
+    }}
+    .title div {{
+      font-size: 12px;
+    }}
+    .legend {{
+      position: absolute;
+      right: 16px;
+      bottom: 24px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+      font-size: 12px;
+      line-height: 1.4;
+    }}
+    .dot {{
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c75146;
+      border: 2px solid #ffffff;
+      vertical-align: middle;
+      margin-right: 6px;
+    }}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="title">
+    <h1>Top Bus Bunching Locations</h1>
+    <div>Bubble size reflects event count. Click a stop for details.</div>
+  </div>
+  <div class="legend">
+    <div><span class="dot"></span>More events = larger marker</div>
+    <div>Top {len(stops)} stops/intersections</div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const markers = {markers_json};
+    const bounds = {bounds_json};
+    const map = L.map('map').setView([{center_lat:.6f}, {center_lon:.6f}], 11);
+    L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }}).addTo(map);
+
+    markers.forEach((marker) => {{
+      L.circleMarker([marker.lat, marker.lon], {{
+        radius: marker.radius,
+        color: '#ffffff',
+        weight: 2,
+        fillColor: '#c75146',
+        fillOpacity: 0.78
+      }})
+        .bindPopup(marker.popup_html)
+        .bindTooltip(`${{marker.stop_id}}: ${{marker.events}} events`, {{sticky: true}})
+        .addTo(map);
+    }});
+
+    if (bounds[0][0] !== bounds[1][0] || bounds[0][1] !== bounds[1][1]) {{
+      map.fitBounds(bounds, {{padding: [30, 30]}});
+    }}
+  </script>
+</body>
+</html>
+"""
+    (output_dir / "top_stop_locations_map.html").write_text(html_doc, encoding="utf-8")
+
+
 def write_route_summary(df: pd.DataFrame, output_dir: Path) -> None:
     rows = []
     for route_label, route_df in df.groupby("route_label"):
@@ -301,6 +472,7 @@ def main() -> int:
     save_hour_chart(df, output_dir)
     save_route_hour_heatmap(df, output_dir, args.top_routes)
     save_stop_location_scatter(df, output_dir, args.top_stops)
+    save_stop_location_map(df, output_dir, args.top_stops)
     write_route_summary(df, output_dir)
 
     print(f"Wrote visuals and summary tables to {output_dir}")
