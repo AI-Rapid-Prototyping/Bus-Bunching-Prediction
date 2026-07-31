@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import zipfile
 import io
+from datetime import datetime
 
 # ==========================================
 # FETCH ROUTE NAME MAPPING (STATIC GTFS)
@@ -135,7 +136,9 @@ def fetch_kcm_gtfs_rt_alerts():
                 summary = header if header else description
                 
                 parsed_alerts.append({
+                    "Fetch_Time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "Alert_ID": entity.get('id', 'N/A'),
+                    "Status": "Active",
                     "Affected_Routes": ", ".join(affected_routes) if affected_routes else "Systemwide/Unknown",
                     "Cause": cause_str,
                     "Summary": summary[:300] + "..." if len(summary) > 300 else summary
@@ -158,19 +161,61 @@ if __name__ == "__main__":
     # Pull GTFS-RT Alerts
     alerts_df = fetch_kcm_gtfs_rt_alerts()
     
-    if not alerts_df.empty:
-        print("\n--- RECENT KCM SERVICE ADVISORIES ---")
-        cols_to_print = [col for col in ['Affected_Routes', 'Cause', 'Summary'] if col in alerts_df.columns]
-        print(alerts_df[cols_to_print].head(10))
-        
-        # --- SAVE TO CSV ---
-        # Ensure the file saves in the same directory as the script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        csv_filename = os.path.join(script_dir, "kcm_active_advisories.csv")
-        
-        # We overwrite this file because it represents the *current* state of the transit network
-        alerts_df.to_csv(csv_filename, index=False)
-        
-        print(f"\nSuccessfully saved {len(alerts_df)} active KCM advisories to {csv_filename}!")
+    # --- SMART MERGE TO LOCAL CSV ---
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_filename = os.path.join(script_dir, "kcm_advisory_history.csv")
+    
+    file_exists = os.path.isfile(csv_filename)
+    
+    if file_exists:
+        try:
+            # Read the existing CSV, forcing Alert_ID to be read as a string to prevent int/str matching bugs
+            existing_df = pd.read_csv(csv_filename, dtype={'Alert_ID': str})
+            
+            # Ensure the Status column exists for backward compatibility with older files
+            if 'Status' not in existing_df.columns:
+                existing_df['Status'] = 'Resolved'
+                
+            # Ensure both dataframes have perfectly matching string IDs
+            existing_df['Alert_ID'] = existing_df['Alert_ID'].astype(str)
+            
+            # Mark any historical alert that is NOT in the current fetch as 'Resolved'
+            if not alerts_df.empty:
+                alerts_df['Alert_ID'] = alerts_df['Alert_ID'].astype(str)
+                current_active_ids = alerts_df['Alert_ID'].tolist()
+            else:
+                current_active_ids = []
+                
+            existing_df.loc[~existing_df['Alert_ID'].isin(current_active_ids), 'Status'] = 'Resolved'
+            
+            # Combine the old and new data
+            combined_df = pd.concat([alerts_df, existing_df], ignore_index=True)
+            
+            # Drop duplicates based on the unique 'Alert_ID', 
+            # keeping the first occurrence (which will be the freshly fetched 'Active' state if it still exists)
+            combined_df = combined_df.drop_duplicates(subset=['Alert_ID'], keep='first')
+            
+            # Overwrite the file with the deduplicated historical data
+            combined_df.to_csv(csv_filename, index=False)
+            
+            new_count = len(combined_df) - len(existing_df)
+            print(f"\nSuccessfully processed updates! {csv_filename} now has {len(combined_df)} total recorded alerts.")
+            if new_count > 0:
+                print(f"Added {new_count} NEW alerts to the historical record.")
+                
+        except pd.errors.EmptyDataError:
+            if not alerts_df.empty:
+                alerts_df.to_csv(csv_filename, index=False)
+                print(f"\nPopulated empty file {csv_filename} with {len(alerts_df)} alerts!")
     else:
-        print("\nNo KCM advisories found.")
+        if not alerts_df.empty:
+            alerts_df.to_csv(csv_filename, index=False)
+            print(f"\nCreated local file {csv_filename} with {len(alerts_df)} alerts!")
+
+    # Print a terminal summary
+    if not alerts_df.empty:
+        print("\n--- CURRENTLY ACTIVE KCM SERVICE ADVISORIES ---")
+        cols_to_print = [col for col in ['Affected_Routes', 'Status', 'Cause', 'Summary'] if col in alerts_df.columns]
+        print(alerts_df[cols_to_print].head(10))
+    else:
+        print("\nNo active KCM advisories at this time.")

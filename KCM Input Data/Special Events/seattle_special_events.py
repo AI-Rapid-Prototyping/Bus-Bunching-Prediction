@@ -1,32 +1,37 @@
 import os
 import time
 import json
+from datetime import datetime
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.webdriver.common.by import By
-import google.generativeai as genai
+import openai
 
 # ==========================================
 # 1. SCRAPE DYNAMIC CALENDAR VIA SELENIUM
 # ==========================================
 def scrape_eproval_calendar():
     """
-    Uses Selenium to open a headless Chrome browser, waits for the Seattle 
+    Uses Selenium to open a headless browser, waits for the Seattle 
     Special Events RPC calendar to render, and extracts the visible text.
     """
-    print("Initializing headless browser to scrape Seattle Special Events...")
+    current_month_name = datetime.now().strftime("%B")
+    print(f"Initializing headless Edge browser to scrape Seattle Special Events in {current_month_name}...")
     
-    # Configure Chrome to run invisibly (headless)
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
+    # Configure Microsoft Edge webdriver
+    edge_options = EdgeOptions()
     
-    # Start the browser
-    driver = webdriver.Chrome(options=chrome_options)
+    # Configure headless options for background execution
+    edge_options.add_argument("--headless")
+    edge_options.add_argument("--window-size=1920,1080")
+    edge_options.add_argument("--no-sandbox")
+    edge_options.add_argument("--disable-dev-shm-usage")
+    edge_options.add_argument("--disable-gpu")
+    edge_options.add_argument("--log-level=3")
+    
+    # Start the Edge browser (Selenium 4.6+ will auto-download the correct Microsoft driver)
+    driver = webdriver.Edge(options=edge_options)
     
     try:
         url = "https://eproval.seattle.gov/pages/special-events-public-calendar"
@@ -35,6 +40,18 @@ def scrape_eproval_calendar():
         print("Waiting 8 seconds for dynamic calendar Javascript to render...")
         time.sleep(8)  # Give the RPC calls time to fetch and render the events
         
+        print("Attempting to load more events via scrolling...")
+        # Scroll down multiple times to trigger lazy loading if present
+        last_height = driver.execute_script("return document.body.scrollHeight")
+        for _ in range(5): # Try scrolling 5 times
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2) # Wait for new content to load
+            
+            new_height = driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                break # Reached the bottom or no more lazy loading
+            last_height = new_height
+
         # We grab the raw text of the entire body. 
         # Since Eproval uses complex grids, relying on an LLM to parse the raw 
         # text is much more resilient than trying to pinpoint specific HTML classes.
@@ -50,47 +67,61 @@ def scrape_eproval_calendar():
         driver.quit()
 
 # ==========================================
-# 2. LLM ANALYSIS (GEMINI AGENT)
+# 2. LLM ANALYSIS (OPENAI AGENT)
 # ==========================================
-def analyze_events_with_gemini(raw_text, api_key):
+def analyze_events_with_openai(raw_text, api_key):
     """
-    Feeds the raw calendar text to Gemini to extract the events, 
+    Feeds the raw calendar text to OpenAI to extract the events, 
     score their traffic severity, and identify intersecting arterials.
     """
     if not raw_text.strip():
         print("No text provided to the AI Agent.")
         return []
 
-    print("\nAwakening Gemini AI Agent to analyze traffic impacts...")
+    print("\nAwakening OpenAI Agent to analyze traffic impacts...")
     
-    # Configure the Gemini API
-    genai.configure(api_key=api_key)
+    current_month_name = datetime.now().strftime("%B")
+    current_year = datetime.now().strftime("%Y")
     
-    # Using the fast flash model for structured data extraction
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    # Configure the custom OpenAI client
+    client = openai.OpenAI(
+        api_key=api_key,
+        base_url="http://10.75.42.137:4000/"
+    )
     
-    prompt = f"""
-    You are an expert traffic analyst AI for King County Metro. 
-    Below is the raw, unstructured text scraped from the Seattle Special Events Public Calendar.
+    system_instruction = f"""
+    You are a dual-purpose AI for King County Metro: a strict data extractor and an expert traffic analyst.
     
-    Your task is to extract all confirmed or upcoming special events (e.g., parades, marathons, festivals, major games).
-    For each event you find, determine:
-    1. Event Name
-    2. Date and Time (if available)
-    3. Location (Neighborhood or specific streets/parks)
-    4. Severity Score (1-10): Predict the traffic bottleneck severity. 10 is a major stadium game or parade closing downtown. 1 is a small neighborhood farmers market.
-    5. Intersecting Arterial Streets: Based on your geographic knowledge of Seattle and the event location, list 1 to 3 major arterial streets or highways likely to experience bus bunching.
+    CRITICAL RULES:
+    1. STRICT EXTRACTION: Extract the Event Name, Date_Time, and Location STRICTLY from the user's provided raw text. Extract the date/time exactly as it appears. Do not invent events or dates. ONLY extract events occurring in {current_month_name} {current_year}.
+    2. PREDICTION: For EVERY event you extract, you MUST use your own geographic and traffic knowledge to generate a "Severity_Score" (integer 1-10) and "Intersecting_Streets" (list of 1-3 street names).
     
-    Return ONLY a valid, raw JSON array of objects. Do not wrap the JSON in markdown formatting (like ```json). Just the raw array.
+    Return ONLY a raw JSON array of objects. Do not wrap the JSON in markdown formatting (like ```json).
     Use these exact keys: "Event_Name", "Date_Time", "Location", "Severity_Score", "Intersecting_Streets".
+    """
     
+    user_prompt = f"""
     Raw Calendar Text:
-    {raw_text[:30000]} 
+    {raw_text[:30000]}
     """
     
     try:
-        response = model.generate_content(prompt)
-        response_text = response.text.strip()
+        response = client.chat.completions.create(
+            model="GPT-5",
+            temperature=0.0,
+            seed=42,
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_instruction
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt
+                }
+            ]
+        )
+        response_text = response.choices[0].message.content.strip()
         
         # Clean up any accidental markdown formatting from the LLM
         if response_text.startswith("```json"):
@@ -100,47 +131,64 @@ def analyze_events_with_gemini(raw_text, api_key):
         if response_text.endswith("```"):
             response_text = response_text[:-3]
             
-        parsed_events = json.loads(response_text.strip())
-        print(f"Gemini successfully extracted and scored {len(parsed_events)} special events!")
+        parsed_json = json.loads(response_text.strip())
+        
+        # Handle both raw arrays and wrapped dictionaries safely
+        if isinstance(parsed_json, list):
+            parsed_events = parsed_json
+        else:
+            parsed_events = parsed_json.get("events", [])
+            
+        print(f"OpenAI successfully extracted and scored {len(parsed_events)} special events!")
         return parsed_events
         
     except json.JSONDecodeError:
-        print("Error: Gemini failed to return valid JSON.")
-        print("Raw output:", response.text)
+        print("Error: OpenAI failed to return valid JSON.")
+        print("Raw output:", response_text)
         return []
     except Exception as e:
-        print(f"Error communicating with Gemini API: {e}")
+        print(f"Error communicating with OpenAI API: {e}")
         return []
 
 # --- Execution ---
 if __name__ == "__main__":
     
-    # IMPORTANT: Paste your Google Gemini API Key here
-    # Get a free key at: https://aistudio.google.com/app/apikey
-    YOUR_GEMINI_API_KEY = "INSERT_YOUR_GEMINI_API_KEY_HERE"
+    # Azure OpenAI API Key and endpoint specified by the organization
+    YOUR_OPENAI_API_KEY = "sk-ZSRdwtJ7Ta-LTcKTf4h72w"
     
-    if YOUR_GEMINI_API_KEY == "INSERT_YOUR_GEMINI_API_KEY_HERE":
-        print("CRITICAL: You must insert your Gemini API Key into the script to run the AI Agent.")
+    if YOUR_OPENAI_API_KEY == "INSERT_YOUR_OPENAI_API_KEY_HERE":
+        print("CRITICAL: You must insert your OpenAI API Key into the script to run the AI Agent.")
     else:
         # 1. Scrape the raw webpage text
         raw_calendar_text = scrape_eproval_calendar()
         
-        # 2. Let Gemini analyze and score the events
-        analyzed_events = analyze_events_with_gemini(raw_calendar_text, YOUR_GEMINI_API_KEY)
+        # 2. Let OpenAI analyze and score the events
+        analyzed_events = analyze_events_with_openai(raw_calendar_text, YOUR_OPENAI_API_KEY)
         
         if analyzed_events:
             # Convert to a Pandas DataFrame for easy viewing and saving
             events_df = pd.DataFrame(analyzed_events)
             
-            # Sort by Severity Score (Highest first) so the worst bottlenecks are at the top
-            if 'Severity_Score' in events_df.columns:
-                events_df['Severity_Score'] = pd.to_numeric(events_df['Severity_Score'], errors='coerce')
-                events_df = events_df.sort_values(by='Severity_Score', ascending=False).reset_index(drop=True)
+            # Sort chronologically by Date/Time (Earliest at the top)
+            if 'Date_Time' in events_df.columns:
+                # Clean up ranges safely and let Pandas coerce any weird formats into NaT without crashing
+                clean_dates = events_df['Date_Time'].apply(lambda x: str(x).split('-')[0].split(' to ')[0].strip() if pd.notna(x) else "")
+                events_df['Temp_Sort_Date'] = pd.to_datetime(clean_dates, errors='coerce')
+                
+                # Sort by date ascending, and fall back to Severity Score for events on the same day/unknown dates
+                if 'Severity_Score' in events_df.columns:
+                    events_df['Severity_Score'] = pd.to_numeric(events_df['Severity_Score'], errors='coerce')
+                    events_df = events_df.sort_values(by=['Temp_Sort_Date', 'Severity_Score'], ascending=[True, False]).reset_index(drop=True)
+                else:
+                    events_df = events_df.sort_values(by='Temp_Sort_Date', ascending=True).reset_index(drop=True)
+                    
+                # Drop the temporary sorting column
+                events_df = events_df.drop(columns=['Temp_Sort_Date'])
             
             print("\n--- AI PREDICTED TRAFFIC BOTTLENECKS (SPECIAL EVENTS) ---")
-            print(events_df[['Event_Name', 'Severity_Score', 'Intersecting_Streets']].head(10))
+            print(events_df[['Event_Name', 'Date_Time', 'Severity_Score', 'Intersecting_Streets']].head(10))
             
-            # 3. Save to the "Special Events" folder you requested
+            # 3. Save to the "Special Events" folder
             save_dir = os.path.join("KCM Input Data", "Special Events")
             os.makedirs(save_dir, exist_ok=True)
             

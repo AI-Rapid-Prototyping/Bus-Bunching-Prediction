@@ -1,0 +1,113 @@
+Fetch_Time,Alert_ID,Status,Affected_Routes,Cause,Summary
+2026-07-31 16:52:42,78178,Active,"F Line, Route 150",CONSTRUCTION,Stop #58104 Southcenter Blvd & 65th Ave S (EB) closed through Fri Aug 28 due to construction.
+2026-07-31 16:52:42,78978,Active,Route 239,CONSTRUCTION,Route 239 to UW Bothell / Cascadia College is rerouted off Main St between 102nd Ave NE & 104th Ave NE through Fri Sep 25 due to construction.
+2026-07-31 16:52:42,80245,Active,"Route 12, Route 10",CONSTRUCTION,Stop #11480 E Pine St & 15th Ave (WB) relocated through Thu Dec 31 due to construction.
+2026-07-31 16:52:42,80976,Active,Route 65,CONSTRUCTION,Route 65 to Shoreline South 148th Station is rerouted off NE 145th St between 15th Ave NE and 5th Ave NE through Fri Aug 28 due to construction.
+2026-07-31 16:52:42,82885,Active,Route 156,OTHER_CAUSE,"Route 156 will be rerouted off portions of Kent Des Moines Rd, S 240th St and 16th Ave S from Mon Feb 9 to Thu Dec 31 due to a road closure."
+2026-07-31 16:52:42,82886,Active,Route 165,OTHER_CAUSE,Route 165 will be rerouted off S 240th St between 16th Ave S and 20th Ave S from Mon Feb 9 to Thu Dec 31 due to a road closure.
+2026-07-31 16:52:42,84453,Active,Route 70,CONSTRUCTION,Stop #9550 Eastlake Ave E & E Allison St (NB) relocated until Fri Aug 28 at 7:00 PM due to construction.
+2026-07-31 16:52:42,85376,Active,Route 160,CONSTRUCTION,Stop #59951 Talbot Rd S & S 32nd St (SB) and Stop #60359 Talbot Rd S & S 32nd St (NB) relocated through Sat Aug 1 due to construction.
+2026-07-31 16:52:42,86095,Active,"Route 914, Route 165",OTHER_CAUSE,Stop #57188 W Meeker St & Washington Ave S (EB) relocated from Mon Apr 6 through Mon Apr 26 due to permanent bus stop closure.
+2026-07-31 16:52:42,86627,Active,Route 168,CONSTRUCTION,Stop #62319 SE Kent-Kangley Rd & 235th Ave SE (EB) relocated from Wed Apr 15 to Fri Sep 25 8:00 AM to 3:00 PM daily due to construction.
+2026-07-31 16:52:42,86736,Active,Route 70,CONSTRUCTION,Route 70 to Downtown Seattle is rerouted off Fairview Ave N between Aloha St and Valley St until Mon Aug 31 due to construction.
+2026-07-31 16:52:42,86755,Active,"Route 256, Route 270, Route 545, Route 986, Route 542, Route 982, Route 255, Route 556",UNKNOWN_CAUSE,The elevator at SR 520 & Evergreen Point Rd (WB) is out of service until further notice.
+2026-07-31 16:52:42,86769,Active,Route 160,CONSTRUCTION,Stop #57140 104th Ave SE & SE 235th St (NB) relocated from Mon Apr 20 through Fri Aug 7 due to construction.
+2026-07-31 16:52:42,86770,Active,Route 160,CONSTRUCTION,Stop #57370 108th Ave SE & SE 217th St (SB) and Stop #57190 108th Ave SE & SE 217th St (NB) relocated from Mon Apr 20 through Tue Aug 11 due to construction.
+2026-07-31 16:52:42,87304,Active,Route 165,CONSTRUCTION,"Route 165 will be rerouted off portions of W Smith St and W Meeker St between 4th Ave N & Washington Ave N Thu Apr 30, 2026 through Fri Dec 24, 2027 due to construction."
+2026-07-31 16:52:42,87346,Active,Route 331,CONSTRUCTION,Route 331 to Aurora Village/Kenmore is rerouted off NE Bothell Way between 68th Ave NE and 73rd Ave NE through Fri Aug 28 due to construction.
+2026-07-31 16:52:42,87734,Active,Route 75,CONSTRUCTION,Stop #35440 NE 125th St & 30th Ave NE (EB) relocated until further notice due to construction.
+2026-07-31 16:52:42,87933,Active,"Route 239, Route 250",CONSTRUCTION,"Stop #70666 NE 85th St & Kirkland Way (EB) closed through Tue Aug 31, 2027 due to construction."
+2026-07-31 16:52:42,88002,Active,Route 250,CONSTRUCTION,Stop #72180 State St S & 10th Ave S (NB) relocated Wed May 13 to Fri Jul 31 from 8:00 AM to 4:00 PM daily due to construction.
+2026-07-31 16:52:42,88423,Active,Route 240,CONSTRUCTION,"Stop #82810 Main St & 112th Ave NE (WB) closed from Wed May 27 to Thu Dec 31 from 8:00 AM to 3:00 PM daily, Mon-Fri only due to construction."
+2026-07-31 16:52:42,88587,Active,Route 21,DEMONSTRATION,Route 21 will be affected in both directions after all Mariners home games; stops on portions of 1st Ave S will not be served; use alternate stops on 4th Ave S instead.
+2026-07-31 16:52:42,88860,Active,Route 75,CONSTRUCTION,Stop #35420 NE 125th St & 25th Ave NE (EB) relocated through Sun Aug 2 due to construction.
+2026-07-31 16:52:42,88962,Active,"Route 32, Route 31, Route 45, Route 67",CONSTRUCTION,Stop #25202 NE 45th St & University Village (WB) relocated from Thu Jun 4 through Fri Aug 28 due to construction.
+2026-07-31 16:52:42,88978,Active,Route 160,CONSTRUCTION,Stop #58180 Central Ave S & S 259th St (SB) relocated through Wed Jul 1 due to construction.
+2026-07-31 16:52:42,88979,Active,Route 160,MAINTENANCE,Stop #58270 Auburn Way N & 22nd St NE (SB) and Stop #57900 Auburn Way N & 22nd St NE (NB) relocated through Sat Aug 1 due to bus stop maintenance work.
+2026-07-31 16:52:42,88980,Active,Route 160,MAINTENANCE,Stop #57407 104th Ave SE & SE 248th St (SB) and Stop #57162 104th Ave SE & SE 248th St (NB) relocated through Sat Aug 1 due to bus stop maintenance work.
+2026-07-31 16:52:42,89000,Active,Route 223,CONSTRUCTION,Route 223 will be rerouted off Lake Hills Blvd between SE 16th St and 156th Ave SE from Tue Jun 9 through Tue Feb 2 due to construction.
+2026-07-31 16:52:42,89116,Active,"Route 239, Route 250",CONSTRUCTION,Stop #70664 NE 85th St & 114th Ave NE (WB) relocated Thu Jun 4 to Thu Aug 20 from 7:00 AM to 6:00 PM daily due to construction.
+2026-07-31 16:52:42,89529,Active,Route 160,CONSTRUCTION,Stop #58235 Auburn Way N & 42nd St NE (SB) and Stop #57920 Auburn Way N & 42nd St NE (NB) closed from Mon Jun 15 through Sat Aug 15 due to construction.
+2026-07-31 16:52:42,89650,Active,Route 160,CONSTRUCTION,Stop #57990 Central Ave S & S 259th St (NB) relocated from Mon Mar 23 through Mon Jun 1 due to construction.
+2026-07-31 16:52:42,89748,Active,"Route 989, Route 333, Route 365",CONSTRUCTION,Stop #16330 Meridian Ave N & N 150th St (SB) closed through Sat Aug 29 due to construction.
+2026-07-31 16:52:42,89925,Active,"Route 102, Route 148",CONSTRUCTION,Stop #60022 116th Ave SE & SE 160th St (SB) relocated from Mon Jun 22 to Wed Sep 30 from 7:00 AM to 5:00 PM daily due to construction.
+2026-07-31 16:52:42,90381,Active,Route 223,CONSTRUCTION,Stop #71371 NE 24th St & 151st Pl NE (EB) closed until further notice due to construction.
+2026-07-31 16:52:42,90473,Active,Route 65,CONSTRUCTION,Stop #82120 NE 145th St & 30th Ave NE (WB) closed from Mon Jul 6 until further notice due to construction.
+2026-07-31 16:52:42,90782,Active,Route 70,CONSTRUCTION,"Route 70 to University District is rerouted off Eastlake Ave E between E Allison St & Fuhrman Ave E from Mon Jul 6 through Wed Jun 30, 2027, due to construction."
+2026-07-31 16:52:42,90818,Active,Route 156,CONSTRUCTION,Stop #80189 S 164th St & Military Rd S (WB) closed from Mon Jul 13 to Mon Aug 3 from 7:00 AM to 5:00 PM daily due to construction.
+2026-07-31 16:52:42,90941,Active,Route 70,CONSTRUCTION,Stop #9190 Eastlake Ave E & E Louisa St (SB) relocated from Tue Jul 7 through Fri Aug 14 due to construction.
+2026-07-31 16:52:42,91031,Active,Route 2,CONSTRUCTION,Stop #2600 6th Ave W & W Blaine St (SB) closed from Sat Jul 18 to Sun Aug 2 at 4:00 AM due to construction.
+2026-07-31 16:52:42,91110,Active,Route 70,CONSTRUCTION,Stop #9150 Eastlake Ave E & E Allison St (SB) relocated from Mon Jul 13 through Fri Aug 7 due to construction.
+2026-07-31 16:52:42,91276,Active,Route 160,CONSTRUCTION,Stop #57250 108th Ave SE & SE 192nd St (NB) relocated from Mon Jun 15 through Fri Aug 21 weekdays only due to construction.
+2026-07-31 16:52:42,91279,Active,Route 160,CONSTRUCTION,Stop #57400 104th Ave SE & SE 228th St (SB) and Stop #57160 104th Ave SE & SE 228th St (NB) relocated through Fri Aug 28 due to construction.
+2026-07-31 16:52:42,91390,Active,"Route 32, Route 31, Route 65",CONSTRUCTION,Stop #9610 Roosevelt Way NE & NE 42nd St (SB) closed from Wed Jul 15 through Mon Aug 10 due to construction.
+2026-07-31 16:52:42,91428,Active,Route 348,MAINTENANCE,Stop #39270 15th Ave NE & NE 130th St (NB) closed from Mon Jul 20 to Fri Jul 31 from 7:00 AM to 5:00 PM Weekdays only due to sidewalk repair.
+2026-07-31 16:52:42,91510,Active,"Route 11, Route 3, Route 12, Route 49, Route 10",CONSTRUCTION,Stop #11133 Pike St & Minor Ave (EB) closed from Sat Aug 1 at 7:00 AM to Sun Aug 2 at 5:00 PM due to construction.
+2026-07-31 16:52:42,91547,Active,"Route 203, Route 271",CONSTRUCTION,Stop #64970 SE Newport Way & 152nd Ave SE (EB) relocated until Sat Aug 15 at 9:00 AM due to construction.
+2026-07-31 16:52:42,91550,Active,Route 7,CONSTRUCTION,Route 7 will be rerouted in the Rainier Beach Area from Sat Jul 18 to Sun Aug 9 every Saturday and Sunday from 7:00 AM to 7:00 PM due to construction.
+2026-07-31 16:52:42,91563,Active,Route 160,CONSTRUCTION,Stop #59934 SR 515 & S 15th St (SB) relocated from Mon Jul 20 through Sat Aug 15 due to construction.
+2026-07-31 16:52:42,91564,Active,"Route 256, Route 70, Route 322, Route 303",CONSTRUCTION,Stop #10305 Fairview Ave N & Harrison St (NB) relocated from Mon Jul 20 to Mon Aug 10 at 12:00 AM due to construction.
+2026-07-31 16:52:42,91574,Active,"Route 550, Route 556, Route 566, Route 271",CONSTRUCTION,"Route 271, ST 550, ST 556 and ST 566 will be rerouted around Bellevue Transit Center from Mon Jul 27 through Fri Aug 28 due to construction."
+2026-07-31 16:52:42,91583,Active,C Line,CONSTRUCTION,Stop #19862 SW Alaska St & California Ave SW - Bay 1 (EB) closed from Mon Jul 27 to Fri Jul 31 from 7:00 AM to 5:00 PM daily due to construction.
+2026-07-31 16:52:42,91625,Active,Route 160,CONSTRUCTION,Stop #58210 Central Ave S & S 266th St (SB) and Stop #57960 Central Ave S & S 266th St (NB) closed through Fri Oct 2 due to construction.
+2026-07-31 16:52:42,91660,Active,Route 160,UNKNOWN_CAUSE,Stop #59949 Talbot Rd S & S Carr Rd (SB) and Stop #60361 Talbot Rd S & S Carr Rd (NB) closed from Mon Jul 20 through Sat Aug 29.
+2026-07-31 16:52:42,91685,Active,Route 106,CONSTRUCTION,Stop #56373 Renton Ave S & 68th Ave S (SB) relocated from Mon Jul 20 through Mon Oct 26 due to construction.
+2026-07-31 16:52:42,91686,Active,Route 107,UNKNOWN_CAUSE,Stop #55371 68th Ave S & S 118th St (SB) and Stop #55378 68th Ave S & S 118th St (NB) relocated from Mon Jul 20 through Mon Oct 26.
+2026-07-31 16:52:42,91687,Active,Route 107,CONSTRUCTION,Stop #55373 68th Ave S & S 122nd St (SB) and Stop #55376 68th Ave S & S 122nd St (NB) relocated from Mon Jul 20 through Mon Oct 26 due to construction.
+2026-07-31 16:52:42,91688,Active,Route 107,CONSTRUCTION,Stop #55375 S 124th St & 67th Ave S (WB) and Stop #55374 S 124th St & 67th Ave S (EB) relocated from Mon Jul 20 through Mon Oct 26 due to construction.
+2026-07-31 16:52:42,91721,Active,Route 271,CONSTRUCTION,Stop #65328 SE Eastgate Way & 158th Ave SE (EB) closed from Mon Jul 20 to Mon Aug 3 from 7:00 AM to 5:00 PM daily due to construction.
+2026-07-31 16:52:42,91722,Active,Route 271,CONSTRUCTION,Stop #65329 SE Eastgate Way & 158th Ave SE (WB) closed from Mon Jul 20 to Mon Aug 3 from 7:00 AM to 5:00 PM daily due to construction.
+2026-07-31 16:52:42,91830,Active,"Route 65, Route 75",CONSTRUCTION,Stop #9670 NE 125th St & Lake City Way NE (EB) closed beginning Thu Jul 23 until further notice due to construction.
+2026-07-31 16:52:42,91914,Active,"Route 256, Route 231",CONSTRUCTION,Stop #70310 Juanita Woodinville Way NE & 115th Ave NE (NB) relocated from 8:00 AM to 4:00 PM on Fri Jul 31 due to construction.
+2026-07-31 16:52:42,91915,Active,Route 31,DEMONSTRATION,Route 31 will be rerouted in Magnolia from 7:00 AM to 2:00 PM on Sat Aug 1 due to the Magnolia Summerfest Parade.
+2026-07-31 16:52:42,91920,Active,Route 24,DEMONSTRATION,Route 24 will be rerouted in Magnolia from 7:00 AM to 2:00 PM on Sat Aug 1 due to the Magnolia Summerfest Parade.
+2026-07-31 16:52:42,91926,Active,Route 1,CONSTRUCTION,Route 1 will be rerouted off Mercer St between 1st Ave N and 2nd Ave W from Sat Aug 1 at 7:00 AM to Sun Aug 2 at 5:00 PM due to construction.
+2026-07-31 16:52:42,92006,Active,Route 45,CONSTRUCTION,Stop #19210 NW 85th St & Earl Ave NW (EB) relocated from Sat Aug 1 at 8:00 AM to Sun Aug 2 at 6:00 PM due to construction.
+2026-07-31 16:52:42,92010,Active,"Route 545, Route 542",CONSTRUCTION,Stop #73848 NE 85th St & 154th Ave NE (EB) closed from Mon Jul 27 to Thu Aug 13 from 7:30 AM to 3:00 PM daily due to construction.
+2026-07-31 16:52:42,92015,Active,D Line,CONSTRUCTION,Stop #13721 15th Ave NW & NW Market St (SB) closed from 7:00 AM to 12:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92086,Active,Route 348,CONSTRUCTION,Stop #38890 15th Ave NE & NE 130th St (SB) closed from Mon Jul 27 through Thu Aug 6 due to construction.
+2026-07-31 16:52:42,92090,Active,Route 901,CONSTRUCTION,DART 901 will be rerouted around the Federal Way Downtown Station due to construction.
+2026-07-31 16:52:42,92121,Active,"Route 345, Route 5",UNKNOWN_CAUSE,Stop #6840 Greenwood Ave N & N 134th St (NB) closed from Mon Jul 27 through Fri Aug 28.
+2026-07-31 16:52:42,92122,Active,Route 21,UNKNOWN_CAUSE,Route 21 to Westwood Village is serving Stop #30636 4th Ave S & I-90 Ramp (SB).
+2026-07-31 16:52:42,92167,Active,"Route 43, Route 988, Route 48",CONSTRUCTION,Stop #29251 24th Ave E & E Galer St (SB) closed from Mon Jul 27 to Fri Jul 31 9:00 AM to 3:00 PM daily due to construction.
+2026-07-31 16:52:42,92208,Active,"Route 28, Route 33, Route 40, Route 5, Route 57, Route 124, Route 56, Route 17, Route 24, Route 27, H Line, Route 62, Route 131, Route 132, Route 570, Route 21",CONSTRUCTION,Stop #590 3rd Ave & Pine St (NB) relocated from Thu Jul 30 to Wed Aug 5 7:00 AM to 5:00 PM weekdays only due to construction.
+2026-07-31 16:52:42,92213,Active,"E Line, D Line, C Line, Route 57, Route 56, Route 21",CONSTRUCTION,"Stop #431 3rd Ave & Pike St (SB) closed Thu Jul 30 to Wed Aug 5 from 7:00 AM to 5:00 PM, weekdays only, due to construction."
+2026-07-31 16:52:42,92215,Active,"Route 4, Route 70, E Line, D Line, Route 125, Route 13, Route 2, Route 3, C Line, Route 1, Route 7, Route 36, Route 14",CONSTRUCTION,Stop #558 3rd Ave & Seneca St (NB) closed from Thu Jul 30 to Wed Aug 5 7:00 AM to 5:00 PM weekdays only due to construction.
+2026-07-31 16:52:42,92220,Active,Route 226,CONSTRUCTION,Stop #71661 SE 24th St & 161st Ave SE (EB) and Stop #71675 SE 24th St & 161st Ave SE (WB) relocated from Thu Jul 30 to Fri Jul 31 9:00 AM to 3:00 PM daily due to construction.
+2026-07-31 16:52:42,92223,Active,Route 914,MAINTENANCE,Stop #57218 Scenic Vista Rd & SE 264th St (SB) closed due to street repair work.
+2026-07-31 16:52:42,92243,Active,Route 2,CONSTRUCTION,Stop #2970 E Union St & 27th Ave (WB) closed from Sat Aug 1 at 8:00 AM to Sun Aug 2 at 5:00 PM due to construction.
+2026-07-31 16:52:42,92247,Active,"Route 4, Route 13",CONSTRUCTION,Stop #41350 W McGraw St & 3rd Ave W (WB) closed from 7:00 AM to 3:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92249,Active,Route 106,OTHER_CAUSE,Stop #55210 Renton Ave S & 54th Ave S (NB) and Stop #56290 Renton Ave S & 54th Ave S (SB) closed beginning Sat Aug 1 due to permanent bus stop closure.
+2026-07-31 16:52:42,92272,Active,"Route 44, Route 49, Route 70, Route 372",DEMONSTRATION,"Routes 44, 49, 70 and 372 will be rerouted in the University District from 8:00 AM to 8:00 PM on Sat Aug 1 during the Seattle Boba Fest."
+2026-07-31 16:52:42,92275,Active,Route 208,DEMONSTRATION,Route 208 will be rerouted off Front St N from Sat Aug 1 to Sun Aug 30 every Saturday and Sunday from 8:00 AM to 10:00 PM during the Front Street Eatery.
+2026-07-31 16:52:42,92285,Active,Route 271,DEMONSTRATION,Route 271 will be rerouted off Front St N from Sat Aug 1 to Sun Aug 30 every Saturday and Sunday from 8:00 AM to 10:00 PM during the Front Street Eatery.
+2026-07-31 16:52:42,92322,Active,"Route 333, Route 365",CONSTRUCTION,Stop #16330 Meridian Ave N & N 150th St (SB) closed from 9:00 AM to 3:00 PM on Fri Jul 31 due to construction.
+2026-07-31 16:52:42,92323,Active,"Route 60, Route 36",CONSTRUCTION,Stop #3735 14th Ave S & Golf Dr S (SB) closed from 12:00 PM to 3:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92324,Active,"Route 60, Route 36",CONSTRUCTION,Stop #3580 S Charles St & Golf Dr S (EB) closed from 9:00 AM to 12:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92342,Active,"Route 148, Route 160, Route 102, Route 101, Route 153",CONSTRUCTION,Stop #59841 SR 515 & South Grady Way (WB) closed from Wed July 29 through Fri Oct 9 due to construction.
+2026-07-31 16:52:42,92363,Active,Route 160,CONSTRUCTION,Stop #58180 Central Ave S & S 259th St (SB) relocated from Wed July 29 through Fri Oct 9 due to construction.
+2026-07-31 16:52:42,92364,Active,Route 160,CONSTRUCTION,Stop #57990 Central Ave S & S 259th St (NB) relocated from Wed July 29 through Fri Oct 9 due to construction.
+2026-07-31 16:52:42,92368,Active,D Line,CONSTRUCTION,Stop #13660 15th Ave NW & NW 70th St (SB) relocated from 5:00 AM to 6:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92379,Active,Route 183,CONSTRUCTION,Stop #80454 28th Ave S & S 312th St (SB) relocated from 8:00 AM to 3:00 PM on Sat Aug 1 due to construction.
+2026-07-31 16:52:42,92396,Active,South Lake Union Streetcar,UNKNOWN_CAUSE,Service on the South Lake Union Streetcar is reduced with trips operating approximately every 18 minutes.
+2026-07-31 16:52:42,92403,Active,Route 372,DEMONSTRATION,Routes 372 will be rerouted from 5:00 PM to 10:00 PM on Sat Aug 1 during the Lake City Summer Festival & Parade.
+2026-07-31 16:52:42,92407,Active,Route 522,DEMONSTRATION,ST 522 is rerouted from 5:00 PM to 10:00 PM on Sat Aug 1 during the Lake City Summer Festival & Parade.
+2026-07-31 16:52:42,92409,Active,Route 61,DEMONSTRATION,Routes 61 will be rerouted from 5:00 PM to 10:00 PM on Sat Aug 1 during the Lake City Summer Festival & Parade.
+2026-07-31 16:52:42,92412,Active,"Route 32, Route 31",CONSTRUCTION,Routes 31 and 32 will be rerouted off NE 42nd St between 7th Ave NE & Roosevelt Way NE from Sat Aug 1 at 4:30 AM to Mon Aug 3 at 6:00 AM due to construction.
+2026-07-31 16:52:42,92414,Active,Route 65,CONSTRUCTION,Route 65 to Shoreline South 148th Station will be rerouted off Roosevelt Way NE between NE 43rd St and NE Campus Pkwy from Sat Aug 1 at 4:30 AM to Mon Aug 3 at 6:00 AM due to construction.
+2026-07-31 16:52:42,92417,Active,Route 65,DEMONSTRATION,Route 65 is rerouted from 6:00 AM to 6:00 PM on Sat Aug 1 during Lake City Summer Festival & Parade.
+2026-07-31 16:52:42,92420,Active,Route 65,CONSTRUCTION,Route 65 is rerouted off 30th Ave NE between NE 127th St and NE 125th St through Sat Aug 29 due to construction.
+2026-07-31 16:52:42,92423,Active,Route 3,DEMONSTRATION,Route 3 will be rerouted in the Cherry Hill area from 11:30 AM to 4:30 PM on Sat Aug 1 due to the Umoja Fest Parade.
+2026-07-31 16:52:42,92426,Active,Route 4,DEMONSTRATION,Route 4 will be rerouted in the Cherry Hill area from 11:00 AM to 4:30 PM on Sat Aug 1 due to the Umoja Fest Parade.
+2026-07-31 16:52:42,92427,Active,Route 75,DEMONSTRATION,Route 75 will be rerouted in the Lake City area from 6:00 AM to 6:00 PM on Sat Aug 1 during the Lake City Summer Festival & Parade.
+2026-07-31 16:52:42,92429,Active,Route 14,DEMONSTRATION,Route 14 will be rerouted in the Atlantic area from 11:00 AM to 4:30 PM on Sat Aug 1 due to the Umoja Fest Parade.
+2026-07-31 16:52:42,92436,Active,Route 48,DEMONSTRATION,Route 48 will be rerouted in the Atlantic area from 11:00 AM to 4:30 PM on Sat Aug 1 due to the Umoja Fest Parade.
+2026-07-31 16:52:42,92437,Active,Route 8,DEMONSTRATION,Route 8 will be rerouted from 11:00 AM to 4:30 PM on Sat Aug 1 during the Umoja Fest Parade.
+2026-07-31 16:52:42,92438,Active,Route 27,DEMONSTRATION,Route 27 will be rerouted from 11:00 AM to 4:30 PM on Sat Aug 1 during the Umoja Fest Parade.
+2026-07-31 16:52:42,92461,Active,Route 4,UNKNOWN_CAUSE,Route 4 trip to Downtown Seattle scheduled at 4:49 AM from S Walker St & 25th Ave S (WB) and nine other trips are not operating today.
+2026-07-31 16:52:42,92467,Active,Route 7,UNKNOWN_CAUSE,Route 7 trip to Rainier Beach scheduled at 6:10 AM from S Jackson St & Maynard Ave S (EB) and seven other trips are not operating today.
+2026-07-31 16:52:42,92474,Active,H Line,UNKNOWN_CAUSE,RapidRide H Line trip to Burien TC scheduled at 6:40 AM from 3rd Ave & Virginia St (SB) and seven other trips are not operating today.
+2026-07-31 16:52:42,92475,Active,Route 13,UNKNOWN_CAUSE,Route 13 trip to Seattle Pacific University scheduled at 6:45 AM from S Jackson St & 5th Ave S (WB) and five other trips are not operating today.
+2026-07-31 16:52:42,92476,Active,Route 2,UNKNOWN_CAUSE,Route 2 trip to Madrona Park scheduled at 7:46 AM from 3rd Ave & Cedar St (SB) and six other trips are not operating today.
+2026-07-31 16:52:42,92517,Active,Route 44,UNKNOWN_CAUSE,Route 44 trip to Ballard scheduled at 1:47 PM from Montlake Blvd NE & NE Pacific Pl - Bay 3 (SB) is not operating today.
+2026-07-31 16:52:42,92521,Active,Route 21,UNKNOWN_CAUSE,Route 21 trip to Downtown Seattle scheduled at 1:43 PM from 25th Ave SW & SW Barton St - Bay 4 (SB) is not operating today.

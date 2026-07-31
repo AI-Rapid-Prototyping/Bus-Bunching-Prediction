@@ -80,7 +80,7 @@ if __name__ == "__main__":
         print(mvi_incidents_df[cols_to_print].head(10))
         
         # --- SMART MERGE TO CSV (NO DUPLICATES, NEWEST AT TOP) ---
-        csv_filename = os.path.join("KCM Input Data", "MVI", "seattle_fire_mvi_today.csv")
+        csv_filename = os.path.join("KCM Input Data", "MVI", "seattle_mvi_history.csv")
         file_exists = os.path.isfile(csv_filename)
         
         if file_exists:
