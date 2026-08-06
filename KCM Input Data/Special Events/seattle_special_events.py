@@ -6,23 +6,27 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import openai
 
 # ==========================================
 # 1. SCRAPE DYNAMIC CALENDAR VIA SELENIUM
 # ==========================================
-def scrape_eproval_calendar():
+def scrape_eproval_calendar_today(max_retries=3):
     """
-    Uses Selenium to open a headless browser, waits for the Seattle 
-    Special Events RPC calendar to render, and extracts the visible text.
+    Uses Selenium to open a browser, waits for the Seattle 
+    Special Events React app to render, clicks the 'Day' view to isolate 
+    today's events, and extracts the visible text. 
+    Includes an automatic retry mechanism for stability.
     """
-    current_month_name = datetime.now().strftime("%B")
-    print(f"Initializing headless Edge browser to scrape Seattle Special Events in {current_month_name}...")
+    current_date_str = datetime.now().strftime("%B %d, %Y")
     
     # Configure Microsoft Edge webdriver
     edge_options = EdgeOptions()
     
-    # Configure headless options for background execution
+    # We run in headless mode so it can execute cleanly in the background on Databricks.
+    # No advanced CDP hacks are used, as Eproval's firewall detects and blocks them.
     edge_options.add_argument("--headless")
     edge_options.add_argument("--window-size=1920,1080")
     edge_options.add_argument("--no-sandbox")
@@ -30,58 +34,99 @@ def scrape_eproval_calendar():
     edge_options.add_argument("--disable-gpu")
     edge_options.add_argument("--log-level=3")
     
-    # Start the Edge browser (Selenium 4.6+ will auto-download the correct Microsoft driver)
-    driver = webdriver.Edge(options=edge_options)
-    
-    try:
-        url = "https://eproval.seattle.gov/pages/special-events-public-calendar"
-        driver.get(url)
+    # Loop to allow for retries in case the React app fails to render properly
+    for attempt in range(1, max_retries + 1):
+        print(f"\n--- Scraping Attempt {attempt} of {max_retries} for TODAY ({current_date_str}) ---")
+        driver = webdriver.Edge(options=edge_options)
         
-        print("Waiting 8 seconds for dynamic calendar Javascript to render...")
-        time.sleep(8)  # Give the RPC calls time to fetch and render the events
-        
-        print("Attempting to load more events via scrolling...")
-        # Scroll down multiple times to trigger lazy loading if present
-        last_height = driver.execute_script("return document.body.scrollHeight")
-        for _ in range(5): # Try scrolling 5 times
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2) # Wait for new content to load
+        try:
+            url = "https://eproval.seattle.gov/pages/special-events-public-calendar"
+            driver.get(url)
             
-            new_height = driver.execute_script("return document.body.scrollHeight")
-            if new_height == last_height:
-                break # Reached the bottom or no more lazy loading
-            last_height = new_height
-
-        # We grab the raw text of the entire body. 
-        # Since Eproval uses complex grids, relying on an LLM to parse the raw 
-        # text is much more resilient than trying to pinpoint specific HTML classes.
-        body_text = driver.find_element(By.TAG_NAME, "body").text
-        
-        print(f"Successfully extracted {len(body_text)} characters of raw calendar text.")
-        return body_text
-        
-    except Exception as e:
-        print(f"Error scraping calendar: {e}")
-        return ""
-    finally:
-        driver.quit()
+            print("Waiting dynamically for the React application to render the calendar grid...")
+            
+            # Wait up to 30 seconds for the structural calendar text to appear in the DOM.
+            # We strictly wait for "Legend" or "MONTH", because the footer loads instantly and causes false positives.
+            WebDriverWait(driver, 30).until(
+                lambda d: "Legend" in d.find_element(By.TAG_NAME, "body").text or "MONTH" in d.find_element(By.TAG_NAME, "body").text
+            )
+            
+            print("Calendar grid rendered successfully! Locating the 'Day' view button...")
+            time.sleep(2)  # Give the DOM a moment to settle animations
+            
+            # Bulletproof fallback: Find any button on the page that says "Day" or "D" safely
+            js_click_code = """
+            var btns = Array.from(document.querySelectorAll('button, .btn'));
+            var dayBtn = btns.find(el => {
+                if (!el.textContent) return false;
+                var txt = el.textContent.trim().toLowerCase();
+                return txt === 'day' || txt === 'd';
+            });
+            if (dayBtn) {
+                dayBtn.click();
+                return true;
+            }
+            return false;
+            """
+            clicked = driver.execute_script(js_click_code)
+            
+            if clicked:
+                print("Successfully clicked the 'Day' view button via JS text search!")
+            else:
+                raise ValueError("The 'Day' button could not be found on the page.")
+            
+            # Give the day view time to fetch the specific daily events from the server
+            print("Waiting 5 seconds for the daily events to load...")
+            time.sleep(5)
+            
+            print("Extracting visible text for today's events...")
+            body_text = driver.find_element(By.TAG_NAME, "body").text
+            
+            # Basic validation: If it's too short, it's likely a blocked page or empty shell
+            if len(body_text) < 200:
+                raise ValueError(f"Extracted text too short ({len(body_text)} chars). Suspected blocked page or failed load.")
+                
+            print(f"Successfully extracted {len(body_text)} characters of raw calendar text.")
+            driver.quit() # Clean up before returning success
+            return body_text
+            
+        except Exception as e:
+            print(f"Attempt {attempt} failed: {e}")
+            
+            try:
+                # Print the exact text the browser saw so we can diagnose Cloudflare vs Loading errors
+                print("\n--- WHAT THE BROWSER SAW AT FAILURE ---")
+                fail_text = driver.find_element(By.TAG_NAME, "body").text
+                print(fail_text[:800])
+                print("---------------------------------------\n")
+            except:
+                pass
+            
+            driver.quit() # Ensure the failed driver is destroyed so it doesn't leak memory
+            
+            if attempt < max_retries:
+                print("Waiting 5 seconds before retrying...")
+                time.sleep(5)
+            else:
+                print("\nCRITICAL: Maximum retries reached. Unable to scrape Eproval Calendar today.")
+                return ""
 
 # ==========================================
 # 2. LLM ANALYSIS (OPENAI AGENT)
 # ==========================================
 def analyze_events_with_openai(raw_text, api_key):
     """
-    Feeds the raw calendar text to OpenAI to extract the events, 
+    Feeds the raw calendar text to OpenAI to extract today's events, 
     score their traffic severity, and identify intersecting arterials.
     """
-    if not raw_text.strip():
-        print("No text provided to the AI Agent.")
+    # If we get a blank page or an access denied shell, abort
+    if not raw_text.strip() or len(raw_text) < 200:
+        print("No valid text provided to the AI Agent.")
         return []
 
     print("\nAwakening OpenAI Agent to analyze traffic impacts...")
     
-    current_month_name = datetime.now().strftime("%B")
-    current_year = datetime.now().strftime("%Y")
+    current_date = datetime.now().strftime("%B %d, %Y")
     
     # Configure the custom OpenAI client
     client = openai.OpenAI(
@@ -90,18 +135,20 @@ def analyze_events_with_openai(raw_text, api_key):
     )
     
     system_instruction = f"""
-    You are a dual-purpose AI for King County Metro: a strict data extractor and an expert traffic analyst.
+    You are an expert data extractor and traffic analyst for King County Metro.
     
     CRITICAL RULES:
-    1. STRICT EXTRACTION: Extract the Event Name, Date_Time, and Location STRICTLY from the user's provided raw text. Extract the date/time exactly as it appears. Do not invent events or dates. ONLY extract events occurring in {current_month_name} {current_year}.
-    2. PREDICTION: For EVERY event you extract, you MUST use your own geographic and traffic knowledge to generate a "Severity_Score" (integer 1-10) and "Intersecting_Streets" (list of 1-3 street names).
+    1. STRICT EXTRACTION: Extract events STRICTLY from the provided calendar text. The text is scraped from a 'Day View' calendar grid. Only extract the events, ignore navigation buttons like 'MONTH WEEK DAY LIST'.
+    2. DATE FORMATTING: The events are for TODAY. You MUST set the 'Date' field explicitly to '{current_date}'. 
+    3. TIME FORMATTING: Extract the 'Start_Time' and 'End_Time' exactly as they appear (e.g., '10:00 AM', '4:30 PM'). If a time is not listed or it spans multiple days, output 'Unknown' or 'All Day'.
+    4. PREDICTION: For EVERY event, use your geographic knowledge of Seattle to generate a 'Severity_Score' (integer 1-10) and 'Intersecting_Streets' (list of 1-3 major street names).
     
     Return ONLY a raw JSON array of objects. Do not wrap the JSON in markdown formatting (like ```json).
-    Use these exact keys: "Event_Name", "Date_Time", "Location", "Severity_Score", "Intersecting_Streets".
+    Use these exact keys: "Event_Name", "Date", "Start_Time", "End_Time", "Location", "Severity_Score", "Intersecting_Streets".
     """
     
     user_prompt = f"""
-    Raw Calendar Text:
+    Raw Calendar Text for {current_date}:
     {raw_text[:30000]}
     """
     
@@ -139,7 +186,7 @@ def analyze_events_with_openai(raw_text, api_key):
         else:
             parsed_events = parsed_json.get("events", [])
             
-        print(f"OpenAI successfully extracted and scored {len(parsed_events)} special events!")
+        print(f"OpenAI successfully extracted and scored {len(parsed_events)} special events for today!")
         return parsed_events
         
     except json.JSONDecodeError:
@@ -159,44 +206,63 @@ if __name__ == "__main__":
     if YOUR_OPENAI_API_KEY == "INSERT_YOUR_OPENAI_API_KEY_HERE":
         print("CRITICAL: You must insert your OpenAI API Key into the script to run the AI Agent.")
     else:
-        # 1. Scrape the raw webpage text
-        raw_calendar_text = scrape_eproval_calendar()
+        # 1. Scrape the raw webpage text (Day View) using vanilla Edge Selenium
+        raw_calendar_text = scrape_eproval_calendar_today()
         
         # 2. Let OpenAI analyze and score the events
         analyzed_events = analyze_events_with_openai(raw_calendar_text, YOUR_OPENAI_API_KEY)
         
         if analyzed_events:
-            # Convert to a Pandas DataFrame for easy viewing and saving
+            # Convert to a Pandas DataFrame
             events_df = pd.DataFrame(analyzed_events)
             
-            # Sort chronologically by Date/Time (Earliest at the top)
-            if 'Date_Time' in events_df.columns:
-                # Clean up ranges safely and let Pandas coerce any weird formats into NaT without crashing
-                clean_dates = events_df['Date_Time'].apply(lambda x: str(x).split('-')[0].split(' to ')[0].strip() if pd.notna(x) else "")
-                events_df['Temp_Sort_Date'] = pd.to_datetime(clean_dates, errors='coerce')
-                
-                # Sort by date ascending, and fall back to Severity Score for events on the same day/unknown dates
-                if 'Severity_Score' in events_df.columns:
-                    events_df['Severity_Score'] = pd.to_numeric(events_df['Severity_Score'], errors='coerce')
-                    events_df = events_df.sort_values(by=['Temp_Sort_Date', 'Severity_Score'], ascending=[True, False]).reset_index(drop=True)
-                else:
-                    events_df = events_df.sort_values(by='Temp_Sort_Date', ascending=True).reset_index(drop=True)
-                    
-                # Drop the temporary sorting column
-                events_df = events_df.drop(columns=['Temp_Sort_Date'])
-            
             print("\n--- AI PREDICTED TRAFFIC BOTTLENECKS (SPECIAL EVENTS) ---")
-            print(events_df[['Event_Name', 'Date_Time', 'Severity_Score', 'Intersecting_Streets']].head(10))
             
-            # 3. Save to the "Special Events" folder
-            save_dir = os.path.join("KCM Input Data", "Special Events")
-            os.makedirs(save_dir, exist_ok=True)
+            # Safely select columns to print
+            cols_to_print = [c for c in ['Event_Name', 'Start_Time', 'End_Time', 'Severity_Score', 'Intersecting_Streets'] if c in events_df.columns]
+            print(events_df[cols_to_print].head(10))
             
-            csv_filename = os.path.join(save_dir, "seattle_special_events_scored.csv")
+            # 3. Save and APPEND to the local "Special Events" folder
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            csv_filename = os.path.join(script_dir, "seattle_special_events_scored.csv")
             
-            # We overwrite this file so it always represents the current calendar outlook
-            events_df.to_csv(csv_filename, index=False)
+            file_exists = os.path.isfile(csv_filename)
             
-            print(f"\nSuccessfully saved AI-scored events to {csv_filename}!")
+            if file_exists:
+                try:
+                    # Read the historical archive
+                    existing_df = pd.read_csv(csv_filename)
+                    
+                    # Combine old data with today's new data
+                    combined_df = pd.concat([existing_df, events_df], ignore_index=True)
+                    
+                    # Drop duplicates in case the script is run multiple times on the same day
+                    # We deduplicate based on Event_Name and Date
+                    combined_df = combined_df.drop_duplicates(subset=['Event_Name', 'Date'], keep='last')
+                    
+                    # Sort chronologically by date
+                    combined_df['Temp_Sort_Date'] = pd.to_datetime(combined_df['Date'], errors='coerce')
+                    combined_df = combined_df.sort_values(by='Temp_Sort_Date', ascending=False).reset_index(drop=True)
+                    combined_df = combined_df.drop(columns=['Temp_Sort_Date'])
+                    
+                    combined_df.to_csv(csv_filename, index=False)
+                    
+                    # Calculate how many truly new events were appended
+                    new_count = len(combined_df) - len(existing_df)
+                    print(f"\nSuccessfully processed updates! {csv_filename} now has {len(combined_df)} total recorded events.")
+                    if new_count > 0:
+                        print(f"Added {new_count} NEW events to the historical record.")
+                    else:
+                        print("No new events added (already recorded today).")
+                        
+                except pd.errors.EmptyDataError:
+                    # If the file exists but is empty, just save the new data
+                    events_df.to_csv(csv_filename, index=False)
+                    print(f"\nPopulated empty file {csv_filename} with {len(events_df)} events!")
+            else:
+                # If the file doesn't exist at all yet, create it
+                events_df.to_csv(csv_filename, index=False)
+                print(f"\nCreated local file {csv_filename} with {len(events_df)} events!")
+                
         else:
-            print("\nNo events were found or processed.")
+            print("\nNo events were found or processed for today.")
