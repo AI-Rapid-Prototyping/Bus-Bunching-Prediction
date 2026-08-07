@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bus Bunching Model Glossary</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 32px; line-height: 1.5; color: #1f2933; max-width: 980px; }
+h1, h2 { color: #102a43; }
+h1 { margin-bottom: 4px; }
+.subtitle { color: #52606d; margin-top: 0; }
+.note { background: #f2f6fb; border-left: 5px solid #2f6f9f; padding: 12px 16px; margin: 18px 0 24px; }
+dl { margin: 0; }
+dt { font-weight: 700; color: #102a43; margin-top: 18px; }
+dd { margin: 4px 0 0 0; border-bottom: 1px solid #d9e2ec; padding-bottom: 14px; }
+.plain { color: #52606d; }
+</style>
+</head>
+<body>
+<h1>Bus Bunching Model Glossary</h1>
+<p class="subtitle">Plain-language definitions for the bus bunching prediction model and report.</p>
+
+<div class="note">
+This glossary explains the terms used in the bus bunching model report. The model is intended to help identify route-hours with higher bunching risk, not to guarantee that a specific bus trip will or will not bunch.
+</div>
+
+<h2>Core Bus Bunching Terms</h2>
+<dl>
+<dt>Bus bunching</dt>
+<dd>When buses that are supposed to be spaced apart arrive too close together. This can create uneven service, longer waits for some riders, and inefficient vehicle spacing.</dd>
+
+<dt>Bunching event</dt>
+<dd>A recorded instance where buses were close enough together to meet the bunching threshold used in the analysis.</dd>
+
+<dt>Deduped bunching episode</dt>
+<dd>A cleaned-up count of bunching that avoids counting the same pair of buses repeatedly as they move through multiple stops. This is the main event count used by the model.</dd>
+
+<dt>Scheduled stop arrivals</dt>
+<dd>The number of scheduled bus arrivals represented in a route-hour. This is used as the denominator so high-service and low-service periods can be compared fairly.</dd>
+
+<dt>Bunching rate per 100 scheduled arrivals</dt>
+<dd>The number of deduped bunching episodes divided by scheduled stop arrivals, multiplied by 100. This turns bunching into a rate that can be compared across routes and hours.</dd>
+
+<dt>Route-direction-hour</dt>
+<dd>The basic unit of the model: one route, one direction, on one date, during one hour. Each row in the model represents one route-direction-hour.</dd>
+
+<dt>Model row</dt>
+<dd>One observation used by the model. In this project, each model row is a route-direction-hour with service volume, observed bunching, and any available external conditions.</dd>
+</dl>
+
+<h2>Data Sources</h2>
+<dl>
+<dt>Historical bus bunching data</dt>
+<dd>The recent observed bus bunching events used to teach the model where and when bunching has happened before.</dd>
+
+<dt>Weather data</dt>
+<dd>Hourly citywide weather history, including temperature and wind speed. It is useful for screening broad weather conditions but does not capture block-by-block conditions.</dd>
+
+<dt>MVI calls</dt>
+<dd>Seattle Fire motor vehicle incident calls. In this model, MVI exposure is approximate because calls are matched using available time and street-name information rather than exact route-level incident geometry.</dd>
+
+<dt>KCM advisory</dt>
+<dd>A King County Metro service advisory observed in the advisory feed. In this model, advisory timing is based on when the advisory was captured, not a complete start-to-end advisory history.</dd>
+
+<dt>External inputs</dt>
+<dd>Conditions outside the historical bus schedule and bunching pattern, such as weather, MVI activity, and KCM advisories.</dd>
+
+<dt>Coverage</dt>
+<dd>How much of the model period has usable data from a source. For example, weather, MVI, and KCM advisories do not all cover the full bus bunching date range equally.</dd>
+
+<dt>Missing coverage vs. observed zero</dt>
+<dd>Missing coverage means the source did not provide usable data for that row. Observed zero means the source was available and showed no relevant activity. These are different and should not be interpreted the same way.</dd>
+</dl>
+
+<h2>Model Training and Testing</h2>
+<dl>
+<dt>Model</dt>
+<dd>A repeatable scoring method that learns patterns from past data and applies those patterns to estimate future or current bunching risk.</dd>
+
+<dt>Training/control period</dt>
+<dd>The earlier dates used to learn the model weights. In the current report, this period is 2026-07-22 to 2026-08-01.</dd>
+
+<dt>Validation/trial period</dt>
+<dd>The later dates held back from training and used to test the model. In the current report, this period is 2026-08-02 to 2026-08-04.</dd>
+
+<dt>Holdout test</dt>
+<dd>A test where the model is trained on one set of dates and evaluated on later dates it did not use for training. This is a practical check on whether the model generalizes beyond the data it learned from.</dd>
+
+<dt>Historical baseline model</dt>
+<dd>The model that uses route, direction, hour, and scheduled service volume to predict bunching risk. In this project, this performed better on the validation period than adding external inputs.</dd>
+
+<dt>External-parameter model</dt>
+<dd>A model that adds weather, MVI, and KCM advisory information to the historical baseline. These inputs were tested, but they did not improve the validation result in the current sample.</dd>
+
+<dt>Pilot model</dt>
+<dd>An early model that is useful for screening and learning, but should be refined as more overlapping event and external-condition history becomes available.</dd>
+</dl>
+
+<h2>Model Outputs</h2>
+<dl>
+<dt>Predicted bunching rate</dt>
+<dd>The model's estimated bunching episodes per 100 scheduled arrivals for a route-direction-hour.</dd>
+
+<dt>Risk decile</dt>
+<dd>A 1-to-10 ranking of predicted risk. Decile 10 is the highest predicted risk group; decile 1 is the lowest predicted risk group.</dd>
+
+<dt>High-risk route-hour</dt>
+<dd>A route-direction-hour with a high predicted risk score. These are good candidates for dispatch monitoring, schedule reliability review, or targeted operational analysis.</dd>
+
+<dt>Model weight</dt>
+<dd>The amount the model moves the risk estimate up or down when a route, hour, or condition is present. Larger positive weights increase predicted risk; negative weights reduce predicted risk.</dd>
+
+<dt>Rate multiplier</dt>
+<dd>A more readable version of a model weight. A multiplier above 1 means the model increases predicted risk; below 1 means it lowers predicted risk.</dd>
+</dl>
+
+<h2>Correlation and Performance Terms</h2>
+<dl>
+<dt>Correlation</dt>
+<dd>A measure of whether two things tend to move together. In this project, correlations were used to screen whether weather, MVI, or advisory inputs appeared to line up with bunching.</dd>
+
+<dt>Spearman correlation</dt>
+<dd>A correlation method that looks at whether higher values of one input tend to go with higher or lower bunching rates. It is useful when the relationship may not be a straight line.</dd>
+
+<dt>Additive effect</dt>
+<dd>The difference in observed bunching rate between two groups, such as periods with an advisory and periods without an advisory.</dd>
+
+<dt>Calibration</dt>
+<dd>How well predicted risk lines up with actual observed bunching. A useful risk model should generally show more bunching in higher-risk groups than in lower-risk groups.</dd>
+
+<dt>Weighted MAE</dt>
+<dd>Weighted mean absolute error. This is the average size of the prediction error, weighted so route-hours with more scheduled arrivals count more than route-hours with very little service.</dd>
+
+<dt>Weighted RMSE</dt>
+<dd>Weighted root mean squared error. This is another error measure that gives more penalty to larger misses.</dd>
+
+<dt>Overfitting</dt>
+<dd>When a model learns patterns that fit the training dates but do not work well on later dates. Holding out validation dates helps guard against overfitting.</dd>
+</dl>
+
+<h2>How to Read the Results</h2>
+<dl>
+<dt>"It works well"</dt>
+<dd>In this report, this means the model is useful for ranking and prioritizing risk. The highest-risk decile captured a large share of validation-period bunching, so the model helps focus attention on the route-hours where bunching was most concentrated.</dd>
+
+<dt>"External inputs were not selected"</dt>
+<dd>This does not mean weather, MVI calls, or advisories never matter. It means they did not improve the held-out validation result after the model already accounted for historical route, direction, hour, and service-volume patterns.</dd>
+
+<dt>Recommended use</dt>
+<dd>Use the model as a screening and prioritization tool. Review deciles 8-10 first, especially decile 10, for dispatch monitoring, schedule reliability checks, or deeper investigation.</dd>
+</dl>
+</body>
+</html>
