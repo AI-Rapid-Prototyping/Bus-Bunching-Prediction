@@ -25,10 +25,18 @@ def scrape_eproval_calendar_today(max_retries=3):
     # Configure Microsoft Edge webdriver
     edge_options = EdgeOptions()
     
-    # We run in headless mode so it can execute cleanly in the background on Databricks.
-    # No advanced CDP hacks are used, as Eproval's firewall detects and blocks them.
-    edge_options.add_argument("--headless")
+    # CRITICAL STEALTH UPGRADE: 
+    # Use '--headless=new' which runs the modern headless engine. It acts identically 
+    # to a physical browser and avoids the classic Cloudflare headless traps.
+    edge_options.add_argument("--headless=new")
     edge_options.add_argument("--window-size=1920,1080")
+    
+    # Strip the "automated test software" banners and flags NATIVELY so we don't 
+    # trigger Javascript tampering detectors (like the CDP hack did).
+    edge_options.add_argument("--disable-blink-features=AutomationControlled")
+    edge_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    edge_options.add_experimental_option("useAutomationExtension", False)
+    
     edge_options.add_argument("--no-sandbox")
     edge_options.add_argument("--disable-dev-shm-usage")
     edge_options.add_argument("--disable-gpu")
@@ -46,9 +54,9 @@ def scrape_eproval_calendar_today(max_retries=3):
             print("Waiting dynamically for the React application to render the calendar grid...")
             
             # Wait up to 30 seconds for the structural calendar text to appear in the DOM.
-            # We strictly wait for "Legend" or "MONTH", because the footer loads instantly and causes false positives.
+            # We wait for "Legend" or "TODAY" to confirm the React API call succeeded and bypassed the firewall.
             WebDriverWait(driver, 30).until(
-                lambda d: "Legend" in d.find_element(By.TAG_NAME, "body").text or "MONTH" in d.find_element(By.TAG_NAME, "body").text
+                lambda d: "Legend" in d.find_element(By.TAG_NAME, "body").text or "TODAY" in d.find_element(By.TAG_NAME, "body").text
             )
             
             print("Calendar grid rendered successfully! Locating the 'Day' view button...")

@@ -4,6 +4,10 @@ import os
 import zipfile
 import io
 from datetime import datetime
+import pytz
+
+# Define the absolute Databricks path for storage
+BASE_DIR = "/Workspace/Shared/IP3/fta/KCM Input Data/KCM Alerts"
 
 # ==========================================
 # FETCH ROUTE NAME MAPPING (STATIC GTFS)
@@ -13,8 +17,9 @@ def get_kcm_route_mapping():
     Downloads KCM's static GTFS to map internal route_ids (e.g., '100489') 
     to public names (e.g., 'Route 156'). Caches it locally for speed.
     """
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    mapping_file = os.path.join(script_dir, "kcm_route_mapping.csv")
+    # Ensure the directory exists in Databricks Workspace
+    os.makedirs(BASE_DIR, exist_ok=True)
+    mapping_file = os.path.join(BASE_DIR, "kcm_route_mapping.csv")
     
     # 1. Load from cache if we already downloaded it
     if os.path.exists(mapping_file):
@@ -76,7 +81,6 @@ def fetch_kcm_gtfs_rt_alerts():
     }
     
     # The official King County Metro GTFS-RT Service Alerts endpoint
-    # We try _pb.json first as it has proven to be the most reliable
     urls_to_try = [
         "https://s3.amazonaws.com/kcm-alerts-realtime-prod/alerts_pb.json",
         "https://s3.amazonaws.com/kcm-alerts-realtime-prod/alerts.json"
@@ -135,9 +139,14 @@ def fetch_kcm_gtfs_rt_alerts():
                 # Combine into a summary
                 summary = header if header else description
                 
+                # CRITICAL: Always stamp in Seattle local time regardless of server timezone
+                seattle_tz = pytz.timezone('America/Los_Angeles')
+                seattle_time = datetime.now(seattle_tz).strftime("%Y-%m-%d %H:%M:%S")
+                
                 parsed_alerts.append({
-                    "Fetch_Time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    "Alert_ID": entity.get('id', 'N/A'),
+                    "Fetch_Time": seattle_time,
+                    "End_Time": "N/A", # Add End_Time placeholder for active alerts
+                    "Alert_ID": str(entity.get('id', 'N/A')),
                     "Status": "Active",
                     "Affected_Routes": ", ".join(affected_routes) if affected_routes else "Systemwide/Unknown",
                     "Cause": cause_str,
@@ -161,9 +170,9 @@ if __name__ == "__main__":
     # Pull GTFS-RT Alerts
     alerts_df = fetch_kcm_gtfs_rt_alerts()
     
-    # --- SMART MERGE TO LOCAL CSV ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_filename = os.path.join(script_dir, "kcm_advisory_history.csv")
+    # --- SMART MERGE TO DATABRICKS WORKSPACE CSV ---
+    os.makedirs(BASE_DIR, exist_ok=True)
+    csv_filename = os.path.join(BASE_DIR, "kcm_advisory_history.csv")
     
     file_exists = os.path.isfile(csv_filename)
     
@@ -172,12 +181,28 @@ if __name__ == "__main__":
             # Read the existing CSV, forcing Alert_ID to be read as a string to prevent int/str matching bugs
             existing_df = pd.read_csv(csv_filename, dtype={'Alert_ID': str})
             
-            # Ensure the Status column exists for backward compatibility with older files
+            # Ensure the Status and End_Time columns exist for backward compatibility with older files
             if 'Status' not in existing_df.columns:
                 existing_df['Status'] = 'Resolved'
+            if 'End_Time' not in existing_df.columns:
+                existing_df['End_Time'] = 'N/A'
                 
             # Ensure both dataframes have perfectly matching string IDs
             existing_df['Alert_ID'] = existing_df['Alert_ID'].astype(str)
+            
+            # PRESERVE ORIGINAL FETCH TIME:
+            # If an active alert already exists in our historical CSV, retain its original 
+            # Fetch_Time so we know when it first started, rather than updating it to right now.
+            if not alerts_df.empty and 'Fetch_Time' in existing_df.columns:
+                existing_fetch_times = dict(zip(existing_df['Alert_ID'], existing_df['Fetch_Time']))
+                
+                def preserve_original_start_time(row):
+                    aid = row['Alert_ID']
+                    if aid in existing_fetch_times:
+                        return existing_fetch_times[aid] # Keep original start time
+                    return row['Fetch_Time'] # New alert gets current timestamp
+                    
+                alerts_df['Fetch_Time'] = alerts_df.apply(preserve_original_start_time, axis=1)
             
             # Mark any historical alert that is NOT in the current fetch as 'Resolved'
             if not alerts_df.empty:
@@ -186,7 +211,19 @@ if __name__ == "__main__":
             else:
                 current_active_ids = []
                 
-            existing_df.loc[~existing_df['Alert_ID'].isin(current_active_ids), 'Status'] = 'Resolved'
+            # Identify alerts that are missing from the current active fetch
+            missing_alerts_mask = ~existing_df['Alert_ID'].isin(current_active_ids)
+            
+            # Identify alerts that are NEWLY resolved (they were Active on the last run, but missing now)
+            newly_resolved_mask = missing_alerts_mask & (existing_df['Status'] != 'Resolved')
+            
+            # Stamp the current Seattle time as the End_Time for newly resolved alerts
+            seattle_tz = pytz.timezone('America/Los_Angeles')
+            seattle_time = datetime.now(seattle_tz).strftime("%Y-%m-%d %H:%M:%S")
+            existing_df.loc[newly_resolved_mask, 'End_Time'] = seattle_time
+            
+            # Update the status to Resolved
+            existing_df.loc[missing_alerts_mask, 'Status'] = 'Resolved'
             
             # Combine the old and new data
             combined_df = pd.concat([alerts_df, existing_df], ignore_index=True)
@@ -210,12 +247,12 @@ if __name__ == "__main__":
     else:
         if not alerts_df.empty:
             alerts_df.to_csv(csv_filename, index=False)
-            print(f"\nCreated local file {csv_filename} with {len(alerts_df)} alerts!")
+            print(f"\nCreated Databricks Workspace file {csv_filename} with {len(alerts_df)} alerts!")
 
     # Print a terminal summary
     if not alerts_df.empty:
         print("\n--- CURRENTLY ACTIVE KCM SERVICE ADVISORIES ---")
-        cols_to_print = [col for col in ['Affected_Routes', 'Status', 'Cause', 'Summary'] if col in alerts_df.columns]
+        cols_to_print = [col for col in ['Fetch_Time', 'Affected_Routes', 'Status', 'Cause', 'Summary'] if col in alerts_df.columns]
         print(alerts_df[cols_to_print].head(10))
     else:
         print("\nNo active KCM advisories at this time.")
