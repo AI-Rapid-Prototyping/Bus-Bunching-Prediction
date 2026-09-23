@@ -1,0 +1,25 @@
+route_label,events,stops,top_stop_id,top_stop_name,top_stop_events,top_hour,top_hour_events
+80,18941,47,1190,N Lake at Langdon,1560,14:00,2246
+B,5444,97,2969,Knutson at Westport,259,15:00,554
+38,3108,67,741,Observatory at Colwood,153,09:00,1391
+A,2432,76,2890,High Point,100,09:00,280
+D,1637,103,2173,W Johnson at N Frances,70,16:00,250
+62,1611,37,1913,S Gammon at Schroeder,181,07:00,943
+28,1460,70,741,Observatory at Colwood,70,08:00,567
+C,1304,94,1624,University at N Breese,31,09:00,234
+63,1019,66,1040,Verona W at Summit,41,07:00,447
+61,644,53,1696,Vondron at S Thompson,16,07:00,242
+60,512,41,1229,Northport at Dryden,15,07:00,232
+R,360,40,871,University at Ridge,28,09:00,186
+75,265,47,2297,W Washington at S Broom,13,17:00,138
+E,207,66,1925,S Whitney at Hammersley,5,12:00,73
+65,202,66,1796,N Charter at University,7,17:00,159
+F,127,74,1536,Deming at Murphy,4,13:00,40
+H,108,47,1008,Todd at Pelham,3,16:00,43
+G,88,83,1110,W Badger at Overpass,2,09:00,34
+55,66,16,1926,Waldorf at Mansion Hill,6,17:00,63
+O,43,11,2896,W Johnson at N Orchard,28,08:00,9
+64,37,3,2480,Highland at Regent,13,08:00,26
+J,28,28,1373,Odana at Research Park,1,10:00,27
+W,15,15,2096,O'Keeffe at Linnerud,1,13:00,15
+84,12,5,597,Eagle Heights at Lot E,3,10:00,7

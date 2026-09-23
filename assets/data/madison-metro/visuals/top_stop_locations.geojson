@@ -1,0 +1,545 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.397191,
+          43.075529
+        ]
+      },
+      "properties": {
+        "stop_id": "1190",
+        "stop_name": "N Lake at Langdon",
+        "events": 1560,
+        "routes": 1,
+        "radius": 25.0,
+        "popup_html": "<strong>N Lake at Langdon</strong><br>Stop ID: 1190<br>Bunching events: 1560<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.406982,
+          43.070947
+        ]
+      },
+      "properties": {
+        "stop_id": "1223",
+        "stop_name": "W Dayton at N Orchard",
+        "events": 840,
+        "routes": 1,
+        "radius": 16.692307692307693,
+        "popup_html": "<strong>W Dayton at N Orchard</strong><br>Stop ID: 1223<br>Bunching events: 840<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.403698,
+          43.070893
+        ]
+      },
+      "properties": {
+        "stop_id": "1341",
+        "stop_name": "W Dayton at N Mills",
+        "events": 836,
+        "routes": 2,
+        "radius": 16.646153846153844,
+        "popup_html": "<strong>W Dayton at N Mills</strong><br>Stop ID: 1341<br>Bunching events: 836<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.40002,
+          43.070839
+        ]
+      },
+      "properties": {
+        "stop_id": "1774",
+        "stop_name": "W Dayton at N Park",
+        "events": 836,
+        "routes": 1,
+        "radius": 16.646153846153844,
+        "popup_html": "<strong>W Dayton at N Park</strong><br>Stop ID: 1774<br>Bunching events: 836<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.409136,
+          43.072028
+        ]
+      },
+      "properties": {
+        "stop_id": "918",
+        "stop_name": "N Randall at Engineering",
+        "events": 828,
+        "routes": 2,
+        "radius": 16.553846153846152,
+        "popup_html": "<strong>N Randall at Engineering</strong><br>Stop ID: 918<br>Bunching events: 828<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.397341,
+          43.071895
+        ]
+      },
+      "properties": {
+        "stop_id": "973",
+        "stop_name": "N Lake at W Johnson",
+        "events": 803,
+        "routes": 1,
+        "radius": 16.265384615384615,
+        "popup_html": "<strong>N Lake at W Johnson</strong><br>Stop ID: 973<br>Bunching events: 803<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.397291,
+          43.073076
+        ]
+      },
+      "properties": {
+        "stop_id": "1816",
+        "stop_name": "N Lake at University",
+        "events": 802,
+        "routes": 1,
+        "radius": 16.253846153846155,
+        "popup_html": "<strong>N Lake at University</strong><br>Stop ID: 1816<br>Bunching events: 802<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.406352,
+          43.073767
+        ]
+      },
+      "properties": {
+        "stop_id": "1651",
+        "stop_name": "N Charter at University",
+        "events": 786,
+        "routes": 4,
+        "radius": 16.06923076923077,
+        "popup_html": "<strong>N Charter at University</strong><br>Stop ID: 1651<br>Bunching events: 786<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.412882,
+          43.076319
+        ]
+      },
+      "properties": {
+        "stop_id": "634",
+        "stop_name": "Observatory at Babcock",
+        "events": 751,
+        "routes": 4,
+        "radius": 15.665384615384616,
+        "popup_html": "<strong>Observatory at Babcock</strong><br>Stop ID: 634<br>Bunching events: 751<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.416104,
+          43.076347
+        ]
+      },
+      "properties": {
+        "stop_id": "655",
+        "stop_name": "Observatory at Elm",
+        "events": 712,
+        "routes": 4,
+        "radius": 15.215384615384615,
+        "popup_html": "<strong>Observatory at Elm</strong><br>Stop ID: 655<br>Bunching events: 712<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.420425,
+          43.076382
+        ]
+      },
+      "properties": {
+        "stop_id": "692",
+        "stop_name": "Observatory at Colwood",
+        "events": 688,
+        "routes": 4,
+        "radius": 14.938461538461539,
+        "popup_html": "<strong>Observatory at Colwood</strong><br>Stop ID: 692<br>Bunching events: 688<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.420808,
+          43.076606
+        ]
+      },
+      "properties": {
+        "stop_id": "741",
+        "stop_name": "Observatory at Colwood",
+        "events": 677,
+        "routes": 4,
+        "radius": 14.811538461538461,
+        "popup_html": "<strong>Observatory at Colwood</strong><br>Stop ID: 741<br>Bunching events: 677<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.424388,
+          43.076436
+        ]
+      },
+      "properties": {
+        "stop_id": "595",
+        "stop_name": "Observatory at Walnut",
+        "events": 667,
+        "routes": 4,
+        "radius": 14.696153846153845,
+        "popup_html": "<strong>Observatory at Walnut</strong><br>Stop ID: 595<br>Bunching events: 667<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.416289,
+          43.076561
+        ]
+      },
+      "properties": {
+        "stop_id": "877",
+        "stop_name": "Observatory at Elm",
+        "events": 657,
+        "routes": 4,
+        "radius": 14.580769230769231,
+        "popup_html": "<strong>Observatory at Elm</strong><br>Stop ID: 877<br>Bunching events: 657<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.413067,
+          43.076534
+        ]
+      },
+      "properties": {
+        "stop_id": "882",
+        "stop_name": "Observatory at Babcock",
+        "events": 649,
+        "routes": 4,
+        "radius": 14.48846153846154,
+        "popup_html": "<strong>Observatory at Babcock</strong><br>Stop ID: 882<br>Bunching events: 649<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.428499,
+          43.076973
+        ]
+      },
+      "properties": {
+        "stop_id": "616",
+        "stop_name": "Observatory at Highland",
+        "events": 611,
+        "routes": 4,
+        "radius": 14.05,
+        "popup_html": "<strong>Observatory at Highland</strong><br>Stop ID: 616<br>Bunching events: 611<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.430227,
+          43.078388
+        ]
+      },
+      "properties": {
+        "stop_id": "709",
+        "stop_name": "Highland at Marsh",
+        "events": 569,
+        "routes": 5,
+        "radius": 13.565384615384616,
+        "popup_html": "<strong>Highland at Marsh</strong><br>Stop ID: 709<br>Bunching events: 569<br>Routes affected: 5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.406401,
+          43.074985
+        ]
+      },
+      "properties": {
+        "stop_id": "1058",
+        "stop_name": "Linden at N Charter",
+        "events": 501,
+        "routes": 4,
+        "radius": 12.78076923076923,
+        "popup_html": "<strong>Linden at N Charter</strong><br>Stop ID: 1058<br>Bunching events: 501<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.409857,
+          43.075048
+        ]
+      },
+      "properties": {
+        "stop_id": "1314",
+        "stop_name": "Linden at Henry",
+        "events": 498,
+        "routes": 4,
+        "radius": 12.746153846153845,
+        "popup_html": "<strong>Linden at Henry</strong><br>Stop ID: 1314<br>Bunching events: 498<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.412894,
+          43.07529
+        ]
+      },
+      "properties": {
+        "stop_id": "878",
+        "stop_name": "Babcock at Linden",
+        "events": 495,
+        "routes": 4,
+        "radius": 12.711538461538462,
+        "popup_html": "<strong>Babcock at Linden</strong><br>Stop ID: 878<br>Bunching events: 495<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.429203,
+          43.079006
+        ]
+      },
+      "properties": {
+        "stop_id": "612",
+        "stop_name": "Marsh at Lot 76",
+        "events": 459,
+        "routes": 1,
+        "radius": 12.296153846153846,
+        "popup_html": "<strong>Marsh at Lot 76</strong><br>Stop ID: 612<br>Bunching events: 459<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.409997,
+          43.075249
+        ]
+      },
+      "properties": {
+        "stop_id": "555",
+        "stop_name": "Linden at Henry",
+        "events": 393,
+        "routes": 4,
+        "radius": 11.534615384615385,
+        "popup_html": "<strong>Linden at Henry</strong><br>Stop ID: 555<br>Bunching events: 393<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.412549,
+          43.075254
+        ]
+      },
+      "properties": {
+        "stop_id": "1262",
+        "stop_name": "Linden at Babcock",
+        "events": 391,
+        "routes": 4,
+        "radius": 11.51153846153846,
+        "popup_html": "<strong>Linden at Babcock</strong><br>Stop ID: 1262<br>Bunching events: 391<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.407339,
+          43.0752
+        ]
+      },
+      "properties": {
+        "stop_id": "1185",
+        "stop_name": "Linden at N Charter",
+        "events": 379,
+        "routes": 4,
+        "radius": 11.373076923076923,
+        "popup_html": "<strong>Linden at N Charter</strong><br>Stop ID: 1185<br>Bunching events: 379<br>Routes affected: 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.40366,
+          43.075996
+        ]
+      },
+      "properties": {
+        "stop_id": "1339",
+        "stop_name": "Observatory at Bascom",
+        "events": 374,
+        "routes": 1,
+        "radius": 11.315384615384616,
+        "popup_html": "<strong>Observatory at Bascom</strong><br>Stop ID: 1339<br>Bunching events: 374<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.40566,
+          43.076131
+        ]
+      },
+      "properties": {
+        "stop_id": "1246",
+        "stop_name": "Observatory at N Charter",
+        "events": 373,
+        "routes": 1,
+        "radius": 11.303846153846154,
+        "popup_html": "<strong>Observatory at N Charter</strong><br>Stop ID: 1246<br>Bunching events: 373<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.426659,
+          43.078988
+        ]
+      },
+      "properties": {
+        "stop_id": "679",
+        "stop_name": "Marsh at Lot 60",
+        "events": 371,
+        "routes": 2,
+        "radius": 11.28076923076923,
+        "popup_html": "<strong>Marsh at Lot 60</strong><br>Stop ID: 679<br>Bunching events: 371<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.424906,
+          43.077045
+        ]
+      },
+      "properties": {
+        "stop_id": "607",
+        "stop_name": "Walnut at Observatory",
+        "events": 370,
+        "routes": 2,
+        "radius": 11.26923076923077,
+        "popup_html": "<strong>Walnut at Observatory</strong><br>Stop ID: 607<br>Bunching events: 370<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.428844,
+          43.077349
+        ]
+      },
+      "properties": {
+        "stop_id": "628",
+        "stop_name": "Highland at Observatory",
+        "events": 293,
+        "routes": 5,
+        "radius": 10.38076923076923,
+        "popup_html": "<strong>Highland at Observatory</strong><br>Stop ID: 628<br>Bunching events: 293<br>Routes affected: 5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.42577,
+          43.076759
+        ]
+      },
+      "properties": {
+        "stop_id": "615",
+        "stop_name": "Observatory at Walnut",
+        "events": 287,
+        "routes": 3,
+        "radius": 10.311538461538461,
+        "popup_html": "<strong>Observatory at Walnut</strong><br>Stop ID: 615<br>Bunching events: 287<br>Routes affected: 3"
+      }
+    }
+  ]
+}

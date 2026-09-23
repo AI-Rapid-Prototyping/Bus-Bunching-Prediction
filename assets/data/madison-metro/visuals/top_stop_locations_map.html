@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top Bus Bunching Locations</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .title {
+      position: absolute;
+      top: 16px;
+      left: 56px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+    }
+    .title h1 {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+    .title div {
+      font-size: 12px;
+    }
+    .legend {
+      position: absolute;
+      right: 16px;
+      bottom: 24px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c75146;
+      border: 2px solid #ffffff;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="title">
+    <h1>Top Bus Bunching Locations</h1>
+    <div>Bubble size reflects event count. Click a stop for details.</div>
+  </div>
+  <div class="legend">
+    <div><span class="dot"></span>More events = larger marker</div>
+    <div>Top 30 stops/intersections</div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const markers = [{"lat": 43.075529, "lon": -89.397191, "stop_id": "1190", "events": 1560, "radius": 25.0, "popup_html": "<strong>N Lake at Langdon</strong><br>Stop ID: 1190<br>Bunching events: 1560<br>Routes affected: 1"}, {"lat": 43.070947, "lon": -89.406982, "stop_id": "1223", "events": 840, "radius": 16.692307692307693, "popup_html": "<strong>W Dayton at N Orchard</strong><br>Stop ID: 1223<br>Bunching events: 840<br>Routes affected: 1"}, {"lat": 43.070893, "lon": -89.403698, "stop_id": "1341", "events": 836, "radius": 16.646153846153844, "popup_html": "<strong>W Dayton at N Mills</strong><br>Stop ID: 1341<br>Bunching events: 836<br>Routes affected: 2"}, {"lat": 43.070839, "lon": -89.40002, "stop_id": "1774", "events": 836, "radius": 16.646153846153844, "popup_html": "<strong>W Dayton at N Park</strong><br>Stop ID: 1774<br>Bunching events: 836<br>Routes affected: 1"}, {"lat": 43.072028, "lon": -89.409136, "stop_id": "918", "events": 828, "radius": 16.553846153846152, "popup_html": "<strong>N Randall at Engineering</strong><br>Stop ID: 918<br>Bunching events: 828<br>Routes affected: 2"}, {"lat": 43.071895, "lon": -89.397341, "stop_id": "973", "events": 803, "radius": 16.265384615384615, "popup_html": "<strong>N Lake at W Johnson</strong><br>Stop ID: 973<br>Bunching events: 803<br>Routes affected: 1"}, {"lat": 43.073076, "lon": -89.397291, "stop_id": "1816", "events": 802, "radius": 16.253846153846155, "popup_html": "<strong>N Lake at University</strong><br>Stop ID: 1816<br>Bunching events: 802<br>Routes affected: 1"}, {"lat": 43.073767, "lon": -89.406352, "stop_id": "1651", "events": 786, "radius": 16.06923076923077, "popup_html": "<strong>N Charter at University</strong><br>Stop ID: 1651<br>Bunching events: 786<br>Routes affected: 4"}, {"lat": 43.076319, "lon": -89.412882, "stop_id": "634", "events": 751, "radius": 15.665384615384616, "popup_html": "<strong>Observatory at Babcock</strong><br>Stop ID: 634<br>Bunching events: 751<br>Routes affected: 4"}, {"lat": 43.076347, "lon": -89.416104, "stop_id": "655", "events": 712, "radius": 15.215384615384615, "popup_html": "<strong>Observatory at Elm</strong><br>Stop ID: 655<br>Bunching events: 712<br>Routes affected: 4"}, {"lat": 43.076382, "lon": -89.420425, "stop_id": "692", "events": 688, "radius": 14.938461538461539, "popup_html": "<strong>Observatory at Colwood</strong><br>Stop ID: 692<br>Bunching events: 688<br>Routes affected: 4"}, {"lat": 43.076606, "lon": -89.420808, "stop_id": "741", "events": 677, "radius": 14.811538461538461, "popup_html": "<strong>Observatory at Colwood</strong><br>Stop ID: 741<br>Bunching events: 677<br>Routes affected: 4"}, {"lat": 43.076436, "lon": -89.424388, "stop_id": "595", "events": 667, "radius": 14.696153846153845, "popup_html": "<strong>Observatory at Walnut</strong><br>Stop ID: 595<br>Bunching events: 667<br>Routes affected: 4"}, {"lat": 43.076561, "lon": -89.416289, "stop_id": "877", "events": 657, "radius": 14.580769230769231, "popup_html": "<strong>Observatory at Elm</strong><br>Stop ID: 877<br>Bunching events: 657<br>Routes affected: 4"}, {"lat": 43.076534, "lon": -89.413067, "stop_id": "882", "events": 649, "radius": 14.48846153846154, "popup_html": "<strong>Observatory at Babcock</strong><br>Stop ID: 882<br>Bunching events: 649<br>Routes affected: 4"}, {"lat": 43.076973, "lon": -89.428499, "stop_id": "616", "events": 611, "radius": 14.05, "popup_html": "<strong>Observatory at Highland</strong><br>Stop ID: 616<br>Bunching events: 611<br>Routes affected: 4"}, {"lat": 43.078388, "lon": -89.430227, "stop_id": "709", "events": 569, "radius": 13.565384615384616, "popup_html": "<strong>Highland at Marsh</strong><br>Stop ID: 709<br>Bunching events: 569<br>Routes affected: 5"}, {"lat": 43.074985, "lon": -89.406401, "stop_id": "1058", "events": 501, "radius": 12.78076923076923, "popup_html": "<strong>Linden at N Charter</strong><br>Stop ID: 1058<br>Bunching events: 501<br>Routes affected: 4"}, {"lat": 43.075048, "lon": -89.409857, "stop_id": "1314", "events": 498, "radius": 12.746153846153845, "popup_html": "<strong>Linden at Henry</strong><br>Stop ID: 1314<br>Bunching events: 498<br>Routes affected: 4"}, {"lat": 43.07529, "lon": -89.412894, "stop_id": "878", "events": 495, "radius": 12.711538461538462, "popup_html": "<strong>Babcock at Linden</strong><br>Stop ID: 878<br>Bunching events: 495<br>Routes affected: 4"}, {"lat": 43.079006, "lon": -89.429203, "stop_id": "612", "events": 459, "radius": 12.296153846153846, "popup_html": "<strong>Marsh at Lot 76</strong><br>Stop ID: 612<br>Bunching events: 459<br>Routes affected: 1"}, {"lat": 43.075249, "lon": -89.409997, "stop_id": "555", "events": 393, "radius": 11.534615384615385, "popup_html": "<strong>Linden at Henry</strong><br>Stop ID: 555<br>Bunching events: 393<br>Routes affected: 4"}, {"lat": 43.075254, "lon": -89.412549, "stop_id": "1262", "events": 391, "radius": 11.51153846153846, "popup_html": "<strong>Linden at Babcock</strong><br>Stop ID: 1262<br>Bunching events: 391<br>Routes affected: 4"}, {"lat": 43.0752, "lon": -89.407339, "stop_id": "1185", "events": 379, "radius": 11.373076923076923, "popup_html": "<strong>Linden at N Charter</strong><br>Stop ID: 1185<br>Bunching events: 379<br>Routes affected: 4"}, {"lat": 43.075996, "lon": -89.40366, "stop_id": "1339", "events": 374, "radius": 11.315384615384616, "popup_html": "<strong>Observatory at Bascom</strong><br>Stop ID: 1339<br>Bunching events: 374<br>Routes affected: 1"}, {"lat": 43.076131, "lon": -89.40566, "stop_id": "1246", "events": 373, "radius": 11.303846153846154, "popup_html": "<strong>Observatory at N Charter</strong><br>Stop ID: 1246<br>Bunching events: 373<br>Routes affected: 1"}, {"lat": 43.078988, "lon": -89.426659, "stop_id": "679", "events": 371, "radius": 11.28076923076923, "popup_html": "<strong>Marsh at Lot 60</strong><br>Stop ID: 679<br>Bunching events: 371<br>Routes affected: 2"}, {"lat": 43.077045, "lon": -89.424906, "stop_id": "607", "events": 370, "radius": 11.26923076923077, "popup_html": "<strong>Walnut at Observatory</strong><br>Stop ID: 607<br>Bunching events: 370<br>Routes affected: 2"}, {"lat": 43.077349, "lon": -89.428844, "stop_id": "628", "events": 293, "radius": 10.38076923076923, "popup_html": "<strong>Highland at Observatory</strong><br>Stop ID: 628<br>Bunching events: 293<br>Routes affected: 5"}, {"lat": 43.076759, "lon": -89.42577, "stop_id": "615", "events": 287, "radius": 10.311538461538461, "popup_html": "<strong>Observatory at Walnut</strong><br>Stop ID: 615<br>Bunching events: 287<br>Routes affected: 3"}];
+    const bounds = [[43.070839, -89.430227], [43.079006, -89.397191]];
+    const map = L.map('map').setView([43.075394, -89.413481], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    markers.forEach((marker) => {
+      L.circleMarker([marker.lat, marker.lon], {
+        radius: marker.radius,
+        color: '#ffffff',
+        weight: 2,
+        fillColor: '#c75146',
+        fillOpacity: 0.78
+      })
+        .bindPopup(marker.popup_html)
+        .bindTooltip(`${marker.stop_id}: ${marker.events} events`, {sticky: true})
+        .addTo(map);
+    });
+
+    if (bounds[0][0] !== bounds[1][0] || bounds[0][1] !== bounds[1][1]) {
+      map.fitBounds(bounds, {padding: [30, 30]});
+    }
+  </script>
+</body>
+</html>
