@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="IP3 bus-bunching prototype.">
+  <title>IP3 Bus Bunching Prototype</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="locked">
+  <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
+    <form class="access-panel" id="accessForm">
+      <h1 id="access-title">Internal prototype</h1>
+      <p>Enter the project passphrase to view the dashboard.</p>
+      <div class="access-row">
+        <input id="accessPassword" type="password" autocomplete="current-password" aria-label="Passphrase">
+        <button type="submit">Open</button>
+      </div>
+      <div class="access-error" id="accessError" aria-live="polite"></div>
+    </form>
+  </div>
+  <div class="site-shell">
+    <header class="top-header">
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="agency-mark">
+        <img src="assets/DOT-logo-2.png" alt="U.S. Department of Transportation logo">
+      </div>
+      <div>
+        <div class="brand-title">U.S. Department of Transportation</div>
+        <div class="brand-subtitle">Volpe Center IP3 Transit Analytics</div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+    
+<section class="hero">
+  <div class="section-inner">
+    <div class="hero-content">
+      <p class="eyebrow">IP3</p>
+      <h1>Bus Bunching Prototype</h1>
+      <p>Select a partner agency.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="section-inner">
+    <section class="section" aria-labelledby="agency-heading">
+      <div class="section-heading">
+        <h2 id="agency-heading">Partner Agencies</h2>
+      </div>
+      <div class="agency-grid">
+        
+<a href="agencies/madison-metro.html" class="agency-card">
+  <div class="card-top">
+    <span class="card-kicker">Madison, Wisconsin</span>
+    <span class="status ">Open</span>
+  </div>
+  <h3>Madison Metro Transit</h3>
+  <span class="card-action">Open agency page <span class="arrow" aria-hidden="true">&rarr;</span></span>
+</a>
+<a href="agencies/appalcart.html" class="agency-card">
+  <div class="card-top">
+    <span class="card-kicker">Boone, North Carolina</span>
+    <span class="status ">Open</span>
+  </div>
+  <h3>AppalCart</h3>
+  <span class="card-action">Open agency page <span class="arrow" aria-hidden="true">&rarr;</span></span>
+</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports.</footer>
+  </div>
+  <script>
+    (() => {
+      const allowed = "ip3-oct1";
+      const key = "ip3_bus_bunching_access";
+      const unlock = () => document.body.classList.remove("locked");
+      if (window.localStorage.getItem(key) === "ok") unlock();
+      const form = document.getElementById("accessForm");
+      const input = document.getElementById("accessPassword");
+      const error = document.getElementById("accessError");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if ((input.value || "").trim().toLowerCase() === allowed) {
+          window.localStorage.setItem(key, "ok");
+          unlock();
+        } else {
+          error.textContent = "Incorrect passphrase.";
+          input.select();
+        }
+      });
+      input.focus();
+    })();
+  </script>
+</body>
+</html>
