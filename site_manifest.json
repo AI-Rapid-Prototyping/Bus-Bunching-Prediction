@@ -1,0 +1,32 @@
+{
+  "generated_pages": [
+    "index.html",
+    "agencies/madison-metro.html",
+    "agencies/appalcart.html"
+  ],
+  "source_files": [
+    "google_transit/agency.txt",
+    "google_transit/routes.txt",
+    "google_transit/trips.txt",
+    "google_transit/stop_times.txt",
+    "bus_bunching_events.csv",
+    "agency_exports/appalcart/bus_bunching_report.txt",
+    "agency_exports/madison-metro/bus_bunching_report.txt",
+    "agency_exports/appalcart/weather_history.csv",
+    "agency_exports/appalcart/weather_forecast.csv",
+    "agency_exports/madison-metro/weather_history.csv",
+    "agency_exports/madison-metro/weather_forecast.csv",
+    "agency_exports/appalcart/gtfs/agency.txt",
+    "agency_exports/appalcart/gtfs/routes.txt",
+    "agency_exports/appalcart/gtfs/stops.txt",
+    "agency_exports/appalcart/gtfs/trips.txt",
+    "agency_exports/appalcart/gtfs/stop_times.txt",
+    "agency_exports/madison-metro/gtfs/agency.txt",
+    "agency_exports/madison-metro/gtfs/routes.txt",
+    "agency_exports/madison-metro/gtfs/stops.txt",
+    "agency_exports/madison-metro/gtfs/trips.txt",
+    "agency_exports/madison-metro/gtfs/stop_times.txt",
+    "parameter_model_final/model_ready_dataset.csv",
+    "bus_bunching_model_final/bus_bunching_model_scored.csv"
+  ]
+}

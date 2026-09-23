@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Background example from early exploration.">
+  <title>AppalCart | IP3 Bus Bunching</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="locked">
+  <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
+    <form class="access-panel" id="accessForm">
+      <h1 id="access-title">Internal prototype</h1>
+      <p>Enter the project passphrase to view the dashboard.</p>
+      <div class="access-row">
+        <input id="accessPassword" type="password" autocomplete="current-password" aria-label="Passphrase">
+        <button type="submit">Open</button>
+      </div>
+      <div class="access-error" id="accessError" aria-live="polite"></div>
+    </form>
+  </div>
+  <div class="site-shell">
+    <header class="top-header">
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="agency-mark">
+        <img src="../assets/DOT-logo-2.png" alt="U.S. Department of Transportation logo">
+      </div>
+      <div>
+        <div class="brand-title">U.S. Department of Transportation</div>
+        <div class="brand-subtitle">Volpe Center IP3 Transit Analytics</div>
+      </div>
+    </div>
+    <a class="nav-link" href="../index.html">All agencies</a>
+  </div>
+</header>
+    
+<section class="hero">
+  <div class="section-inner">
+    <div class="hero-content">
+      <p class="eyebrow">IP3 Partner Agency</p>
+      <h1>AppalCart</h1>
+      <p>Boone, North Carolina. Background example from early exploration.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="section-inner">
+    <section class="section metrics-grid" aria-label="Agency metrics">
+      <div class="metric">
+  <span>Status</span>
+  <strong>Observed patterns</strong>
+  <small>Exploratory</small>
+</div>
+      <div class="metric">
+  <span>Service routes</span>
+  <strong>24</strong>
+  <small>GTFS routes in the local feed</small>
+</div>
+      <div class="metric">
+  <span>Detected observations</span>
+  <strong>22</strong>
+  <small>2026-09-15 to 2026-09-16</small>
+</div>
+      <div class="metric">
+  <span>Stops affected</span>
+  <strong>6</strong>
+  <small>2 routes affected</small>
+</div>
+    </section>
+
+    <section class="section two-col">
+      <div>
+        <section class="panel">
+  <h2>Exploratory Summary</h2>
+  <p>AppalCart helped scope the tool, but Madison is the current focus.</p>
+  <p>Top route: R. Busiest hour: 15:00.</p>
+</section>
+      </div>
+      <aside class="panel">
+        <h2>Service Profile</h2>
+        <p>AppalCART: 24 routes (24 bus), 1,491 trips, 136 stops, 30,155 scheduled stop arrivals. https://appalcart.com</p>
+      </aside>
+    </section>
+
+    <section class="section two-col">
+  <section class="panel">
+    <h2>Weather Context</h2>
+    <div class="snapshot-grid">
+      <div class="snapshot-item">
+  <span>Latest observed</span>
+  <strong>Sep 22, 2026 at 11:00 PM ET</strong>
+  <small>Rain</small>
+</div>
+      <div class="snapshot-item">
+  <span>Temperature</span>
+  <strong>61.2 F</strong>
+  <small>Observed</small>
+</div>
+      <div class="snapshot-item">
+  <span>Wind</span>
+  <strong>8.5 mph</strong>
+  <small>Observed</small>
+</div>
+    </div>
+    <p class="map-note">Weather is context for interpretation, not a causal finding.</p>
+  </section>
+  <section class="table-panel">
+  <h3>Forecast</h3>
+  <table>
+    <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
+    <tbody><tr><td>Sep 22, 2026 at 11:00 PM ET</td><td>61.2 F</td><td>8.5 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 12:00 AM ET</td><td>60.3 F</td><td>8.6 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 1:00 AM ET</td><td>58.4 F</td><td>9.8 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 2:00 AM ET</td><td>57.0 F</td><td>10.0 mph</td><td>Light Rain</td></tr><tr><td>Sep 23, 2026 at 3:00 AM ET</td><td>56.3 F</td><td>9.4 mph</td><td>Drizzle</td></tr><tr><td>Sep 23, 2026 at 4:00 AM ET</td><td>55.9 F</td><td>8.0 mph</td><td>Drizzle</td></tr></tbody>
+  </table>
+</section>
+</section>
+
+    <section class="section two-col">
+      <section class="panel">
+  <h2>Prediction Element</h2>
+  <p>Next prediction layer: rank recurring route-hour risk once a cleaned route-hour summary is available for this agency.</p>
+  <p class="map-note">This should be framed as prioritization, not certainty about a specific bus.</p>
+</section>
+      <section class="panel"><h2>Current Role</h2><p>Background example for shaping the Madison workflow.</p></section>
+    </section>
+
+    
+
+    
+    <section class="section two-col">
+      <section class="bar-chart">
+  <h3>Stop-level observations by route</h3>
+  
+  <div class="bar-row">
+    <div class="bar-label">R</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">12</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">PK</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 83.3%"></div></div>
+    <div class="bar-value">10</div>
+  </div>
+</section>
+      <section class="bar-chart">
+  <h3>Stop-level observations by hour</h3>
+  
+  <div class="bar-row">
+    <div class="bar-label">00:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">01:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">02:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">03:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">04:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">05:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">06:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">07:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">08:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">09:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">10:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">11:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 11.1%"></div></div>
+    <div class="bar-value">1</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">12:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">13:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">14:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 11.1%"></div></div>
+    <div class="bar-value">1</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">15:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">9</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">16:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 33.3%"></div></div>
+    <div class="bar-value">3</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">17:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 55.6%"></div></div>
+    <div class="bar-value">5</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">18:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">19:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">20:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">21:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">22:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">23:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">0</div>
+  </div>
+</section>
+    </section>
+
+    <section class="section two-col">
+      <section class="map-panel">
+  <h3>Top location map</h3>
+  <div class="callout">Agency-specific stop locations are not available in the current local bus-bunching files.</div>
+</section>
+      <section class="table-panel">
+  <h3>Top stops and corridors</h3>
+  <table>
+    <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Detected observations</th></tr></thead>
+    <tbody><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">2</td></tr><tr><td>ASU College of Health Sciences</td><td>9</td><td class="num">1</td><td class="num">2</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">1</td><td class="num">2</td></tr><tr><td>Boone Heights 2</td><td>107</td><td class="num">1</td><td class="num">1</td></tr><tr><td>Watauga Opportunities</td><td>105</td><td class="num">1</td><td class="num">1</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">1</td><td class="num">1</td></tr></tbody>
+  </table>
+</section>
+    </section>
+
+    <section class="section">
+      <section class="table-panel">
+  <h3>Routes with the most observations</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Detected observations</th></tr></thead>
+    <tbody><tr><td>R</td><td class="num">12</td></tr><tr><td>PK</td><td class="num">10</td></tr></tbody>
+  </table>
+</section>
+    </section>
+    
+  </div>
+</main>
+
+    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports.</footer>
+  </div>
+  <script>
+    (() => {
+      const allowed = "ip3-oct1";
+      const key = "ip3_bus_bunching_access";
+      const unlock = () => document.body.classList.remove("locked");
+      if (window.localStorage.getItem(key) === "ok") unlock();
+      const form = document.getElementById("accessForm");
+      const input = document.getElementById("accessPassword");
+      const error = document.getElementById("accessError");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if ((input.value || "").trim().toLowerCase() === allowed) {
+          window.localStorage.setItem(key, "ok");
+          unlock();
+        } else {
+          error.textContent = "Incorrect passphrase.";
+          input.select();
+        }
+      });
+      input.focus();
+    })();
+  </script>
+</body>
+</html>
