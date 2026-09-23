@@ -353,6 +353,24 @@ main { padding: 1.5rem 0 3rem; }
   padding: 1rem;
 }
 
+.visual-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.visual-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.visual-link:hover { text-decoration: underline; }
+
 .bar-row {
   display: grid;
   grid-template-columns: minmax(84px, 0.34fr) minmax(0, 1fr) minmax(74px, auto);
