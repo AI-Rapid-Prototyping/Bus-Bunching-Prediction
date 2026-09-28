@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top Bus Bunching Locations</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .title {
+      position: absolute;
+      top: 16px;
+      left: 56px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+    }
+    .title h1 {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+    .title div {
+      font-size: 12px;
+    }
+    .legend {
+      position: absolute;
+      right: 16px;
+      bottom: 24px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: #222;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c75146;
+      border: 2px solid #ffffff;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="title">
+    <h1>Top Bus Bunching Locations</h1>
+    <div>Bubble size reflects event count. Click a stop for details.</div>
+  </div>
+  <div class="legend">
+    <div><span class="dot"></span>More events = larger marker</div>
+    <div>Top 30 stops/intersections</div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const markers = [{"lat": 36.206146240234375, "lon": -81.67009735107422, "stop_id": "14", "events": 42, "radius": 25.0, "popup_html": "<strong>ASU Mountain Laurel Hall</strong><br>Stop ID: 14<br>Bunching events: 42<br>Routes affected: 3"}, {"lat": 36.21305465698242, "lon": -81.68165588378906, "stop_id": "26", "events": 41, "radius": 24.57142857142857, "popup_html": "<strong>ASU Garwood Hall</strong><br>Stop ID: 26<br>Bunching events: 41<br>Routes affected: 2"}, {"lat": 36.2163200378418, "lon": -81.67489624023438, "stop_id": "72", "events": 35, "radius": 22.0, "popup_html": "<strong>Dan&#x27;l Boone Inn</strong><br>Stop ID: 72<br>Bunching events: 35<br>Routes affected: 1"}, {"lat": 36.21227264404297, "lon": -81.67963409423828, "stop_id": "36", "events": 31, "radius": 20.285714285714285, "popup_html": "<strong>ASU Skywalk</strong><br>Stop ID: 36<br>Bunching events: 31<br>Routes affected: 2"}, {"lat": 36.19839477539063, "lon": -81.65241241455078, "stop_id": "8", "events": 29, "radius": 19.42857142857143, "popup_html": "<strong>Watauga Medical Center</strong><br>Stop ID: 8<br>Bunching events: 29<br>Routes affected: 2"}, {"lat": 36.20625305175781, "lon": -81.66854858398438, "stop_id": "111", "events": 27, "radius": 18.571428571428573, "popup_html": "<strong>NC 105 Ext / Azalea Dr</strong><br>Stop ID: 111<br>Bunching events: 27<br>Routes affected: 1"}, {"lat": 36.20204925537109, "lon": -81.67160034179688, "stop_id": "103", "events": 19, "radius": 15.142857142857142, "popup_html": "<strong>Vet Clinic on Wilson Dr</strong><br>Stop ID: 103<br>Bunching events: 19<br>Routes affected: 1"}, {"lat": 36.21635818481445, "lon": -81.67219543457031, "stop_id": "55", "events": 18, "radius": 14.714285714285714, "popup_html": "<strong>Kingswood</strong><br>Stop ID: 55<br>Bunching events: 18<br>Routes affected: 1"}, {"lat": 36.202579498291016, "lon": -81.65420532226562, "stop_id": "10", "events": 15, "radius": 13.428571428571429, "popup_html": "<strong>Parks &amp; Rec</strong><br>Stop ID: 10<br>Bunching events: 15<br>Routes affected: 2"}, {"lat": 36.20937728881836, "lon": -81.70649719238281, "stop_id": "84", "events": 13, "radius": 12.571428571428571, "popup_html": "<strong>Hodges Gap Rd</strong><br>Stop ID: 84<br>Bunching events: 13<br>Routes affected: 1"}, {"lat": 36.20351409912109, "lon": -81.66619110107422, "stop_id": "30", "events": 11, "radius": 11.714285714285715, "popup_html": "<strong>Boone Mall</strong><br>Stop ID: 30<br>Bunching events: 11<br>Routes affected: 2"}, {"lat": 36.20801162719727, "lon": -81.67230224609375, "stop_id": "35", "events": 10, "radius": 11.285714285714285, "popup_html": "<strong>Kangaroo Express</strong><br>Stop ID: 35<br>Bunching events: 10<br>Routes affected: 2"}, {"lat": 36.21083831787109, "lon": -81.66700744628906, "stop_id": "109", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>Beverly Heights Ave</strong><br>Stop ID: 109<br>Bunching events: 8<br>Routes affected: 1"}, {"lat": 36.19805145263672, "lon": -81.66397857666016, "stop_id": "92", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>Greenway Rd Parking Lot</strong><br>Stop ID: 92<br>Bunching events: 8<br>Routes affected: 2"}, {"lat": 36.21662902832031, "lon": -81.67589569091797, "stop_id": "56", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>Earth Fare</strong><br>Stop ID: 56<br>Bunching events: 8<br>Routes affected: 1"}, {"lat": 36.19815826416016, "lon": -81.65874481201172, "stop_id": "108", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>Walmart 2</strong><br>Stop ID: 108<br>Bunching events: 8<br>Routes affected: 1"}, {"lat": 36.20124053955078, "lon": -81.65235900878906, "stop_id": "9", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>ASU College of Health Sciences</strong><br>Stop ID: 9<br>Bunching events: 8<br>Routes affected: 2"}, {"lat": 36.20238494873047, "lon": -81.65646362304688, "stop_id": "106", "events": 8, "radius": 10.428571428571429, "popup_html": "<strong>Boone Heights 1</strong><br>Stop ID: 106<br>Bunching events: 8<br>Routes affected: 1"}, {"lat": 36.20647811889648, "lon": -81.66874694824219, "stop_id": "102", "events": 7, "radius": 10.0, "popup_html": "<strong>ASU Mountain Laurel Hall / NC 105 Ext</strong><br>Stop ID: 102<br>Bunching events: 7<br>Routes affected: 1"}, {"lat": 36.20274353027344, "lon": -81.67192840576172, "stop_id": "95", "events": 7, "radius": 10.0, "popup_html": "<strong>Wilson Dr</strong><br>Stop ID: 95<br>Bunching events: 7<br>Routes affected: 2"}, {"lat": 36.20286178588867, "lon": -81.66133117675781, "stop_id": "6", "events": 6, "radius": 9.571428571428571, "popup_html": "<strong>The Finmore</strong><br>Stop ID: 6<br>Bunching events: 6<br>Routes affected: 2"}, {"lat": 36.20663833618164, "lon": -81.67127227783203, "stop_id": "29", "events": 6, "radius": 9.571428571428571, "popup_html": "<strong>McDonalds</strong><br>Stop ID: 29<br>Bunching events: 6<br>Routes affected: 2"}, {"lat": 36.19483184814453, "lon": -81.65555572509766, "stop_id": "90", "events": 4, "radius": 8.714285714285714, "popup_html": "<strong>Meadowview Dr / Madison Ave</strong><br>Stop ID: 90<br>Bunching events: 4<br>Routes affected: 1"}, {"lat": 36.21404266357422, "lon": -81.66873168945312, "stop_id": "110", "events": 4, "radius": 8.714285714285714, "popup_html": "<strong>Quail Drive</strong><br>Stop ID: 110<br>Bunching events: 4<br>Routes affected: 1"}, {"lat": 36.2109375, "lon": -81.67520141601562, "stop_id": "27", "events": 4, "radius": 8.714285714285714, "popup_html": "<strong>ASU Convocation Center</strong><br>Stop ID: 27<br>Bunching events: 4<br>Routes affected: 2"}, {"lat": 36.2090950012207, "lon": -81.67361450195312, "stop_id": "28", "events": 4, "radius": 8.714285714285714, "popup_html": "<strong>Highland Avenue</strong><br>Stop ID: 28<br>Bunching events: 4<br>Routes affected: 2"}, {"lat": 36.205265045166016, "lon": -81.66351318359375, "stop_id": "82", "events": 4, "radius": 8.714285714285714, "popup_html": "<strong>ASU University Hall</strong><br>Stop ID: 82<br>Bunching events: 4<br>Routes affected: 1"}, {"lat": 36.21616363525391, "lon": -81.67047119140625, "stop_id": "73", "events": 3, "radius": 8.285714285714285, "popup_html": "<strong>King St / Hillside Dr</strong><br>Stop ID: 73<br>Bunching events: 3<br>Routes affected: 1"}, {"lat": 36.20296859741211, "lon": -81.6761474609375, "stop_id": "58", "events": 3, "radius": 8.285714285714285, "popup_html": "<strong>Casa Rustica</strong><br>Stop ID: 58<br>Bunching events: 3<br>Routes affected: 1"}, {"lat": 36.20099258422852, "lon": -81.66154479980469, "stop_id": "7", "events": 3, "radius": 8.285714285714285, "popup_html": "<strong>Postal St / Blowing Rock Rd</strong><br>Stop ID: 7<br>Bunching events: 3<br>Routes affected: 1"}];
+    const bounds = [[36.19483184814453, -81.70649719238281], [36.21662902832031, -81.65235900878906]];
+    const map = L.map('map').setView([36.206488, -81.668758], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    markers.forEach((marker) => {
+      L.circleMarker([marker.lat, marker.lon], {
+        radius: marker.radius,
+        color: '#ffffff',
+        weight: 2,
+        fillColor: '#c75146',
+        fillOpacity: 0.78
+      })
+        .bindPopup(marker.popup_html)
+        .bindTooltip(`${marker.stop_id}: ${marker.events} events`, {sticky: true})
+        .addTo(map);
+    });
+
+    if (bounds[0][0] !== bounds[1][0] || bounds[0][1] !== bounds[1][1]) {
+      map.fitBounds(bounds, {padding: [30, 30]});
+    }
+  </script>
+</body>
+</html>

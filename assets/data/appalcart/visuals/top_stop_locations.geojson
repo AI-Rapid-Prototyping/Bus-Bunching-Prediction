@@ -1,0 +1,545 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67009735107422,
+          36.206146240234375
+        ]
+      },
+      "properties": {
+        "stop_id": "14",
+        "stop_name": "ASU Mountain Laurel Hall",
+        "events": 42,
+        "routes": 3,
+        "radius": 25.0,
+        "popup_html": "<strong>ASU Mountain Laurel Hall</strong><br>Stop ID: 14<br>Bunching events: 42<br>Routes affected: 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.68165588378906,
+          36.21305465698242
+        ]
+      },
+      "properties": {
+        "stop_id": "26",
+        "stop_name": "ASU Garwood Hall",
+        "events": 41,
+        "routes": 2,
+        "radius": 24.57142857142857,
+        "popup_html": "<strong>ASU Garwood Hall</strong><br>Stop ID: 26<br>Bunching events: 41<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67489624023438,
+          36.2163200378418
+        ]
+      },
+      "properties": {
+        "stop_id": "72",
+        "stop_name": "Dan'l Boone Inn",
+        "events": 35,
+        "routes": 1,
+        "radius": 22.0,
+        "popup_html": "<strong>Dan&#x27;l Boone Inn</strong><br>Stop ID: 72<br>Bunching events: 35<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67963409423828,
+          36.21227264404297
+        ]
+      },
+      "properties": {
+        "stop_id": "36",
+        "stop_name": "ASU Skywalk",
+        "events": 31,
+        "routes": 2,
+        "radius": 20.285714285714285,
+        "popup_html": "<strong>ASU Skywalk</strong><br>Stop ID: 36<br>Bunching events: 31<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65241241455078,
+          36.19839477539063
+        ]
+      },
+      "properties": {
+        "stop_id": "8",
+        "stop_name": "Watauga Medical Center",
+        "events": 29,
+        "routes": 2,
+        "radius": 19.42857142857143,
+        "popup_html": "<strong>Watauga Medical Center</strong><br>Stop ID: 8<br>Bunching events: 29<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66854858398438,
+          36.20625305175781
+        ]
+      },
+      "properties": {
+        "stop_id": "111",
+        "stop_name": "NC 105 Ext / Azalea Dr",
+        "events": 27,
+        "routes": 1,
+        "radius": 18.571428571428573,
+        "popup_html": "<strong>NC 105 Ext / Azalea Dr</strong><br>Stop ID: 111<br>Bunching events: 27<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67160034179688,
+          36.20204925537109
+        ]
+      },
+      "properties": {
+        "stop_id": "103",
+        "stop_name": "Vet Clinic on Wilson Dr",
+        "events": 19,
+        "routes": 1,
+        "radius": 15.142857142857142,
+        "popup_html": "<strong>Vet Clinic on Wilson Dr</strong><br>Stop ID: 103<br>Bunching events: 19<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67219543457031,
+          36.21635818481445
+        ]
+      },
+      "properties": {
+        "stop_id": "55",
+        "stop_name": "Kingswood",
+        "events": 18,
+        "routes": 1,
+        "radius": 14.714285714285714,
+        "popup_html": "<strong>Kingswood</strong><br>Stop ID: 55<br>Bunching events: 18<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65420532226562,
+          36.202579498291016
+        ]
+      },
+      "properties": {
+        "stop_id": "10",
+        "stop_name": "Parks & Rec",
+        "events": 15,
+        "routes": 2,
+        "radius": 13.428571428571429,
+        "popup_html": "<strong>Parks &amp; Rec</strong><br>Stop ID: 10<br>Bunching events: 15<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.70649719238281,
+          36.20937728881836
+        ]
+      },
+      "properties": {
+        "stop_id": "84",
+        "stop_name": "Hodges Gap Rd",
+        "events": 13,
+        "routes": 1,
+        "radius": 12.571428571428571,
+        "popup_html": "<strong>Hodges Gap Rd</strong><br>Stop ID: 84<br>Bunching events: 13<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66619110107422,
+          36.20351409912109
+        ]
+      },
+      "properties": {
+        "stop_id": "30",
+        "stop_name": "Boone Mall",
+        "events": 11,
+        "routes": 2,
+        "radius": 11.714285714285715,
+        "popup_html": "<strong>Boone Mall</strong><br>Stop ID: 30<br>Bunching events: 11<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67230224609375,
+          36.20801162719727
+        ]
+      },
+      "properties": {
+        "stop_id": "35",
+        "stop_name": "Kangaroo Express",
+        "events": 10,
+        "routes": 2,
+        "radius": 11.285714285714285,
+        "popup_html": "<strong>Kangaroo Express</strong><br>Stop ID: 35<br>Bunching events: 10<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66700744628906,
+          36.21083831787109
+        ]
+      },
+      "properties": {
+        "stop_id": "109",
+        "stop_name": "Beverly Heights Ave",
+        "events": 8,
+        "routes": 1,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>Beverly Heights Ave</strong><br>Stop ID: 109<br>Bunching events: 8<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66397857666016,
+          36.19805145263672
+        ]
+      },
+      "properties": {
+        "stop_id": "92",
+        "stop_name": "Greenway Rd Parking Lot",
+        "events": 8,
+        "routes": 2,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>Greenway Rd Parking Lot</strong><br>Stop ID: 92<br>Bunching events: 8<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67589569091797,
+          36.21662902832031
+        ]
+      },
+      "properties": {
+        "stop_id": "56",
+        "stop_name": "Earth Fare",
+        "events": 8,
+        "routes": 1,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>Earth Fare</strong><br>Stop ID: 56<br>Bunching events: 8<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65874481201172,
+          36.19815826416016
+        ]
+      },
+      "properties": {
+        "stop_id": "108",
+        "stop_name": "Walmart 2",
+        "events": 8,
+        "routes": 1,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>Walmart 2</strong><br>Stop ID: 108<br>Bunching events: 8<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65235900878906,
+          36.20124053955078
+        ]
+      },
+      "properties": {
+        "stop_id": "9",
+        "stop_name": "ASU College of Health Sciences",
+        "events": 8,
+        "routes": 2,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>ASU College of Health Sciences</strong><br>Stop ID: 9<br>Bunching events: 8<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65646362304688,
+          36.20238494873047
+        ]
+      },
+      "properties": {
+        "stop_id": "106",
+        "stop_name": "Boone Heights 1",
+        "events": 8,
+        "routes": 1,
+        "radius": 10.428571428571429,
+        "popup_html": "<strong>Boone Heights 1</strong><br>Stop ID: 106<br>Bunching events: 8<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66874694824219,
+          36.20647811889648
+        ]
+      },
+      "properties": {
+        "stop_id": "102",
+        "stop_name": "ASU Mountain Laurel Hall / NC 105 Ext",
+        "events": 7,
+        "routes": 1,
+        "radius": 10.0,
+        "popup_html": "<strong>ASU Mountain Laurel Hall / NC 105 Ext</strong><br>Stop ID: 102<br>Bunching events: 7<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67192840576172,
+          36.20274353027344
+        ]
+      },
+      "properties": {
+        "stop_id": "95",
+        "stop_name": "Wilson Dr",
+        "events": 7,
+        "routes": 2,
+        "radius": 10.0,
+        "popup_html": "<strong>Wilson Dr</strong><br>Stop ID: 95<br>Bunching events: 7<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66133117675781,
+          36.20286178588867
+        ]
+      },
+      "properties": {
+        "stop_id": "6",
+        "stop_name": "The Finmore",
+        "events": 6,
+        "routes": 2,
+        "radius": 9.571428571428571,
+        "popup_html": "<strong>The Finmore</strong><br>Stop ID: 6<br>Bunching events: 6<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67127227783203,
+          36.20663833618164
+        ]
+      },
+      "properties": {
+        "stop_id": "29",
+        "stop_name": "McDonalds",
+        "events": 6,
+        "routes": 2,
+        "radius": 9.571428571428571,
+        "popup_html": "<strong>McDonalds</strong><br>Stop ID: 29<br>Bunching events: 6<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.65555572509766,
+          36.19483184814453
+        ]
+      },
+      "properties": {
+        "stop_id": "90",
+        "stop_name": "Meadowview Dr / Madison Ave",
+        "events": 4,
+        "routes": 1,
+        "radius": 8.714285714285714,
+        "popup_html": "<strong>Meadowview Dr / Madison Ave</strong><br>Stop ID: 90<br>Bunching events: 4<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66873168945312,
+          36.21404266357422
+        ]
+      },
+      "properties": {
+        "stop_id": "110",
+        "stop_name": "Quail Drive",
+        "events": 4,
+        "routes": 1,
+        "radius": 8.714285714285714,
+        "popup_html": "<strong>Quail Drive</strong><br>Stop ID: 110<br>Bunching events: 4<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67520141601562,
+          36.2109375
+        ]
+      },
+      "properties": {
+        "stop_id": "27",
+        "stop_name": "ASU Convocation Center",
+        "events": 4,
+        "routes": 2,
+        "radius": 8.714285714285714,
+        "popup_html": "<strong>ASU Convocation Center</strong><br>Stop ID: 27<br>Bunching events: 4<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67361450195312,
+          36.2090950012207
+        ]
+      },
+      "properties": {
+        "stop_id": "28",
+        "stop_name": "Highland Avenue",
+        "events": 4,
+        "routes": 2,
+        "radius": 8.714285714285714,
+        "popup_html": "<strong>Highland Avenue</strong><br>Stop ID: 28<br>Bunching events: 4<br>Routes affected: 2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66351318359375,
+          36.205265045166016
+        ]
+      },
+      "properties": {
+        "stop_id": "82",
+        "stop_name": "ASU University Hall",
+        "events": 4,
+        "routes": 1,
+        "radius": 8.714285714285714,
+        "popup_html": "<strong>ASU University Hall</strong><br>Stop ID: 82<br>Bunching events: 4<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.67047119140625,
+          36.21616363525391
+        ]
+      },
+      "properties": {
+        "stop_id": "73",
+        "stop_name": "King St / Hillside Dr",
+        "events": 3,
+        "routes": 1,
+        "radius": 8.285714285714285,
+        "popup_html": "<strong>King St / Hillside Dr</strong><br>Stop ID: 73<br>Bunching events: 3<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.6761474609375,
+          36.20296859741211
+        ]
+      },
+      "properties": {
+        "stop_id": "58",
+        "stop_name": "Casa Rustica",
+        "events": 3,
+        "routes": 1,
+        "radius": 8.285714285714285,
+        "popup_html": "<strong>Casa Rustica</strong><br>Stop ID: 58<br>Bunching events: 3<br>Routes affected: 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.66154479980469,
+          36.20099258422852
+        ]
+      },
+      "properties": {
+        "stop_id": "7",
+        "stop_name": "Postal St / Blowing Rock Rd",
+        "events": 3,
+        "routes": 1,
+        "radius": 8.285714285714285,
+        "popup_html": "<strong>Postal St / Blowing Rock Rd</strong><br>Stop ID: 7<br>Bunching events: 3<br>Routes affected: 1"
+      }
+    }
+  ]
+}
