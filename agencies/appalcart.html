@@ -111,7 +111,14 @@
 </section>
     
 
-    <section class="section two-col">
+    <section class="section panel">
+  <h2>How To Read These Visuals</h2>
+  <p>These charts summarize the current AppalCART event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
+  <p>The current file covers 2026-08-24 to 2026-09-19 and contains 426 stop-level observations across 8 routes and 54 stops.</p>
+  <p class="map-note">Counts are stop-level observations, not unique incidents. A close bus pair can be counted at multiple downstream stops if it remains bunched.</p>
+</section>
+
+<section class="section two-col">
   <section class="chart-panel">
   <h3>Daily observations</h3>
   <svg class="svg-chart" viewBox="0 0 760 280" role="img" aria-label="Daily stop-level observations">
@@ -120,11 +127,12 @@
     <rect x="61.5" y="141.9" width="20.8" height="90.1" fill="#2f6f9f"><title>2026-08-24: 26 stop-level observations</title></rect><rect x="97.4" y="128.0" width="20.8" height="104.0" fill="#2f6f9f"><title>2026-08-25: 30 stop-level observations</title></rect><rect x="133.3" y="145.3" width="20.8" height="86.7" fill="#2f6f9f"><title>2026-08-26: 25 stop-level observations</title></rect><rect x="169.2" y="176.5" width="20.8" height="55.5" fill="#2f6f9f"><title>2026-08-27: 16 stop-level observations</title></rect><rect x="205.1" y="138.4" width="20.8" height="93.6" fill="#2f6f9f"><title>2026-08-28: 27 stop-level observations</title></rect><rect x="241.0" y="218.1" width="20.8" height="13.9" fill="#2f6f9f"><title>2026-08-31: 4 stop-level observations</title></rect><rect x="276.9" y="138.4" width="20.8" height="93.6" fill="#2f6f9f"><title>2026-09-01: 27 stop-level observations</title></rect><rect x="312.8" y="155.7" width="20.8" height="76.3" fill="#2f6f9f"><title>2026-09-02: 22 stop-level observations</title></rect><rect x="348.7" y="131.5" width="20.8" height="100.5" fill="#2f6f9f"><title>2026-09-03: 29 stop-level observations</title></rect><rect x="384.6" y="183.5" width="20.8" height="48.5" fill="#2f6f9f"><title>2026-09-04: 14 stop-level observations</title></rect><rect x="420.5" y="162.7" width="20.8" height="69.3" fill="#2f6f9f"><title>2026-09-08: 20 stop-level observations</title></rect><rect x="456.4" y="207.7" width="20.8" height="24.3" fill="#2f6f9f"><title>2026-09-09: 7 stop-level observations</title></rect><rect x="492.3" y="141.9" width="20.8" height="90.1" fill="#2f6f9f"><title>2026-09-10: 26 stop-level observations</title></rect><rect x="528.2" y="24.0" width="20.8" height="208.0" fill="#2f6f9f"><title>2026-09-14: 60 stop-level observations</title></rect><rect x="564.1" y="193.9" width="20.8" height="38.1" fill="#2f6f9f"><title>2026-09-15: 11 stop-level observations</title></rect><rect x="600.0" y="103.7" width="20.8" height="128.3" fill="#2f6f9f"><title>2026-09-16: 37 stop-level observations</title></rect><rect x="635.9" y="193.9" width="20.8" height="38.1" fill="#2f6f9f"><title>2026-09-17: 11 stop-level observations</title></rect><rect x="671.7" y="124.5" width="20.8" height="107.5" fill="#2f6f9f"><title>2026-09-18: 31 stop-level observations</title></rect><rect x="707.6" y="221.6" width="20.8" height="10.4" fill="#2f6f9f"><title>2026-09-19: 3 stop-level observations</title></rect>
     <text x="71.9" y="262" text-anchor="middle" font-size="12" fill="#607080">08-24</text><text x="718.1" y="262" text-anchor="middle" font-size="12" fill="#607080">09-19</text>
   </svg>
+  <p class="map-note">Shows how observations vary by service date in the current export. Spikes are useful review dates, not proof of a one-time external cause.</p>
 </section>
   <section class="chart-panel">
   <h3>Bunching by hour</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/bunching_by_hour.png" alt="Bunching by hour">
-  <p class="map-note">Generated from the event export.</p>
+  <p class="map-note">Shows when observations concentrate during the service day. Use the tallest bars to target schedule review, dispatch monitoring, or field follow-up.</p>
 </section>
 </section>
 
@@ -132,7 +140,7 @@
   <section class="chart-panel">
   <h3>Top routes</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_routes.png" alt="Top routes">
-  
+  <p class="map-note">Ranks routes by stop-level observations. Higher counts indicate where recurring bunching risk is most visible in the current export.</p>
 </section>
   <section class="bar-chart">
   <h3>Headway compression</h3>
@@ -162,6 +170,7 @@
     <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.8%"></div></div>
     <div class="bar-value">11</div>
   </div>
+  <p class="map-note">Headway compression is how far inside the bunching threshold the observed bus spacing was. Larger values mean the buses were closer together relative to the scheduled headway rule.</p>
 </section>
 </section>
 
@@ -169,7 +178,7 @@
   <section class="chart-panel">
   <h3>Route-hour heatmap</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/route_hour_heatmap.png" alt="Route-hour heatmap">
-  
+  <p class="map-note">Rows are routes and columns are hours of day. Hotter cells show route-hour windows with more repeated stop-level observations.</p>
 </section>
 </section>
 
@@ -177,7 +186,7 @@
   <section class="chart-panel">
   <h3>Top route-directions</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_route_directions.png" alt="Top route-directions">
-  
+  <p class="map-note">Splits route totals by GTFS direction_id, which helps separate inbound and outbound patterns when the same route has different operating conditions by direction.</p>
 </section>
   <section class="table-panel">
   <h3>Highest date-hour windows</h3>
@@ -192,12 +201,12 @@
   <section class="chart-panel">
   <h3>Top stop location map</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_stop_locations.png" alt="Top stop location map">
-  <p class="map-note">Static map from the generated visuals output.</p>
+  <p class="map-note">Stops are positioned from GTFS latitude and longitude. Larger and darker markers indicate more stop-level observations at that location.</p>
 <a class="visual-link" href="../assets/data/appalcart/visuals/top_stop_locations_map.html" target="_blank" rel="noopener noreferrer">Open interactive map</a></section>
   <section class="chart-panel">
   <h3>Top stops</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_stops.png" alt="Top stops">
-  
+  <p class="map-note">Ranks stops and intersections by repeated observations. These are useful candidates for field review, stop-area operations checks, or schedule timing review.</p>
 </section>
 </section>
 
@@ -219,6 +228,34 @@
     <tbody><tr><td>ASU Mountain Laurel Hall</td><td>14</td><td class="num">3</td><td class="num">42</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">2</td><td class="num">41</td></tr><tr><td>Dan&#x27;l Boone Inn</td><td>72</td><td class="num">1</td><td class="num">35</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">2</td><td class="num">31</td></tr><tr><td>Watauga Medical Center</td><td>8</td><td class="num">2</td><td class="num">29</td></tr><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">27</td></tr><tr><td>Vet Clinic on Wilson Dr</td><td>103</td><td class="num">1</td><td class="num">19</td></tr><tr><td>Kingswood</td><td>55</td><td class="num">1</td><td class="num">18</td></tr><tr><td>Parks &amp; Rec</td><td>10</td><td class="num">2</td><td class="num">15</td></tr><tr><td>Hodges Gap Rd</td><td>84</td><td class="num">1</td><td class="num">13</td></tr></tbody>
   </table>
 </section>
+</section>
+
+    <section class="section" aria-labelledby="definitions-heading">
+  <div class="section-heading">
+    <h2 id="definitions-heading">Shared Terms</h2>
+  </div>
+  <div class="definition-grid">
+    <article class="definition">
+      <h3>Bus bunching</h3>
+      <p>Two buses on the same route and direction arrive too close together.</p>
+    </article>
+    <article class="definition">
+      <h3>Stop-level observation</h3>
+      <p>A detected bunching case at one stop and snapshot. One close bus pair may produce multiple stop-level observations as it travels along the route.</p>
+    </article>
+    <article class="definition">
+      <h3>Headway compression</h3>
+      <p>The amount of scheduled spacing that has been lost. Here it is measured as the bunching threshold minus the observed bus spacing, so larger values mean buses are closer together.</p>
+    </article>
+    <article class="definition">
+      <h3>Recurring bunching</h3>
+      <p>Repeat patterns by route, stop, day, or hour.</p>
+    </article>
+    <article class="definition">
+      <h3>Non-recurring bunching</h3>
+      <p>Spikes linked to disruptions such as weather, incidents, or detours.</p>
+    </article>
+  </div>
 </section>
 
     <section class="section two-col">

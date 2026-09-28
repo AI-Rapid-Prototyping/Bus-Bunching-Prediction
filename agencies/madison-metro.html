@@ -111,7 +111,14 @@
 </section>
     
 
-    <section class="section two-col">
+    <section class="section panel">
+  <h2>How To Read These Visuals</h2>
+  <p>These charts summarize the current Madison Metro Transit event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
+  <p>The current file covers 2026-09-09 to 2026-09-19 and contains 39,670 stop-level observations across 24 routes and 904 stops.</p>
+  <p class="map-note">Counts are stop-level observations, not unique incidents. A close bus pair can be counted at multiple downstream stops if it remains bunched.</p>
+</section>
+
+<section class="section two-col">
   <section class="chart-panel">
   <h3>Daily observations</h3>
   <svg class="svg-chart" viewBox="0 0 760 280" role="img" aria-label="Daily stop-level observations">
@@ -120,11 +127,12 @@
     <rect x="67.0" y="148.4" width="36.0" height="83.6" fill="#2f6f9f"><title>2026-09-09: 2,515 stop-level observations</title></rect><rect x="129.0" y="24.0" width="36.0" height="208.0" fill="#2f6f9f"><title>2026-09-10: 6,257 stop-level observations</title></rect><rect x="191.0" y="71.8" width="36.0" height="160.2" fill="#2f6f9f"><title>2026-09-11: 4,819 stop-level observations</title></rect><rect x="253.0" y="164.6" width="36.0" height="67.4" fill="#2f6f9f"><title>2026-09-12: 2,028 stop-level observations</title></rect><rect x="315.0" y="214.5" width="36.0" height="17.5" fill="#2f6f9f"><title>2026-09-13: 526 stop-level observations</title></rect><rect x="377.0" y="96.9" width="36.0" height="135.1" fill="#2f6f9f"><title>2026-09-14: 4,064 stop-level observations</title></rect><rect x="439.0" y="70.3" width="36.0" height="161.7" fill="#2f6f9f"><title>2026-09-15: 4,865 stop-level observations</title></rect><rect x="501.0" y="84.6" width="36.0" height="147.4" fill="#2f6f9f"><title>2026-09-16: 4,434 stop-level observations</title></rect><rect x="563.0" y="84.7" width="36.0" height="147.3" fill="#2f6f9f"><title>2026-09-17: 4,430 stop-level observations</title></rect><rect x="625.0" y="76.0" width="36.0" height="156.0" fill="#2f6f9f"><title>2026-09-18: 4,693 stop-level observations</title></rect><rect x="687.0" y="197.5" width="36.0" height="34.5" fill="#2f6f9f"><title>2026-09-19: 1,039 stop-level observations</title></rect>
     <text x="85.0" y="262" text-anchor="middle" font-size="12" fill="#607080">09-09</text><text x="705.0" y="262" text-anchor="middle" font-size="12" fill="#607080">09-19</text>
   </svg>
+  <p class="map-note">Shows how observations vary by service date in the current export. Spikes are useful review dates, not proof of a one-time external cause.</p>
 </section>
   <section class="chart-panel">
   <h3>Bunching by hour</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/bunching_by_hour.png" alt="Bunching by hour">
-  <p class="map-note">Generated from the event export.</p>
+  <p class="map-note">Shows when observations concentrate during the service day. Use the tallest bars to target schedule review, dispatch monitoring, or field follow-up.</p>
 </section>
 </section>
 
@@ -132,7 +140,7 @@
   <section class="chart-panel">
   <h3>Top routes</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/top_routes.png" alt="Top routes">
-  
+  <p class="map-note">Ranks routes by stop-level observations. Higher counts indicate where recurring bunching risk is most visible in the current export.</p>
 </section>
   <section class="bar-chart">
   <h3>Headway compression</h3>
@@ -162,6 +170,7 @@
     <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 12.1%"></div></div>
     <div class="bar-value">2,169</div>
   </div>
+  <p class="map-note">Headway compression is how far inside the bunching threshold the observed bus spacing was. Larger values mean the buses were closer together relative to the scheduled headway rule.</p>
 </section>
 </section>
 
@@ -169,7 +178,7 @@
   <section class="chart-panel">
   <h3>Route-hour heatmap</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/route_hour_heatmap.png" alt="Route-hour heatmap">
-  
+  <p class="map-note">Rows are routes and columns are hours of day. Hotter cells show route-hour windows with more repeated stop-level observations.</p>
 </section>
 </section>
 
@@ -177,7 +186,7 @@
   <section class="chart-panel">
   <h3>Top route-directions</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/top_route_directions.png" alt="Top route-directions">
-  
+  <p class="map-note">Splits route totals by GTFS direction_id, which helps separate inbound and outbound patterns when the same route has different operating conditions by direction.</p>
 </section>
   <section class="table-panel">
   <h3>Highest date-hour windows</h3>
@@ -192,12 +201,12 @@
   <section class="chart-panel">
   <h3>Top stop location map</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/top_stop_locations.png" alt="Top stop location map">
-  <p class="map-note">Static map from the generated visuals output.</p>
+  <p class="map-note">Stops are positioned from GTFS latitude and longitude. Larger and darker markers indicate more stop-level observations at that location.</p>
 <a class="visual-link" href="../assets/data/madison-metro/visuals/top_stop_locations_map.html" target="_blank" rel="noopener noreferrer">Open interactive map</a></section>
   <section class="chart-panel">
   <h3>Top stops</h3>
   <img class="visual-image" src="../assets/data/madison-metro/visuals/top_stops.png" alt="Top stops">
-  
+  <p class="map-note">Ranks stops and intersections by repeated observations. These are useful candidates for field review, stop-area operations checks, or schedule timing review.</p>
 </section>
 </section>
 
@@ -219,6 +228,34 @@
     <tbody><tr><td>N Lake at Langdon</td><td>1190</td><td class="num">1</td><td class="num">1,560</td></tr><tr><td>W Dayton at N Orchard</td><td>1223</td><td class="num">1</td><td class="num">840</td></tr><tr><td>W Dayton at N Park</td><td>1774</td><td class="num">1</td><td class="num">836</td></tr><tr><td>W Dayton at N Mills</td><td>1341</td><td class="num">2</td><td class="num">836</td></tr><tr><td>N Randall at Engineering</td><td>918</td><td class="num">2</td><td class="num">828</td></tr><tr><td>N Lake at W Johnson</td><td>973</td><td class="num">1</td><td class="num">803</td></tr><tr><td>N Lake at University</td><td>1816</td><td class="num">1</td><td class="num">802</td></tr><tr><td>N Charter at University</td><td>1651</td><td class="num">4</td><td class="num">786</td></tr><tr><td>Observatory at Babcock</td><td>634</td><td class="num">4</td><td class="num">751</td></tr><tr><td>Observatory at Elm</td><td>655</td><td class="num">4</td><td class="num">712</td></tr></tbody>
   </table>
 </section>
+</section>
+
+    <section class="section" aria-labelledby="definitions-heading">
+  <div class="section-heading">
+    <h2 id="definitions-heading">Shared Terms</h2>
+  </div>
+  <div class="definition-grid">
+    <article class="definition">
+      <h3>Bus bunching</h3>
+      <p>Two buses on the same route and direction arrive too close together.</p>
+    </article>
+    <article class="definition">
+      <h3>Stop-level observation</h3>
+      <p>A detected bunching case at one stop and snapshot. One close bus pair may produce multiple stop-level observations as it travels along the route.</p>
+    </article>
+    <article class="definition">
+      <h3>Headway compression</h3>
+      <p>The amount of scheduled spacing that has been lost. Here it is measured as the bunching threshold minus the observed bus spacing, so larger values mean buses are closer together.</p>
+    </article>
+    <article class="definition">
+      <h3>Recurring bunching</h3>
+      <p>Repeat patterns by route, stop, day, or hour.</p>
+    </article>
+    <article class="definition">
+      <h3>Non-recurring bunching</h3>
+      <p>Spikes linked to disruptions such as weather, incidents, or detours.</p>
+    </article>
+  </div>
 </section>
 
     <section class="section two-col">
