@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Background example from early exploration.">
-  <title>AppalCart | IP3 Bus Bunching</title>
+  <meta name="description" content="Current bus-bunching observations from the GTFS-RT export.">
+  <title>AppalCART | IP3 Bus Bunching</title>
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body class="locked">
@@ -40,8 +40,8 @@
   <div class="section-inner">
     <div class="hero-content">
       <p class="eyebrow">IP3 Partner Agency</p>
-      <h1>AppalCart</h1>
-      <p>Boone, North Carolina. Background example from early exploration.</p>
+      <h1>AppalCART</h1>
+      <p>Boone, North Carolina. Current bus-bunching observations from the GTFS-RT export.</p>
     </div>
   </div>
 </section>
@@ -52,7 +52,7 @@
       <div class="metric">
   <span>Status</span>
   <strong>Observed patterns</strong>
-  <small>Exploratory</small>
+  <small>Agency dashboard</small>
 </div>
       <div class="metric">
   <span>Service routes</span>
@@ -60,23 +60,23 @@
   <small>GTFS routes in the local feed</small>
 </div>
       <div class="metric">
-  <span>Detected observations</span>
-  <strong>22</strong>
-  <small>2026-09-15 to 2026-09-16</small>
+  <span>Stop-level observations</span>
+  <strong>426</strong>
+  <small>2026-08-24 to 2026-09-19</small>
 </div>
       <div class="metric">
   <span>Stops affected</span>
-  <strong>6</strong>
-  <small>2 routes affected</small>
+  <strong>54</strong>
+  <small>8 routes affected</small>
 </div>
     </section>
 
     <section class="section two-col">
       <div>
         <section class="panel">
-  <h2>Exploratory Summary</h2>
-  <p>AppalCart helped scope the tool, but Madison is the current focus.</p>
-  <p>Top route: R. Busiest hour: 15:00.</p>
+  <h2>What The Current Observations Show</h2>
+  <p>Patterns concentrate by route, hour, and repeated stop locations.</p>
+  <p>Top route: R. Busiest hour: 17:00.</p>
 </section>
       </div>
       <aside class="panel">
@@ -87,64 +87,41 @@
 
     <section class="section two-col">
   <section class="panel">
-    <h2>Weather Context</h2>
-    <div class="snapshot-grid">
-      <div class="snapshot-item">
-  <span>Latest observed</span>
-  <strong>Sep 22, 2026 at 11:00 PM ET</strong>
-  <small>Rain</small>
-</div>
-      <div class="snapshot-item">
-  <span>Temperature</span>
-  <strong>61.2 F</strong>
-  <small>Observed</small>
-</div>
-      <div class="snapshot-item">
-  <span>Wind</span>
-  <strong>8.5 mph</strong>
-  <small>Observed</small>
-</div>
-    </div>
-    <p class="map-note">Weather is context for interpretation, not a causal finding.</p>
+    <h2>Prediction Element</h2>
+    <p>Recurring-risk ranking based on the AppalCART observations already collected.</p>
+    <p class="map-note">Use as a prioritization screen. It does not predict a specific bus will bunch.</p>
   </section>
   <section class="table-panel">
-  <h3>Forecast</h3>
+  <h3>Tomorrow: likely recurring risk windows</h3>
   <table>
-    <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
-    <tbody><tr><td>Sep 22, 2026 at 11:00 PM ET</td><td>61.2 F</td><td>8.5 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 12:00 AM ET</td><td>60.3 F</td><td>8.6 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 1:00 AM ET</td><td>58.4 F</td><td>9.8 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 2:00 AM ET</td><td>57.0 F</td><td>10.0 mph</td><td>Light Rain</td></tr><tr><td>Sep 23, 2026 at 3:00 AM ET</td><td>56.3 F</td><td>9.4 mph</td><td>Drizzle</td></tr><tr><td>Sep 23, 2026 at 4:00 AM ET</td><td>55.9 F</td><td>8.0 mph</td><td>Drizzle</td></tr></tbody>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Likely location</th><th>Historical observations</th><th>Basis</th></tr></thead>
+    <tbody><tr><td>Tue Sep 29</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">16</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td class="num">12</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>POP</td><td>16:00</td><td>ASU Convocation Center [27]</td><td class="num">10</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>R</td><td>18:00</td><td>Dan&#x27;l Boone Inn [72]</td><td class="num">8</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td class="num">7</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>R</td><td>16:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td class="num">5</td><td>Same weekday history (Tuesday)</td></tr></tbody>
   </table>
 </section>
 </section>
 
-    <section class="section two-col">
-  <section class="panel">
-  <h2>Prediction Element</h2>
-  <p>Next prediction layer: rank recurring route-hour risk once a cleaned route-hour summary is available for this agency.</p>
-  <p class="map-note">This should be framed as prioritization, not certainty about a specific bus.</p>
+<section class="section">
+  <section class="table-panel">
+  <h3>Rest of week: likely recurring risk windows</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Likely location</th><th>Historical observations</th><th>Basis</th></tr></thead>
+    <tbody><tr><td>Tue Sep 29</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">16</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td class="num">12</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Wed Sep 30</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td class="num">17</td><td>Same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td class="num">11</td><td>Same weekday history (Wednesday)</td></tr><tr><td>Thu Oct 1</td><td>PK</td><td>16:00</td><td>ASU Garwood Hall [26]</td><td class="num">12</td><td>Same weekday history (Thursday)</td></tr><tr><td>Thu Oct 1</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td class="num">10</td><td>Same weekday history (Thursday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>18:00</td><td>Walmart 2 [108]</td><td class="num">15</td><td>Same weekday history (Friday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">13</td><td>Same weekday history (Friday)</td></tr></tbody>
+  </table>
 </section>
-  
 </section>
-    <section class="section two-col"><section class="panel"><h2>Current Role</h2><p>Background example for shaping the Madison workflow.</p></section></section>
-
     
 
-    
     <section class="section two-col">
-      <section class="bar-chart">
-  <h3>Stop-level observations by route</h3>
-  
-  <div class="bar-row">
-    <div class="bar-label">R</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
-    <div class="bar-value">12</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">PK</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 83.3%"></div></div>
-    <div class="bar-value">10</div>
-  </div>
+  <section class="chart-panel">
+  <h3>Daily observations</h3>
+  <svg class="svg-chart" viewBox="0 0 760 280" role="img" aria-label="Daily stop-level observations">
+    <line x1="54" y1="232" x2="736" y2="232" stroke="#b8c5cf"></line>
+    <line x1="54" y1="24" x2="54" y2="232" stroke="#b8c5cf"></line>
+    <rect x="61.5" y="141.9" width="20.8" height="90.1" fill="#2f6f9f"><title>2026-08-24: 26 stop-level observations</title></rect><rect x="97.4" y="128.0" width="20.8" height="104.0" fill="#2f6f9f"><title>2026-08-25: 30 stop-level observations</title></rect><rect x="133.3" y="145.3" width="20.8" height="86.7" fill="#2f6f9f"><title>2026-08-26: 25 stop-level observations</title></rect><rect x="169.2" y="176.5" width="20.8" height="55.5" fill="#2f6f9f"><title>2026-08-27: 16 stop-level observations</title></rect><rect x="205.1" y="138.4" width="20.8" height="93.6" fill="#2f6f9f"><title>2026-08-28: 27 stop-level observations</title></rect><rect x="241.0" y="218.1" width="20.8" height="13.9" fill="#2f6f9f"><title>2026-08-31: 4 stop-level observations</title></rect><rect x="276.9" y="138.4" width="20.8" height="93.6" fill="#2f6f9f"><title>2026-09-01: 27 stop-level observations</title></rect><rect x="312.8" y="155.7" width="20.8" height="76.3" fill="#2f6f9f"><title>2026-09-02: 22 stop-level observations</title></rect><rect x="348.7" y="131.5" width="20.8" height="100.5" fill="#2f6f9f"><title>2026-09-03: 29 stop-level observations</title></rect><rect x="384.6" y="183.5" width="20.8" height="48.5" fill="#2f6f9f"><title>2026-09-04: 14 stop-level observations</title></rect><rect x="420.5" y="162.7" width="20.8" height="69.3" fill="#2f6f9f"><title>2026-09-08: 20 stop-level observations</title></rect><rect x="456.4" y="207.7" width="20.8" height="24.3" fill="#2f6f9f"><title>2026-09-09: 7 stop-level observations</title></rect><rect x="492.3" y="141.9" width="20.8" height="90.1" fill="#2f6f9f"><title>2026-09-10: 26 stop-level observations</title></rect><rect x="528.2" y="24.0" width="20.8" height="208.0" fill="#2f6f9f"><title>2026-09-14: 60 stop-level observations</title></rect><rect x="564.1" y="193.9" width="20.8" height="38.1" fill="#2f6f9f"><title>2026-09-15: 11 stop-level observations</title></rect><rect x="600.0" y="103.7" width="20.8" height="128.3" fill="#2f6f9f"><title>2026-09-16: 37 stop-level observations</title></rect><rect x="635.9" y="193.9" width="20.8" height="38.1" fill="#2f6f9f"><title>2026-09-17: 11 stop-level observations</title></rect><rect x="671.7" y="124.5" width="20.8" height="107.5" fill="#2f6f9f"><title>2026-09-18: 31 stop-level observations</title></rect><rect x="707.6" y="221.6" width="20.8" height="10.4" fill="#2f6f9f"><title>2026-09-19: 3 stop-level observations</title></rect>
+    <text x="71.9" y="262" text-anchor="middle" font-size="12" fill="#607080">08-24</text><text x="718.1" y="262" text-anchor="middle" font-size="12" fill="#607080">09-19</text>
+  </svg>
 </section>
-      <section class="bar-chart">
+  <section class="bar-chart">
   <h3>Stop-level observations by hour</h3>
   
   <div class="bar-row">
@@ -184,83 +161,83 @@
   </div>
   <div class="bar-row">
     <div class="bar-label">07:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">08:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">09:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">10:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">11:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 11.1%"></div></div>
-    <div class="bar-value">1</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">12:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">13:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">14:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 11.1%"></div></div>
-    <div class="bar-value">1</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">15:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
-    <div class="bar-value">9</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">16:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 33.3%"></div></div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.4%"></div></div>
     <div class="bar-value">3</div>
   </div>
   <div class="bar-row">
+    <div class="bar-label">08:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.2%"></div></div>
+    <div class="bar-value">4</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">09:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 8.7%"></div></div>
+    <div class="bar-value">11</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">10:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.4%"></div></div>
+    <div class="bar-value">3</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">11:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 12.7%"></div></div>
+    <div class="bar-value">16</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">12:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 12.7%"></div></div>
+    <div class="bar-value">16</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">13:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 12.7%"></div></div>
+    <div class="bar-value">16</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">14:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 12.7%"></div></div>
+    <div class="bar-value">16</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">15:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 22.2%"></div></div>
+    <div class="bar-value">28</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">16:00</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 84.9%"></div></div>
+    <div class="bar-value">107</div>
+  </div>
+  <div class="bar-row">
     <div class="bar-label">17:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 55.6%"></div></div>
-    <div class="bar-value">5</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">126</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">18:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 43.7%"></div></div>
+    <div class="bar-value">55</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">19:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 8.7%"></div></div>
+    <div class="bar-value">11</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">20:00</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 8.7%"></div></div>
+    <div class="bar-value">11</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">21:00</div>
     <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
+    <div class="bar-value">2</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">22:00</div>
     <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
-    <div class="bar-value">0</div>
+    <div class="bar-value">1</div>
   </div>
   <div class="bar-row">
     <div class="bar-label">23:00</div>
@@ -268,31 +245,255 @@
     <div class="bar-value">0</div>
   </div>
 </section>
-    </section>
+</section>
+
+<section class="section two-col">
+  <section class="bar-chart">
+  <h3>Stop-level observations by route</h3>
+  
+  <div class="bar-row">
+    <div class="bar-label">R</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">202</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">PK</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 54.5%"></div></div>
+    <div class="bar-value">110</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">P</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 35.6%"></div></div>
+    <div class="bar-value">72</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">POP</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 16.3%"></div></div>
+    <div class="bar-value">33</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">T</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.0%"></div></div>
+    <div class="bar-value">6</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">GY</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">1</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">W</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">1</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">B</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 2.0%"></div></div>
+    <div class="bar-value">1</div>
+  </div>
+</section>
+  <section class="bar-chart">
+  <h3>Headway compression</h3>
+  
+  <div class="bar-row">
+    <div class="bar-label">0-1 min</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 7.0%"></div></div>
+    <div class="bar-value">20</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">1-2 min</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 22.3%"></div></div>
+    <div class="bar-value">64</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">2-4 min</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">287</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">4-6 min</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 15.3%"></div></div>
+    <div class="bar-value">44</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">6+ min</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.8%"></div></div>
+    <div class="bar-value">11</div>
+  </div>
+</section>
+</section>
+
+<section class="section">
+  <section class="chart-panel full-span">
+  <h3>Route-hour concentration</h3>
+  <div class="heatmap route-hour">
+    <div class="heat-head"></div><div class="heat-head">0</div><div class="heat-head">1</div><div class="heat-head">2</div><div class="heat-head">3</div><div class="heat-head">4</div><div class="heat-head">5</div><div class="heat-head">6</div><div class="heat-head">7</div><div class="heat-head">8</div><div class="heat-head">9</div><div class="heat-head">10</div><div class="heat-head">11</div><div class="heat-head">12</div><div class="heat-head">13</div><div class="heat-head">14</div><div class="heat-head">15</div><div class="heat-head">16</div><div class="heat-head">17</div><div class="heat-head">18</div><div class="heat-head">19</div><div class="heat-head">20</div><div class="heat-head">21</div><div class="heat-head">22</div><div class="heat-head">23</div><div class="heat-label">R</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.11); color: #1f2933" title="R 09:00: 4 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 10:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.10); color: #1f2933" title="R 12:00: 3 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 13:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.12); color: #1f2933" title="R 14:00: 5 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.15); color: #1f2933" title="R 15:00: 7 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.63); color: #ffffff" title="R 16:00: 46 observations">46</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.90); color: #ffffff" title="R 17:00: 68 observations">68</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.60); color: #ffffff" title="R 18:00: 44 observations">44</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.20); color: #1f2933" title="R 19:00: 11 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.20); color: #1f2933" title="R 20:00: 11 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.08); color: #1f2933" title="R 21:00: 2 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="R 22:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="R 23:00: 0 observations"></div><div class="heat-label">PK</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.13); color: #1f2933" title="PK 09:00: 6 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="PK 10:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.17); color: #1f2933" title="PK 11:00: 9 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.21); color: #1f2933" title="PK 12:00: 12 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.21); color: #1f2933" title="PK 13:00: 12 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.08); color: #1f2933" title="PK 14:00: 2 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.11); color: #1f2933" title="PK 15:00: 4 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.36); color: #1f2933" title="PK 16:00: 24 observations">24</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.54); color: #ffffff" title="PK 17:00: 39 observations">39</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="PK 18:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="PK 23:00: 0 observations"></div><div class="heat-label">P</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.08); color: #1f2933" title="P 07:00: 2 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 09:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="P 10:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.15); color: #1f2933" title="P 11:00: 7 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="P 12:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.10); color: #1f2933" title="P 13:00: 3 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.16); color: #1f2933" title="P 14:00: 8 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.23); color: #1f2933" title="P 15:00: 14 observations">14</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.37); color: #1f2933" title="P 16:00: 25 observations">25</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.16); color: #1f2933" title="P 17:00: 8 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.10); color: #1f2933" title="P 18:00: 3 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="P 23:00: 0 observations"></div><div class="heat-label">POP</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="POP 07:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.10); color: #1f2933" title="POP 08:00: 3 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="POP 09:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="POP 10:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 12:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="POP 13:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="POP 14:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.08); color: #1f2933" title="POP 15:00: 2 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.21); color: #1f2933" title="POP 16:00: 12 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.20); color: #1f2933" title="POP 17:00: 11 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 18:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="POP 23:00: 0 observations"></div><div class="heat-label">T</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 09:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 10:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 12:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 13:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 14:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 15:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 16:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 17:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.13); color: #1f2933" title="T 18:00: 6 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="T 23:00: 0 observations"></div><div class="heat-label">GY</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 09:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 10:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 12:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 13:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 14:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 15:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 16:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 17:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="GY 18:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="GY 23:00: 0 observations"></div><div class="heat-label">W</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 08:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 09:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 10:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 12:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 13:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 14:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="W 15:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 16:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 17:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 18:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="W 23:00: 0 observations"></div><div class="heat-label">B</div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 00:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 01:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 02:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 03:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 04:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 05:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 06:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 07:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.07); color: #1f2933" title="B 08:00: 1 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 09:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 10:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 11:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 12:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 13:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 14:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 15:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 16:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 17:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 18:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 19:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 20:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 21:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 22:00: 0 observations"></div><div class="heat-cell" style="background: rgba(47, 111, 159, 0.06); color: #1f2933" title="B 23:00: 0 observations"></div>
+  </div>
+  <p class="map-note">Stop-level observations. Darker cells mean more repeated detections.</p>
+</section>
+</section>
+
+<section class="section two-col">
+  <section class="table-panel">
+  <h3>Top route-directions</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Direction</th><th>Observations</th></tr></thead>
+    <tbody><tr><td>R</td><td>0</td><td class="num">202</td></tr><tr><td>PK</td><td>0</td><td class="num">110</td></tr><tr><td>P</td><td>0</td><td class="num">72</td></tr><tr><td>POP</td><td>0</td><td class="num">33</td></tr><tr><td>T</td><td>0</td><td class="num">6</td></tr><tr><td>GY</td><td>0</td><td class="num">1</td></tr><tr><td>W</td><td>0</td><td class="num">1</td></tr><tr><td>B</td><td>0</td><td class="num">1</td></tr></tbody>
+  </table>
+</section>
+  <section class="table-panel">
+  <h3>Highest date-hour windows</h3>
+  <table>
+    <thead><tr><th>Date</th><th>Hour</th><th>Routes</th><th>Observations</th></tr></thead>
+    <tbody><tr><td>2026-09-18</td><td>17:00</td><td class="num">3</td><td class="num">21</td></tr><tr><td>2026-08-25</td><td>16:00</td><td class="num">3</td><td class="num">17</td></tr><tr><td>2026-08-28</td><td>18:00</td><td class="num">2</td><td class="num">16</td></tr><tr><td>2026-09-02</td><td>17:00</td><td class="num">2</td><td class="num">15</td></tr><tr><td>2026-08-24</td><td>16:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-24</td><td>17:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-25</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-10</td><td>16:00</td><td class="num">3</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>12:00</td><td class="num">1</td><td class="num">11</td></tr></tbody>
+  </table>
+</section>
+</section>
+
+<section class="section two-col">
+  <section class="map-panel">
+  <h3>Top location map</h3>
+  <svg class="map-svg" viewBox="0 0 720 390" role="img" aria-label="Map of top bus-bunching locations">
+    <rect x="0" y="0" width="720" height="390" fill="#e9f0f3"></rect>
+    <path d="M82 42 C118 92 107 137 137 175 C169 216 146 270 193 331" fill="none" stroke="#c6d6df" stroke-width="28" stroke-linecap="round" opacity="0.7"></path>
+    <path d="M272 52 C310 118 281 166 327 216 C369 261 356 312 405 352" fill="none" stroke="#d5dde3" stroke-width="10" stroke-linecap="round"></path>
+    <path d="M70 312 C177 288 293 302 426 255 C527 220 600 154 657 92" fill="none" stroke="#d5dde3" stroke-width="8" stroke-linecap="round"></path>
+    <circle cx="469.3" cy="215.7" r="22.0" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>ASU Mountain Laurel Hall - 42 observations</title></circle><circle cx="334.3" cy="99.5" r="21.6" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>ASU Garwood Hall - 41 observations</title></circle><circle cx="413.3" cy="44.6" r="19.3" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Dan&#x27;l Boone Inn - 35 observations</title></circle><circle cx="357.9" cy="112.7" r="17.8" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>ASU Skywalk - 31 observations</title></circle><circle cx="676.0" cy="346.0" r="17.0" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Watauga Medical Center - 29 observations</title></circle><circle cx="487.4" cy="213.9" r="16.3" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>NC 105 Ext / Azalea Dr - 27 observations</title></circle><circle cx="451.8" cy="284.6" r="13.2" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Vet Clinic on Wilson Dr - 19 observations</title></circle><circle cx="444.8" cy="44.0" r="12.9" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Kingswood - 18 observations</title></circle><circle cx="655.0" cy="275.6" r="11.7" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Parks &amp; Rec - 15 observations</title></circle><circle cx="44.0" cy="161.4" r="11.0" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Hodges Gap Rd - 13 observations</title></circle><circle cx="515.0" cy="259.9" r="10.2" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Boone Mall - 11 observations</title></circle><circle cx="443.6" cy="184.3" r="9.8" fill="#1d70b8" fill-opacity="0.72" stroke="#ffffff" stroke-width="2"><title>Kangaroo Express - 10 observations</title></circle>
+    <text x="469.3" y="185.7" text-anchor="middle" font-size="12" fill="#102f4e" font-weight="700">ASU Mountain Lau..</text><text x="334.3" y="69.9" text-anchor="middle" font-size="12" fill="#102f4e" font-weight="700">ASU Garwood Hall</text><text x="413.3" y="17.3" text-anchor="middle" font-size="12" fill="#102f4e" font-weight="700">Dan&#x27;l Boone Inn</text><text x="357.9" y="86.9" text-anchor="middle" font-size="12" fill="#102f4e" font-weight="700">ASU Skywalk</text><text x="676.0" y="321.0" text-anchor="middle" font-size="12" fill="#102f4e" font-weight="700">Watauga Medical ..</text>
+  </svg>
+  <p class="map-note">Larger markers have more stop-level observations.</p>
+</section>
+  <section class="bar-chart">
+  <h3>Top stops by observation count</h3>
+  
+  <div class="bar-row">
+    <div class="bar-label">ASU Mountain Laurel Hall [14]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
+    <div class="bar-value">42</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">ASU Garwood Hall [26]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 97.6%"></div></div>
+    <div class="bar-value">41</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Dan&#x27;l Boone Inn [72]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 83.3%"></div></div>
+    <div class="bar-value">35</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">ASU Skywalk [36]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 73.8%"></div></div>
+    <div class="bar-value">31</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Watauga Medical Center [8]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 69.0%"></div></div>
+    <div class="bar-value">29</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">NC 105 Ext / Azalea Dr [111]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 64.3%"></div></div>
+    <div class="bar-value">27</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Vet Clinic on Wilson Dr [103]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 45.2%"></div></div>
+    <div class="bar-value">19</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Kingswood [55]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 42.9%"></div></div>
+    <div class="bar-value">18</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Parks &amp; Rec [10]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 35.7%"></div></div>
+    <div class="bar-value">15</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Hodges Gap Rd [84]</div>
+    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 31.0%"></div></div>
+    <div class="bar-value">13</div>
+  </div>
+</section>
+</section>
+
+<section class="section">
+  <section class="table-panel">
+  <h3>Top routes: where and when</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Observations</th><th>Top stop</th><th>At stop</th><th>Top hour</th><th>At hour</th></tr></thead>
+    <tbody><tr><td>R</td><td class="num">202</td><td>Dan&#x27;l Boone Inn</td><td class="num">35</td><td>17:00</td><td class="num">68</td></tr><tr><td>PK</td><td class="num">110</td><td>ASU Garwood Hall</td><td class="num">25</td><td>17:00</td><td class="num">39</td></tr><tr><td>P</td><td class="num">72</td><td>ASU Garwood Hall</td><td class="num">16</td><td>16:00</td><td class="num">25</td></tr><tr><td>POP</td><td class="num">33</td><td>Hodges Gap Rd</td><td class="num">13</td><td>16:00</td><td class="num">12</td></tr><tr><td>T</td><td class="num">6</td><td>ASU Mountain Laurel Hall</td><td class="num">3</td><td>18:00</td><td class="num">6</td></tr><tr><td>GY</td><td class="num">1</td><td>Ivy Terrace</td><td class="num">1</td><td>18:00</td><td class="num">1</td></tr><tr><td>W</td><td class="num">1</td><td>The Finmore</td><td class="num">1</td><td>15:00</td><td class="num">1</td></tr><tr><td>B</td><td class="num">1</td><td>ASU Peacock Traffic Circle</td><td class="num">1</td><td>08:00</td><td class="num">1</td></tr></tbody>
+  </table>
+</section>
+</section>
+
+<section class="section">
+  <section class="table-panel">
+  <h3>Top stop locations</h3>
+  <table>
+    <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Observations</th></tr></thead>
+    <tbody><tr><td>ASU Mountain Laurel Hall</td><td>14</td><td class="num">3</td><td class="num">42</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">2</td><td class="num">41</td></tr><tr><td>Dan&#x27;l Boone Inn</td><td>72</td><td class="num">1</td><td class="num">35</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">2</td><td class="num">31</td></tr><tr><td>Watauga Medical Center</td><td>8</td><td class="num">2</td><td class="num">29</td></tr><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">27</td></tr><tr><td>Vet Clinic on Wilson Dr</td><td>103</td><td class="num">1</td><td class="num">19</td></tr><tr><td>Kingswood</td><td>55</td><td class="num">1</td><td class="num">18</td></tr><tr><td>Parks &amp; Rec</td><td>10</td><td class="num">2</td><td class="num">15</td></tr><tr><td>Hodges Gap Rd</td><td>84</td><td class="num">1</td><td class="num">13</td></tr></tbody>
+  </table>
+</section>
+</section>
 
     <section class="section two-col">
-      <section class="map-panel">
-  <h3>Top location map</h3>
-  <div class="callout">Agency-specific stop locations are not available in the current local bus-bunching files.</div>
-</section>
-      <section class="table-panel">
-  <h3>Top stops and corridors</h3>
+  <section class="panel">
+    <h2>Weather Context</h2>
+    <div class="snapshot-grid">
+      <div class="snapshot-item">
+  <span>Latest observed</span>
+  <strong>Sep 22, 2026 at 11:00 PM ET</strong>
+  <small>Rain</small>
+</div>
+      <div class="snapshot-item">
+  <span>Temperature</span>
+  <strong>61.2 F</strong>
+  <small>Observed</small>
+</div>
+      <div class="snapshot-item">
+  <span>Wind</span>
+  <strong>8.5 mph</strong>
+  <small>Observed</small>
+</div>
+    </div>
+    <p class="map-note">Weather is context for interpretation, not a causal finding.</p>
+  </section>
+  <section class="table-panel">
+  <h3>Forecast</h3>
   <table>
-    <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Detected observations</th></tr></thead>
-    <tbody><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">2</td></tr><tr><td>ASU College of Health Sciences</td><td>9</td><td class="num">1</td><td class="num">2</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">1</td><td class="num">2</td></tr><tr><td>Boone Heights 2</td><td>107</td><td class="num">1</td><td class="num">1</td></tr><tr><td>Watauga Opportunities</td><td>105</td><td class="num">1</td><td class="num">1</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">1</td><td class="num">1</td></tr></tbody>
+    <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
+    <tbody><tr><td>Sep 22, 2026 at 11:00 PM ET</td><td>61.2 F</td><td>8.5 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 12:00 AM ET</td><td>60.3 F</td><td>8.6 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 1:00 AM ET</td><td>58.4 F</td><td>9.8 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 2:00 AM ET</td><td>57.0 F</td><td>10.0 mph</td><td>Light Rain</td></tr><tr><td>Sep 23, 2026 at 3:00 AM ET</td><td>56.3 F</td><td>9.4 mph</td><td>Drizzle</td></tr><tr><td>Sep 23, 2026 at 4:00 AM ET</td><td>55.9 F</td><td>8.0 mph</td><td>Drizzle</td></tr></tbody>
   </table>
 </section>
-    </section>
+</section>
 
     <section class="section">
-      <section class="table-panel">
-  <h3>Routes with the most observations</h3>
-  <table>
-    <thead><tr><th>Route</th><th>Detected observations</th></tr></thead>
-    <tbody><tr><td>R</td><td class="num">12</td></tr><tr><td>PK</td><td class="num">10</td></tr></tbody>
-  </table>
+  <div class="section-heading">
+    <h2>Game-Day Context</h2>
+    <p>Observed AppalCART bus-bunching context from the current export.</p>
+  </div>
+  <div class="game-day-grid">
+    
+<article class="panel event-card">
+  <span class="card-kicker">App State home football game</span>
+  <h3>Sep 5, 2026</h3>
+  <p><strong>0</strong> stop-level observations.</p>
+  <p>No stop-level bunching observations were detected for this service date.</p>
+  <p class="map-note">The current export does not show an elevated daily signal.</p>
+</article>
+<article class="panel event-card">
+  <span class="card-kicker">App State home football game</span>
+  <h3>Sep 19, 2026</h3>
+  <p><strong>3</strong> stop-level observations.</p>
+  <p>All detected observations were on Route R at Dan&#x27;l Boone Inn in the 14:00 hour.</p>
+  <p class="map-note">Below the observed-date median of 25 observations; the current export does not show an elevated daily signal.</p>
+</article>
+  </div>
 </section>
-    </section>
+
     
   </div>
 </main>
