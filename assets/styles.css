@@ -353,6 +353,11 @@ main { padding: 1.5rem 0 3rem; }
   padding: 1rem;
 }
 
+.table-panel {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .prediction-feature {
   padding: 1.25rem;
   background: #ffffff;
@@ -382,6 +387,7 @@ main { padding: 1.5rem 0 3rem; }
 }
 
 .prediction-tables {
+  grid-template-columns: 1fr;
   align-items: stretch;
 }
 
@@ -611,6 +617,7 @@ td {
   border-bottom: 1px solid var(--border);
   text-align: left;
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 th {
