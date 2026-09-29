@@ -51,7 +51,7 @@
     <section class="section metrics-grid" aria-label="Agency metrics">
       <div class="metric">
   <span>Status</span>
-  <strong>Observed patterns</strong>
+  <strong>AI prediction ready</strong>
   <small>Agency dashboard</small>
 </div>
       <div class="metric">
@@ -71,6 +71,47 @@
 </div>
     </section>
 
+    <section class="section prediction-feature" aria-labelledby="prediction-heading">
+  <p class="eyebrow">AI Prediction</p>
+  <h2 id="prediction-heading">AI Bus-Bunching Prediction</h2>
+  <p>The prediction ranks where AppalCART is most likely to see bus bunching next, using observed patterns by route, hour, weekday, and stop location from the current export.</p>
+  <div class="snapshot-grid">
+    <div class="snapshot-item">
+  <span>Next prediction</span>
+  <strong>Wed Sep 30</strong>
+  <small>Tomorrow&#x27;s watchlist</small>
+</div>
+    <div class="snapshot-item">
+  <span>Top route</span>
+  <strong>R</strong>
+  <small>Most common route in the current data</small>
+</div>
+    <div class="snapshot-item">
+  <span>Top hour</span>
+  <strong>17:00</strong>
+  <small>Most common time of day in the current data</small>
+</div>
+  </div>
+  <p class="map-note">Use this list to decide where to look first. It does not predict that a specific bus will bunch.</p>
+</section>
+
+<section class="section two-col prediction-tables">
+  <section class="table-panel">
+  <h3>Tomorrow: AI-prioritized bus-bunching watchlist</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
+    <tbody><tr><td>Wed Sep 30</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td>High</td><td>71/100</td><td>17 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>20:00</td><td>Vet Clinic on Wilson Dr [103]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>18:00</td><td>Watauga Medical Center [8]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>19:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Monitor</td><td>29/100</td><td>7 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>16:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td>Monitor</td><td>25/100</td><td>6 stop-level observations; same weekday history (Wednesday)</td></tr></tbody>
+  </table>
+</section>
+  <section class="table-panel">
+  <h3>Rest of week: AI-prioritized bus-bunching watchlist</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
+    <tbody><tr><td>Wed Sep 30</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td>High</td><td>71/100</td><td>17 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Thu Oct 1</td><td>PK</td><td>16:00</td><td>ASU Garwood Hall [26]</td><td>Medium</td><td>50/100</td><td>12 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Thu Oct 1</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>18:00</td><td>Walmart 2 [108]</td><td>Medium</td><td>62/100</td><td>15 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td>Medium</td><td>54/100</td><td>13 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Sat Oct 3</td><td>R</td><td>14:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Monitor</td><td>12/100</td><td>3 stop-level observations; same weekday history (Saturday)</td></tr></tbody>
+  </table>
+</section>
+</section>
+
     <section class="section two-col">
       <div>
         <section class="panel">
@@ -85,37 +126,13 @@
       </aside>
     </section>
 
-    <section class="section two-col">
-  <section class="panel">
-    <h2>Prediction Element</h2>
-    <p>Recurring-risk ranking based on the AppalCART observations already collected.</p>
-    <p class="map-note">Use as a prioritization screen. It does not predict a specific bus will bunch.</p>
-  </section>
-  <section class="table-panel">
-  <h3>Tomorrow: likely recurring risk windows</h3>
-  <table>
-    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Likely location</th><th>Historical observations</th><th>Basis</th></tr></thead>
-    <tbody><tr><td>Tue Sep 29</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">16</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td class="num">12</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>POP</td><td>16:00</td><td>ASU Convocation Center [27]</td><td class="num">10</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>R</td><td>18:00</td><td>Dan&#x27;l Boone Inn [72]</td><td class="num">8</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td class="num">7</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>R</td><td>16:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td class="num">5</td><td>Same weekday history (Tuesday)</td></tr></tbody>
-  </table>
-</section>
-</section>
-
-<section class="section">
-  <section class="table-panel">
-  <h3>Rest of week: likely recurring risk windows</h3>
-  <table>
-    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Likely location</th><th>Historical observations</th><th>Basis</th></tr></thead>
-    <tbody><tr><td>Tue Sep 29</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">16</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Tue Sep 29</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td class="num">12</td><td>Same weekday history (Tuesday)</td></tr><tr><td>Wed Sep 30</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td class="num">17</td><td>Same weekday history (Wednesday)</td></tr><tr><td>Wed Sep 30</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td class="num">11</td><td>Same weekday history (Wednesday)</td></tr><tr><td>Thu Oct 1</td><td>PK</td><td>16:00</td><td>ASU Garwood Hall [26]</td><td class="num">12</td><td>Same weekday history (Thursday)</td></tr><tr><td>Thu Oct 1</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td class="num">10</td><td>Same weekday history (Thursday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>18:00</td><td>Walmart 2 [108]</td><td class="num">15</td><td>Same weekday history (Friday)</td></tr><tr><td>Fri Oct 2</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td class="num">13</td><td>Same weekday history (Friday)</td></tr></tbody>
-  </table>
-</section>
-</section>
     
 
     <section class="section panel">
   <h2>How To Read These Visuals</h2>
   <p>These charts summarize the current AppalCART event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
   <p>The current file covers 2026-08-24 to 2026-09-19 and contains 426 stop-level observations across 8 routes and 54 stops.</p>
-  <p class="map-note">Counts are stop-level observations, not unique incidents. A close bus pair can be counted at multiple downstream stops if it remains bunched.</p>
+  <p class="map-note">Counts are stop-level observations. A close bus pair can be counted at multiple downstream stops if it remains bunched along the route.</p>
 </section>
 
 <section class="section two-col">
@@ -140,10 +157,10 @@
   <section class="chart-panel">
   <h3>Top routes</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_routes.png" alt="Top routes">
-  <p class="map-note">Ranks routes by stop-level observations. Higher counts indicate where recurring bunching risk is most visible in the current export.</p>
+  <p class="map-note">Ranks routes by stop-level observations. Higher counts indicate where bus-bunching prediction should focus first in the current export.</p>
 </section>
   <section class="bar-chart">
-  <h3>Headway compression</h3>
+  <h3>Bunching severity</h3>
   
   <div class="bar-row">
     <div class="bar-label">0-1 min</div>
@@ -170,7 +187,7 @@
     <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.8%"></div></div>
     <div class="bar-value">11</div>
   </div>
-  <p class="map-note">Headway compression is how far inside the bunching threshold the observed bus spacing was. Larger values mean the buses were closer together relative to the scheduled headway rule.</p>
+  <p class="map-note">Bunching severity shows how close the buses were compared with the bunching threshold. Larger values mean the buses were closer together.</p>
 </section>
 </section>
 
@@ -178,7 +195,7 @@
   <section class="chart-panel">
   <h3>Route-hour heatmap</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/route_hour_heatmap.png" alt="Route-hour heatmap">
-  <p class="map-note">Rows are routes and columns are hours of day. Hotter cells show route-hour windows with more repeated stop-level observations.</p>
+  <p class="map-note">Rows are routes and columns are hours of day. Hotter cells show route and hour combinations with more repeated stop-level observations.</p>
 </section>
 </section>
 
@@ -189,7 +206,7 @@
   <p class="map-note">Splits route totals by GTFS direction_id, which helps separate inbound and outbound patterns when the same route has different operating conditions by direction.</p>
 </section>
   <section class="table-panel">
-  <h3>Highest date-hour windows</h3>
+  <h3>Highest dates and hours</h3>
   <table>
     <thead><tr><th>Date</th><th>Hour</th><th>Routes</th><th>Observations</th></tr></thead>
     <tbody><tr><td>2026-09-18</td><td>17:00</td><td class="num">3</td><td class="num">21</td></tr><tr><td>2026-08-25</td><td>16:00</td><td class="num">3</td><td class="num">17</td></tr><tr><td>2026-08-28</td><td>18:00</td><td class="num">2</td><td class="num">16</td></tr><tr><td>2026-09-02</td><td>17:00</td><td class="num">2</td><td class="num">15</td></tr><tr><td>2026-08-24</td><td>16:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-24</td><td>17:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-25</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-10</td><td>16:00</td><td class="num">3</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>12:00</td><td class="num">1</td><td class="num">11</td></tr></tbody>
@@ -202,7 +219,7 @@
   <h3>Top stop location map</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_stop_locations.png" alt="Top stop location map">
   <p class="map-note">Stops are positioned from GTFS latitude and longitude. Larger and darker markers indicate more stop-level observations at that location.</p>
-<a class="visual-link" href="../assets/data/appalcart/visuals/top_stop_locations_map.html" target="_blank" rel="noopener noreferrer">Open interactive map</a></section>
+<a class="visual-link" href="../assets/data/appalcart/visuals/top_stop_locations_map.html" target="_blank" rel="noopener noreferrer">Open full interactive map</a></section>
   <section class="chart-panel">
   <h3>Top stops</h3>
   <img class="visual-image" src="../assets/data/appalcart/visuals/top_stops.png" alt="Top stops">
@@ -244,8 +261,8 @@
       <p>A detected bunching case at one stop and snapshot. One close bus pair may produce multiple stop-level observations as it travels along the route.</p>
     </article>
     <article class="definition">
-      <h3>Headway compression</h3>
-      <p>The amount of scheduled spacing that has been lost. Here it is measured as the bunching threshold minus the observed bus spacing, so larger values mean buses are closer together.</p>
+      <h3>Bunching severity</h3>
+      <p>How close the buses were compared with the bunching threshold. Higher severity means the buses were closer together.</p>
     </article>
     <article class="definition">
       <h3>Recurring bunching</h3>
@@ -253,7 +270,7 @@
     </article>
     <article class="definition">
       <h3>Non-recurring bunching</h3>
-      <p>Spikes linked to disruptions such as weather, incidents, or detours.</p>
+      <p>Spikes linked to incidents, detours, or other unusual operating conditions.</p>
     </article>
   </div>
 </section>
@@ -264,17 +281,17 @@
     <div class="snapshot-grid">
       <div class="snapshot-item">
   <span>Latest observed</span>
-  <strong>Sep 22, 2026 at 11:00 PM ET</strong>
-  <small>Rain</small>
+  <strong>Sep 29, 2026 at 11:00 AM ET</strong>
+  <small>Partly Cloudy</small>
 </div>
       <div class="snapshot-item">
   <span>Temperature</span>
-  <strong>61.2 F</strong>
+  <strong>62.9 F</strong>
   <small>Observed</small>
 </div>
       <div class="snapshot-item">
   <span>Wind</span>
-  <strong>8.5 mph</strong>
+  <strong>2.2 mph</strong>
   <small>Observed</small>
 </div>
     </div>
@@ -284,7 +301,7 @@
   <h3>Forecast</h3>
   <table>
     <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
-    <tbody><tr><td>Sep 22, 2026 at 11:00 PM ET</td><td>61.2 F</td><td>8.5 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 12:00 AM ET</td><td>60.3 F</td><td>8.6 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 1:00 AM ET</td><td>58.4 F</td><td>9.8 mph</td><td>Rain</td></tr><tr><td>Sep 23, 2026 at 2:00 AM ET</td><td>57.0 F</td><td>10.0 mph</td><td>Light Rain</td></tr><tr><td>Sep 23, 2026 at 3:00 AM ET</td><td>56.3 F</td><td>9.4 mph</td><td>Drizzle</td></tr><tr><td>Sep 23, 2026 at 4:00 AM ET</td><td>55.9 F</td><td>8.0 mph</td><td>Drizzle</td></tr></tbody>
+    <tbody><tr><td>Sep 29, 2026 at 11:00 AM ET</td><td>62.9 F</td><td>2.2 mph</td><td>Partly Cloudy</td></tr><tr><td>Sep 29, 2026 at 12:00 PM ET</td><td>65.5 F</td><td>0.1 mph</td><td>Mostly Clear</td></tr><tr><td>Sep 29, 2026 at 1:00 PM ET</td><td>67.6 F</td><td>2.6 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 29, 2026 at 2:00 PM ET</td><td>68.6 F</td><td>4.0 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 29, 2026 at 3:00 PM ET</td><td>68.8 F</td><td>5.4 mph</td><td>Mostly Cloudy</td></tr><tr><td>Sep 29, 2026 at 4:00 PM ET</td><td>68.2 F</td><td>6.1 mph</td><td>Partly Cloudy</td></tr></tbody>
   </table>
 </section>
 </section>
@@ -301,14 +318,14 @@
   <h3>Sep 5, 2026</h3>
   <p><strong>0</strong> stop-level observations.</p>
   <p>No stop-level bunching observations were detected for this service date.</p>
-  <p class="map-note">The current export does not show an elevated daily signal.</p>
+  <p class="map-note">The current export does not show a higher-than-usual day.</p>
 </article>
 <article class="panel event-card">
   <span class="card-kicker">App State home football game</span>
   <h3>Sep 19, 2026</h3>
   <p><strong>3</strong> stop-level observations.</p>
   <p>All detected observations were on Route R at Dan&#x27;l Boone Inn in the 14:00 hour.</p>
-  <p class="map-note">Below the observed-date median of 25 observations; the current export does not show an elevated daily signal.</p>
+  <p class="map-note">Below the observed-date median of 25 observations; the current export does not show a higher-than-usual day.</p>
 </article>
   </div>
 </section>
