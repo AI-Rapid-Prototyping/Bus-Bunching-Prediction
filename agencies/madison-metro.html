@@ -309,10 +309,7 @@
   </section>
   <section class="table-panel">
   <h3>Forecast</h3>
-  <table>
-    <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
-    <tbody><tr><td>Sep 22, 2026 at 10:00 PM CT</td><td>54.0 F</td><td>9.2 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 22, 2026 at 11:00 PM CT</td><td>53.6 F</td><td>10.4 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 23, 2026 at 12:00 AM CT</td><td>53.2 F</td><td>9.9 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 23, 2026 at 1:00 AM CT</td><td>52.6 F</td><td>8.8 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 23, 2026 at 2:00 AM CT</td><td>52.7 F</td><td>8.8 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 23, 2026 at 3:00 AM CT</td><td>52.3 F</td><td>8.5 mph</td><td>Clear, Sunny</td></tr></tbody>
-  </table>
+  <p class="map-note">No forecast rows available.</p>
 </section>
 </section>
 
@@ -326,18 +323,34 @@
   </div>
   <script>
     (() => {
-      const allowed = "ip3-oct1";
       const key = "ip3_bus_bunching_access";
+      const fullSitePassphrase = "ip3-oct1";
+      const appalcartPassphrase = "ip3-oct";
+      const currentPage = "madison-metro";
+      const appalcartUrl = "appalcart.html";
       const unlock = () => document.body.classList.remove("locked");
-      if (window.localStorage.getItem(key) === "ok") unlock();
+      const hasPageAccess = (scope) => (
+        scope === "all" ||
+        scope === "ok" ||
+        (scope === "appalcart" && currentPage === "appalcart")
+      );
+      if (hasPageAccess(window.localStorage.getItem(key))) unlock();
       const form = document.getElementById("accessForm");
       const input = document.getElementById("accessPassword");
       const error = document.getElementById("accessError");
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if ((input.value || "").trim().toLowerCase() === allowed) {
-          window.localStorage.setItem(key, "ok");
+        const passphrase = (input.value || "").trim().toLowerCase();
+        if (passphrase === fullSitePassphrase) {
+          window.localStorage.setItem(key, "all");
           unlock();
+        } else if (passphrase === appalcartPassphrase) {
+          window.localStorage.setItem(key, "appalcart");
+          if (currentPage === "appalcart") {
+            unlock();
+          } else {
+            window.location.href = appalcartUrl;
+          }
         } else {
           error.textContent = "Incorrect passphrase.";
           input.select();

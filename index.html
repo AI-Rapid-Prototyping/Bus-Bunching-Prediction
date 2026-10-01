@@ -81,18 +81,34 @@
   </div>
   <script>
     (() => {
-      const allowed = "ip3-oct1";
       const key = "ip3_bus_bunching_access";
+      const fullSitePassphrase = "ip3-oct1";
+      const appalcartPassphrase = "ip3-oct";
+      const currentPage = "index";
+      const appalcartUrl = "agencies/appalcart.html";
       const unlock = () => document.body.classList.remove("locked");
-      if (window.localStorage.getItem(key) === "ok") unlock();
+      const hasPageAccess = (scope) => (
+        scope === "all" ||
+        scope === "ok" ||
+        (scope === "appalcart" && currentPage === "appalcart")
+      );
+      if (hasPageAccess(window.localStorage.getItem(key))) unlock();
       const form = document.getElementById("accessForm");
       const input = document.getElementById("accessPassword");
       const error = document.getElementById("accessError");
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if ((input.value || "").trim().toLowerCase() === allowed) {
-          window.localStorage.setItem(key, "ok");
+        const passphrase = (input.value || "").trim().toLowerCase();
+        if (passphrase === fullSitePassphrase) {
+          window.localStorage.setItem(key, "all");
           unlock();
+        } else if (passphrase === appalcartPassphrase) {
+          window.localStorage.setItem(key, "appalcart");
+          if (currentPage === "appalcart") {
+            unlock();
+          } else {
+            window.location.href = appalcartUrl;
+          }
         } else {
           error.textContent = "Incorrect passphrase.";
           input.select();

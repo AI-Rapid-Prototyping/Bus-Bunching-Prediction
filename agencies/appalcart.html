@@ -311,7 +311,7 @@
   <h3>Forecast</h3>
   <table>
     <thead><tr><th>Time</th><th>Temp</th><th>Wind</th><th>Conditions</th></tr></thead>
-    <tbody><tr><td>Sep 29, 2026 at 11:00 AM ET</td><td>62.9 F</td><td>2.2 mph</td><td>Partly Cloudy</td></tr><tr><td>Sep 29, 2026 at 12:00 PM ET</td><td>65.5 F</td><td>0.1 mph</td><td>Mostly Clear</td></tr><tr><td>Sep 29, 2026 at 1:00 PM ET</td><td>67.6 F</td><td>2.6 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 29, 2026 at 2:00 PM ET</td><td>68.6 F</td><td>4.0 mph</td><td>Clear, Sunny</td></tr><tr><td>Sep 29, 2026 at 3:00 PM ET</td><td>68.8 F</td><td>5.4 mph</td><td>Mostly Cloudy</td></tr><tr><td>Sep 29, 2026 at 4:00 PM ET</td><td>68.2 F</td><td>6.1 mph</td><td>Partly Cloudy</td></tr></tbody>
+    <tbody><tr><td>Oct 1, 2026 at 12:00 PM ET</td><td>73.1 F</td><td>6.1 mph</td><td>Mostly Cloudy</td></tr><tr><td>Oct 1, 2026 at 1:00 PM ET</td><td>74.7 F</td><td>4.9 mph</td><td>Cloudy</td></tr><tr><td>Oct 1, 2026 at 2:00 PM ET</td><td>75.6 F</td><td>3.8 mph</td><td>Cloudy</td></tr><tr><td>Oct 1, 2026 at 3:00 PM ET</td><td>76.2 F</td><td>3.3 mph</td><td>Mostly Cloudy</td></tr><tr><td>Oct 1, 2026 at 4:00 PM ET</td><td>76.0 F</td><td>2.6 mph</td><td>Partly Cloudy</td></tr><tr><td>Oct 1, 2026 at 5:00 PM ET</td><td>74.2 F</td><td>2.8 mph</td><td>Mostly Clear</td></tr></tbody>
   </table>
 </section>
 </section>
@@ -348,18 +348,34 @@
   </div>
   <script>
     (() => {
-      const allowed = "ip3-oct1";
       const key = "ip3_bus_bunching_access";
+      const fullSitePassphrase = "ip3-oct1";
+      const appalcartPassphrase = "ip3-oct";
+      const currentPage = "appalcart";
+      const appalcartUrl = "appalcart.html";
       const unlock = () => document.body.classList.remove("locked");
-      if (window.localStorage.getItem(key) === "ok") unlock();
+      const hasPageAccess = (scope) => (
+        scope === "all" ||
+        scope === "ok" ||
+        (scope === "appalcart" && currentPage === "appalcart")
+      );
+      if (hasPageAccess(window.localStorage.getItem(key))) unlock();
       const form = document.getElementById("accessForm");
       const input = document.getElementById("accessPassword");
       const error = document.getElementById("accessError");
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if ((input.value || "").trim().toLowerCase() === allowed) {
-          window.localStorage.setItem(key, "ok");
+        const passphrase = (input.value || "").trim().toLowerCase();
+        if (passphrase === fullSitePassphrase) {
+          window.localStorage.setItem(key, "all");
           unlock();
+        } else if (passphrase === appalcartPassphrase) {
+          window.localStorage.setItem(key, "appalcart");
+          if (currentPage === "appalcart") {
+            unlock();
+          } else {
+            window.location.href = appalcartUrl;
+          }
         } else {
           error.textContent = "Incorrect passphrase.";
           input.select();
