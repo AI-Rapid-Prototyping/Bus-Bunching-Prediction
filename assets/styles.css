@@ -420,6 +420,18 @@ main { padding: 1.5rem 0 3rem; }
   text-decoration: none;
 }
 
+.visual-link.secondary {
+  color: var(--blue);
+  background: #ffffff;
+  border-color: var(--border);
+}
+
+.visual-link.secondary:hover {
+  color: #ffffff;
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
 .visual-link:focus-visible {
   outline: 3px solid rgba(29, 112, 184, 0.35);
   outline-offset: 3px;
@@ -465,6 +477,65 @@ main { padding: 1.5rem 0 3rem; }
   background: #e9f0f3;
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+.route-map-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.route-map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 1rem;
+  align-items: end;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.route-map-control {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 180px;
+}
+
+.route-map-control span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.route-map-control select {
+  min-height: 2.45rem;
+  padding: 0.55rem 2rem 0.55rem 0.65rem;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+}
+
+.route-map-stats {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.route-map-canvas {
+  width: 100%;
+  height: min(68vh, 720px);
+  min-height: 460px;
+  background: #e9f0f3;
+}
+
+.route-map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
 }
 
 .map-note {
@@ -724,6 +795,10 @@ body.locked .site-shell { display: none; }
   .snapshot-grid { grid-template-columns: 1fr; }
   .hero .section-inner { min-height: 310px; }
   .bar-row { grid-template-columns: minmax(76px, 0.45fr) minmax(0, 1fr) minmax(58px, auto); }
+  .route-map-toolbar { align-items: stretch; }
+  .route-map-control { width: 100%; }
+  .route-map-stats { width: 100%; margin-left: 0; }
+  .route-map-canvas { height: 62vh; min-height: 380px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

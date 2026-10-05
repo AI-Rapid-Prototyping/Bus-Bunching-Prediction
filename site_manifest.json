@@ -2,7 +2,9 @@
   "generated_pages": [
     "index.html",
     "agencies/madison-metro.html",
-    "agencies/appalcart.html"
+    "agencies/appalcart.html",
+    "agencies/madison-metro-route-map.html",
+    "agencies/appalcart-route-map.html"
   ],
   "source_files": [
     "google_transit/agency.txt",
@@ -36,11 +38,13 @@
     "agency_exports/appalcart/gtfs/routes.txt",
     "agency_exports/appalcart/gtfs/stops.txt",
     "agency_exports/appalcart/gtfs/trips.txt",
+    "agency_exports/appalcart/gtfs/shapes.txt",
     "agency_exports/appalcart/gtfs/stop_times.txt",
     "agency_exports/madison-metro/gtfs/agency.txt",
     "agency_exports/madison-metro/gtfs/routes.txt",
     "agency_exports/madison-metro/gtfs/stops.txt",
     "agency_exports/madison-metro/gtfs/trips.txt",
+    "agency_exports/madison-metro/gtfs/shapes.txt",
     "agency_exports/madison-metro/gtfs/stop_times.txt",
     "parameter_model_final/model_ready_dataset.csv",
     "bus_bunching_model_final/bus_bunching_model_scored.csv"
