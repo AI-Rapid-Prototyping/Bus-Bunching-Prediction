@@ -7,7 +7,8 @@
   <meta name="description" content="Current bus-bunching observations from the GTFS-RT export.">
   <title>AppalCART | IP3 Bus Bunching</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  
+  <!-- Added PapaParse for dynamic CSV reading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body class="locked">
   <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
@@ -62,13 +63,15 @@
 </div>
       <div class="metric">
   <span>Stop-level observations</span>
-  <strong>426</strong>
-  <small>2026-08-24 to 2026-09-19</small>
+  <!-- IDs added for dynamic update -->
+  <strong id="metric-total-obs">--</strong>
+  <small id="metric-date-range">Loading from GitHub...</small>
 </div>
       <div class="metric">
   <span>Stops affected</span>
-  <strong>54</strong>
-  <small>8 routes affected</small>
+  <!-- IDs added for dynamic update -->
+  <strong id="metric-stops">--</strong>
+  <small id="metric-routes">-- routes affected</small>
 </div>
     </section>
 
@@ -261,7 +264,9 @@
   <h3>Top stop locations</h3>
   <table>
     <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Observations</th></tr></thead>
-    <tbody><tr><td>ASU Mountain Laurel Hall</td><td>14</td><td class="num">3</td><td class="num">42</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">2</td><td class="num">41</td></tr><tr><td>Dan&#x27;l Boone Inn</td><td>72</td><td class="num">1</td><td class="num">35</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">2</td><td class="num">31</td></tr><tr><td>Watauga Medical Center</td><td>8</td><td class="num">2</td><td class="num">29</td></tr><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">27</td></tr><tr><td>Vet Clinic on Wilson Dr</td><td>103</td><td class="num">1</td><td class="num">19</td></tr><tr><td>Kingswood</td><td>55</td><td class="num">1</td><td class="num">18</td></tr><tr><td>Parks &amp; Rec</td><td>10</td><td class="num">2</td><td class="num">15</td></tr><tr><td>Hodges Gap Rd</td><td>84</td><td class="num">1</td><td class="num">13</td></tr></tbody>
+    <!-- Added ID for dynamic rows -->
+    <tbody id="top-stops-body">
+    </tbody>
   </table>
 </section>
 </section>
@@ -350,9 +355,11 @@
   </div>
 </main>
 
-    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports.</footer>
+    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports. Stats updated dynamically via CSV.</footer>
   </div>
+  
   <script>
+    // --- EXISTING PASSCODE GATE LOGIC ---
     (() => {
       const key = "ip3_bus_bunching_access";
       const fullSitePassphrase = "ip3-oct1";
@@ -389,7 +396,70 @@
       });
       input.focus();
     })();
+
+    // --- NEW DYNAMIC CSV LOGIC ---
+    const csvUrl = "https://raw.githubusercontent.com/AI-Rapid-Prototyping/Bus-Bunching-Prediction/refs/heads/main/Outputs/AppalCart/appalcart_bunching_events.csv";
+
+    Papa.parse(csvUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        processData(results.data);
+      },
+      error: function(err) {
+        console.error("Error loading CSV:", err);
+        document.getElementById('metric-total-obs').textContent = "Error";
+      }
+    });
+
+    function processData(data) {
+      let totalObs = 0;
+      let uniqueStops = new Set();
+      let uniqueRoutes = new Set();
+      let stopCounts = {};
+
+      data.forEach(row => {
+        let route = row['route_label'];
+        let stopId = row['stop_id'];
+        let stopName = row['stop_name'];
+
+        if (!route || !stopId) return; 
+
+        totalObs++;
+        uniqueStops.add(stopId);
+        uniqueRoutes.add(route);
+
+        // Track stops for the "Top stop locations" table
+        if(!stopCounts[stopId]) {
+          stopCounts[stopId] = { name: stopName, routes: new Set(), count: 0 };
+        }
+        stopCounts[stopId].routes.add(route);
+        stopCounts[stopId].count++;
+      });
+
+      // Update Top Metrics
+      document.getElementById('metric-total-obs').textContent = totalObs;
+      document.getElementById('metric-stops').textContent = uniqueStops.size;
+      document.getElementById('metric-routes').textContent = `${uniqueRoutes.size} routes affected`;
+      document.getElementById('metric-date-range').textContent = "From GitHub CSV";
+
+      // Update Top Stops Table
+      let sortedStops = Object.entries(stopCounts)
+        .map(([id, info]) => ({ id, ...info }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+
+      const stopsTableHtml = sortedStops.map(stop => `
+        <tr>
+          <td>${stop.name || 'Unknown Stop'}</td>
+          <td>${stop.id}</td>
+          <td class="num">${stop.routes.size}</td>
+          <td class="num">${stop.count}</td>
+        </tr>
+      `).join('');
+      document.getElementById('top-stops-body').innerHTML = stopsTableHtml || "<tr><td colspan='4'>No stop data found.</td></tr>";
+    }
   </script>
-  
 </body>
 </html>
