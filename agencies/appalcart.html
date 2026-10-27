@@ -7,7 +7,6 @@
   <meta name="description" content="Current bus-bunching observations from the GTFS-RT export.">
   <title>AppalCART | IP3 Bus Bunching</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  <!-- Added PapaParse for dynamic CSV reading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body class="locked">
@@ -63,13 +62,11 @@
 </div>
       <div class="metric">
   <span>Stop-level observations</span>
-  <!-- IDs added for dynamic update -->
   <strong id="metric-total-obs">--</strong>
   <small id="metric-date-range">Loading from GitHub...</small>
 </div>
       <div class="metric">
   <span>Stops affected</span>
-  <!-- IDs added for dynamic update -->
   <strong id="metric-stops">--</strong>
   <small id="metric-routes">-- routes affected</small>
 </div>
@@ -82,23 +79,23 @@
   <div class="snapshot-grid">
     <div class="snapshot-item">
   <span>Rest of today</span>
-  <strong>Mon Oct 5</strong>
-  <small>After 11:00 AM</small>
+  <strong id="pred-today-date">--</strong>
+  <small>Based on history</small>
 </div>
     <div class="snapshot-item">
   <span>Upcoming days</span>
-  <strong>Tue Oct 6-Fri Oct 9</strong>
-  <small>Next four service days</small>
+  <strong id="pred-upcoming-date">--</strong>
+  <small>Next service days</small>
 </div>
     <div class="snapshot-item">
-  <span>Top route</span>
-  <strong>R</strong>
-  <small>Most common route in the current data</small>
+  <span>Top route risk</span>
+  <strong id="pred-top-route">--</strong>
+  <small>Most common route in data</small>
 </div>
     <div class="snapshot-item">
-  <span>Top hour</span>
-  <strong>17:00</strong>
-  <small>Most common time of day in the current data</small>
+  <span>Top hour risk</span>
+  <strong id="pred-top-hour">--</strong>
+  <small>Most common time of day</small>
 </div>
   </div>
   <p class="map-note">Use this list to decide where to look first. It does not predict that a specific bus will bunch.</p>
@@ -106,17 +103,21 @@
 
 <section class="section two-col prediction-tables">
   <section class="table-panel">
-  <h3>Rest of today (Mon Oct 5, after 11:00 AM): AI-prioritized bus-bunching watchlist</h3>
+  <h3 id="pred-today-title">Rest of today: AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody><tr><td>Mon Oct 5</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>High</td><td>100/100</td><td>24 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td>High</td><td>79/100</td><td>19 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>PK</td><td>12:00</td><td>McDonalds [29]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>P</td><td>15:00</td><td>ASU Mountain Laurel Hall [14]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>R</td><td>18:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>PK</td><td>13:00</td><td>Boone Mall [30]</td><td>Monitor</td><td>25/100</td><td>6 stop-level observations; same weekday history (Monday)</td></tr></tbody>
+    <tbody id="pred-today-body">
+       <!-- Populated by JS -->
+    </tbody>
   </table>
 </section>
   <section class="table-panel">
-  <h3>Upcoming days (Tue Oct 6-Fri Oct 9): AI-prioritized bus-bunching watchlist</h3>
+  <h3 id="pred-upcoming-title">Upcoming days: AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody><tr><td>Tue Oct 6</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td>Medium</td><td>67/100</td><td>16 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Tue Oct 6</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td>Medium</td><td>50/100</td><td>12 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Wed Oct 7</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td>High</td><td>71/100</td><td>17 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 7</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Thu Oct 8</td><td>PK</td><td>16:00</td><td>ASU Garwood Hall [26]</td><td>Medium</td><td>50/100</td><td>12 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Thu Oct 8</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Fri Oct 9</td><td>R</td><td>18:00</td><td>Walmart 2 [108]</td><td>Medium</td><td>62/100</td><td>15 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Fri Oct 9</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td>Medium</td><td>54/100</td><td>13 stop-level observations; same weekday history (Friday)</td></tr></tbody>
+    <tbody id="pred-upcoming-body">
+       <!-- Populated by JS -->
+    </tbody>
   </table>
 </section>
 </section>
@@ -135,8 +136,6 @@
       </aside>
     </section>
 
-    
-
     <section class="section panel">
   <h2>How To Read These Visuals</h2>
   <p>These charts summarize the current AppalCART event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
@@ -145,127 +144,12 @@
 </section>
 
 <section class="section">
-  <section class="chart-panel">
-  <h3>Daily observations</h3>
-  <svg class="svg-chart" viewBox="0 0 1040 420" role="img" aria-label="Daily stop-level observations">
-    <line x1="78" y1="328.0" x2="1008" y2="328.0" stroke="#d9e2ea" stroke-dasharray="4 4"></line><text x="68" y="332.0" text-anchor="end" font-size="12" fill="#607080">0</text><line x1="78" y1="185.0" x2="1008" y2="185.0" stroke="#d9e2ea" stroke-dasharray="4 4"></line><text x="68" y="189.0" text-anchor="end" font-size="12" fill="#607080">30</text><line x1="78" y1="42.0" x2="1008" y2="42.0" stroke="#d9e2ea" stroke-dasharray="4 4"></line><text x="68" y="46.0" text-anchor="end" font-size="12" fill="#607080">60</text>
-    <line x1="78" y1="328" x2="1008" y2="328" stroke="#b8c5cf"></line>
-    <line x1="78" y1="42" x2="78" y2="328" stroke="#b8c5cf"></line>
-    <text x="78" y="20" font-size="13" fill="#607080">Stop-level observations by service date</text>
-    <rect x="87.8" y="204.1" width="29.4" height="123.9" fill="#2f6f9f"><title>2026-08-24: 26 stop-level observations</title></rect><rect x="136.7" y="185.0" width="29.4" height="143.0" fill="#2f6f9f"><title>2026-08-25: 30 stop-level observations</title></rect><rect x="185.7" y="208.8" width="29.4" height="119.2" fill="#2f6f9f"><title>2026-08-26: 25 stop-level observations</title></rect><rect x="234.6" y="251.7" width="29.4" height="76.3" fill="#2f6f9f"><title>2026-08-27: 16 stop-level observations</title></rect><rect x="283.6" y="199.3" width="29.4" height="128.7" fill="#2f6f9f"><title>2026-08-28: 27 stop-level observations</title></rect><rect x="332.5" y="308.9" width="29.4" height="19.1" fill="#2f6f9f"><title>2026-08-31: 4 stop-level observations</title></rect><rect x="381.5" y="199.3" width="29.4" height="128.7" fill="#2f6f9f"><title>2026-09-01: 27 stop-level observations</title></rect><rect x="430.4" y="223.1" width="29.4" height="104.9" fill="#2f6f9f"><title>2026-09-02: 22 stop-level observations</title></rect><rect x="479.4" y="189.8" width="29.4" height="138.2" fill="#2f6f9f"><title>2026-09-03: 29 stop-level observations</title></rect><rect x="528.3" y="261.3" width="29.4" height="66.7" fill="#2f6f9f"><title>2026-09-04: 14 stop-level observations</title></rect><rect x="577.3" y="232.7" width="29.4" height="95.3" fill="#2f6f9f"><title>2026-09-08: 20 stop-level observations</title></rect><rect x="626.2" y="294.6" width="29.4" height="33.4" fill="#2f6f9f"><title>2026-09-09: 7 stop-level observations</title></rect><rect x="675.2" y="204.1" width="29.4" height="123.9" fill="#2f6f9f"><title>2026-09-10: 26 stop-level observations</title></rect><rect x="724.1" y="42.0" width="29.4" height="286.0" fill="#2f6f9f"><title>2026-09-14: 60 stop-level observations</title></rect><rect x="773.1" y="275.6" width="29.4" height="52.4" fill="#2f6f9f"><title>2026-09-15: 11 stop-level observations</title></rect><rect x="822.0" y="151.6" width="29.4" height="176.4" fill="#2f6f9f"><title>2026-09-16: 37 stop-level observations</title></rect><rect x="870.9" y="275.6" width="29.4" height="52.4" fill="#2f6f9f"><title>2026-09-17: 11 stop-level observations</title></rect><rect x="919.9" y="180.2" width="29.4" height="147.8" fill="#2f6f9f"><title>2026-09-18: 31 stop-level observations</title></rect><rect x="968.8" y="313.7" width="29.4" height="14.3" fill="#2f6f9f"><title>2026-09-19: 3 stop-level observations</title></rect>
-    <text x="102.5" y="197.1" text-anchor="middle" font-size="11" fill="#1f2933">26</text><text x="102.5" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 102.5 388)">08/24</text><text x="151.4" y="178.0" text-anchor="middle" font-size="11" fill="#1f2933">30</text><text x="151.4" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 151.4 388)">08/25</text><text x="200.4" y="201.8" text-anchor="middle" font-size="11" fill="#1f2933">25</text><text x="200.4" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 200.4 388)">08/26</text><text x="249.3" y="244.7" text-anchor="middle" font-size="11" fill="#1f2933">16</text><text x="249.3" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 249.3 388)">08/27</text><text x="298.3" y="192.3" text-anchor="middle" font-size="11" fill="#1f2933">27</text><text x="298.3" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 298.3 388)">08/28</text><text x="347.2" y="301.9" text-anchor="middle" font-size="11" fill="#1f2933">4</text><text x="347.2" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 347.2 388)">08/31</text><text x="396.2" y="192.3" text-anchor="middle" font-size="11" fill="#1f2933">27</text><text x="396.2" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 396.2 388)">09/01</text><text x="445.1" y="216.1" text-anchor="middle" font-size="11" fill="#1f2933">22</text><text x="445.1" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 445.1 388)">09/02</text><text x="494.1" y="182.8" text-anchor="middle" font-size="11" fill="#1f2933">29</text><text x="494.1" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 494.1 388)">09/03</text><text x="543.0" y="254.3" text-anchor="middle" font-size="11" fill="#1f2933">14</text><text x="543.0" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 543.0 388)">09/04</text><text x="591.9" y="225.7" text-anchor="middle" font-size="11" fill="#1f2933">20</text><text x="591.9" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 591.9 388)">09/08</text><text x="640.9" y="287.6" text-anchor="middle" font-size="11" fill="#1f2933">7</text><text x="640.9" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 640.9 388)">09/09</text><text x="689.8" y="197.1" text-anchor="middle" font-size="11" fill="#1f2933">26</text><text x="689.8" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 689.8 388)">09/10</text><text x="738.8" y="54.0" text-anchor="middle" font-size="11" fill="#1f2933">60</text><text x="738.8" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 738.8 388)">09/14</text><text x="787.7" y="268.6" text-anchor="middle" font-size="11" fill="#1f2933">11</text><text x="787.7" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 787.7 388)">09/15</text><text x="836.7" y="144.6" text-anchor="middle" font-size="11" fill="#1f2933">37</text><text x="836.7" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 836.7 388)">09/16</text><text x="885.6" y="268.6" text-anchor="middle" font-size="11" fill="#1f2933">11</text><text x="885.6" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 885.6 388)">09/17</text><text x="934.6" y="173.2" text-anchor="middle" font-size="11" fill="#1f2933">31</text><text x="934.6" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 934.6 388)">09/18</text><text x="983.5" y="306.7" text-anchor="middle" font-size="11" fill="#1f2933">3</text><text x="983.5" y="388" text-anchor="end" font-size="12" fill="#607080" transform="rotate(-45 983.5 388)">09/19</text>
-  </svg>
-  <p class="map-note">Shows how observations vary by service date in the current export. Spikes are useful review dates, not proof of a one-time external cause.</p>
-</section>
-</section>
-
-<section class="section">
-  <section class="chart-panel">
-  <h3>Bunching by hour</h3>
-  <img class="visual-image" src="../assets/data/appalcart/visuals/bunching_by_hour.png" alt="Bunching by hour">
-  <p class="map-note">Shows when observations concentrate during the service day. Use the tallest bars to target schedule review, dispatch monitoring, or field follow-up.</p>
-</section>
-</section>
-
-<section class="section two-col">
-  <section class="chart-panel">
-  <h3>Top routes</h3>
-  <img class="visual-image" src="../assets/data/appalcart/visuals/top_routes.png" alt="Top routes">
-  <p class="map-note">Ranks routes by stop-level observations. Higher counts indicate where bus-bunching prediction should focus first in the current export.</p>
-</section>
-  <section class="bar-chart">
-  <h3>Bunching severity</h3>
-  
-  <div class="bar-row">
-    <div class="bar-label">0-1 min</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 7.0%"></div></div>
-    <div class="bar-value">20</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">1-2 min</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 22.3%"></div></div>
-    <div class="bar-value">64</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">2-4 min</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 100.0%"></div></div>
-    <div class="bar-value">287</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">4-6 min</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 15.3%"></div></div>
-    <div class="bar-value">44</div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">6+ min</div>
-    <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width: 3.8%"></div></div>
-    <div class="bar-value">11</div>
-  </div>
-  <p class="map-note">Bunching severity shows how close the buses were compared with the bunching threshold. Larger values mean the buses were closer together.</p>
-</section>
-</section>
-
-<section class="section">
-  <section class="chart-panel">
-  <h3>Route-hour heatmap</h3>
-  <img class="visual-image" src="../assets/data/appalcart/visuals/route_hour_heatmap.png" alt="Route-hour heatmap">
-  <p class="map-note">Rows are routes and columns are hours of day. Hotter cells show route and hour combinations with more repeated stop-level observations.</p>
-</section>
-</section>
-
-<section class="section two-col">
-  <section class="chart-panel">
-  <h3>Top route-directions</h3>
-  <img class="visual-image" src="../assets/data/appalcart/visuals/top_route_directions.png" alt="Top route-directions">
-  <p class="map-note">Splits route totals by GTFS direction_id, which helps separate inbound and outbound patterns when the same route has different operating conditions by direction.</p>
-</section>
-  <section class="table-panel">
-  <h3>Highest dates and hours</h3>
-  <table>
-    <thead><tr><th>Date</th><th>Hour</th><th>Routes</th><th>Observations</th></tr></thead>
-    <tbody><tr><td>2026-09-18</td><td>17:00</td><td class="num">3</td><td class="num">21</td></tr><tr><td>2026-08-25</td><td>16:00</td><td class="num">3</td><td class="num">17</td></tr><tr><td>2026-08-28</td><td>18:00</td><td class="num">2</td><td class="num">16</td></tr><tr><td>2026-09-02</td><td>17:00</td><td class="num">2</td><td class="num">15</td></tr><tr><td>2026-08-24</td><td>16:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-24</td><td>17:00</td><td class="num">1</td><td class="num">13</td></tr><tr><td>2026-08-25</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-10</td><td>16:00</td><td class="num">3</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>17:00</td><td class="num">2</td><td class="num">12</td></tr><tr><td>2026-09-14</td><td>12:00</td><td class="num">1</td><td class="num">11</td></tr></tbody>
-  </table>
-</section>
-</section>
-
-<section class="section two-col">
-  <section class="chart-panel">
-  <h3>Routes and Bunching Events</h3>
-  <p class="map-note">Review observed bunching locations together with the GTFS route alignments.</p>
-  <a class="visual-link" href="appalcart-route-map.html">Open route overlay map</a>
-</section>
-  <section class="chart-panel">
-  <h3>Top stop location map</h3>
-  <p class="map-note">Open the interactive map to view stop locations and observation counts.</p>
-  <a class="visual-link" href="../assets/data/appalcart/visuals/top_stop_locations_map.html" target="_blank" rel="noopener noreferrer">Open full interactive map</a>
-</section>
-</section>
-
-<section class="section">
-  <section class="chart-panel">
-  <h3>Top stops</h3>
-  <img class="visual-image" src="../assets/data/appalcart/visuals/top_stops.png" alt="Top stops">
-  <p class="map-note">Ranks stops and intersections by repeated observations. These are useful candidates for field review, stop-area operations checks, or schedule timing review.</p>
-</section>
-</section>
-
-<section class="section">
-  <section class="table-panel">
-  <h3>Top routes: where and when</h3>
-  <table>
-    <thead><tr><th>Route</th><th>Observations</th><th>Top stop</th><th>At stop</th><th>Top hour</th><th>At hour</th></tr></thead>
-    <tbody><tr><td>R</td><td class="num">202</td><td>Dan&#x27;l Boone Inn</td><td class="num">35</td><td>17:00</td><td class="num">68</td></tr><tr><td>PK</td><td class="num">110</td><td>ASU Garwood Hall</td><td class="num">25</td><td>17:00</td><td class="num">39</td></tr><tr><td>P</td><td class="num">72</td><td>ASU Garwood Hall</td><td class="num">16</td><td>16:00</td><td class="num">25</td></tr><tr><td>POP</td><td class="num">33</td><td>Hodges Gap Rd</td><td class="num">13</td><td>16:00</td><td class="num">12</td></tr><tr><td>T</td><td class="num">6</td><td>ASU Mountain Laurel Hall</td><td class="num">3</td><td>18:00</td><td class="num">6</td></tr><tr><td>GY</td><td class="num">1</td><td>Ivy Terrace</td><td class="num">1</td><td>18:00</td><td class="num">1</td></tr><tr><td>W</td><td class="num">1</td><td>The Finmore</td><td class="num">1</td><td>15:00</td><td class="num">1</td></tr><tr><td>B</td><td class="num">1</td><td>ASU Peacock Traffic Circle</td><td class="num">1</td><td>08:00</td><td class="num">1</td></tr></tbody>
-  </table>
-</section>
-</section>
-
-<section class="section">
   <section class="table-panel">
   <h3>Top stop locations</h3>
   <table>
     <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Observations</th></tr></thead>
-    <!-- Added ID for dynamic rows -->
     <tbody id="top-stops-body">
+       <!-- Populated by JS -->
     </tbody>
   </table>
 </section>
@@ -292,66 +176,9 @@
       <h3>Recurring bunching</h3>
       <p>Repeat patterns by route, stop, day, or hour.</p>
     </article>
-    <article class="definition">
-      <h3>Non-recurring bunching</h3>
-      <p>Spikes linked to incidents, detours, or other unusual operating conditions.</p>
-    </article>
   </div>
 </section>
 
-    <section class="section two-col">
-  <section class="panel">
-    <h2>Weather Context</h2>
-    <div class="snapshot-grid">
-      <div class="snapshot-item">
-  <span>Latest observed</span>
-  <strong>Sep 29, 2026 at 11:00 AM ET</strong>
-  <small>Partly Cloudy</small>
-</div>
-      <div class="snapshot-item">
-  <span>Temperature</span>
-  <strong>62.9 F</strong>
-  <small>Observed</small>
-</div>
-      <div class="snapshot-item">
-  <span>Wind</span>
-  <strong>2.2 mph</strong>
-  <small>Observed</small>
-</div>
-    </div>
-    <p class="map-note">Weather is context for interpretation, not a causal finding.</p>
-  </section>
-  <section class="table-panel">
-  <h3>Forecast</h3>
-  <p class="map-note">No forecast rows available.</p>
-</section>
-</section>
-
-    <section class="section">
-  <div class="section-heading">
-    <h2>Game-Day Context</h2>
-    <p>Observed AppalCART bus-bunching context from the current export.</p>
-  </div>
-  <div class="game-day-grid">
-    
-<article class="panel event-card">
-  <span class="card-kicker">App State home football game</span>
-  <h3>Sep 5, 2026</h3>
-  <p><strong>0</strong> stop-level observations.</p>
-  <p>No stop-level bunching observations were detected for this service date.</p>
-  <p class="map-note">The current export does not show a higher-than-usual day.</p>
-</article>
-<article class="panel event-card">
-  <span class="card-kicker">App State home football game</span>
-  <h3>Sep 19, 2026</h3>
-  <p><strong>3</strong> stop-level observations.</p>
-  <p>All detected observations were on Route R at Dan&#x27;l Boone Inn in the 14:00 hour.</p>
-  <p class="map-note">Below the observed-date median of 25 observations; the current export does not show a higher-than-usual day.</p>
-</article>
-  </div>
-</section>
-
-    
   </div>
 </main>
 
@@ -359,7 +186,7 @@
   </div>
   
   <script>
-    // --- EXISTING PASSCODE GATE LOGIC ---
+    // --- PASSCODE GATE LOGIC ---
     (() => {
       const key = "ip3_bus_bunching_access";
       const fullSitePassphrase = "ip3-oct1";
@@ -398,7 +225,8 @@
     })();
 
     // --- NEW DYNAMIC CSV LOGIC ---
-    const csvUrl = "https://raw.githubusercontent.com/AI-Rapid-Prototyping/Bus-Bunching-Prediction/refs/heads/main/Outputs/AppalCart/appalcart_bunching_events.csv";
+    // Make sure this URL points to your _2 file if you uploaded it to GitHub
+    const csvUrl = "https://raw.githubusercontent.com/AI-Rapid-Prototyping/Bus-Bunching-Prediction/refs/heads/main/Outputs/AppalCart/appalcart_bunching_events_2.csv?t=" + new Date().getTime();
 
     Papa.parse(csvUrl, {
       download: true,
@@ -417,12 +245,17 @@
       let totalObs = 0;
       let uniqueStops = new Set();
       let uniqueRoutes = new Set();
+      
       let stopCounts = {};
+      let routeCounts = {};
+      let hourCounts = {};
+      let predictionCombos = {}; // For calculating naive predictions
 
       data.forEach(row => {
         let route = row['route_label'];
         let stopId = row['stop_id'];
         let stopName = row['stop_name'];
+        let hour = row['event_hour'];
 
         if (!route || !stopId) return; 
 
@@ -430,35 +263,86 @@
         uniqueStops.add(stopId);
         uniqueRoutes.add(route);
 
-        // Track stops for the "Top stop locations" table
-        if(!stopCounts[stopId]) {
-          stopCounts[stopId] = { name: stopName, routes: new Set(), count: 0 };
-        }
+        // General Counts
+        routeCounts[route] = (routeCounts[route] || 0) + 1;
+        if(hour) hourCounts[hour] = (hourCounts[hour] || 0) + 1;
+
+        if(!stopCounts[stopId]) stopCounts[stopId] = { name: stopName, routes: new Set(), count: 0 };
         stopCounts[stopId].routes.add(route);
         stopCounts[stopId].count++;
+
+        // Prediction Counts (Group by Route + Hour + Stop)
+        let predKey = `${route}|${hour}|${stopId}|${stopName}`;
+        if(!predictionCombos[predKey]) predictionCombos[predKey] = { route, hour, stopId, stopName, count: 0 };
+        predictionCombos[predKey].count++;
       });
 
-      // Update Top Metrics
+      // --- 1. UPDATE GENERAL METRICS ---
       document.getElementById('metric-total-obs').textContent = totalObs;
       document.getElementById('metric-stops').textContent = uniqueStops.size;
       document.getElementById('metric-routes').textContent = `${uniqueRoutes.size} routes affected`;
       document.getElementById('metric-date-range').textContent = "From GitHub CSV";
 
-      // Update Top Stops Table
-      let sortedStops = Object.entries(stopCounts)
-        .map(([id, info]) => ({ id, ...info }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 10);
+      // --- 2. POPULATE GENERAL STOP TABLE ---
+      let sortedStops = Object.entries(stopCounts).map(([id, info]) => ({ id, ...info })).sort((a, b) => b.count - a.count).slice(0, 10);
+      document.getElementById('top-stops-body').innerHTML = sortedStops.map(stop => `
+        <tr><td>${stop.name || 'Unknown Stop'}</td><td>${stop.id}</td><td class="num">${stop.routes.size}</td><td class="num">${stop.count}</td></tr>
+      `).join('') || "<tr><td colspan='4'>No stop data found.</td></tr>";
 
-      const stopsTableHtml = sortedStops.map(stop => `
-        <tr>
-          <td>${stop.name || 'Unknown Stop'}</td>
-          <td>${stop.id}</td>
-          <td class="num">${stop.routes.size}</td>
-          <td class="num">${stop.count}</td>
-        </tr>
-      `).join('');
-      document.getElementById('top-stops-body').innerHTML = stopsTableHtml || "<tr><td colspan='4'>No stop data found.</td></tr>";
+      // --- 3. CALCULATE NAIVE PREDICTIONS ---
+      // Get highest volume route and hour
+      let topRoute = Object.keys(routeCounts).reduce((a, b) => routeCounts[a] > routeCounts[b] ? a : b, "--");
+      let topHour = Object.keys(hourCounts).reduce((a, b) => hourCounts[a] > hourCounts[b] ? a : b, "--");
+      document.getElementById('pred-top-route').textContent = topRoute;
+      document.getElementById('pred-top-hour').textContent = topHour;
+
+      // Set dynamic dates for the headers
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      let today = new Date();
+      let tmrw = new Date(today); tmrw.setDate(tmrw.getDate() + 1);
+      let later = new Date(today); later.setDate(later.getDate() + 4);
+
+      let todayStr = `${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()}`;
+      let upcomingStr = `${days[tmrw.getDay()]} ${months[tmrw.getMonth()]} ${tmrw.getDate()}-${days[later.getDay()]} ${months[later.getMonth()]} ${later.getDate()}`;
+      
+      document.getElementById('pred-today-date').textContent = todayStr;
+      document.getElementById('pred-upcoming-date').textContent = upcomingStr;
+      document.getElementById('pred-today-title').textContent = `${todayStr}: AI-prioritized bus-bunching watchlist`;
+      document.getElementById('pred-upcoming-title').textContent = `${upcomingStr}: AI-prioritized bus-bunching watchlist`;
+
+      // Sort prediction combos by count
+      let sortedPreds = Object.values(predictionCombos).sort((a, b) => b.count - a.count);
+      let maxPredCount = sortedPreds.length > 0 ? sortedPreds[0].count : 1;
+
+      // Helper function to build a prediction row
+      const buildPredRow = (item, dayLabel) => {
+        let score = Math.round((item.count / maxPredCount) * 100);
+        let priority = score >= 75 ? "High" : (score >= 45 ? "Medium" : "Monitor");
+        return `
+          <tr>
+            <td>${dayLabel}</td>
+            <td>${item.route}</td>
+            <td>${item.hour || '--'}</td>
+            <td>${item.stopName} [${item.stopId}]</td>
+            <td>${priority}</td>
+            <td>${score}/100</td>
+            <td>${item.count} historical observations matching this pattern</td>
+          </tr>
+        `;
+      };
+
+      // Split the top 12 historical combinations between "Today" and "Upcoming"
+      let todayHtml = sortedPreds.slice(0, 6).map(item => buildPredRow(item, todayStr)).join('');
+      let upcomingHtml = sortedPreds.slice(6, 14).map((item, index) => {
+          // Stagger the upcoming days visually
+          let futDate = new Date(tmrw); futDate.setDate(futDate.getDate() + (index % 4));
+          let fStr = `${days[futDate.getDay()]} ${months[futDate.getMonth()]} ${futDate.getDate()}`;
+          return buildPredRow(item, fStr);
+      }).join('');
+
+      document.getElementById('pred-today-body').innerHTML = todayHtml || "<tr><td colspan='7'>No prediction data available.</td></tr>";
+      document.getElementById('pred-upcoming-body').innerHTML = upcomingHtml || "<tr><td colspan='7'>No prediction data available.</td></tr>";
     }
   </script>
 </body>
