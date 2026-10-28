@@ -42,7 +42,7 @@
     <div class="hero-content">
       <p class="eyebrow">Route Map</p>
       <h1>AppalCART Routes and Bunching Events</h1>
-      <p>Boone, North Carolina. Observed stop-level bus-bunching locations over GTFS route alignments.</p>
+      <p>Boone, North Carolina. Observed stop-level bus-bunching locations over GTFS route alignments, with the AppalCART prediction watchlist separated from historical evidence.</p>
       <div class="route-map-actions">
   <a class="visual-link secondary" href="appalcart.html">Agency dashboard</a>
 </div>
@@ -75,7 +75,8 @@
 </div>
     </section>
 
-    <section class="section panel route-map-panel" aria-label="Route overlay map">
+    <section class="section route-map-workspace" aria-label="Route map and prediction watchlist">
+      <div class="panel route-map-panel" aria-label="Route overlay map">
   <div class="route-map-toolbar">
     <label class="route-map-control">
       <span>Route</span>
@@ -88,17 +89,48 @@
     <div class="route-map-stats" id="routeMapStats"></div>
   </div>
   <div id="routeOverlayMap" class="route-map-canvas"></div>
-</section>
+</div>
+      <aside class="panel route-map-side">
+  <p class="eyebrow">Prediction Watchlist</p>
+  <h2>Route-Hour Windows To Watch</h2>
+  <p>Relative risk is based on recurring route-hour-stop patterns in the current AppalCART export.</p>
+  <ul class="watchlist">
+<li>
+  <strong>Route PK at 17:00</strong>
+  <span>ASU Garwood Hall [26]</span>
+  <small>Wed Oct 28 | High | 71/100 | 17 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <strong>Route R at 17:00</strong>
+  <span>Dan&#x27;l Boone Inn [72]</span>
+  <small>Wed Oct 28 | Medium | 46/100 | 11 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <strong>Route R at 20:00</strong>
+  <span>Vet Clinic on Wilson Dr [103]</span>
+  <small>Wed Oct 28 | Medium | 46/100 | 11 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <strong>Route R at 18:00</strong>
+  <span>Watauga Medical Center [8]</span>
+  <small>Wed Oct 28 | Monitor | 42/100 | 10 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <strong>Route R at 19:00</strong>
+  <span>Dan&#x27;l Boone Inn [72]</span>
+  <small>Wed Oct 28 | Monitor | 29/100 | 7 stop-level observations; same weekday history (Wednesday)</small>
+</li></ul>
+  <p class="map-note">This map combines observed bunching locations with prioritized route-hour windows for operational review.</p>
+</aside>
+    </section>
 
-    <section class="section">
-      <section class="table-panel">
+    <section class="section"><section class="table-panel">
   <h3>Routes shown on the overlay</h3>
   <table>
     <thead><tr><th>Route</th><th>Stop-level observations</th></tr></thead>
     <tbody><tr><td>R</td><td class="num">202</td></tr><tr><td>PK</td><td class="num">110</td></tr><tr><td>P</td><td class="num">72</td></tr><tr><td>POP</td><td class="num">33</td></tr><tr><td>T</td><td class="num">6</td></tr><tr><td>GY</td><td class="num">1</td></tr><tr><td>W</td><td class="num">1</td></tr><tr><td>B</td><td class="num">1</td></tr></tbody>
   </table>
-</section>
-    </section>
+</section></section>
   </div>
 </main>
 

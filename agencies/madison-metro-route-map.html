@@ -42,7 +42,7 @@
     <div class="hero-content">
       <p class="eyebrow">Route Map</p>
       <h1>Madison Metro Transit Routes and Bunching Events</h1>
-      <p>Madison, Wisconsin. Observed stop-level bus-bunching locations over GTFS route alignments.</p>
+      <p>Madison, Wisconsin. Observed stop-level bus-bunching locations over GTFS route alignments, with the AppalCART prediction watchlist separated from historical evidence.</p>
       <div class="route-map-actions">
   <a class="visual-link secondary" href="madison-metro.html">Agency dashboard</a>
 </div>
@@ -75,7 +75,8 @@
 </div>
     </section>
 
-    <section class="section panel route-map-panel" aria-label="Route overlay map">
+    <section class="section route-map-workspace" aria-label="Route map and prediction watchlist">
+      <div class="panel route-map-panel" aria-label="Route overlay map">
   <div class="route-map-toolbar">
     <label class="route-map-control">
       <span>Route</span>
@@ -88,9 +89,7 @@
     <div class="route-map-stats" id="routeMapStats"></div>
   </div>
   <div id="routeOverlayMap" class="route-map-canvas"></div>
-</section>
-
-    <section class="section">
+</div>
       <section class="table-panel">
   <h3>Routes shown on the overlay</h3>
   <table>
@@ -99,6 +98,8 @@
   </table>
 </section>
     </section>
+
+    
   </div>
 </main>
 

@@ -7,7 +7,7 @@
   <meta name="description" content="Current bus-bunching observations from the GTFS-RT export.">
   <title>AppalCART | IP3 Bus Bunching</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body class="locked">
   <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
@@ -49,95 +49,175 @@
 
 <main>
   <div class="section-inner">
-    <section class="section metrics-grid" aria-label="Agency metrics">
-      <div class="metric">
-  <span>Status</span>
-  <strong>AI prediction ready</strong>
-  <small>Agency dashboard</small>
-</div>
-      <div class="metric">
-  <span>Service routes</span>
-  <strong>24</strong>
-  <small>GTFS routes in the local feed</small>
-</div>
-      <div class="metric">
-  <span>Stop-level observations</span>
-  <strong id="metric-total-obs">--</strong>
-  <small id="metric-date-range">Loading from GitHub...</small>
-</div>
-      <div class="metric">
-  <span>Stops affected</span>
-  <strong id="metric-stops">--</strong>
-  <small id="metric-routes">-- routes affected</small>
-</div>
+    <section class="section" aria-label="AppalCART dashboard views">
+      <div class="tab-list" role="tablist" aria-label="AppalCART dashboard views">
+        <button class="tab-button" id="tab-predictions" type="button" role="tab" aria-controls="panel-predictions" aria-selected="true" data-tab-target="predictions">Predictions</button>
+        <button class="tab-button" id="tab-historical-data" type="button" role="tab" aria-controls="panel-historical-data" aria-selected="false" data-tab-target="historical-data">Historical Data</button>
+      </div>
     </section>
 
-    <section class="section prediction-feature" aria-labelledby="prediction-heading">
+    <section id="panel-predictions" class="tab-panel" role="tabpanel" aria-labelledby="tab-predictions" data-tab-panel="predictions">
+      <section class="section prediction-feature" aria-labelledby="prediction-heading">
   <p class="eyebrow">AI Prediction</p>
   <h2 id="prediction-heading">AI Bus-Bunching Prediction</h2>
-  <p>The prediction ranks where AppalCART is most likely to see bus bunching next, using observed patterns by route, hour, weekday, and stop location from the current export.</p>
+  <p>This prediction tool uses the representative AppalCART sample already gathered to flag what to look out for next: likely route, hour, and stop combinations for bus bunching based on the current time, day of week, and repeated observed patterns.</p>
   <div class="snapshot-grid">
     <div class="snapshot-item">
-  <span>Rest of today</span>
-  <strong id="pred-today-date">--</strong>
-  <small>Based on history</small>
+  <span>Next hour</span>
+  <strong id="pred-next-hour-date">Wed Oct 28 at 11:00</strong>
+  <small>Generated after 10:33 AM</small>
 </div>
     <div class="snapshot-item">
-  <span>Upcoming days</span>
-  <strong id="pred-upcoming-date">--</strong>
-  <small>Next service days</small>
+  <span>Rest of day</span>
+  <strong id="pred-rest-day-date">Wed Oct 28</strong>
+  <small>After 11:00</small>
 </div>
     <div class="snapshot-item">
-  <span>Top route risk</span>
-  <strong id="pred-top-route">--</strong>
-  <small>Most common route in data</small>
+  <span>Rest of week</span>
+  <strong id="pred-week-date">Thu Oct 29-Tue Nov 3</strong>
+  <small>Next several service days</small>
 </div>
     <div class="snapshot-item">
-  <span>Top hour risk</span>
-  <strong id="pred-top-hour">--</strong>
-  <small>Most common time of day</small>
+  <span>Top route</span>
+  <strong id="pred-top-route">R</strong>
+  <small>Most common route in the current data</small>
 </div>
   </div>
-  <p class="map-note">Use this list to decide where to look first. It does not predict that a specific bus will bunch.</p>
+  <p class="map-note">Use this view to decide where to look first and focus near-term monitoring.</p>
+</section>
+
+<section class="section prediction-map-layout">
+  <div class="panel prediction-map-card">
+    <h2>Likely Bunching Locations</h2>
+    <div id="prediction-map-body" data-initial-prediction-map="[{&quot;day&quot;:&quot;Sun Nov 1&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;17:00&quot;,&quot;location&quot;:&quot;Dan&#x27;l Boone Inn [72]&quot;,&quot;stopId&quot;:&quot;72&quot;,&quot;stopName&quot;:&quot;Dan&#x27;l Boone Inn&quot;,&quot;lat&quot;:36.2163200378418,&quot;lon&quot;:-81.67489624023438,&quot;priority&quot;:&quot;High&quot;,&quot;score&quot;:100,&quot;scoreLabel&quot;:&quot;100/100&quot;,&quot;evidence&quot;:&quot;68 stop-level observations; all recent history&quot;,&quot;count&quot;:68},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;PK&quot;,&quot;hour&quot;:&quot;17:00&quot;,&quot;location&quot;:&quot;ASU Garwood Hall [26]&quot;,&quot;stopId&quot;:&quot;26&quot;,&quot;stopName&quot;:&quot;ASU Garwood Hall&quot;,&quot;lat&quot;:36.21305465698242,&quot;lon&quot;:-81.68165588378906,&quot;priority&quot;:&quot;High&quot;,&quot;score&quot;:71,&quot;scoreLabel&quot;:&quot;71/100&quot;,&quot;evidence&quot;:&quot;17 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:17},{&quot;day&quot;:&quot;Sun Nov 1&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;16:00&quot;,&quot;location&quot;:&quot;NC 105 Ext / Azalea Dr [111]&quot;,&quot;stopId&quot;:&quot;111&quot;,&quot;stopName&quot;:&quot;NC 105 Ext / Azalea Dr&quot;,&quot;lat&quot;:36.20625305175781,&quot;lon&quot;:-81.66854858398438,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:68,&quot;scoreLabel&quot;:&quot;68/100&quot;,&quot;evidence&quot;:&quot;46 stop-level observations; all recent history&quot;,&quot;count&quot;:46},{&quot;day&quot;:&quot;Fri Oct 30&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;18:00&quot;,&quot;location&quot;:&quot;Walmart 2 [108]&quot;,&quot;stopId&quot;:&quot;108&quot;,&quot;stopName&quot;:&quot;Walmart 2&quot;,&quot;lat&quot;:36.198158264160156,&quot;lon&quot;:-81.65874481201172,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:62,&quot;scoreLabel&quot;:&quot;62/100&quot;,&quot;evidence&quot;:&quot;15 stop-level observations; same weekday history (Friday)&quot;,&quot;count&quot;:15},{&quot;day&quot;:&quot;Fri Oct 30&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;17:00&quot;,&quot;location&quot;:&quot;Kingswood [55]&quot;,&quot;stopId&quot;:&quot;55&quot;,&quot;stopName&quot;:&quot;Kingswood&quot;,&quot;lat&quot;:36.21635818481445,&quot;lon&quot;:-81.67219543457031,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:54,&quot;scoreLabel&quot;:&quot;54/100&quot;,&quot;evidence&quot;:&quot;13 stop-level observations; same weekday history (Friday)&quot;,&quot;count&quot;:13},{&quot;day&quot;:&quot;Thu Oct 29&quot;,&quot;route&quot;:&quot;PK&quot;,&quot;hour&quot;:&quot;16:00&quot;,&quot;location&quot;:&quot;ASU Garwood Hall [26]&quot;,&quot;stopId&quot;:&quot;26&quot;,&quot;stopName&quot;:&quot;ASU Garwood Hall&quot;,&quot;lat&quot;:36.21305465698242,&quot;lon&quot;:-81.68165588378906,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:50,&quot;scoreLabel&quot;:&quot;50/100&quot;,&quot;evidence&quot;:&quot;12 stop-level observations; same weekday history (Thursday)&quot;,&quot;count&quot;:12},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;20:00&quot;,&quot;location&quot;:&quot;Vet Clinic on Wilson Dr [103]&quot;,&quot;stopId&quot;:&quot;103&quot;,&quot;stopName&quot;:&quot;Vet Clinic on Wilson Dr&quot;,&quot;lat&quot;:36.202049255371094,&quot;lon&quot;:-81.67160034179688,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:46,&quot;scoreLabel&quot;:&quot;46/100&quot;,&quot;evidence&quot;:&quot;11 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:11},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;18:00&quot;,&quot;location&quot;:&quot;Watauga Medical Center [8]&quot;,&quot;stopId&quot;:&quot;8&quot;,&quot;stopName&quot;:&quot;Watauga Medical Center&quot;,&quot;lat&quot;:36.198394775390625,&quot;lon&quot;:-81.65241241455078,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:42,&quot;scoreLabel&quot;:&quot;42/100&quot;,&quot;evidence&quot;:&quot;10 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:10},{&quot;day&quot;:&quot;Thu Oct 29&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;16:00&quot;,&quot;location&quot;:&quot;Watauga Medical Center [8]&quot;,&quot;stopId&quot;:&quot;8&quot;,&quot;stopName&quot;:&quot;Watauga Medical Center&quot;,&quot;lat&quot;:36.198394775390625,&quot;lon&quot;:-81.65241241455078,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:42,&quot;scoreLabel&quot;:&quot;42/100&quot;,&quot;evidence&quot;:&quot;10 stop-level observations; same weekday history (Thursday)&quot;,&quot;count&quot;:10},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;R&quot;,&quot;hour&quot;:&quot;19:00&quot;,&quot;location&quot;:&quot;Dan&#x27;l Boone Inn [72]&quot;,&quot;stopId&quot;:&quot;72&quot;,&quot;stopName&quot;:&quot;Dan&#x27;l Boone Inn&quot;,&quot;lat&quot;:36.2163200378418,&quot;lon&quot;:-81.67489624023438,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:29,&quot;scoreLabel&quot;:&quot;29/100&quot;,&quot;evidence&quot;:&quot;7 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:7}]">
+      <div id="prediction-leaflet-map" class="prediction-map" aria-label="Map of likely AppalCART bus-bunching locations"></div>
+      <div id="prediction-map-fallback" class="prediction-map-fallback">
+        <svg class="prediction-map" viewBox="0 0 760 420" role="img" aria-label="Map of likely AppalCART bus-bunching locations">
+          <rect x="0" y="0" width="760" height="420" fill="#eef4f7"></rect>
+          <path d="M88 336 C190 292 268 304 372 248 C470 196 558 136 680 74" fill="none" stroke="#c6d6df" stroke-width="16" stroke-linecap="round" opacity="0.72"></path>
+          <path d="M120 84 C196 150 238 206 340 224 C448 244 512 300 638 338" fill="none" stroke="#d5dde3" stroke-width="10" stroke-linecap="round" opacity="0.78"></path>
+          <circle cx="201.5" cy="48.7" r="21.0" fill="#a93d33" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 17:00: Dan&#x27;l Boone Inn [72] (High, 100/100)</title></circle><text x="201.5" y="20.7" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="48.0" cy="106.8" r="17.5" fill="#a93d33" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route PK at 17:00: ASU Garwood Hall [26] (High, 71/100)</title></circle><text x="48.0" y="82.3" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">PK</text><circle cx="345.6" cy="227.9" r="17.2" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 16:00: NC 105 Ext / Azalea Dr [111] (Medium, 68/100)</title></circle><text x="345.6" y="203.7" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="568.2" cy="372.0" r="16.4" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 18:00: Walmart 2 [108] (Medium, 62/100)</title></circle><text x="568.2" y="348.6" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="262.8" cy="48.0" r="15.5" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 17:00: Kingswood [55] (Medium, 54/100)</title></circle><text x="262.8" y="25.5" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="48.0" cy="106.8" r="15.0" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route PK at 16:00: ASU Garwood Hall [26] (Medium, 50/100)</title></circle><text x="48.0" y="84.8" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">PK</text><circle cx="276.3" cy="302.7" r="14.5" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 20:00: Vet Clinic on Wilson Dr [103] (Medium, 46/100)</title></circle><text x="276.3" y="281.2" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="712.0" cy="367.8" r="14.0" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 18:00: Watauga Medical Center [8] (Monitor, 42/100)</title></circle><text x="712.0" y="346.7" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="712.0" cy="367.8" r="14.0" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 16:00: Watauga Medical Center [8] (Monitor, 42/100)</title></circle><text x="712.0" y="346.7" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text><circle cx="201.5" cy="48.7" r="12.5" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route R at 19:00: Dan&#x27;l Boone Inn [72] (Monitor, 29/100)</title></circle><text x="201.5" y="29.2" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">R</text>
+        </svg>
+      </div>
+      <p class="map-note">Larger markers have higher relative priority. Colors show High, Medium, or Monitor.</p>
+    </div>
+  </div>
+  <aside class="panel">
+    <h2>Map Watchlist</h2>
+    <ul id="prediction-map-list" class="prediction-map-list">
+      
+<li>
+  <span class="priority-chip high">High</span>
+  <strong>Route R at 17:00</strong>
+  <span>Dan&#x27;l Boone Inn [72]</span>
+  <small>Sun Nov 1 | 100/100 | 68 stop-level observations; all recent history</small>
+</li>
+<li>
+  <span class="priority-chip high">High</span>
+  <strong>Route PK at 17:00</strong>
+  <span>ASU Garwood Hall [26]</span>
+  <small>Wed Oct 28 | 71/100 | 17 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route R at 16:00</strong>
+  <span>NC 105 Ext / Azalea Dr [111]</span>
+  <small>Sun Nov 1 | 68/100 | 46 stop-level observations; all recent history</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route R at 18:00</strong>
+  <span>Walmart 2 [108]</span>
+  <small>Fri Oct 30 | 62/100 | 15 stop-level observations; same weekday history (Friday)</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route R at 17:00</strong>
+  <span>Kingswood [55]</span>
+  <small>Fri Oct 30 | 54/100 | 13 stop-level observations; same weekday history (Friday)</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route PK at 16:00</strong>
+  <span>ASU Garwood Hall [26]</span>
+  <small>Thu Oct 29 | 50/100 | 12 stop-level observations; same weekday history (Thursday)</small>
+</li>
+    </ul>
+    <p class="map-note">This map highlights likely bunching locations from representative AppalCART operating patterns.</p>
+  </aside>
 </section>
 
 <section class="section two-col prediction-tables">
   <section class="table-panel">
-  <h3 id="pred-today-title">Rest of today: AI-prioritized bus-bunching watchlist</h3>
+  <h3 id="pred-next-hour-title">Next hour (Wed Oct 28 at 11:00): AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody id="pred-today-body">
-       <!-- Populated by JS -->
-    </tbody>
+    <tbody id="pred-next-hour-body"><tr><td colspan="7">No next-hour prediction rows are available.</td></tr></tbody>
   </table>
 </section>
   <section class="table-panel">
-  <h3 id="pred-upcoming-title">Upcoming days: AI-prioritized bus-bunching watchlist</h3>
+  <h3 id="pred-rest-day-title">Rest of day (Wed Oct 28, after 11:00): AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody id="pred-upcoming-body">
-       <!-- Populated by JS -->
-    </tbody>
+    <tbody id="pred-rest-day-body"><tr><td>Wed Oct 28</td><td>PK</td><td>17:00</td><td>ASU Garwood Hall [26]</td><td>High</td><td>71/100</td><td>17 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>20:00</td><td>Vet Clinic on Wilson Dr [103]</td><td>Medium</td><td>46/100</td><td>11 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>18:00</td><td>Watauga Medical Center [8]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>19:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Monitor</td><td>29/100</td><td>7 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>16:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td>Monitor</td><td>25/100</td><td>6 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>PK</td><td>15:00</td><td>ASU Mountain Laurel Hall [14]</td><td>Monitor</td><td>17/100</td><td>4 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>R</td><td>12:00</td><td>ASU Mountain Laurel Hall / NC 105 Ext [102]</td><td>Monitor</td><td>12/100</td><td>3 stop-level observations; same weekday history (Wednesday)</td></tr></tbody>
+  </table>
+</section>
+  <section class="table-panel">
+  <h3 id="pred-week-title">Rest of week (Thu Oct 29-Tue Nov 3): AI-prioritized bus-bunching watchlist</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
+    <tbody id="pred-week-body"><tr><td>Thu Oct 29</td><td>PK</td><td>16:00</td><td>ASU Garwood Hall [26]</td><td>Medium</td><td>50/100</td><td>12 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Thu Oct 29</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td>Monitor</td><td>42/100</td><td>10 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Fri Oct 30</td><td>R</td><td>18:00</td><td>Walmart 2 [108]</td><td>Medium</td><td>62/100</td><td>15 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Fri Oct 30</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td>Medium</td><td>54/100</td><td>13 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Sat Oct 31</td><td>R</td><td>14:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>Monitor</td><td>12/100</td><td>3 stop-level observations; same weekday history (Saturday)</td></tr><tr><td>Sun Nov 1</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>High</td><td>100/100</td><td>68 stop-level observations; all recent history</td></tr><tr><td>Sun Nov 1</td><td>R</td><td>16:00</td><td>NC 105 Ext / Azalea Dr [111]</td><td>Medium</td><td>68/100</td><td>46 stop-level observations; all recent history</td></tr><tr><td>Mon Nov 2</td><td>R</td><td>17:00</td><td>Dan&#x27;l Boone Inn [72]</td><td>High</td><td>100/100</td><td>24 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Nov 2</td><td>R</td><td>16:00</td><td>Watauga Medical Center [8]</td><td>High</td><td>79/100</td><td>19 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Tue Nov 3</td><td>R</td><td>17:00</td><td>Kingswood [55]</td><td>Medium</td><td>67/100</td><td>16 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Tue Nov 3</td><td>PK</td><td>16:00</td><td>ASU Mountain Laurel Hall [14]</td><td>Medium</td><td>50/100</td><td>12 stop-level observations; same weekday history (Tuesday)</td></tr></tbody>
   </table>
 </section>
 </section>
 
-    <section class="section two-col">
-      <div>
-        <section class="panel">
+<section class="section panel">
+  <h2>How The Prediction Tool Works</h2>
+  <p>Priority scores compare each same-weekday route-hour pattern with the strongest pattern in the current export. High is 70/100 or above, Medium is 45-69/100, and Monitor is below 45/100.</p>
+  <p class="map-note">Predictions are based on historical patterns, current time and day-of-week context, and available model inputs.</p>
+</section>
+    </section>
+
+    <section id="panel-historical-data" class="tab-panel" role="tabpanel" aria-labelledby="tab-historical-data" data-tab-panel="historical-data" hidden>
+      <section class="section metrics-grid" aria-label="Agency metrics">
+        <div class="metric">
+  <span>Status</span>
+  <strong>AI prediction ready</strong>
+  <small>Agency dashboard</small>
+</div>
+        <div class="metric">
+  <span>Service routes</span>
+  <strong>24</strong>
+  <small>GTFS routes in the local feed</small>
+</div>
+        <div class="metric">
+  <span>Stop-level observations</span>
+  <strong id="metric-total-obs">426</strong>
+  <small id="metric-date-range">2026-08-24 to 2026-09-19</small>
+</div>
+        <div class="metric">
+  <span>Stops affected</span>
+  <strong id="metric-stops">54</strong>
+  <small id="metric-routes">8 routes affected</small>
+</div>
+      </section>
+
+      <section class="section two-col">
+        <div>
+          <section class="panel">
   <h2>What The Current Observations Show</h2>
   <p>Patterns concentrate by route, hour, and repeated stop locations.</p>
   <p>Top route: R. Busiest hour: 17:00.</p>
 </section>
-      </div>
-      <aside class="panel">
-        <h2>Service Profile</h2>
-        <p>AppalCART: 24 routes (24 bus), 1,491 trips, 136 stops, 30,155 scheduled stop arrivals. https://appalcart.com</p>
-      </aside>
-    </section>
+        </div>
+        <aside class="panel">
+          <h2>Service Profile</h2>
+          <p>AppalCART: 24 routes (24 bus), 1,491 trips, 136 stops, 30,155 scheduled stop arrivals. https://appalcart.com</p>
+        </aside>
+      </section>
 
-    <section class="section panel">
-  <h2>How To Read These Visuals</h2>
+      <section class="section panel">
+  <h2>Historical Evidence</h2>
   <p>These charts summarize the current AppalCART event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
   <p>The current file covers 2026-08-24 to 2026-09-19 and contains 426 stop-level observations across 8 routes and 54 stops.</p>
   <p class="map-note">Counts are stop-level observations. A close bus pair can be counted at multiple downstream stops if it remains bunched along the route.</p>
@@ -263,14 +343,12 @@
   <h3>Top stop locations</h3>
   <table>
     <thead><tr><th>Stop</th><th>Stop ID</th><th>Routes affected</th><th>Observations</th></tr></thead>
-    <tbody id="top-stops-body">
-       <!-- Populated by JS -->
-    </tbody>
+    <tbody><tr><td>ASU Mountain Laurel Hall</td><td>14</td><td class="num">3</td><td class="num">42</td></tr><tr><td>ASU Garwood Hall</td><td>26</td><td class="num">2</td><td class="num">41</td></tr><tr><td>Dan&#x27;l Boone Inn</td><td>72</td><td class="num">1</td><td class="num">35</td></tr><tr><td>ASU Skywalk</td><td>36</td><td class="num">2</td><td class="num">31</td></tr><tr><td>Watauga Medical Center</td><td>8</td><td class="num">2</td><td class="num">29</td></tr><tr><td>NC 105 Ext / Azalea Dr</td><td>111</td><td class="num">1</td><td class="num">27</td></tr><tr><td>Vet Clinic on Wilson Dr</td><td>103</td><td class="num">1</td><td class="num">19</td></tr><tr><td>Kingswood</td><td>55</td><td class="num">1</td><td class="num">18</td></tr><tr><td>Parks &amp; Rec</td><td>10</td><td class="num">2</td><td class="num">15</td></tr><tr><td>Hodges Gap Rd</td><td>84</td><td class="num">1</td><td class="num">13</td></tr></tbody>
   </table>
 </section>
 </section>
 
-    <section class="section" aria-labelledby="definitions-heading">
+      <section class="section" aria-labelledby="definitions-heading">
   <div class="section-heading">
     <h2 id="definitions-heading">Shared Terms</h2>
   </div>
@@ -298,23 +376,23 @@
   </div>
 </section>
 
-    <section class="section two-col">
+      <section class="section two-col">
   <section class="panel">
     <h2>Weather Context</h2>
     <div class="snapshot-grid">
       <div class="snapshot-item">
   <span>Latest observed</span>
-  <strong>Sep 29, 2026 at 11:00 AM ET</strong>
-  <small>Partly Cloudy</small>
+  <strong>Oct 8, 2026 at 1:35 PM ET</strong>
+  <small>Observed at KTNB</small>
 </div>
       <div class="snapshot-item">
   <span>Temperature</span>
-  <strong>62.9 F</strong>
+  <strong>72.3 F</strong>
   <small>Observed</small>
 </div>
       <div class="snapshot-item">
   <span>Wind</span>
-  <strong>2.2 mph</strong>
+  <strong>n/a</strong>
   <small>Observed</small>
 </div>
     </div>
@@ -326,7 +404,7 @@
 </section>
 </section>
 
-    <section class="section">
+      <section class="section">
   <div class="section-heading">
     <h2>Game-Day Context</h2>
     <p>Observed AppalCART bus-bunching context from the current export.</p>
@@ -349,15 +427,13 @@
 </article>
   </div>
 </section>
-
+    </section>
   </div>
 </main>
 
-    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports. Stats updated dynamically via CSV.</footer>
+    <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports.</footer>
   </div>
-  
   <script>
-    // --- PASSCODE GATE LOGIC ---
     (() => {
       const key = "ip3_bus_bunching_access";
       const fullSitePassphrase = "ip3-oct1";
@@ -394,130 +470,468 @@
       });
       input.focus();
     })();
+  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(() => {
+  const csvUrl = "../assets/data/appalcart/bus_bunching_events.csv";
+  const SEP = "\u001f";
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+  const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[char]);
+  const addCount = (map, key, amount = 1) => map.set(key, (map.get(key) || 0) + amount);
+  const formatNumber = (value) => Number(value || 0).toLocaleString();
+  const normalizeHour = (value) => {
+    const match = String(value || "").match(/^(\d{1,2})/);
+    if (!match) return "";
+    const hour = Number(match[1]);
+    return hour >= 0 && hour <= 23 ? `${String(hour).padStart(2, "0")}:00` : "";
+  };
+  const hourNumber = (hourText) => {
+    const match = String(hourText || "").match(/^(\d{1,2})/);
+    if (!match) return null;
+    const hour = Number(match[1]);
+    return hour >= 0 && hour <= 23 ? hour : null;
+  };
+  const parseDate = (value) => {
+    const parts = String(value || "").split("-").map(Number);
+    if (parts.length !== 3 || parts.some((part) => Number.isNaN(part))) return null;
+    return new Date(parts[0], parts[1] - 1, parts[2], 12);
+  };
+  const weekdayName = (date) => date.toLocaleDateString("en-US", { weekday: "long" });
+  const dayLabel = (date) => date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
 
-    // --- NEW DYNAMIC CSV LOGIC ---
-    // Clean URL without the cache-buster to prevent GitHub CORS blocking
-    const csvUrl = "https://raw.githubusercontent.com/AI-Rapid-Prototyping/Bus-Bunching-Prediction/refs/heads/main/Outputs/AppalCart/appalcart_bunching_events.csv";
+  const parseCsv = (text) => {
+    const rows = [];
+    let row = [];
+    let field = "";
+    let quoted = false;
+    for (let i = 0; i < text.length; i += 1) {
+      const char = text[i];
+      if (char === '"') {
+        if (quoted && text[i + 1] === '"') {
+          field += '"';
+          i += 1;
+        } else {
+          quoted = !quoted;
+        }
+      } else if (char === "," && !quoted) {
+        row.push(field);
+        field = "";
+      } else if ((char === "\n" || char === "\r") && !quoted) {
+        if (char === "\r" && text[i + 1] === "\n") i += 1;
+        row.push(field);
+        if (row.some((value) => value !== "")) rows.push(row);
+        row = [];
+        field = "";
+      } else {
+        field += char;
+      }
+    }
+    row.push(field);
+    if (row.some((value) => value !== "")) rows.push(row);
+    if (!rows.length) return [];
+    const headers = rows.shift().map((header) => header.trim());
+    return rows.map((values) => Object.fromEntries(headers.map((header, index) => [header, values[index] || ""])));
+  };
 
-    Papa.parse(csvUrl, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: function(results) {
-        processData(results.data);
-      },
-      error: function(err) {
-        console.error("Error loading CSV:", err);
-        document.getElementById('metric-total-obs').textContent = "Error";
+  const buildStats = (rows) => {
+    const stats = {
+      total: 0,
+      routes: new Set(),
+      stops: new Set(),
+      dates: new Set(),
+      routeCounts: new Map(),
+      hourCounts: new Map(),
+      stopCounts: new Map(),
+      routeHourCounts: new Map(),
+      routeHourStops: new Map(),
+      weekdayRouteHourCounts: new Map(),
+      weekdayRouteHourStops: new Map()
+    };
+    rows.forEach((row) => {
+      const route = String(row.route_label || "").trim();
+      const stopId = String(row.stop_id || "").trim();
+      const stopName = String(row.stop_name || stopId || "Stop").trim();
+      const hour = normalizeHour(row.event_hour);
+      if (!route || !stopId) return;
+      stats.total += 1;
+      stats.routes.add(route);
+      stats.stops.add(stopId);
+      addCount(stats.routeCounts, route);
+      if (hour) addCount(stats.hourCounts, hour);
+      const stopKey = [stopId, stopName].join(SEP);
+      const stopInfo = stats.stopCounts.get(stopKey) || { stopId, stopName, routes: new Set(), count: 0 };
+      const lat = Number(row.stop_lat);
+      const lon = Number(row.stop_lon);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        stopInfo.lat = lat;
+        stopInfo.lon = lon;
+      }
+      stopInfo.routes.add(route);
+      stopInfo.count += 1;
+      stats.stopCounts.set(stopKey, stopInfo);
+      if (hour) {
+        addCount(stats.routeHourCounts, [route, hour].join(SEP));
+        addCount(stats.routeHourStops, [route, hour, stopId, stopName].join(SEP));
+      }
+      const parsedDate = parseDate(row.event_date);
+      if (parsedDate) {
+        stats.dates.add(row.event_date);
+        const weekday = weekdayName(parsedDate);
+        if (hour) {
+          addCount(stats.weekdayRouteHourCounts, [weekday, route, hour].join(SEP));
+          addCount(stats.weekdayRouteHourStops, [weekday, route, hour, stopId, stopName].join(SEP));
+        }
       }
     });
+    return stats;
+  };
 
-    function processData(data) {
-      let totalObs = 0;
-      let uniqueStops = new Set();
-      let uniqueRoutes = new Set();
-      
-      let stopCounts = {};
-      let routeCounts = {};
-      let hourCounts = {};
-      let predictionCombos = {}; 
-
-      data.forEach(row => {
-        let route = row['route_label'];
-        let stopId = row['stop_id'];
-        let stopName = row['stop_name'];
-        let hour = row['event_hour'];
-
-        if (!route || !stopId) return; 
-
-        totalObs++;
-        uniqueStops.add(stopId);
-        uniqueRoutes.add(route);
-
-        // General Counts
-        routeCounts[route] = (routeCounts[route] || 0) + 1;
-        if(hour) hourCounts[hour] = (hourCounts[hour] || 0) + 1;
-
-        if(!stopCounts[stopId]) stopCounts[stopId] = { name: stopName, routes: new Set(), count: 0 };
-        stopCounts[stopId].routes.add(route);
-        stopCounts[stopId].count++;
-
-        // Prediction Counts (Group by Route + Hour + Stop)
-        let predKey = `${route}|${hour}|${stopId}|${stopName}`;
-        if(!predictionCombos[predKey]) predictionCombos[predKey] = { route, hour, stopId, stopName, count: 0 };
-        predictionCombos[predKey].count++;
-      });
-
-      // --- 1. UPDATE GENERAL METRICS ---
-      document.getElementById('metric-total-obs').textContent = totalObs;
-      document.getElementById('metric-stops').textContent = uniqueStops.size;
-      document.getElementById('metric-routes').textContent = `${uniqueRoutes.size} routes affected`;
-      document.getElementById('metric-date-range').textContent = "From GitHub CSV";
-
-      // --- 2. POPULATE GENERAL STOP TABLE ---
-      let sortedStops = Object.entries(stopCounts).map(([id, info]) => ({ id, ...info })).sort((a, b) => b.count - a.count).slice(0, 10);
-      document.getElementById('top-stops-body').innerHTML = sortedStops.map(stop => `
-        <tr><td>${stop.name || 'Unknown Stop'}</td><td>${stop.id}</td><td class="num">${stop.routes.size}</td><td class="num">${stop.count}</td></tr>
-      `).join('') || "<tr><td colspan='4'>No stop data found.</td></tr>";
-
-      // --- 3. CALCULATE NAIVE PREDICTIONS ---
-      // Get highest volume route and hour safely
-      let topRouteKeys = Object.keys(routeCounts);
-      let topRoute = topRouteKeys.length > 0 ? topRouteKeys.reduce((a, b) => routeCounts[a] > routeCounts[b] ? a : b) : "--";
-      
-      let topHourKeys = Object.keys(hourCounts);
-      let topHour = topHourKeys.length > 0 ? topHourKeys.reduce((a, b) => hourCounts[a] > hourCounts[b] ? a : b) : "--";
-      
-      document.getElementById('pred-top-route').textContent = topRoute;
-      document.getElementById('pred-top-hour').textContent = topHour;
-
-      // Set dynamic dates for the headers
-      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      let today = new Date();
-      let tmrw = new Date(today); tmrw.setDate(tmrw.getDate() + 1);
-      let later = new Date(today); later.setDate(later.getDate() + 4);
-
-      let todayStr = `${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()}`;
-      let upcomingStr = `${days[tmrw.getDay()]} ${months[tmrw.getMonth()]} ${tmrw.getDate()}-${days[later.getDay()]} ${months[later.getMonth()]} ${later.getDate()}`;
-      
-      document.getElementById('pred-today-date').textContent = todayStr;
-      document.getElementById('pred-upcoming-date').textContent = upcomingStr;
-      document.getElementById('pred-today-title').textContent = `${todayStr}: AI-prioritized bus-bunching watchlist`;
-      document.getElementById('pred-upcoming-title').textContent = `${upcomingStr}: AI-prioritized bus-bunching watchlist`;
-
-      // Sort prediction combos by count
-      let sortedPreds = Object.values(predictionCombos).sort((a, b) => b.count - a.count);
-      let maxPredCount = sortedPreds.length > 0 ? sortedPreds[0].count : 1;
-
-      // Helper function to build a prediction row
-      const buildPredRow = (item, dayLabel) => {
-        let score = Math.round((item.count / maxPredCount) * 100);
-        let priority = score >= 75 ? "High" : (score >= 45 ? "Medium" : "Monitor");
-        return `
-          <tr>
-            <td>${dayLabel}</td>
-            <td>${item.route}</td>
-            <td>${item.hour || '--'}</td>
-            <td>${item.stopName} [${item.stopId}]</td>
-            <td>${priority}</td>
-            <td>${score}/100</td>
-            <td>${item.count} historical observations matching this pattern</td>
-          </tr>
-        `;
-      };
-
-      // Split the top 12 historical combinations between "Today" and "Upcoming"
-      let todayHtml = sortedPreds.slice(0, 6).map(item => buildPredRow(item, todayStr)).join('');
-      let upcomingHtml = sortedPreds.slice(6, 14).map((item, index) => {
-          let futDate = new Date(tmrw); futDate.setDate(futDate.getDate() + (index % 4));
-          let fStr = `${days[futDate.getDay()]} ${months[futDate.getMonth()]} ${futDate.getDate()}`;
-          return buildPredRow(item, fStr);
-      }).join('');
-
-      document.getElementById('pred-today-body').innerHTML = todayHtml || "<tr><td colspan='7'>No prediction data available.</td></tr>";
-      document.getElementById('pred-upcoming-body').innerHTML = upcomingHtml || "<tr><td colspan='7'>No prediction data available.</td></tr>";
+  const topLocationForWindow = (stats, weekday, route, hour) => {
+    let best = null;
+    let bestCount = 0;
+    for (const [key, count] of stats.weekdayRouteHourStops.entries()) {
+      const [day, itemRoute, itemHour, stopId, stopName] = key.split(SEP);
+      if (day === weekday && itemRoute === route && itemHour === hour && count > bestCount) {
+        best = { stopId, stopName };
+        bestCount = count;
+      }
     }
-  </script>
+    if (!best) {
+      for (const [key, count] of stats.routeHourStops.entries()) {
+        const [itemRoute, itemHour, stopId, stopName] = key.split(SEP);
+        if (itemRoute === route && itemHour === hour && count > bestCount) {
+          best = { stopId, stopName };
+          bestCount = count;
+        }
+      }
+    }
+    if (!best) return { label: "Location varies", count: 0, stopId: "", stopName: "", lat: null, lon: null };
+    const meta = stats.stopCounts.get([best.stopId, best.stopName].join(SEP)) || {};
+    return {
+      label: `${best.stopName} [${best.stopId}]`,
+      count: bestCount,
+      stopId: best.stopId,
+      stopName: best.stopName,
+      lat: meta.lat,
+      lon: meta.lon
+    };
+  };
+
+  const priority = (score) => {
+    if (score >= 70) return "High";
+    if (score >= 45) return "Medium";
+    return "Monitor";
+  };
+
+  const predictionItemsForDate = (stats, target, options = {}) => {
+    const weekday = weekdayName(target);
+    const limit = options.limit || 6;
+    const minHour = options.minHour;
+    const onlyHour = options.onlyHour;
+    let basis = "same weekday history";
+    let candidates = Array.from(stats.weekdayRouteHourCounts.entries())
+      .map(([key, count]) => {
+        const [day, route, hour] = key.split(SEP);
+        return { day, route, hour, count };
+      })
+      .filter((item) => item.day === weekday);
+    if (!candidates.length) {
+      basis = "all recent history";
+      candidates = Array.from(stats.routeHourCounts.entries()).map(([key, count]) => {
+        const [route, hour] = key.split(SEP);
+        return { route, hour, count };
+      });
+    }
+    if (typeof minHour === "number") {
+      candidates = candidates.filter((item) => {
+        const hour = hourNumber(item.hour);
+        return hour !== null && hour >= minHour;
+      });
+    }
+    if (typeof onlyHour === "number") {
+      candidates = candidates.filter((item) => hourNumber(item.hour) === onlyHour);
+    }
+    const maximum = Math.max(1, ...candidates.map((item) => item.count));
+    return candidates
+      .sort((a, b) => b.count - a.count)
+      .slice(0, limit)
+      .map((item) => {
+        const location = topLocationForWindow(stats, weekday, item.route, item.hour);
+        const score = Math.min(100, Math.max(1, Math.round((item.count / maximum) * 100)));
+        const evidence = `${formatNumber(item.count)} stop-level observations; ${basis}${location.count ? "" : "; location varies"}`;
+        return {
+          day: dayLabel(target),
+          route: item.route,
+          hour: item.hour,
+          location: location.label,
+          stopId: location.stopId,
+          stopName: location.stopName,
+          lat: location.lat,
+          lon: location.lon,
+          priority: priority(score),
+          score,
+          scoreLabel: `${score}/100`,
+          evidence,
+          count: item.count
+        };
+      });
+  };
+
+  const itemRows = (items) => items.map((item) => [
+    item.day,
+    item.route,
+    item.hour,
+    item.location,
+    item.priority,
+    item.scoreLabel,
+    item.evidence
+  ]);
+
+  const priorityClass = (value) => String(value || "").toLowerCase() === "high"
+    ? "high"
+    : (String(value || "").toLowerCase() === "medium" ? "medium" : "monitor");
+
+  const priorityColor = (value) => {
+    if (value === "High") return "#a93d33";
+    if (value === "Medium") return "#9a5b00";
+    return "#2f6f9f";
+  };
+
+  let predictionMap = null;
+  let predictionLayer = null;
+
+  const markerRadius = (score) => Math.max(7, Math.min(22, 7 + Number(score || 0) / 100 * 15));
+
+  const popupHtml = (item) => `
+    <strong>Route ${escapeHtml(item.route)} at ${escapeHtml(item.hour)}</strong><br>
+    ${escapeHtml(item.location)}<br>
+    Priority: ${escapeHtml(item.priority)} (${escapeHtml(item.scoreLabel)})<br>
+    ${escapeHtml(item.evidence)}
+  `;
+
+  const fallbackSvg = (mapped) => {
+    const width = 760;
+    const height = 420;
+    const pad = 48;
+    const lats = mapped.map((item) => Number(item.lat));
+    const lons = mapped.map((item) => Number(item.lon));
+    let latMin = Math.min(...lats);
+    let latMax = Math.max(...lats);
+    let lonMin = Math.min(...lons);
+    let lonMax = Math.max(...lons);
+    if (latMin === latMax) { latMin -= 0.01; latMax += 0.01; }
+    if (lonMin === lonMax) { lonMin -= 0.01; lonMax += 0.01; }
+    const points = mapped.map((item) => {
+      const x = pad + (Number(item.lon) - lonMin) / (lonMax - lonMin) * (width - 2 * pad);
+      const y = height - pad - (Number(item.lat) - latMin) / (latMax - latMin) * (height - 2 * pad);
+      const radius = markerRadius(item.score);
+      const labelY = Math.max(18, y - radius - 7);
+      const title = `Route ${item.route} at ${item.hour}: ${item.location} (${item.priority}, ${item.scoreLabel})`;
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${radius.toFixed(1)}" fill="${priorityColor(item.priority)}" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>${escapeHtml(title)}</title></circle>` +
+        `<text x="${x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">${escapeHtml(item.route)}</text>`;
+    }).join("");
+    return `
+      <svg class="prediction-map" viewBox="0 0 ${width} ${height}" role="img" aria-label="Map of likely AppalCART bus-bunching locations">
+        <rect x="0" y="0" width="${width}" height="${height}" fill="#eef4f7"></rect>
+        <path d="M88 336 C190 292 268 304 372 248 C470 196 558 136 680 74" fill="none" stroke="#c6d6df" stroke-width="16" stroke-linecap="round" opacity="0.72"></path>
+        <path d="M120 84 C196 150 238 206 340 224 C448 244 512 300 638 338" fill="none" stroke="#d5dde3" stroke-width="10" stroke-linecap="round" opacity="0.78"></path>
+        ${points}
+      </svg>
+    `;
+  };
+
+  const renderPredictionMap = (items) => {
+    const body = document.getElementById("prediction-map-body");
+    const list = document.getElementById("prediction-map-list");
+    const mapEl = document.getElementById("prediction-leaflet-map");
+    const fallbackEl = document.getElementById("prediction-map-fallback");
+    if (!body) return;
+    const seen = new Set();
+    const mapped = items
+      .filter((item) => Number.isFinite(Number(item.lat)) && Number.isFinite(Number(item.lon)))
+      .sort((a, b) => (b.score - a.score) || (b.count - a.count))
+      .filter((item) => {
+        const key = `${item.stopId}|${item.route}|${item.hour}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .slice(0, 10);
+    if (!mapped.length) {
+      body.innerHTML = '<div class="callout">No mapped prediction locations are available from the current export.</div>';
+      if (list) list.innerHTML = "";
+      return;
+    }
+    if (window.L && mapEl) {
+      if (fallbackEl) fallbackEl.hidden = true;
+      if (!predictionMap) {
+        predictionMap = L.map(mapEl, { preferCanvas: true, scrollWheelZoom: false });
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(predictionMap);
+        predictionLayer = L.layerGroup().addTo(predictionMap);
+      }
+      predictionLayer.clearLayers();
+      const bounds = L.latLngBounds([]);
+      mapped.forEach((item) => {
+        const latLng = [Number(item.lat), Number(item.lon)];
+        L.circleMarker(latLng, {
+          radius: markerRadius(item.score),
+          color: "#ffffff",
+          weight: 2,
+          fillColor: priorityColor(item.priority),
+          fillOpacity: 0.84
+        })
+          .bindPopup(popupHtml(item))
+          .bindTooltip(`Route ${escapeHtml(item.route)} at ${escapeHtml(item.hour)}: ${escapeHtml(item.priority)}`, { sticky: true })
+          .addTo(predictionLayer);
+        bounds.extend(latLng);
+      });
+      if (bounds.isValid()) {
+        predictionMap.fitBounds(bounds, { padding: [28, 28], maxZoom: 15 });
+      }
+      setTimeout(() => predictionMap.invalidateSize(), 0);
+    } else if (fallbackEl) {
+      fallbackEl.hidden = false;
+      fallbackEl.innerHTML = fallbackSvg(mapped);
+    }
+    if (list) {
+      list.innerHTML = mapped.slice(0, 6).map((item) => `
+        <li>
+          <span class="priority-chip ${priorityClass(item.priority)}">${escapeHtml(item.priority)}</span>
+          <strong>Route ${escapeHtml(item.route)} at ${escapeHtml(item.hour)}</strong>
+          <span>${escapeHtml(item.location)}</span>
+          <small>${escapeHtml(item.day)} | ${escapeHtml(item.scoreLabel)} | ${escapeHtml(item.evidence)}</small>
+        </li>
+      `).join("");
+    }
+  };
+
+  const initTabs = () => {
+    const buttons = Array.from(document.querySelectorAll("[data-tab-target]"));
+    const panels = Array.from(document.querySelectorAll("[data-tab-panel]"));
+    if (!buttons.length || !panels.length) return;
+    const activate = (target, updateHash = true) => {
+      buttons.forEach((button) => {
+        const selected = button.dataset.tabTarget === target;
+        button.setAttribute("aria-selected", selected ? "true" : "false");
+        button.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.tabPanel !== target;
+      });
+      if (target === "predictions" && predictionMap) {
+        setTimeout(() => predictionMap.invalidateSize(), 0);
+      }
+      if (updateHash) history.replaceState(null, "", `#${target}`);
+    };
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => activate(button.dataset.tabTarget));
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+        event.preventDefault();
+        const index = buttons.indexOf(button);
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const next = buttons[(index + direction + buttons.length) % buttons.length];
+        next.focus();
+        activate(next.dataset.tabTarget);
+      });
+    });
+    const requested = location.hash.replace("#", "");
+    const initial = buttons.some((button) => button.dataset.tabTarget === requested) ? requested : "predictions";
+    activate(initial, false);
+  };
+
+  const renderRows = (bodyId, rows, colspan, empty) => {
+    const body = document.getElementById(bodyId);
+    if (!body) return;
+    body.innerHTML = rows.length
+      ? rows.map((row) => `<tr>${row.map((value) => `<td>${escapeHtml(value)}</td>`).join("")}</tr>`).join("")
+      : `<tr><td colspan="${colspan}">${escapeHtml(empty)}</td></tr>`;
+  };
+
+  const refreshPage = (rows) => {
+    const stats = buildStats(rows);
+    const dates = Array.from(stats.dates).sort();
+    const dateRange = dates.length > 1 ? `${dates[0]} to ${dates[dates.length - 1]}` : (dates[0] || "No observations yet");
+    const topRoute = Array.from(stats.routeCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] || "n/a";
+
+    setText("metric-total-obs", formatNumber(stats.total));
+    setText("metric-date-range", dateRange);
+    setText("metric-stops", formatNumber(stats.stops.size));
+    setText("metric-routes", `${formatNumber(stats.routes.size)} routes affected`);
+    setText("pred-top-route", topRoute);
+
+    const today = new Date();
+    const nextHourAt = new Date(today);
+    nextHourAt.setHours(nextHourAt.getHours() + 1, 0, 0, 0);
+    const nextHour = nextHourAt.getHours();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const weekEnd = new Date(today);
+    weekEnd.setDate(weekEnd.getDate() + 6);
+    const nextHourText = `${dayLabel(nextHourAt)} at ${String(nextHour).padStart(2, "0")}:00`;
+    const restDayText = dayLabel(today);
+    const weekText = `${dayLabel(tomorrow)}-${dayLabel(weekEnd)}`;
+    setText("pred-next-hour-date", nextHourText);
+    setText("pred-rest-day-date", restDayText);
+    setText("pred-week-date", weekText);
+    setText("pred-next-hour-title", `Next hour (${nextHourText}): AI-prioritized bus-bunching watchlist`);
+    setText("pred-rest-day-title", `Rest of day (${restDayText}, after ${String(nextHour).padStart(2, "0")}:00): AI-prioritized bus-bunching watchlist`);
+    setText("pred-week-title", `Rest of week (${weekText}): AI-prioritized bus-bunching watchlist`);
+
+    const nextHourItems = predictionItemsForDate(stats, nextHourAt, { limit: 4, onlyHour: nextHour });
+    const restDayItems = nextHourAt.toDateString() === today.toDateString() && nextHour < 23
+      ? predictionItemsForDate(stats, today, { limit: 8, minHour: nextHour + 1 })
+      : [];
+    const weekItems = [];
+    for (let offset = 1; offset <= 6; offset += 1) {
+      const target = new Date(today);
+      target.setDate(target.getDate() + offset);
+      weekItems.push(...predictionItemsForDate(stats, target, { limit: 2 }));
+    }
+    renderRows("pred-next-hour-body", itemRows(nextHourItems), 7, "No next-hour prediction rows are available.");
+    renderRows("pred-rest-day-body", itemRows(restDayItems), 7, "No remaining prediction rows are available for today.");
+    renderRows("pred-week-body", itemRows(weekItems), 7, "No rest-of-week prediction rows available.");
+    renderPredictionMap([...nextHourItems, ...restDayItems.slice(0, 6), ...weekItems.slice(0, 8)]);
+
+    const stopRows = Array.from(stats.stopCounts.values())
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10)
+      .map((stop) => [stop.stopName, stop.stopId, stop.routes.size, stop.count]);
+    renderRows("top-stops-body", stopRows, 4, "No stop-level locations are available.");
+  };
+
+  fetch(csvUrl, { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) throw new Error(`CSV request failed: ${response.status}`);
+      return response.text();
+    })
+    .then((text) => refreshPage(parseCsv(text)))
+    .catch((error) => {
+      console.warn("Using build-time AppalCART values because the CSV refresh was unavailable.", error);
+    });
+  initTabs();
+  const initialMapBody = document.getElementById("prediction-map-body");
+  if (initialMapBody?.dataset.initialPredictionMap) {
+    try {
+      renderPredictionMap(JSON.parse(initialMapBody.dataset.initialPredictionMap));
+    } catch (error) {
+      console.warn("Unable to initialize the prediction map from build-time data.", error);
+    }
+  }
+})();
+</script>
 </body>
 </html>

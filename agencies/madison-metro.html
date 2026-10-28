@@ -75,47 +75,121 @@
     <section class="section prediction-feature" aria-labelledby="prediction-heading">
   <p class="eyebrow">AI Prediction</p>
   <h2 id="prediction-heading">AI Bus-Bunching Prediction</h2>
-  <p>The prediction ranks where Madison Metro Transit is most likely to see bus bunching next, using observed patterns by route, hour, weekday, and stop location from the current export.</p>
+  <p>This prediction tool uses the representative Madison Metro Transit sample already gathered to flag what to look out for next: likely route, hour, and stop combinations for bus bunching based on the current time, day of week, and repeated observed patterns.</p>
   <div class="snapshot-grid">
     <div class="snapshot-item">
-  <span>Rest of today</span>
-  <strong>Mon Oct 5</strong>
-  <small>After 11:00 AM</small>
+  <span>Next hour</span>
+  <strong>Wed Oct 28 at 11:00</strong>
+  <small>Generated after 10:33 AM</small>
 </div>
     <div class="snapshot-item">
-  <span>Upcoming days</span>
-  <strong>Tue Oct 6-Fri Oct 9</strong>
-  <small>Next four service days</small>
+  <span>Rest of day</span>
+  <strong>Wed Oct 28</strong>
+  <small>After 11:00</small>
+</div>
+    <div class="snapshot-item">
+  <span>Rest of week</span>
+  <strong>Thu Oct 29-Tue Nov 3</strong>
+  <small>Next several service days</small>
 </div>
     <div class="snapshot-item">
   <span>Top route</span>
   <strong>80</strong>
   <small>Most common route in the current data</small>
 </div>
-    <div class="snapshot-item">
-  <span>Top hour</span>
-  <strong>09:00</strong>
-  <small>Most common time of day in the current data</small>
-</div>
   </div>
-  <p class="map-note">Use this list to decide where to look first. It does not predict that a specific bus will bunch.</p>
+  <p class="map-note">Use this view to decide where to look first and focus near-term monitoring.</p>
+</section>
+
+<section class="section prediction-map-layout">
+  <div class="panel prediction-map-card">
+    <h2>Likely Bunching Locations</h2>
+    <div id="prediction-map-body" data-initial-prediction-map="[{&quot;day&quot;:&quot;Fri Oct 30&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;10:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;High&quot;,&quot;score&quot;:100,&quot;scoreLabel&quot;:&quot;100/100&quot;,&quot;evidence&quot;:&quot;725 stop-level observations; same weekday history (Friday)&quot;,&quot;count&quot;:725},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;13:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;High&quot;,&quot;score&quot;:89,&quot;scoreLabel&quot;:&quot;89/100&quot;,&quot;evidence&quot;:&quot;643 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:643},{&quot;day&quot;:&quot;Fri Oct 30&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;14:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;High&quot;,&quot;score&quot;:85,&quot;scoreLabel&quot;:&quot;85/100&quot;,&quot;evidence&quot;:&quot;618 stop-level observations; same weekday history (Friday)&quot;,&quot;count&quot;:618},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;16:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:64,&quot;scoreLabel&quot;:&quot;64/100&quot;,&quot;evidence&quot;:&quot;463 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:463},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;15:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;Medium&quot;,&quot;score&quot;:51,&quot;scoreLabel&quot;:&quot;51/100&quot;,&quot;evidence&quot;:&quot;369 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:369},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;17:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:40,&quot;scoreLabel&quot;:&quot;40/100&quot;,&quot;evidence&quot;:&quot;293 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:293},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;12:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:38,&quot;scoreLabel&quot;:&quot;38/100&quot;,&quot;evidence&quot;:&quot;279 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:279},{&quot;day&quot;:&quot;Sat Oct 31&quot;,&quot;route&quot;:&quot;A&quot;,&quot;hour&quot;:&quot;09:00&quot;,&quot;location&quot;:&quot;Blair [2850]&quot;,&quot;stopId&quot;:&quot;2850&quot;,&quot;stopName&quot;:&quot;Blair&quot;,&quot;lat&quot;:43.078407,&quot;lon&quot;:-89.378795,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:34,&quot;scoreLabel&quot;:&quot;34/100&quot;,&quot;evidence&quot;:&quot;248 stop-level observations; same weekday history (Saturday)&quot;,&quot;count&quot;:248},{&quot;day&quot;:&quot;Sat Oct 31&quot;,&quot;route&quot;:&quot;B&quot;,&quot;hour&quot;:&quot;15:00&quot;,&quot;location&quot;:&quot;Troy at Lerdahl [1294]&quot;,&quot;stopId&quot;:&quot;1294&quot;,&quot;stopName&quot;:&quot;Troy at Lerdahl&quot;,&quot;lat&quot;:43.133885,&quot;lon&quot;:-89.389299,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:34,&quot;scoreLabel&quot;:&quot;34/100&quot;,&quot;evidence&quot;:&quot;243 stop-level observations; same weekday history (Saturday)&quot;,&quot;count&quot;:243},{&quot;day&quot;:&quot;Wed Oct 28&quot;,&quot;route&quot;:&quot;80&quot;,&quot;hour&quot;:&quot;11:00&quot;,&quot;location&quot;:&quot;N Lake at Langdon [1190]&quot;,&quot;stopId&quot;:&quot;1190&quot;,&quot;stopName&quot;:&quot;N Lake at Langdon&quot;,&quot;lat&quot;:43.075529,&quot;lon&quot;:-89.397191,&quot;priority&quot;:&quot;Monitor&quot;,&quot;score&quot;:32,&quot;scoreLabel&quot;:&quot;32/100&quot;,&quot;evidence&quot;:&quot;232 stop-level observations; same weekday history (Wednesday)&quot;,&quot;count&quot;:232}]">
+      <div id="prediction-leaflet-map" class="prediction-map" aria-label="Map of likely AppalCART bus-bunching locations"></div>
+      <div id="prediction-map-fallback" class="prediction-map-fallback">
+        <svg class="prediction-map" viewBox="0 0 760 420" role="img" aria-label="Map of likely AppalCART bus-bunching locations">
+          <rect x="0" y="0" width="760" height="420" fill="#eef4f7"></rect>
+          <path d="M88 336 C190 292 268 304 372 248 C470 196 558 136 680 74" fill="none" stroke="#c6d6df" stroke-width="16" stroke-linecap="round" opacity="0.72"></path>
+          <path d="M120 84 C196 150 238 206 340 224 C448 244 512 300 638 338" fill="none" stroke="#d5dde3" stroke-width="10" stroke-linecap="round" opacity="0.78"></path>
+          <circle cx="48.0" cy="372.0" r="21.0" fill="#a93d33" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 10:00: N Lake at Langdon [1190] (High, 100/100)</title></circle><text x="48.0" y="344.0" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="19.7" fill="#a93d33" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 13:00: N Lake at Langdon [1190] (High, 89/100)</title></circle><text x="48.0" y="345.3" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="19.2" fill="#a93d33" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 14:00: N Lake at Langdon [1190] (High, 85/100)</title></circle><text x="48.0" y="345.8" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="16.7" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 16:00: N Lake at Langdon [1190] (Medium, 64/100)</title></circle><text x="48.0" y="348.3" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="15.1" fill="#9a5b00" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 15:00: N Lake at Langdon [1190] (Medium, 51/100)</title></circle><text x="48.0" y="349.9" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="13.8" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 17:00: N Lake at Langdon [1190] (Monitor, 40/100)</title></circle><text x="48.0" y="351.2" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="48.0" cy="372.0" r="13.6" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 12:00: N Lake at Langdon [1190] (Monitor, 38/100)</title></circle><text x="48.0" y="351.4" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text><circle cx="712.0" cy="356.0" r="13.1" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route A at 09:00: Blair [2850] (Monitor, 34/100)</title></circle><text x="712.0" y="335.9" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">A</text><circle cx="332.9" cy="48.0" r="13.1" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route B at 15:00: Troy at Lerdahl [1294] (Monitor, 34/100)</title></circle><text x="332.9" y="27.9" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">B</text><circle cx="48.0" cy="372.0" r="12.8" fill="#2f6f9f" fill-opacity="0.84" stroke="#ffffff" stroke-width="2"><title>Route 80 at 11:00: N Lake at Langdon [1190] (Monitor, 32/100)</title></circle><text x="48.0" y="352.2" text-anchor="middle" font-size="11" fill="#1f2933" font-weight="700">80</text>
+        </svg>
+      </div>
+      <p class="map-note">Larger markers have higher relative priority. Colors show High, Medium, or Monitor.</p>
+    </div>
+  </div>
+  <aside class="panel">
+    <h2>Map Watchlist</h2>
+    <ul id="prediction-map-list" class="prediction-map-list">
+      
+<li>
+  <span class="priority-chip high">High</span>
+  <strong>Route 80 at 10:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Fri Oct 30 | 100/100 | 725 stop-level observations; same weekday history (Friday)</small>
+</li>
+<li>
+  <span class="priority-chip high">High</span>
+  <strong>Route 80 at 13:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Wed Oct 28 | 89/100 | 643 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <span class="priority-chip high">High</span>
+  <strong>Route 80 at 14:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Fri Oct 30 | 85/100 | 618 stop-level observations; same weekday history (Friday)</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route 80 at 16:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Wed Oct 28 | 64/100 | 463 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <span class="priority-chip medium">Medium</span>
+  <strong>Route 80 at 15:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Wed Oct 28 | 51/100 | 369 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+<li>
+  <span class="priority-chip monitor">Monitor</span>
+  <strong>Route 80 at 17:00</strong>
+  <span>N Lake at Langdon [1190]</span>
+  <small>Wed Oct 28 | 40/100 | 293 stop-level observations; same weekday history (Wednesday)</small>
+</li>
+    </ul>
+    <p class="map-note">This map highlights likely bunching locations from representative AppalCART operating patterns.</p>
+  </aside>
 </section>
 
 <section class="section two-col prediction-tables">
   <section class="table-panel">
-  <h3>Rest of today (Mon Oct 5, after 11:00 AM): AI-prioritized bus-bunching watchlist</h3>
+  <h3>Next hour (Wed Oct 28 at 11:00): AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody><tr><td>Mon Oct 5</td><td>80</td><td>12:00</td><td>W Dayton at N Park [1774]</td><td>Monitor</td><td>37/100</td><td>268 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>80</td><td>13:00</td><td>N Lake at W Johnson [973]</td><td>Monitor</td><td>32/100</td><td>230 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>80</td><td>15:00</td><td>N Randall at Engineering [918]</td><td>Monitor</td><td>28/100</td><td>206 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>80</td><td>14:00</td><td>N Lake at W Johnson [973]</td><td>Monitor</td><td>27/100</td><td>198 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>80</td><td>11:00</td><td>W Dayton at N Mills [1341]</td><td>Monitor</td><td>22/100</td><td>163 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Oct 5</td><td>80</td><td>16:00</td><td>Observatory at Babcock [634]</td><td>Monitor</td><td>21/100</td><td>153 stop-level observations; same weekday history (Monday)</td></tr></tbody>
+    <tbody><tr><td>Wed Oct 28</td><td>80</td><td>11:00</td><td>N Lake at Langdon [1190]</td><td>Monitor</td><td>32/100</td><td>232 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>B</td><td>11:00</td><td>Green at Meadow Ridge [1248]</td><td>Monitor</td><td>2/100</td><td>12 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>38</td><td>11:00</td><td>Observatory at Colwood [741]</td><td>Monitor</td><td>1/100</td><td>4 stop-level observations; same weekday history (Wednesday)</td></tr></tbody>
   </table>
 </section>
   <section class="table-panel">
-  <h3>Upcoming days (Tue Oct 6-Fri Oct 9): AI-prioritized bus-bunching watchlist</h3>
+  <h3>Rest of day (Wed Oct 28, after 11:00): AI-prioritized bus-bunching watchlist</h3>
   <table>
     <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
-    <tbody><tr><td>Tue Oct 6</td><td>80</td><td>14:00</td><td>W Dayton at N Park [1774]</td><td>Monitor</td><td>43/100</td><td>309 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Tue Oct 6</td><td>80</td><td>13:00</td><td>Observatory at Elm [655]</td><td>Monitor</td><td>37/100</td><td>268 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Wed Oct 7</td><td>80</td><td>13:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>89/100</td><td>643 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 7</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>75/100</td><td>543 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Thu Oct 8</td><td>80</td><td>13:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>80/100</td><td>581 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Thu Oct 8</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>79/100</td><td>576 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Fri Oct 9</td><td>80</td><td>10:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>100/100</td><td>725 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Fri Oct 9</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>85/100</td><td>618 stop-level observations; same weekday history (Friday)</td></tr></tbody>
+    <tbody><tr><td>Wed Oct 28</td><td>80</td><td>13:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>89/100</td><td>643 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>75/100</td><td>543 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>16:00</td><td>N Lake at Langdon [1190]</td><td>Medium</td><td>64/100</td><td>463 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>15:00</td><td>N Lake at Langdon [1190]</td><td>Medium</td><td>51/100</td><td>369 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>17:00</td><td>N Lake at Langdon [1190]</td><td>Monitor</td><td>40/100</td><td>293 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>12:00</td><td>N Lake at Langdon [1190]</td><td>Monitor</td><td>38/100</td><td>279 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>80</td><td>19:00</td><td>N Lake at Langdon [1190]</td><td>Monitor</td><td>18/100</td><td>130 stop-level observations; same weekday history (Wednesday)</td></tr><tr><td>Wed Oct 28</td><td>B</td><td>18:00</td><td>Fish Hatchery at Emil [1011]</td><td>Monitor</td><td>17/100</td><td>122 stop-level observations; same weekday history (Wednesday)</td></tr></tbody>
   </table>
 </section>
+  <section class="table-panel">
+  <h3>Rest of week (Thu Oct 29-Tue Nov 3): AI-prioritized bus-bunching watchlist</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Route</th><th>Hour</th><th>Predicted location</th><th>AI priority</th><th>Prediction score</th><th>Evidence</th></tr></thead>
+    <tbody><tr><td>Thu Oct 29</td><td>80</td><td>13:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>80/100</td><td>581 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Thu Oct 29</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>79/100</td><td>576 stop-level observations; same weekday history (Thursday)</td></tr><tr><td>Fri Oct 30</td><td>80</td><td>10:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>100/100</td><td>725 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Fri Oct 30</td><td>80</td><td>14:00</td><td>N Lake at Langdon [1190]</td><td>High</td><td>85/100</td><td>618 stop-level observations; same weekday history (Friday)</td></tr><tr><td>Sat Oct 31</td><td>A</td><td>09:00</td><td>Blair [2850]</td><td>Monitor</td><td>34/100</td><td>248 stop-level observations; same weekday history (Saturday)</td></tr><tr><td>Sat Oct 31</td><td>B</td><td>15:00</td><td>Troy at Lerdahl [1294]</td><td>Monitor</td><td>34/100</td><td>243 stop-level observations; same weekday history (Saturday)</td></tr><tr><td>Sun Nov 1</td><td>C</td><td>19:00</td><td>University at N Breese [1624]</td><td>Monitor</td><td>14/100</td><td>99 stop-level observations; same weekday history (Sunday)</td></tr><tr><td>Sun Nov 1</td><td>80</td><td>00:00</td><td>Observatory at Bascom [1339]</td><td>Monitor</td><td>6/100</td><td>40 stop-level observations; same weekday history (Sunday)</td></tr><tr><td>Mon Nov 2</td><td>38</td><td>09:00</td><td>Linden at Henry [555]</td><td>Monitor</td><td>39/100</td><td>286 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Mon Nov 2</td><td>80</td><td>12:00</td><td>W Dayton at N Park [1774]</td><td>Monitor</td><td>37/100</td><td>268 stop-level observations; same weekday history (Monday)</td></tr><tr><td>Tue Nov 3</td><td>80</td><td>14:00</td><td>W Dayton at N Park [1774]</td><td>Monitor</td><td>43/100</td><td>309 stop-level observations; same weekday history (Tuesday)</td></tr><tr><td>Tue Nov 3</td><td>80</td><td>13:00</td><td>Observatory at Elm [655]</td><td>Monitor</td><td>37/100</td><td>268 stop-level observations; same weekday history (Tuesday)</td></tr></tbody>
+  </table>
+</section>
+</section>
+
+<section class="section panel">
+  <h2>How The Prediction Tool Works</h2>
+  <p>Priority scores compare each same-weekday route-hour pattern with the strongest pattern in the current export. High is 70/100 or above, Medium is 45-69/100, and Monitor is below 45/100.</p>
+  <p class="map-note">Predictions are based on historical patterns, current time and day-of-week context, and available model inputs.</p>
 </section>
 
     <section class="section two-col">
@@ -135,7 +209,7 @@
     
 
     <section class="section panel">
-  <h2>How To Read These Visuals</h2>
+  <h2>Historical Evidence</h2>
   <p>These charts summarize the current Madison Metro Transit event export. Each row is a stop-level observation where two adjacent buses on the same route and direction were predicted to arrive closer together than the scheduled-headway threshold.</p>
   <p>The current file covers 2026-09-09 to 2026-09-19 and contains 39,670 stop-level observations across 24 routes and 904 stops.</p>
   <p class="map-note">Counts are stop-level observations. A close bus pair can be counted at multiple downstream stops if it remains bunched along the route.</p>
@@ -300,17 +374,17 @@
     <div class="snapshot-grid">
       <div class="snapshot-item">
   <span>Latest observed</span>
-  <strong>Sep 22, 2026 at 10:00 PM CT</strong>
-  <small>Clear, Sunny</small>
+  <strong>Oct 8, 2026 at 12:45 PM CT</strong>
+  <small>Observed at KMSN</small>
 </div>
       <div class="snapshot-item">
   <span>Temperature</span>
-  <strong>54.0 F</strong>
+  <strong>66.2 F</strong>
   <small>Observed</small>
 </div>
       <div class="snapshot-item">
   <span>Wind</span>
-  <strong>9.2 mph</strong>
+  <strong>4.6 mph</strong>
   <small>Observed</small>
 </div>
     </div>
