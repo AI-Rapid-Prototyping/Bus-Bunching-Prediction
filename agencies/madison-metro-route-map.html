@@ -9,25 +9,11 @@
   <link rel="stylesheet" href="../assets/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
-<body class="locked">
-  <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
-    <form class="access-panel" id="accessForm">
-      <h1 id="access-title">Internal prototype</h1>
-      <p>Enter the project passphrase to view the dashboard.</p>
-      <div class="access-row">
-        <input id="accessPassword" type="password" autocomplete="current-password" aria-label="Passphrase">
-        <button type="submit">Open</button>
-      </div>
-      <div class="access-error" id="accessError" aria-live="polite"></div>
-    </form>
-  </div>
+<body>
   <div class="site-shell">
     <header class="top-header">
   <div class="header-inner">
     <div class="brand-group">
-      <div class="agency-mark">
-        <img src="../assets/DOT-logo-2.png" alt="U.S. Department of Transportation logo">
-      </div>
       <div>
         <div class="brand-title">U.S. Department of Transportation</div>
         <div class="brand-subtitle">Volpe Center IP3 Transit Analytics</div>
@@ -105,44 +91,6 @@
 
     <footer class="footer">Internal IP3 bus-bunching prototype. Generated from local analysis exports.</footer>
   </div>
-  <script>
-    (() => {
-      const key = "ip3_bus_bunching_access";
-      const fullSitePassphrase = "ip3-oct1";
-      const appalcartPassphrase = "ip3-oct";
-      const currentPage = "madison-metro";
-      const appalcartUrl = "appalcart.html";
-      const unlock = () => document.body.classList.remove("locked");
-      const hasPageAccess = (scope) => (
-        scope === "all" ||
-        scope === "ok" ||
-        (scope === "appalcart" && currentPage === "appalcart")
-      );
-      if (hasPageAccess(window.localStorage.getItem(key))) unlock();
-      const form = document.getElementById("accessForm");
-      const input = document.getElementById("accessPassword");
-      const error = document.getElementById("accessError");
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const passphrase = (input.value || "").trim().toLowerCase();
-        if (passphrase === fullSitePassphrase) {
-          window.localStorage.setItem(key, "all");
-          unlock();
-        } else if (passphrase === appalcartPassphrase) {
-          window.localStorage.setItem(key, "appalcart");
-          if (currentPage === "appalcart") {
-            unlock();
-          } else {
-            window.location.href = appalcartUrl;
-          }
-        } else {
-          error.textContent = "Incorrect passphrase.";
-          input.select();
-        }
-      });
-      input.focus();
-    })();
-  </script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (() => {
