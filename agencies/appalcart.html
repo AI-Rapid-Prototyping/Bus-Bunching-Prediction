@@ -974,7 +974,7 @@
       syncAlertControls();
       sendDesktopAlert(
         "AppalCART Desktop Alerts Enabled",
-        "You will be notified 1 hour before and 30 minutes before predicted bus bunching hotspots.",
+        "You will be notified 1 hour and 30 minutes before High-priority predicted bus bunching hotspots.",
         "appalcart-alerts-enabled"
       );
     } else {
@@ -996,7 +996,7 @@
     const candidates = predictionItemsForDate(stats, nowEastern, {
       limit: 50,
       minHour: nowEastern.getHours()
-    });
+    }).filter((item) => item.priority === "High");
 
     let sentKeys;
     try {
@@ -1023,10 +1023,10 @@
             sentKeys.add(key);
             changed = true;
             sendDesktopAlert(
-              `AppalCART ${stage.label}: Route ${item.route} at ${item.hour}`,
-              `${item.location} — in ~${Math.round(minutesUntil)} min (${item.priority}, ${item.scoreLabel})`,
+              `AppalCART High-Priority ${stage.label}: Route ${item.route} at ${item.hour}`,
+              `${item.location} — in ~${Math.round(minutesUntil)} min (${item.scoreLabel})`,
               key,
-              item.priority === "High"
+              true
             );
           }
         }
