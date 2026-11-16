@@ -909,9 +909,14 @@
   };
 
   const NOTIF_PREF_KEY = "appalcart_desktop_alerts_enabled";
-  const NOTIF_SENT_KEY = "appalcart_notified_events_v1";
+  const NOTIF_SENT_KEY = "appalcart_notified_events_v2";
   const toggleBtn = document.getElementById("desktop-alert-toggle");
   const testBtn = document.getElementById("desktop-alert-test");
+
+  const ALERT_STAGES = [
+    { id: "60m", label: "1-Hour Warning", minMinutes: 30, maxMinutes: 60 },
+    { id: "30m", label: "30-Minute Warning", minMinutes: 0, maxMinutes: 30 }
+  ];
 
   const isAlertsEnabled = () =>
     "Notification" in window &&
@@ -969,7 +974,7 @@
       syncAlertControls();
       sendDesktopAlert(
         "AppalCART Desktop Alerts Enabled",
-        "You will be notified 30–60 minutes before predicted bus bunching hotspots.",
+        "You will be notified 1 hour before and 30 minutes before predicted bus bunching hotspots.",
         "appalcart-alerts-enabled"
       );
     } else {
@@ -1011,24 +1016,26 @@
       eventTime.setHours(eventHour, 0, 0, 0);
       const minutesUntil = (eventTime.getTime() - nowEastern.getTime()) / 60000;
 
-      if (minutesUntil >= 30 && minutesUntil <= 60) {
-        const key = `${dateStamp}|${item.route}|${item.hour}|${item.stopId}`;
-        if (!sentKeys.has(key)) {
-          sentKeys.add(key);
-          changed = true;
-          sendDesktopAlert(
-            `AppalCART Alert: Route ${item.route} at ${item.hour}`,
-            `${item.location} — in ~${Math.round(minutesUntil)} min (${item.priority}, ${item.scoreLabel})`,
-            key,
-            item.priority === "High"
-          );
+      ALERT_STAGES.forEach((stage) => {
+        if (minutesUntil > stage.minMinutes && minutesUntil <= stage.maxMinutes) {
+          const key = `${dateStamp}|${item.route}|${item.hour}|${item.stopId}|${stage.id}`;
+          if (!sentKeys.has(key)) {
+            sentKeys.add(key);
+            changed = true;
+            sendDesktopAlert(
+              `AppalCART ${stage.label}: Route ${item.route} at ${item.hour}`,
+              `${item.location} — in ~${Math.round(minutesUntil)} min (${item.priority}, ${item.scoreLabel})`,
+              key,
+              item.priority === "High"
+            );
+          }
         }
-      }
+      });
     });
 
     if (changed) {
       try {
-        localStorage.setItem(NOTIF_SENT_KEY, JSON.stringify(Array.from(sentKeys).slice(-200)));
+        localStorage.setItem(NOTIF_SENT_KEY, JSON.stringify(Array.from(sentKeys).slice(-400)));
       } catch {
         // Ignore storage errors
       }
