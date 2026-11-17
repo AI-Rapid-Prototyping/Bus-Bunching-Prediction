@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Send AppalCart bus bunching email alerts using the exact data source and
-recurring-hotspot prediction model from the GitHub Pages dashboard (appalcart.html).
+Send AppalCart high-priority bus bunching email alerts using the exact data source
+and recurring-hotspot prediction model from the GitHub Pages dashboard (appalcart.html).
 
 Supports:
-1) Daily digest for all predicted bunching hotspots today, sorted chronologically.
-2) One-hour-ahead alerts for hotspots in the upcoming target hour.
+1) Daily digest for today's High-priority predicted bunching hotspots, sorted chronologically.
+2) One-hour-ahead alerts for High-priority hotspots in the upcoming target hour.
 """
 
 from __future__ import annotations
@@ -61,7 +61,7 @@ def parse_env_int(name: str, default: int) -> int:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Send daily and one-hour-ahead AppalCart bus bunching email alerts."
+        description="Send daily and one-hour-ahead High-priority AppalCart bus bunching email alerts."
     )
     parser.add_argument(
         "--mode",
@@ -111,7 +111,7 @@ def parse_args() -> argparse.Namespace:
         "--send-empty-digest",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Send daily digest even when no events are predicted. Default: %(default)s",
+        help="Send daily digest even when no High-priority events are predicted. Default: %(default)s",
     )
     parser.add_argument(
         "--force",
@@ -537,16 +537,11 @@ def event_fields(row: pd.Series) -> dict[str, str]:
     else:
         stop_label = "Unknown stop"
 
-    if priority and score_label:
-        priority_label = f"{priority} ({score_label})"
-    else:
-        priority_label = priority or score_label
-
     return {
         "time": format_time(row["event_time_local"]),
         "route": f"Route {route_label}",
         "stop": stop_label,
-        "priority": priority_label,
+        "priority": score_label or priority,
         "priority_level": priority.lower(),
     }
 
@@ -678,19 +673,19 @@ def build_daily_body(
     max_events: int,
 ) -> tuple[str, str]:
     """Return (plain_text, html) bodies for the daily digest."""
-    title = "AppalCART Bus Bunching: Daily Outlook"
+    title = "AppalCART Bus Bunching: Daily High-Priority Outlook"
     subtitle = format_long_date(now_local)
     footer = f"Generated {format_time(now_local)} {now_local.tzname()}"
     text = [title, subtitle]
 
     if events_today.empty:
-        message = "No predicted bunching hotspots for today."
+        message = "No high-priority bunching hotspots predicted for today."
         text += ["", message, "", "", footer]
         body_html = f'<p style="margin:28px 0 0;font-size:14px;">{esc(message)}</p>'
         return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
     summary = [
-        ("Predicted hotspots", str(len(events_today))),
+        ("High-priority hotspots", str(len(events_today))),
         ("Routes affected", str(events_today["route_label"].nunique())),
     ]
     routes = [
@@ -701,13 +696,13 @@ def build_daily_body(
 
     text += text_section("Summary") + text_key_values(summary)
     text += text_section("Top routes") + text_key_values(routes)
-    text += text_section("Predicted hotspots") + text_event_lines(fields, hidden_count)
+    text += text_section("High-priority hotspots") + text_event_lines(fields, hidden_count)
     text += ["", "", footer]
 
     body_html = (
         html_section("Summary", html_key_values(summary))
         + html_section("Top routes", html_key_values(routes))
-        + html_section("Predicted hotspots", html_events_table(fields, hidden_count))
+        + html_section("High-priority hotspots", html_events_table(fields, hidden_count))
     )
     return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
@@ -721,11 +716,11 @@ def build_upcoming_body(
     max_events: int,
 ) -> tuple[str, str]:
     """Return (plain_text, html) bodies for the one-hour-ahead alert."""
-    title = "AppalCART Bus Bunching: Upcoming Alert"
+    title = "AppalCART Bus Bunching: High-Priority Upcoming Alert"
     subtitle = f"Predicted in about {lead_minutes} minutes"
     footer = f"Generated {format_time(now_local)} {now_local.tzname()}"
     summary = [
-        ("Hotspots in this alert", str(len(events_upcoming))),
+        ("High-priority hotspots", str(len(events_upcoming))),
         (
             "Alert window",
             f"{format_time(window_start)} - {format_time(window_end)} {window_end.tzname()}",
@@ -735,12 +730,12 @@ def build_upcoming_body(
 
     text = [title, subtitle]
     text += text_section("Summary") + text_key_values(summary)
-    text += text_section("Predicted hotspots") + text_event_lines(fields, hidden_count)
+    text += text_section("High-priority hotspots") + text_event_lines(fields, hidden_count)
     text += ["", "", footer]
 
     body_html = (
         html_section("Summary", html_key_values(summary))
-        + html_section("Predicted hotspots", html_events_table(fields, hidden_count))
+        + html_section("High-priority hotspots", html_events_table(fields, hidden_count))
     )
     return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
@@ -818,11 +813,14 @@ def run_daily_alert(
         .copy()
     )
     if events_today.empty and not args.send_empty_digest:
-        print(f"Skipping daily digest for {digest_date}: no events and --no-send-empty-digest.")
+        print(
+            f"Skipping daily digest for {digest_date}: "
+            "no High-priority events and --no-send-empty-digest."
+        )
         return False
 
     subject = (
-        f"{args.subject_prefix} Daily predicted bus bunching for {digest_date} "
+        f"{args.subject_prefix} Daily high-priority bus bunching for {digest_date} "
         f"({len(events_today)} hotspots)"
     )
     body, html_body = build_daily_body(now_local, events_today, args.max_events_in_email)
@@ -854,11 +852,11 @@ def run_upcoming_alert(
         candidates = filter_unsent_events(conn, candidates)
 
     if candidates.empty:
-        print("Skipping one-hour-ahead alert: no unsent hotspots in target window.")
+        print("Skipping one-hour-ahead alert: no unsent High-priority hotspots in target window.")
         return False
 
     subject = (
-        f"{args.subject_prefix} One-hour-ahead bunching alert "
+        f"{args.subject_prefix} One-hour-ahead high-priority bunching alert "
         f"({len(candidates)} hotspots)"
     )
     body, html_body = build_upcoming_body(
@@ -888,10 +886,11 @@ def main() -> int:
 
     history_df, source_used = load_historical_rows(args.dashboard_url, csv_path)
     target_dates = [now_local, now_local + timedelta(days=1)]
-    events = predict_events_for_dates(history_df, target_dates, timezone_name)
+    all_events = predict_events_for_dates(history_df, target_dates, timezone_name)
+    events = all_events[all_events["priority"] == "High"].copy()
     print(
         f"Loaded {len(history_df)} historical rows from {source_used}; "
-        f"generated {len(events)} predicted hotspots."
+        f"generated {len(all_events)} predicted hotspots ({len(events)} High priority)."
     )
 
     with sqlite3.connect(state_db_path) as conn:
