@@ -114,6 +114,14 @@
         </select>
       </label>
       <p id="prediction-map-status" class="map-note" role="status" aria-live="polite"></p>
+      <div class="desktop-alert-controls" style="display:flex;gap:8px;align-items:center;">
+        <button id="desktop-alert-toggle" type="button" style="padding:6px 12px;border:1px solid #1f3a5f;border-radius:4px;background:#ffffff;color:#1f3a5f;font-size:13px;font-weight:600;cursor:pointer;">
+          Enable desktop alerts
+        </button>
+        <button id="desktop-alert-test" type="button" hidden style="padding:6px 10px;border:1px solid #d0d7de;border-radius:4px;background:#f6f8fa;color:#24292f;font-size:12px;cursor:pointer;">
+          Test alert
+        </button>
+      </div>
     </div>
 
     
@@ -1064,6 +1072,135 @@
       : `<tr><td colspan="${colspan}">${escapeHtml(empty)}</td></tr>`;
   };
 
+  const NOTIF_PREF_KEY = `${config.key}_desktop_alerts_enabled`;
+  const NOTIF_SENT_KEY = `${config.key}_notified_events_v2`;
+  const toggleBtn = document.getElementById("desktop-alert-toggle");
+  const testBtn = document.getElementById("desktop-alert-test");
+
+  const isAlertsEnabled = () =>
+    "Notification" in window &&
+    Notification.permission === "granted" &&
+    localStorage.getItem(NOTIF_PREF_KEY) === "true";
+
+  const syncAlertControls = () => {
+    if (!toggleBtn) return;
+    if (!("Notification" in window)) {
+      toggleBtn.hidden = true;
+      return;
+    }
+    if (Notification.permission === "denied") {
+      toggleBtn.textContent = "Desktop alerts blocked in browser";
+      toggleBtn.disabled = true;
+      if (testBtn) testBtn.hidden = true;
+      return;
+    }
+    const active = isAlertsEnabled();
+    toggleBtn.textContent = active ? "Desktop alerts: ON" : "Enable desktop alerts";
+    toggleBtn.style.background = active ? "#1f3a5f" : "#ffffff";
+    toggleBtn.style.color = active ? "#ffffff" : "#1f3a5f";
+    if (testBtn) testBtn.hidden = !active;
+  };
+
+  const sendDesktopAlert = (title, body, tag, requireInteraction = false) => {
+    if (!isAlertsEnabled()) return;
+    const notification = new Notification(title, {
+      body,
+      tag,
+      requireInteraction
+    });
+    notification.onclick = () => {
+      window.focus();
+      notification.close();
+    };
+  };
+
+  toggleBtn?.addEventListener("click", async () => {
+    if (!("Notification" in window)) return;
+
+    if (isAlertsEnabled()) {
+      localStorage.setItem(NOTIF_PREF_KEY, "false");
+      syncAlertControls();
+      return;
+    }
+
+    const permission =
+      Notification.permission === "granted"
+        ? "granted"
+        : await Notification.requestPermission();
+
+    if (permission === "granted") {
+      localStorage.setItem(NOTIF_PREF_KEY, "true");
+      syncAlertControls();
+      sendDesktopAlert(
+        `${config.title} Desktop Alerts Enabled`,
+        "You will be notified 60 minutes before High-priority predicted bus bunching hotspots.",
+        `${config.key}-alerts-enabled`
+      );
+    } else {
+      syncAlertControls();
+    }
+  });
+
+  testBtn?.addEventListener("click", () => {
+    sendDesktopAlert(
+      `${config.title} Test Alert: Route B at 18:00`,
+      "Paterson [2851] - in ~60 min (High, 100/100)",
+      `${config.key}-test-${Date.now()}`
+    );
+  });
+
+  const checkDesktopNotifications = (stats, nowAgency) => {
+    if (!isAlertsEnabled()) return;
+
+    const candidates = predictionItemsForDate(stats, nowAgency, {
+      limit: 50,
+      minHour: nowAgency.getUTCHours()
+    }).filter((item) => item.priority === "High");
+
+    let sentKeys;
+    try {
+      sentKeys = new Set(JSON.parse(localStorage.getItem(NOTIF_SENT_KEY) || "[]"));
+    } catch {
+      sentKeys = new Set();
+    }
+
+    const dateStamp = `${nowAgency.getUTCFullYear()}-${String(nowAgency.getUTCMonth() + 1).padStart(2, "0")}-${String(nowAgency.getUTCDate()).padStart(2, "0")}`;
+    let changed = false;
+
+    candidates.forEach((item) => {
+      const eventHour = hourNumber(item.hour);
+      if (eventHour === null) return;
+
+      const eventTime = new Date(nowAgency);
+      eventTime.setUTCHours(eventHour, 0, 0, 0);
+      const minutesUntil = (eventTime.getTime() - nowAgency.getTime()) / 60000;
+
+      if (minutesUntil > 0 && minutesUntil <= 60) {
+        const key = `${dateStamp}|${item.route}|${item.hour}|${item.stopId}|60m`;
+        if (!sentKeys.has(key)) {
+          sentKeys.add(key);
+          changed = true;
+          sendDesktopAlert(
+            `${config.title} High-Priority 60-Minute Warning: Route ${item.route} at ${item.hour}`,
+            `${item.location} - in ~${Math.round(minutesUntil)} min (${item.scoreLabel})`,
+            key,
+            true
+          );
+        }
+      }
+    });
+
+    if (changed) {
+      try {
+        localStorage.setItem(NOTIF_SENT_KEY, JSON.stringify(Array.from(sentKeys).slice(-400)));
+      } catch {
+        // Ignore storage errors
+      }
+    }
+  };
+
+  syncAlertControls();
+
   const predictionTableState = new Map();
   const compareRoutes = (left, right) => left.localeCompare(right, undefined, { numeric: true });
   const compareTimes = (left, right) => left.date.localeCompare(right.date) || left.hour.localeCompare(right.hour);
@@ -1212,6 +1349,7 @@
       .slice(0, 10)
       .map((stop) => [stop.stopName, stop.stopId, stop.routes.size, stop.count]);
     renderRows("top-stops-body", stopRows, 4, "No stop-level locations are available.");
+    checkDesktopNotifications(stats, today);
   };
 
   let currentStats = null;
