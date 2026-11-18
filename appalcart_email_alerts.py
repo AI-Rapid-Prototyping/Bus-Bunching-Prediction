@@ -527,6 +527,10 @@ def event_fields(row: pd.Series) -> dict[str, str]:
     stop_id = str(row.get("stop_id", "")).strip()
     priority = str(row.get("priority", "")).strip()
     score_label = str(row.get("score_label", "")).strip()
+    if priority and score_label:
+        priority_display = f"{priority} {score_label}"
+    else:
+        priority_display = score_label or priority
 
     if stop_name and stop_id:
         stop_label = f"{stop_name} (Stop {stop_id})"
@@ -541,7 +545,7 @@ def event_fields(row: pd.Series) -> dict[str, str]:
         "time": format_time(row["event_time_local"]),
         "route": f"Route {route_label}",
         "stop": stop_label,
-        "priority": score_label or priority,
+        "priority": priority_display,
         "priority_level": priority.lower(),
     }
 

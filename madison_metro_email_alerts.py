@@ -507,6 +507,7 @@ def parse_recipients(value: str | None) -> list[str]:
 
 TEXT_RULE = "-" * 48
 HTML_ACCENT = "#1f3a5f"
+DEPRIORITIZED_ROUTE_LABEL = "80"
 
 
 def format_time(value: datetime) -> str:
@@ -527,6 +528,10 @@ def event_fields(row: pd.Series) -> dict[str, str]:
     stop_id = str(row.get("stop_id", "")).strip()
     priority = str(row.get("priority", "")).strip()
     score_label = str(row.get("score_label", "")).strip()
+    if priority and score_label:
+        priority_display = f"{priority} {score_label}"
+    else:
+        priority_display = score_label or priority
 
     if stop_name and stop_id:
         stop_label = f"{stop_name} (Stop {stop_id})"
@@ -541,7 +546,7 @@ def event_fields(row: pd.Series) -> dict[str, str]:
         "time": format_time(row["event_time_local"]),
         "route": f"Route {route_label}",
         "stop": stop_label,
-        "priority": score_label or priority,
+        "priority": priority_display,
         "priority_level": priority.lower(),
     }
 
@@ -560,6 +565,32 @@ def select_events(events: pd.DataFrame, max_events: int) -> tuple[list[dict[str,
 def top_route_counts(events: pd.DataFrame, limit: int = 10) -> list[tuple[str, int]]:
     counts = events.groupby("route_label").size().sort_values(ascending=False).head(limit)
     return [(str(label), int(count)) for label, count in counts.items()]
+
+
+def split_events_by_route(
+    events: pd.DataFrame, route_label: str
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    if events.empty:
+        return events.copy(), events.copy()
+
+    route_labels = events.get("route_label", pd.Series("", index=events.index)).fillna("").astype(str).str.strip()
+    route_ids = events.get("route_id", pd.Series("", index=events.index)).fillna("").astype(str).str.strip()
+    normalized_routes = route_labels.where(route_labels != "", route_ids)
+    deprioritized_mask = normalized_routes == route_label
+    return events[~deprioritized_mask].copy(), events[deprioritized_mask].copy()
+
+
+def select_split_events(
+    action_events: pd.DataFrame,
+    deprioritized_events: pd.DataFrame,
+    max_events: int,
+) -> tuple[list[dict[str, str]], int, list[dict[str, str]], int]:
+    action_fields, action_hidden = select_events(action_events, max_events)
+    remaining_slots = max(max_events - len(action_fields), 0)
+    deprioritized_fields, deprioritized_hidden = select_events(
+        deprioritized_events, remaining_slots
+    )
+    return action_fields, action_hidden, deprioritized_fields, deprioritized_hidden
 
 
 # Plain-text rendering -------------------------------------------------------
@@ -585,6 +616,16 @@ def text_event_lines(fields: list[dict[str, str]], hidden_count: int) -> list[st
     if hidden_count > 0:
         lines += ["", f"  ...plus {pluralize(hidden_count, 'more hotspot')} not shown."]
     return lines
+
+
+def text_events_or_message(
+    fields: list[dict[str, str]],
+    hidden_count: int,
+    empty_message: str,
+) -> list[str]:
+    if not fields and hidden_count == 0:
+        return [f"  {empty_message}"]
+    return text_event_lines(fields, hidden_count)
 
 
 # HTML rendering -------------------------------------------------------------
@@ -651,6 +692,16 @@ def html_events_table(fields: list[dict[str, str]], hidden_count: int) -> str:
     return table
 
 
+def html_events_or_message(
+    fields: list[dict[str, str]],
+    hidden_count: int,
+    empty_message: str,
+) -> str:
+    if not fields and hidden_count == 0:
+        return f'<p style="margin:8px 0 0;font-size:14px;">{esc(empty_message)}</p>'
+    return html_events_table(fields, hidden_count)
+
+
 def html_document(title: str, subtitle: str, body_html: str, footer: str) -> str:
     return (
         '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f0f2f5;">'
@@ -684,25 +735,64 @@ def build_daily_body(
         body_html = f'<p style="margin:28px 0 0;font-size:14px;">{esc(message)}</p>'
         return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
+    action_events, route_80_events = split_events_by_route(
+        events_today, DEPRIORITIZED_ROUTE_LABEL
+    )
+    action_fields, action_hidden, route_80_fields, route_80_hidden = select_split_events(
+        action_events, route_80_events, max_events
+    )
     summary = [
         ("High-priority hotspots", str(len(events_today))),
-        ("Routes affected", str(events_today["route_label"].nunique())),
+        ("All other routes hotspots", str(len(action_events))),
+        ("Route 80 hotspots", str(len(route_80_events))),
+        ("All other routes affected", str(action_events["route_label"].nunique())),
     ]
     routes = [
         (f"Route {label}", pluralize(count, "hotspot"))
-        for label, count in top_route_counts(events_today)
+        for label, count in top_route_counts(action_events)
     ]
-    fields, hidden_count = select_events(events_today, max_events)
+    if routes:
+        top_routes_text = text_key_values(routes)
+        top_routes_html = html_key_values(routes)
+    else:
+        top_routes_text = ["  No all other routes hotspots predicted."]
+        top_routes_html = '<p style="margin:8px 0 0;font-size:14px;">No all other routes hotspots predicted.</p>'
 
     text += text_section("Summary") + text_key_values(summary)
-    text += text_section("Top routes") + text_key_values(routes)
-    text += text_section("High-priority hotspots") + text_event_lines(fields, hidden_count)
+    text += text_section("Top all other routes") + top_routes_text
+    text += text_section("All other routes high-priority hotspots")
+    text += text_events_or_message(
+        action_fields,
+        action_hidden,
+        "No all other routes hotspots predicted for today.",
+    )
+    text += text_section("Route 80 high-priority hotspots")
+    text += text_events_or_message(
+        route_80_fields,
+        route_80_hidden,
+        "No Route 80 hotspots predicted for today.",
+    )
     text += ["", "", footer]
 
     body_html = (
         html_section("Summary", html_key_values(summary))
-        + html_section("Top routes", html_key_values(routes))
-        + html_section("High-priority hotspots", html_events_table(fields, hidden_count))
+        + html_section("Top all other routes", top_routes_html)
+        + html_section(
+            "All other routes high-priority hotspots",
+            html_events_or_message(
+                action_fields,
+                action_hidden,
+                "No all other routes hotspots predicted for today.",
+            ),
+        )
+        + html_section(
+            "Route 80 high-priority hotspots",
+            html_events_or_message(
+                route_80_fields,
+                route_80_hidden,
+                "No Route 80 hotspots predicted for today.",
+            ),
+        )
     )
     return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
@@ -719,23 +809,56 @@ def build_upcoming_body(
     title = "Madison Metro Transit Bus Bunching: High-Priority Upcoming Alert"
     subtitle = f"Predicted in about {lead_minutes} minutes"
     footer = f"Generated {format_time(now_local)} {now_local.tzname()}"
+    action_events, route_80_events = split_events_by_route(
+        events_upcoming, DEPRIORITIZED_ROUTE_LABEL
+    )
+    action_fields, action_hidden, route_80_fields, route_80_hidden = select_split_events(
+        action_events, route_80_events, max_events
+    )
     summary = [
         ("High-priority hotspots", str(len(events_upcoming))),
+        ("All other routes hotspots", str(len(action_events))),
+        ("Route 80 hotspots", str(len(route_80_events))),
         (
             "Alert window",
             f"{format_time(window_start)} - {format_time(window_end)} {window_end.tzname()}",
         ),
     ]
-    fields, hidden_count = select_events(events_upcoming, max_events)
 
     text = [title, subtitle]
     text += text_section("Summary") + text_key_values(summary)
-    text += text_section("High-priority hotspots") + text_event_lines(fields, hidden_count)
+    text += text_section("All other routes high-priority hotspots")
+    text += text_events_or_message(
+        action_fields,
+        action_hidden,
+        "No all other routes hotspots in this alert window.",
+    )
+    text += text_section("Route 80 high-priority hotspots")
+    text += text_events_or_message(
+        route_80_fields,
+        route_80_hidden,
+        "No Route 80 hotspots in this alert window.",
+    )
     text += ["", "", footer]
 
     body_html = (
         html_section("Summary", html_key_values(summary))
-        + html_section("High-priority hotspots", html_events_table(fields, hidden_count))
+        + html_section(
+            "All other routes high-priority hotspots",
+            html_events_or_message(
+                action_fields,
+                action_hidden,
+                "No all other routes hotspots in this alert window.",
+            ),
+        )
+        + html_section(
+            "Route 80 high-priority hotspots",
+            html_events_or_message(
+                route_80_fields,
+                route_80_hidden,
+                "No Route 80 hotspots in this alert window.",
+            ),
+        )
     )
     return "\n".join(text), html_document(title, subtitle, body_html, footer)
 
